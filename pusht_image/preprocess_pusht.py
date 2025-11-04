@@ -102,6 +102,7 @@ def preprocess_pusht_data():
     preprocessed_data['state_is_pad'] = state_is_pad
     preprocessed_data['action_is_pad'] = action_is_pad
     preprocessed_data['reward'] = (preprocessed_data['next.done'] & (pusht_state_data['next.reward'] > 0.9025)).astype(np.float32)
+    preprocessed_data['next.reward'] = pusht_state_data['next.reward']
 
     # Save each episode to a separate file
     output_dir = '/data/group_data/rl/saksham3/pusht/episode_data'
