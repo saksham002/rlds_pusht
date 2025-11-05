@@ -91,6 +91,10 @@ class PushTImage(tfds.core.GeneratorBasedBuilder):
                         dtype=np.bool_,
                         doc='Padding mask for action outputs.'
                     ),
+                    'episode_length': tfds.features.Scalar(
+                        dtype=np.int32,
+                        doc='Length of the episode.'
+                    ),
                 }),
                 'episode_metadata': tfds.features.FeaturesDict({
                     'file_path': tfds.features.Text(
@@ -137,6 +141,7 @@ class PushTImage(tfds.core.GeneratorBasedBuilder):
                     'next.success': step['next.success'],
                     'state_is_pad': step['state_is_pad'],
                     'action_is_pad': step['action_is_pad'],
+                    'episode_length': len(data),
                     # 'language_instruction': step['language_instruction'],
                     # 'language_embedding': language_embedding,
                 })
