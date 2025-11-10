@@ -24,18 +24,16 @@ class PushTImage(tfds.core.GeneratorBasedBuilder):
         return self.dataset_info_from_configs(
             features=tfds.features.FeaturesDict({
                 'steps': tfds.features.Dataset({
-                    'observation': tfds.features.FeaturesDict({
-                        'image': tfds.features.Tensor(
-                            shape=(2, 96, 96, 3),
-                            dtype=np.uint8,
-                            doc='Image of the current environment state and previous state.',
-                        ),
-                        'state': tfds.features.Tensor(
-                            shape=(2,18),
-                            dtype=np.float32,
-                            doc='Current and previous gripper and T-block positions.',
-                        )
-                    }),
+                    'observation.image': tfds.features.Tensor(
+                        shape=(2, 96, 96, 3),
+                        dtype=np.uint8,
+                        doc='Image of the current environment state and previous state.',
+                    ),
+                    'observation.state': tfds.features.Tensor(
+                        shape=(2,2),
+                        dtype=np.float32,
+                        doc='Current and previous gripper and T-block positions.',
+                    ),
                     'action': tfds.features.Tensor(
                         shape=(16,2),
                         dtype=np.float32,
@@ -53,7 +51,7 @@ class PushTImage(tfds.core.GeneratorBasedBuilder):
                         dtype=np.float32,
                         doc='Percentage of the goal state are covered divided by 0.95.'
                     ),
-                    'done': tfds.features.Scalar(
+                    'next.done': tfds.features.Scalar(
                         dtype=np.bool_,
                         doc='True on last 2 steps of the episode (last step is always unused, only for value function estimation).'
                     ),
@@ -106,8 +104,8 @@ class PushTImage(tfds.core.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager: tfds.download.DownloadManager):
         """Define data splits."""
         return {
-            'train': self._generate_examples(path='/data/group_data/rl/saksham3/pusht/episode_data/episode_*.npy'),
-            # 'val': self._generate_examples(path='data/val/episode_*.npy'),
+            'train': self._generate_examples(path='/data/group_data/rl/saksham3/pusht/episode_data_image/episode_*.npy'),
+            # val': self._generate_examples(path='data/val/episode_*.npy'),
         }
 
     def _generate_examples(self, path) -> Iterator[Tuple[str, Any]]:
@@ -124,15 +122,13 @@ class PushTImage(tfds.core.GeneratorBasedBuilder):
                 # language_embedding = self._embed([step['language_instruction']])[0].numpy()
 
                 episode.append({
-                    'observation': {
-                        'image': step['observation.image'],
-                        'state': step['observation.state'],
-                    },
+                    'observation.image': step['observation.image'],
+                    'observation.state': step['observation.state'],
                     'action': step['action'],
                     'discount': 0.99,
                     'reward': step['reward'],
                     'next.reward': step['next.reward'],
-                    'done': step['next.done'],
+                    'next.done': step['next.done'],
                     'episode_index': step['episode_index'],
                     'frame_index': step['frame_index'],
                     'timestamp': step['timestamp'],

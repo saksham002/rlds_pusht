@@ -5,7 +5,6 @@ import pdb
 
 # --- Process pusht_keypoints dataset ---
 
-# Sets done correctly for both state and image datasets.
 # Removes duplicate (episode_index, frame_index) pairs from the image dataset.
 
 # 1. Load the dataset from Hugging Face Hub
@@ -66,7 +65,7 @@ for key in train_ds.features.keys():
         data_dict[key] = np.stack(images)
     else:
         data_dict[key] = np.array(train_ds[key])[unique_indices]
-    print(f"key: {key}, shape: {data_dict[key].shape}")
+    
 
 
 # 4. Modify next.done for the deduplicated data
