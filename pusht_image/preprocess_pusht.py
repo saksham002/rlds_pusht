@@ -110,6 +110,7 @@ def preprocess_pusht_data(is_state_only: bool = True):
     preprocessed_data['state_is_pad'] = state_is_pad
     preprocessed_data['action_is_pad'] = action_is_pad
     # reward in pusht_image_data is wrong so state_data has to be used for both datasets
+    preprocessed_data['next.done'] = preprocessed_data['next.done'].astype(np.bool)
     preprocessed_data['reward'] = (preprocessed_data['next.done']).astype(np.float32)
     preprocessed_data['next.reward'] = pusht_state_data['next.reward']
 
