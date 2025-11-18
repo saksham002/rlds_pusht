@@ -99,6 +99,9 @@ def preprocess_pusht_data(is_state_only: bool = True):
         is_pad_mask = indices >= num_episode_steps
         action_is_pad[episode_indices_in_data] = is_pad_mask
 
+        preprocessed_data['next.done'][episode_indices_in_data][-1] = True
+        preprocessed_data['next.done'][episode_indices_in_data][-2] = False
+
     # Update the dictionary with the new arrays
     preprocessed_data['observation.state'] = new_obs_state
     if not is_state_only:
@@ -107,7 +110,7 @@ def preprocess_pusht_data(is_state_only: bool = True):
     preprocessed_data['state_is_pad'] = state_is_pad
     preprocessed_data['action_is_pad'] = action_is_pad
     # reward in pusht_image_data is wrong so state_data has to be used for both datasets
-    preprocessed_data['reward'] = (preprocessed_data['next.done'] & (pusht_state_data['next.reward'] > 0.9025)).astype(np.float32)
+    preprocessed_data['reward'] = (preprocessed_data['next.done']).astype(np.float32)
     preprocessed_data['next.reward'] = pusht_state_data['next.reward']
 
     # Save each episode to a separate file
