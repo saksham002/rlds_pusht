@@ -92,11 +92,11 @@ def preprocess_pusht_data(is_state_only: bool = True):
         # Create indices for the sliding window
         indices = np.arange(16) + np.arange(num_episode_steps)[:, np.newaxis]
         # Clip indices to num_episode_steps - 1 so that padded_actions is not needed
-        indices = np.clip(indices, 0, num_episode_steps - 1)
-        new_action[episode_indices_in_data] = episode_actions[indices]
+        clipped_indices = np.clip(indices, 0, num_episode_steps - 1)
+        new_action[episode_indices_in_data] = episode_actions[clipped_indices]
 
         # Create the padding mask
-        is_pad_mask = indices >= num_episode_steps - 1   # "-1" to exclude frame after terminal state
+        is_pad_mask = indices >= num_episode_steps
         action_is_pad[episode_indices_in_data] = is_pad_mask
 
     # Update the dictionary with the new arrays
