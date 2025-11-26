@@ -1,0 +1,118 @@
+Running on host: babel-m5-16
+Current conda environment: rlds
+INFO[build.py]: Loading dataset  from path: /home/saksham3/projects/AIRe/rlds_dataset_builder/sim_bimanual_assembly/sim_bimanual_assembly_dataset_builder.py
+INFO[dataset_info.py]: Load dataset info from /data/group_data/rl/saksham3/sim_bimanual_assembly/1.0.0
+INFO[cli_utils.py]: download_and_prepare for dataset sim_bimanual_assembly/1.0.0...
+INFO[dataset_builder.py]: Generating dataset sim_bimanual_assembly (/data/group_data/rl/saksham3/sim_bimanual_assembly/1.0.0)
+Downloading and preparing dataset Unknown size (download: Unknown size, generated: Unknown size, total: Unknown size) to /data/group_data/rl/saksham3/sim_bimanual_assembly/1.0.0...
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_24.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_15.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_46.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_11.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_20.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_42.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_38.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_34.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_3.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_30.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_7.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_19.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_28.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_35.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_2.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_31.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_18.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_6.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_29.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_25.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_14.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_47.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_10.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_21.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_43.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_39.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_37.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_0.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_49.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_33.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_4.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_27.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_16.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_8.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_45.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_12.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_23.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_41.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_26.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_9.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_17.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_44.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_13.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_22.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_40.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_36.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_1.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_48.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_32.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+Found episode /data/group_data/rl/dexterous_robot_data/sim_double_insert_0226_hdf5/episode_5.hdf5 with max reward 4, rewards corrected. New max reward: 3.0.
+INFO[writer.py]: Done writing /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*. Number of examples: 408 (shards: [2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2])
+Dataset sim_bimanual_assembly downloaded and prepared to /data/group_data/rl/saksham3/sim_bimanual_assembly/1.0.0. Subsequent calls will reuse this data.
+INFO[cli_utils.py]: Dataset generation complete...
+
+tfds.core.DatasetInfo(
+    name='sim_bimanual_assembly',
+    full_name='sim_bimanual_assembly/1.0.0',
+    description="""
+    
+    """,
+    homepage='https://www.tensorflow.org/datasets/catalog/sim_bimanual_assembly',
+    data_dir='/data/group_data/rl/saksham3/sim_bimanual_assembly/1.0.0',
+    file_format=tfrecord,
+    download_size=Unknown size,
+    dataset_size=77.67 GiB,
+    features=FeaturesDict({
+        'episode_metadata': FeaturesDict({
+            'file_path': Text(shape=(), dtype=string),
+        }),
+        'steps': Dataset({
+            'actions/global_action': Tensor(shape=(14,), dtype=float32),
+            'actions/relative_action': Tensor(shape=(14,), dtype=float32),
+            'dones': Scalar(shape=(), dtype=bool),
+            'is_intervention_step': Scalar(shape=(), dtype=bool),
+            'obses/images/left/top': string,
+            'obses/images/left/wrist': string,
+            'obses/images/right/top': string,
+            'obses/images/right/wrist': string,
+            'obses/state/left/ego_tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/left/ego_tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/left/gripper_pos': Scalar(shape=(), dtype=float32),
+            'obses/state/left/joint_qpos': Tensor(shape=(7,), dtype=float32),
+            'obses/state/left/relative2_tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/left/relative2_tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/left/tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/left/tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/left/wrist_tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/left/wrist_tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/right/ego_tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/right/ego_tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/right/gripper_pos': Scalar(shape=(), dtype=float32),
+            'obses/state/right/joint_qpos': Tensor(shape=(7,), dtype=float32),
+            'obses/state/right/relative2_tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/right/relative2_tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/right/tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/right/tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'obses/state/right/wrist_tcp_pose': Tensor(shape=(7,), dtype=float32),
+            'obses/state/right/wrist_tcp_vel': Tensor(shape=(6,), dtype=float32),
+            'rewards': Scalar(shape=(), dtype=float32),
+            'truncateds': Scalar(shape=(), dtype=bool),
+        }),
+    }),
+    supervised_keys=None,
+    disable_shuffling=False,
+    nondeterministic_order=False,
+    splits={
+        'train': <SplitInfo num_examples=408, num_shards=256>,
+    },
+    citation="""""",
+)
+

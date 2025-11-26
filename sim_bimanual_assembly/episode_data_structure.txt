@@ -1,0 +1,144 @@
+Group: actions
+  Dataset: actions/global_action
+    Shape: (2106, 14)
+    Dtype: float32
+    Size: 29484
+  Dataset: actions/relative_action
+    Shape: (2106, 14)
+    Dtype: float32
+    Size: 29484
+Group: dones
+  Dataset: dones/dones
+    Shape: (2106,)
+    Dtype: bool
+    Size: 2106
+Group: metadata
+  Dataset: metadata/horizon
+    Shape: ()
+    Dtype: int64
+    Size: 1
+  Dataset: metadata/interventions
+    Shape: (849,)
+    Dtype: int64
+    Size: 849
+  Dataset: metadata/og_filename
+    Shape: ()
+    Dtype: object
+    Size: 1
+  Dataset: metadata/task
+    Shape: ()
+    Dtype: object
+    Size: 1
+Group: obses
+Group: obses/images
+Group: obses/images/left
+  Dataset: obses/images/left/top
+    Shape: (2106, 17709)
+    Dtype: uint8
+    Size: 37295154
+  Dataset: obses/images/left/wrist
+    Shape: (2106, 17960)
+    Dtype: uint8
+    Size: 37823760
+Group: obses/images/right
+  Dataset: obses/images/right/top
+    Shape: (2106, 17701)
+    Dtype: uint8
+    Size: 37278306
+  Dataset: obses/images/right/wrist
+    Shape: (2106, 18361)
+    Dtype: uint8
+    Size: 38668266
+Group: obses/state
+Group: obses/state/left
+  Dataset: obses/state/left/ego_tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/left/ego_tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+  Dataset: obses/state/left/gripper_pos
+    Shape: (2106, 1)
+    Dtype: float32
+    Size: 2106
+  Dataset: obses/state/left/joint_qpos
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/left/relative2_tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/left/relative2_tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+  Dataset: obses/state/left/tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/left/tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+  Dataset: obses/state/left/wrist_tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/left/wrist_tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+Group: obses/state/right
+  Dataset: obses/state/right/ego_tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/right/ego_tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+  Dataset: obses/state/right/gripper_pos
+    Shape: (2106, 1)
+    Dtype: float32
+    Size: 2106
+  Dataset: obses/state/right/joint_qpos
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/right/relative2_tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/right/relative2_tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+  Dataset: obses/state/right/tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/right/tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+  Dataset: obses/state/right/wrist_tcp_pose
+    Shape: (2106, 7)
+    Dtype: float32
+    Size: 14742
+  Dataset: obses/state/right/wrist_tcp_vel
+    Shape: (2106, 6)
+    Dtype: float32
+    Size: 12636
+Group: rewards
+  Dataset: rewards/rewards
+    Shape: (2106,)
+    Dtype: float32
+    Size: 2106
+Group: truncateds
+  Dataset: truncateds/truncateds
+    Shape: (2106,)
+    Dtype: bool
+    Size: 2106

@@ -1,0 +1,733 @@
+2025-11-24 01:50:05.511324: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-11-24 01:50:06.178104: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-11-24 01:50:07.993287: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+/home/saksham3/miniconda3/envs/rlds/lib/python3.12/site-packages/tensorflow_hub/__init__.py:61: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import parse_version
+Generating splits...:   0%|          | 0/1 [00:00<?, ? splits/s]
+Generating train examples...: 0 examples [00:00, ? examples/s][AWARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1763967015.787743 1703171 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 43490 MB memory:  -> device: 0, name: NVIDIA L40S, pci bus id: 0000:01:00.0, compute capability: 8.9
+
+Generating train examples...: 1 examples [00:10, 10.78s/ examples][A
+Generating train examples...: 2 examples [00:18,  8.84s/ examples][A
+Generating train examples...: 3 examples [00:30, 10.17s/ examples][A
+Generating train examples...: 4 examples [00:40, 10.20s/ examples][A
+Generating train examples...: 5 examples [00:54, 11.80s/ examples][A
+Generating train examples...: 6 examples [01:05, 11.37s/ examples][A
+Generating train examples...: 7 examples [01:17, 11.55s/ examples][A
+Generating train examples...: 8 examples [01:28, 11.44s/ examples][A
+Generating train examples...: 9 examples [01:40, 11.46s/ examples][A
+Generating train examples...: 10 examples [01:53, 12.01s/ examples][A
+Generating train examples...: 11 examples [02:00, 10.52s/ examples][A
+Generating train examples...: 12 examples [02:12, 10.99s/ examples][A
+Generating train examples...: 13 examples [02:24, 11.24s/ examples][A
+Generating train examples...: 14 examples [02:32, 10.23s/ examples][A
+Generating train examples...: 15 examples [02:41,  9.83s/ examples][A
+Generating train examples...: 16 examples [02:48,  9.19s/ examples][A
+Generating train examples...: 17 examples [02:58,  9.22s/ examples][A
+Generating train examples...: 18 examples [03:08,  9.53s/ examples][A
+Generating train examples...: 19 examples [03:16,  9.25s/ examples][A
+Generating train examples...: 20 examples [03:24,  8.84s/ examples][A
+Generating train examples...: 21 examples [03:32,  8.51s/ examples][A
+Generating train examples...: 22 examples [03:42,  9.00s/ examples][A
+Generating train examples...: 23 examples [03:57, 10.59s/ examples][A
+Generating train examples...: 24 examples [04:06, 10.15s/ examples][A
+Generating train examples...: 25 examples [04:17, 10.64s/ examples][A
+Generating train examples...: 26 examples [04:25,  9.71s/ examples][A
+Generating train examples...: 27 examples [04:40, 11.23s/ examples][A
+Generating train examples...: 28 examples [04:49, 10.67s/ examples][A
+Generating train examples...: 29 examples [05:00, 10.61s/ examples][A
+Generating train examples...: 30 examples [05:09, 10.18s/ examples][A
+Generating train examples...: 31 examples [05:18,  9.79s/ examples][A
+Generating train examples...: 32 examples [05:25,  8.92s/ examples][A
+Generating train examples...: 33 examples [05:32,  8.63s/ examples][A
+Generating train examples...: 34 examples [05:42,  8.76s/ examples][A
+Generating train examples...: 35 examples [05:51,  9.11s/ examples][A
+Generating train examples...: 36 examples [06:00,  8.88s/ examples][A
+Generating train examples...: 37 examples [06:07,  8.35s/ examples][A
+Generating train examples...: 38 examples [06:18,  9.08s/ examples][A
+Generating train examples...: 39 examples [06:28,  9.44s/ examples][A
+Generating train examples...: 40 examples [06:36,  9.15s/ examples][A
+Generating train examples...: 41 examples [06:44,  8.77s/ examples][A
+Generating train examples...: 42 examples [06:53,  8.80s/ examples][A
+Generating train examples...: 43 examples [07:06,  9.92s/ examples][A
+Generating train examples...: 44 examples [07:14,  9.36s/ examples][A
+Generating train examples...: 45 examples [07:25,  9.91s/ examples][A
+Generating train examples...: 46 examples [07:37, 10.52s/ examples][A
+Generating train examples...: 47 examples [07:50, 11.38s/ examples][A
+Generating train examples...: 48 examples [08:01, 11.03s/ examples][A
+Generating train examples...: 49 examples [08:08, 10.03s/ examples][A
+Generating train examples...: 50 examples [08:21, 10.84s/ examples][A
+Generating train examples...: 51 examples [08:28,  9.57s/ examples][A
+Generating train examples...: 52 examples [08:35,  8.85s/ examples][A
+Generating train examples...: 53 examples [08:40,  7.90s/ examples][A
+Generating train examples...: 54 examples [08:46,  7.08s/ examples][A
+Generating train examples...: 55 examples [08:54,  7.36s/ examples][A
+Generating train examples...: 56 examples [08:58,  6.53s/ examples][A
+Generating train examples...: 57 examples [09:09,  7.81s/ examples][A
+Generating train examples...: 58 examples [09:19,  8.36s/ examples][A
+Generating train examples...: 59 examples [09:25,  7.89s/ examples][A
+Generating train examples...: 60 examples [09:31,  7.20s/ examples][A
+Generating train examples...: 61 examples [09:38,  6.98s/ examples][A
+Generating train examples...: 62 examples [09:45,  7.05s/ examples][A
+Generating train examples...: 63 examples [09:50,  6.50s/ examples][A
+Generating train examples...: 64 examples [09:55,  6.15s/ examples][A
+Generating train examples...: 65 examples [10:01,  5.93s/ examples][A
+Generating train examples...: 66 examples [10:08,  6.22s/ examples][A
+Generating train examples...: 67 examples [10:14,  6.19s/ examples][A
+Generating train examples...: 68 examples [10:18,  5.72s/ examples][A
+Generating train examples...: 69 examples [10:26,  6.19s/ examples][A
+Generating train examples...: 70 examples [10:34,  6.94s/ examples][A
+Generating train examples...: 71 examples [10:43,  7.50s/ examples][A
+Generating train examples...: 72 examples [10:48,  6.86s/ examples][A
+Generating train examples...: 73 examples [10:55,  6.75s/ examples][A
+Generating train examples...: 74 examples [11:02,  6.90s/ examples][A
+Generating train examples...: 75 examples [11:07,  6.36s/ examples][A
+Generating train examples...: 76 examples [11:15,  6.85s/ examples][A
+Generating train examples...: 77 examples [11:21,  6.41s/ examples][A
+Generating train examples...: 78 examples [11:39, 10.04s/ examples][A
+Generating train examples...: 79 examples [11:44,  8.46s/ examples][A
+Generating train examples...: 80 examples [11:50,  7.84s/ examples][A
+Generating train examples...: 81 examples [11:56,  7.22s/ examples][A
+Generating train examples...: 82 examples [12:03,  7.25s/ examples][A
+Generating train examples...: 83 examples [12:28, 12.38s/ examples][A
+Generating train examples...: 84 examples [12:43, 13.21s/ examples][A
+Generating train examples...: 85 examples [12:59, 13.97s/ examples][A
+Generating train examples...: 86 examples [13:09, 12.88s/ examples][A
+Generating train examples...: 87 examples [13:57, 23.53s/ examples][A
+Generating train examples...: 88 examples [14:39, 28.86s/ examples][A
+Generating train examples...: 89 examples [14:55, 25.05s/ examples][A
+Generating train examples...: 90 examples [15:02, 19.65s/ examples][A
+Generating train examples...: 91 examples [15:08, 15.55s/ examples][A
+Generating train examples...: 92 examples [15:13, 12.47s/ examples][A
+Generating train examples...: 93 examples [15:22, 11.32s/ examples][A
+Generating train examples...: 94 examples [15:29, 10.08s/ examples][A
+Generating train examples...: 95 examples [15:36,  9.23s/ examples][A
+Generating train examples...: 96 examples [15:43,  8.44s/ examples][A
+Generating train examples...: 97 examples [15:52,  8.60s/ examples][A
+Generating train examples...: 98 examples [15:58,  7.95s/ examples][A
+Generating train examples...: 99 examples [16:09,  8.64s/ examples][A
+Generating train examples...: 100 examples [16:13,  7.43s/ examples][A
+Generating train examples...: 101 examples [16:21,  7.56s/ examples][A
+Generating train examples...: 102 examples [16:31,  8.28s/ examples][A
+Generating train examples...: 103 examples [16:39,  8.22s/ examples][A
+Generating train examples...: 104 examples [16:48,  8.46s/ examples][A
+Generating train examples...: 105 examples [16:55,  7.92s/ examples][A
+Generating train examples...: 106 examples [16:59,  6.87s/ examples][A
+Generating train examples...: 107 examples [17:12,  8.78s/ examples][A
+Generating train examples...: 108 examples [17:19,  8.01s/ examples][A
+Generating train examples...: 109 examples [17:26,  7.98s/ examples][A
+Generating train examples...: 110 examples [17:34,  7.93s/ examples][A
+Generating train examples...: 111 examples [17:41,  7.64s/ examples][A
+Generating train examples...: 112 examples [17:50,  7.93s/ examples][A
+Generating train examples...: 113 examples [17:58,  8.00s/ examples][A
+Generating train examples...: 114 examples [18:04,  7.40s/ examples][A
+Generating train examples...: 115 examples [18:12,  7.45s/ examples][A
+Generating train examples...: 116 examples [18:17,  6.80s/ examples][A
+Generating train examples...: 117 examples [18:26,  7.52s/ examples][A
+Generating train examples...: 118 examples [18:34,  7.59s/ examples][A
+Generating train examples...: 119 examples [18:40,  7.19s/ examples][A
+Generating train examples...: 120 examples [18:45,  6.63s/ examples][A
+Generating train examples...: 121 examples [18:52,  6.64s/ examples][A
+Generating train examples...: 122 examples [19:01,  7.25s/ examples][A
+Generating train examples...: 123 examples [19:06,  6.63s/ examples][A
+Generating train examples...: 124 examples [19:14,  7.00s/ examples][A
+Generating train examples...: 125 examples [19:20,  6.76s/ examples][A
+Generating train examples...: 126 examples [19:28,  7.17s/ examples][A
+Generating train examples...: 127 examples [19:36,  7.46s/ examples][A
+Generating train examples...: 128 examples [19:45,  7.78s/ examples][A
+Generating train examples...: 129 examples [19:53,  7.83s/ examples][A
+Generating train examples...: 130 examples [19:58,  7.05s/ examples][A
+Generating train examples...: 131 examples [20:06,  7.38s/ examples][A
+Generating train examples...: 132 examples [20:13,  7.20s/ examples][A
+Generating train examples...: 133 examples [20:20,  7.30s/ examples][A
+Generating train examples...: 134 examples [20:33,  8.79s/ examples][A
+Generating train examples...: 135 examples [20:39,  7.97s/ examples][A
+Generating train examples...: 136 examples [20:45,  7.45s/ examples][A
+Generating train examples...: 137 examples [20:56,  8.45s/ examples][A
+Generating train examples...: 138 examples [21:10, 10.27s/ examples][A
+Generating train examples...: 139 examples [21:17,  9.34s/ examples][A
+Generating train examples...: 140 examples [21:27,  9.29s/ examples][A
+Generating train examples...: 141 examples [21:33,  8.46s/ examples][A
+Generating train examples...: 142 examples [21:38,  7.47s/ examples][A
+Generating train examples...: 143 examples [21:44,  6.90s/ examples][A
+Generating train examples...: 144 examples [21:53,  7.55s/ examples][A
+Generating train examples...: 145 examples [21:59,  7.17s/ examples][A
+Generating train examples...: 146 examples [22:10,  8.15s/ examples][A
+Generating train examples...: 147 examples [22:15,  7.23s/ examples][A
+Generating train examples...: 148 examples [22:22,  7.17s/ examples][A
+Generating train examples...: 149 examples [22:30,  7.39s/ examples][A
+Generating train examples...: 150 examples [22:37,  7.32s/ examples][A
+Generating train examples...: 151 examples [22:46,  8.00s/ examples][A
+Generating train examples...: 152 examples [22:52,  7.28s/ examples][A
+Generating train examples...: 153 examples [22:59,  7.20s/ examples][A
+Generating train examples...: 154 examples [23:06,  7.07s/ examples][A
+Generating train examples...: 155 examples [23:12,  6.72s/ examples][A
+Generating train examples...: 156 examples [23:17,  6.15s/ examples][A
+Generating train examples...: 157 examples [23:23,  6.17s/ examples][A
+Generating train examples...: 158 examples [23:31,  6.67s/ examples][A
+Generating train examples...: 159 examples [23:36,  6.28s/ examples][A
+Generating train examples...: 160 examples [23:44,  6.92s/ examples][A
+Generating train examples...: 161 examples [23:59,  9.22s/ examples][A
+Generating train examples...: 162 examples [24:05,  8.28s/ examples][A
+Generating train examples...: 163 examples [24:11,  7.60s/ examples][A
+Generating train examples...: 164 examples [24:20,  8.03s/ examples][A
+Generating train examples...: 165 examples [24:29,  8.36s/ examples][A
+Generating train examples...: 166 examples [24:44, 10.32s/ examples][A
+Generating train examples...: 167 examples [24:51,  9.29s/ examples][A
+Generating train examples...: 168 examples [25:01,  9.44s/ examples][A
+Generating train examples...: 169 examples [25:07,  8.57s/ examples][A
+Generating train examples...: 170 examples [25:18,  9.10s/ examples][A
+Generating train examples...: 171 examples [25:23,  8.09s/ examples][A
+Generating train examples...: 172 examples [25:29,  7.43s/ examples][A
+Generating train examples...: 173 examples [25:38,  7.72s/ examples][A
+Generating train examples...: 174 examples [25:47,  8.12s/ examples][A
+Generating train examples...: 175 examples [25:54,  8.00s/ examples][A
+Generating train examples...: 176 examples [26:02,  7.75s/ examples][A
+Generating train examples...: 177 examples [26:13,  8.92s/ examples][A
+Generating train examples...: 178 examples [26:19,  8.03s/ examples][A
+Generating train examples...: 179 examples [26:28,  8.32s/ examples][A
+Generating train examples...: 180 examples [26:35,  7.79s/ examples][A
+Generating train examples...: 181 examples [26:41,  7.22s/ examples][A
+Generating train examples...: 182 examples [26:47,  6.99s/ examples][A
+Generating train examples...: 183 examples [26:52,  6.24s/ examples][A
+Generating train examples...: 184 examples [27:02,  7.47s/ examples][A
+Generating train examples...: 185 examples [27:10,  7.58s/ examples][A
+Generating train examples...: 186 examples [27:18,  7.86s/ examples][A
+Generating train examples...: 187 examples [27:25,  7.54s/ examples][A
+Generating train examples...: 188 examples [27:30,  6.87s/ examples][A
+Generating train examples...: 189 examples [27:38,  7.11s/ examples][A
+Generating train examples...: 190 examples [27:50,  8.63s/ examples][A
+Generating train examples...: 191 examples [28:05, 10.45s/ examples][A
+Generating train examples...: 192 examples [28:13,  9.79s/ examples][A
+Generating train examples...: 193 examples [28:27, 11.13s/ examples][A
+Generating train examples...: 194 examples [28:42, 12.19s/ examples][A
+Generating train examples...: 195 examples [28:51, 11.19s/ examples][A
+Generating train examples...: 196 examples [29:01, 10.85s/ examples][A
+Generating train examples...: 197 examples [29:17, 12.35s/ examples][A
+Generating train examples...: 198 examples [29:30, 12.51s/ examples][A
+Generating train examples...: 199 examples [29:47, 13.89s/ examples][A
+Generating train examples...: 200 examples [30:05, 15.03s/ examples][A
+Generating train examples...: 201 examples [30:18, 14.47s/ examples][A
+Generating train examples...: 202 examples [30:40, 16.72s/ examples][A
+Generating train examples...: 203 examples [30:54, 16.04s/ examples][A
+Generating train examples...: 204 examples [31:18, 18.47s/ examples][A
+Generating train examples...: 205 examples [31:57, 24.51s/ examples][A
+Generating train examples...: 206 examples [32:11, 21.46s/ examples][A
+Generating train examples...: 207 examples [32:27, 19.90s/ examples][A
+Generating train examples...: 208 examples [32:38, 17.17s/ examples][A
+Generating train examples...: 209 examples [32:46, 14.42s/ examples][A
+Generating train examples...: 210 examples [32:59, 13.94s/ examples][A
+Generating train examples...: 211 examples [33:14, 14.09s/ examples][A
+Generating train examples...: 212 examples [33:26, 13.72s/ examples][A
+Generating train examples...: 213 examples [33:38, 12.95s/ examples][A
+Generating train examples...: 214 examples [33:48, 12.16s/ examples][A
+Generating train examples...: 215 examples [33:58, 11.47s/ examples][A
+Generating train examples...: 216 examples [34:08, 11.02s/ examples][A
+Generating train examples...: 217 examples [34:17, 10.37s/ examples][A
+Generating train examples...: 218 examples [34:31, 11.64s/ examples][A
+Generating train examples...: 219 examples [34:41, 11.19s/ examples][A
+Generating train examples...: 220 examples [34:53, 11.35s/ examples][A
+Generating train examples...: 221 examples [35:00, 10.05s/ examples][A
+Generating train examples...: 222 examples [35:10, 10.11s/ examples][A
+Generating train examples...: 223 examples [35:24, 11.24s/ examples][A
+Generating train examples...: 224 examples [35:47, 14.62s/ examples][A
+Generating train examples...: 225 examples [35:54, 12.49s/ examples][A
+Generating train examples...: 226 examples [36:09, 13.21s/ examples][A
+Generating train examples...: 227 examples [36:36, 17.33s/ examples][A
+Generating train examples...: 228 examples [37:15, 23.86s/ examples][A
+Generating train examples...: 229 examples [37:25, 19.67s/ examples][A
+Generating train examples...: 230 examples [37:36, 17.09s/ examples][A
+Generating train examples...: 231 examples [37:49, 15.86s/ examples][A
+Generating train examples...: 232 examples [38:09, 17.13s/ examples][A
+Generating train examples...: 233 examples [38:19, 15.08s/ examples][A
+Generating train examples...: 234 examples [38:36, 15.43s/ examples][A
+Generating train examples...: 235 examples [38:46, 13.84s/ examples][A
+Generating train examples...: 236 examples [38:54, 12.18s/ examples][A
+Generating train examples...: 237 examples [39:01, 10.58s/ examples][A
+Generating train examples...: 238 examples [39:09,  9.88s/ examples][A
+Generating train examples...: 239 examples [39:17,  9.26s/ examples][A
+Generating train examples...: 240 examples [39:31, 10.59s/ examples][A
+Generating train examples...: 241 examples [39:49, 12.84s/ examples][A
+Generating train examples...: 242 examples [40:00, 12.30s/ examples][A
+Generating train examples...: 243 examples [40:09, 11.26s/ examples][A
+Generating train examples...: 244 examples [40:22, 11.72s/ examples][A
+Generating train examples...: 245 examples [40:34, 12.10s/ examples][A
+Generating train examples...: 246 examples [41:03, 17.03s/ examples][A
+Generating train examples...: 247 examples [41:27, 19.01s/ examples][A
+Generating train examples...: 248 examples [41:42, 17.77s/ examples][A
+Generating train examples...: 249 examples [42:04, 19.27s/ examples][A
+Generating train examples...: 250 examples [42:18, 17.73s/ examples][A
+Generating train examples...: 251 examples [42:33, 16.78s/ examples][A
+Generating train examples...: 252 examples [42:46, 15.67s/ examples][A
+Generating train examples...: 253 examples [43:05, 16.51s/ examples][A
+Generating train examples...: 254 examples [43:18, 15.52s/ examples][A
+Generating train examples...: 255 examples [43:40, 17.58s/ examples][A
+Generating train examples...: 256 examples [43:56, 17.03s/ examples][A
+Generating train examples...: 257 examples [44:06, 15.05s/ examples][A
+Generating train examples...: 258 examples [44:28, 16.92s/ examples][A
+Generating train examples...: 259 examples [45:01, 21.81s/ examples][A
+Generating train examples...: 260 examples [45:23, 21.83s/ examples][A
+Generating train examples...: 261 examples [45:39, 20.23s/ examples][A
+Generating train examples...: 262 examples [45:55, 19.03s/ examples][A
+Generating train examples...: 263 examples [46:22, 21.26s/ examples][A
+Generating train examples...: 264 examples [47:27, 34.34s/ examples][A
+Generating train examples...: 265 examples [47:49, 30.82s/ examples][A
+Generating train examples...: 266 examples [48:58, 42.18s/ examples][A
+Generating train examples...: 267 examples [49:24, 37.41s/ examples][A
+Generating train examples...: 268 examples [49:47, 32.86s/ examples][A
+Generating train examples...: 269 examples [50:18, 32.55s/ examples][A
+Generating train examples...: 270 examples [50:34, 27.43s/ examples][A
+Generating train examples...: 271 examples [50:52, 24.76s/ examples][A
+Generating train examples...: 272 examples [51:08, 22.05s/ examples][A
+Generating train examples...: 273 examples [51:26, 20.92s/ examples][A
+Generating train examples...: 274 examples [51:41, 19.07s/ examples][A
+Generating train examples...: 275 examples [52:04, 20.18s/ examples][A
+Generating train examples...: 276 examples [52:22, 19.62s/ examples][A
+Generating train examples...: 277 examples [52:35, 17.60s/ examples][A
+Generating train examples...: 278 examples [52:55, 18.28s/ examples][A
+Generating train examples...: 279 examples [53:13, 18.24s/ examples][A
+Generating train examples...: 280 examples [53:33, 18.63s/ examples][A
+Generating train examples...: 281 examples [53:49, 17.94s/ examples][A
+Generating train examples...: 282 examples [54:04, 17.09s/ examples][A
+Generating train examples...: 283 examples [54:15, 15.23s/ examples][A
+Generating train examples...: 284 examples [54:33, 16.04s/ examples][A
+Generating train examples...: 285 examples [55:05, 20.83s/ examples][A
+Generating train examples...: 286 examples [56:45, 44.68s/ examples][A
+Generating train examples...: 287 examples [57:08, 38.16s/ examples][A
+Generating train examples...: 288 examples [57:21, 30.51s/ examples][A
+Generating train examples...: 289 examples [57:47, 29.03s/ examples][A
+Generating train examples...: 290 examples [58:09, 27.11s/ examples][A
+Generating train examples...: 291 examples [58:30, 25.29s/ examples][A
+Generating train examples...: 292 examples [59:33, 36.62s/ examples][A
+Generating train examples...: 293 examples [59:45, 29.10s/ examples][A
+Generating train examples...: 294 examples [59:58, 24.35s/ examples][A
+Generating train examples...: 295 examples [1:00:08, 20.03s/ examples][A
+Generating train examples...: 296 examples [1:00:19, 17.32s/ examples][A
+Generating train examples...: 297 examples [1:00:29, 15.16s/ examples][A
+Generating train examples...: 298 examples [1:00:40, 13.94s/ examples][A
+Generating train examples...: 299 examples [1:01:40, 27.59s/ examples][A
+Generating train examples...: 300 examples [1:01:54, 23.50s/ examples][A
+Generating train examples...: 301 examples [1:02:05, 19.99s/ examples][A
+Generating train examples...: 302 examples [1:02:21, 18.59s/ examples][A
+Generating train examples...: 303 examples [1:02:36, 17.46s/ examples][A
+Generating train examples...: 304 examples [1:03:02, 20.13s/ examples][A
+Generating train examples...: 305 examples [1:03:38, 24.99s/ examples][A
+Generating train examples...: 306 examples [1:04:02, 24.53s/ examples][A
+Generating train examples...: 307 examples [1:04:23, 23.50s/ examples][A
+Generating train examples...: 308 examples [1:04:34, 19.76s/ examples][A
+Generating train examples...: 309 examples [1:05:11, 24.95s/ examples][A
+Generating train examples...: 310 examples [1:05:29, 23.02s/ examples][A
+Generating train examples...: 311 examples [1:05:39, 19.09s/ examples][A
+Generating train examples...: 312 examples [1:05:55, 17.94s/ examples][A
+Generating train examples...: 313 examples [1:06:08, 16.62s/ examples][A
+Generating train examples...: 314 examples [1:06:30, 18.16s/ examples][A
+Generating train examples...: 315 examples [1:06:44, 17.02s/ examples][A
+Generating train examples...: 316 examples [1:07:00, 16.55s/ examples][A
+Generating train examples...: 317 examples [1:07:16, 16.52s/ examples][A
+Generating train examples...: 318 examples [1:07:30, 15.82s/ examples][A
+Generating train examples...: 319 examples [1:07:44, 15.09s/ examples][A
+Generating train examples...: 320 examples [1:08:13, 19.33s/ examples][A
+Generating train examples...: 321 examples [1:08:38, 21.17s/ examples][A
+Generating train examples...: 322 examples [1:08:57, 20.51s/ examples][A
+Generating train examples...: 323 examples [1:09:12, 18.75s/ examples][A
+Generating train examples...: 324 examples [1:09:28, 17.84s/ examples][A
+Generating train examples...: 325 examples [1:09:45, 17.77s/ examples][A
+Generating train examples...: 326 examples [1:09:57, 15.94s/ examples][A
+Generating train examples...: 327 examples [1:10:27, 20.30s/ examples][A
+Generating train examples...: 328 examples [1:10:36, 16.72s/ examples][A
+Generating train examples...: 329 examples [1:10:55, 17.45s/ examples][A
+Generating train examples...: 330 examples [1:11:12, 17.17s/ examples][A
+Generating train examples...: 331 examples [1:12:27, 34.72s/ examples][A
+Generating train examples...: 332 examples [1:12:35, 26.61s/ examples][A
+Generating train examples...: 333 examples [1:12:51, 23.48s/ examples][A
+Generating train examples...: 334 examples [1:13:02, 19.67s/ examples][A
+Generating train examples...: 335 examples [1:13:20, 19.09s/ examples][A
+Generating train examples...: 336 examples [1:13:40, 19.58s/ examples][A
+Generating train examples...: 337 examples [1:13:57, 18.68s/ examples][A
+Generating train examples...: 338 examples [1:14:11, 17.34s/ examples][A
+Generating train examples...: 339 examples [1:14:26, 16.60s/ examples][A
+Generating train examples...: 340 examples [1:14:40, 15.84s/ examples][A
+Generating train examples...: 341 examples [1:14:50, 13.98s/ examples][A
+Generating train examples...: 342 examples [1:15:09, 15.72s/ examples][A
+Generating train examples...: 343 examples [1:15:21, 14.41s/ examples][A
+Generating train examples...: 344 examples [1:15:39, 15.55s/ examples][A
+Generating train examples...: 345 examples [1:15:48, 13.48s/ examples][A
+Generating train examples...: 346 examples [1:15:59, 12.82s/ examples][A
+Generating train examples...: 347 examples [1:16:13, 13.29s/ examples][A
+Generating train examples...: 348 examples [1:16:26, 13.05s/ examples][A
+Generating train examples...: 349 examples [1:16:38, 12.92s/ examples][A
+Generating train examples...: 350 examples [1:16:54, 13.73s/ examples][A
+Generating train examples...: 351 examples [1:17:04, 12.59s/ examples][A
+Generating train examples...: 352 examples [1:17:27, 15.58s/ examples][A
+Generating train examples...: 353 examples [1:17:34, 13.16s/ examples][A
+Generating train examples...: 354 examples [1:17:43, 11.82s/ examples][A
+Generating train examples...: 355 examples [1:17:55, 11.91s/ examples][A
+Generating train examples...: 356 examples [1:18:06, 11.76s/ examples][A
+Generating train examples...: 357 examples [1:18:19, 12.15s/ examples][A
+Generating train examples...: 358 examples [1:18:26, 10.54s/ examples][A
+Generating train examples...: 359 examples [1:18:42, 12.04s/ examples][A
+Generating train examples...: 360 examples [1:18:52, 11.56s/ examples][A
+Generating train examples...: 361 examples [1:19:21, 16.81s/ examples][A
+Generating train examples...: 362 examples [1:19:28, 13.70s/ examples][A
+Generating train examples...: 363 examples [1:19:39, 12.99s/ examples][A
+Generating train examples...: 364 examples [1:19:56, 14.07s/ examples][A
+Generating train examples...: 365 examples [1:20:09, 14.02s/ examples][A
+Generating train examples...: 366 examples [1:20:29, 15.70s/ examples][A
+Generating train examples...: 367 examples [1:20:43, 15.19s/ examples][A
+Generating train examples...: 368 examples [1:21:01, 16.16s/ examples][A
+Generating train examples...: 369 examples [1:21:21, 17.07s/ examples][A
+Generating train examples...: 370 examples [1:21:42, 18.22s/ examples][A
+Generating train examples...: 371 examples [1:22:45, 31.77s/ examples][A
+Generating train examples...: 372 examples [1:22:53, 24.65s/ examples][A
+Generating train examples...: 373 examples [1:23:06, 21.05s/ examples][A
+Generating train examples...: 374 examples [1:23:17, 18.21s/ examples][A
+Generating train examples...: 375 examples [1:23:30, 16.50s/ examples][A
+Generating train examples...: 376 examples [1:23:37, 13.86s/ examples][A
+Generating train examples...: 377 examples [1:23:47, 12.64s/ examples][A
+Generating train examples...: 378 examples [1:24:01, 12.92s/ examples][A
+Generating train examples...: 379 examples [1:24:17, 13.91s/ examples][A
+Generating train examples...: 380 examples [1:24:29, 13.22s/ examples][A
+Generating train examples...: 381 examples [1:24:40, 12.58s/ examples][A
+Generating train examples...: 382 examples [1:24:48, 11.21s/ examples][A
+Generating train examples...: 383 examples [1:25:03, 12.39s/ examples][A
+Generating train examples...: 384 examples [1:25:19, 13.46s/ examples][A
+Generating train examples...: 385 examples [1:25:26, 11.58s/ examples][A
+Generating train examples...: 386 examples [1:25:39, 11.88s/ examples][A
+Generating train examples...: 387 examples [1:25:50, 11.87s/ examples][A
+Generating train examples...: 388 examples [1:26:18, 16.52s/ examples][A
+Generating train examples...: 389 examples [1:26:26, 13.99s/ examples][A
+Generating train examples...: 390 examples [1:26:42, 14.53s/ examples][A
+Generating train examples...: 391 examples [1:26:48, 11.93s/ examples][A
+Generating train examples...: 392 examples [1:27:00, 12.00s/ examples][A
+Generating train examples...: 393 examples [1:27:12, 12.08s/ examples][A
+Generating train examples...: 394 examples [1:27:18, 10.33s/ examples][A
+Generating train examples...: 395 examples [1:27:34, 11.86s/ examples][A
+Generating train examples...: 396 examples [1:27:43, 10.98s/ examples][A
+Generating train examples...: 397 examples [1:27:57, 11.90s/ examples][A
+Generating train examples...: 398 examples [1:28:04, 10.63s/ examples][A
+Generating train examples...: 399 examples [1:28:17, 11.10s/ examples][A
+Generating train examples...: 400 examples [1:28:27, 10.99s/ examples][A
+Generating train examples...: 401 examples [1:28:36, 10.20s/ examples][A
+Generating train examples...: 402 examples [1:28:44,  9.74s/ examples][A
+Generating train examples...: 403 examples [1:28:59, 11.15s/ examples][A
+Generating train examples...: 404 examples [1:29:05,  9.73s/ examples][A
+Generating train examples...: 405 examples [1:29:15,  9.90s/ examples][A
+Generating train examples...: 406 examples [1:29:26, 10.14s/ examples][A
+Generating train examples...: 407 examples [1:29:35,  9.84s/ examples][A
+Generating train examples...: 408 examples [1:29:46, 10.15s/ examples][A
+                                                                      [A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   0%|          | 0/408 [00:00<?, ? examples/s][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   0%|          | 2/408 [00:03<10:18,  1.52s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   1%|          | 3/408 [00:04<08:55,  1.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   1%|          | 4/408 [00:07<14:28,  2.15s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   1%|          | 5/408 [00:08<12:04,  1.80s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   1%|▏         | 6/408 [00:10<12:27,  1.86s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   2%|▏         | 7/408 [00:11<11:02,  1.65s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   2%|▏         | 8/408 [00:13<10:44,  1.61s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   2%|▏         | 10/408 [00:18<13:16,  2.00s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   3%|▎         | 11/408 [00:20<12:55,  1.95s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   3%|▎         | 12/408 [00:24<17:03,  2.59s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   3%|▎         | 14/408 [00:27<13:25,  2.04s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   4%|▎         | 15/408 [00:28<13:03,  1.99s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   4%|▍         | 16/408 [00:30<11:28,  1.76s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   4%|▍         | 17/408 [00:33<14:55,  2.29s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   4%|▍         | 18/408 [00:34<12:39,  1.95s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   5%|▍         | 19/408 [00:41<20:19,  3.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   5%|▌         | 21/408 [00:43<14:29,  2.25s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   5%|▌         | 22/408 [00:45<14:30,  2.26s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   6%|▌         | 23/408 [00:55<27:44,  4.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   6%|▋         | 26/408 [00:59<17:15,  2.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   7%|▋         | 27/408 [01:02<17:41,  2.79s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   7%|▋         | 28/408 [01:04<15:58,  2.52s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   7%|▋         | 29/408 [01:06<14:53,  2.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   7%|▋         | 30/408 [01:10<18:35,  2.95s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   8%|▊         | 33/408 [01:13<11:32,  1.85s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   9%|▊         | 35/408 [01:17<12:16,  1.97s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   9%|▉         | 36/408 [01:27<21:04,  3.40s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:   9%|▉         | 37/408 [01:30<20:45,  3.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  10%|▉         | 40/408 [01:32<12:26,  2.03s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  10%|█         | 41/408 [01:35<13:29,  2.21s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  10%|█         | 42/408 [01:37<13:09,  2.16s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  11%|█         | 43/408 [01:39<13:02,  2.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  11%|█         | 45/408 [01:40<09:42,  1.61s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  11%|█▏        | 46/408 [01:45<14:02,  2.33s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  12%|█▏        | 47/408 [01:49<15:48,  2.63s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  12%|█▏        | 48/408 [01:50<13:43,  2.29s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  12%|█▏        | 49/408 [01:53<14:54,  2.49s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  12%|█▏        | 50/408 [01:55<13:22,  2.24s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  12%|█▎        | 51/408 [01:58<14:43,  2.47s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  13%|█▎        | 52/408 [02:00<14:18,  2.41s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  13%|█▎        | 54/408 [02:03<12:06,  2.05s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  13%|█▎        | 55/408 [02:06<13:03,  2.22s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  14%|█▎        | 56/408 [02:09<13:40,  2.33s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  14%|█▍        | 58/408 [02:12<12:08,  2.08s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  15%|█▍        | 60/408 [02:14<09:30,  1.64s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  15%|█▍        | 61/408 [02:17<11:31,  1.99s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  15%|█▌        | 62/408 [02:19<11:45,  2.04s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  15%|█▌        | 63/408 [02:23<13:37,  2.37s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  16%|█▌        | 64/408 [02:24<11:44,  2.05s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  16%|█▋        | 67/408 [02:28<09:41,  1.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  17%|█▋        | 69/408 [02:31<09:29,  1.68s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  17%|█▋        | 70/408 [02:37<13:52,  2.46s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  18%|█▊        | 73/408 [02:41<10:44,  1.92s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  18%|█▊        | 74/408 [02:44<11:39,  2.09s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  18%|█▊        | 75/408 [02:47<12:26,  2.24s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  19%|█▊        | 76/408 [02:48<11:15,  2.03s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  19%|█▉        | 77/408 [02:49<10:28,  1.90s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  19%|█▉        | 78/408 [02:53<12:34,  2.29s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  20%|█▉        | 80/408 [02:55<09:29,  1.74s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  20%|█▉        | 81/408 [02:59<13:00,  2.39s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  20%|██        | 82/408 [03:06<18:15,  3.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  20%|██        | 83/408 [03:09<18:35,  3.43s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  21%|██        | 84/408 [03:13<18:47,  3.48s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  21%|██        | 86/408 [03:18<16:00,  2.98s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  22%|██▏       | 88/408 [03:19<11:07,  2.08s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  22%|██▏       | 89/408 [03:21<10:32,  1.98s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  22%|██▏       | 90/408 [03:27<16:00,  3.02s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  23%|██▎       | 92/408 [03:37<20:16,  3.85s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  23%|██▎       | 94/408 [03:44<19:26,  3.72s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  24%|██▎       | 96/408 [03:46<14:16,  2.75s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  24%|██▍       | 99/408 [03:48<09:42,  1.88s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  25%|██▍       | 100/408 [03:54<12:53,  2.51s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  25%|██▌       | 102/408 [03:55<10:04,  1.97s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  25%|██▌       | 103/408 [03:57<09:44,  1.92s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  25%|██▌       | 104/408 [03:59<09:55,  1.96s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  26%|██▌       | 105/408 [04:00<09:11,  1.82s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  26%|██▌       | 107/408 [04:04<09:10,  1.83s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  26%|██▋       | 108/408 [04:06<08:51,  1.77s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  27%|██▋       | 109/408 [04:13<14:56,  3.00s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  27%|██▋       | 111/408 [04:14<10:09,  2.05s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  27%|██▋       | 112/408 [04:17<10:47,  2.19s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  28%|██▊       | 113/408 [04:19<10:56,  2.22s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  28%|██▊       | 115/408 [04:24<11:30,  2.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  28%|██▊       | 116/408 [04:25<10:18,  2.12s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  29%|██▊       | 117/408 [04:27<09:39,  1.99s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  29%|██▉       | 119/408 [04:29<08:01,  1.67s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  29%|██▉       | 120/408 [04:36<13:21,  2.78s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  30%|██▉       | 122/408 [04:42<13:43,  2.88s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  30%|███       | 123/408 [04:46<14:36,  3.07s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  30%|███       | 124/408 [04:55<21:02,  4.44s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  31%|███       | 126/408 [04:58<15:18,  3.26s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  31%|███       | 127/408 [05:01<15:09,  3.24s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  31%|███▏      | 128/408 [05:03<14:08,  3.03s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  32%|███▏      | 129/408 [05:04<12:05,  2.60s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  32%|███▏      | 130/408 [05:07<12:29,  2.70s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  32%|███▏      | 131/408 [05:11<13:53,  3.01s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  32%|███▏      | 132/408 [05:14<13:45,  2.99s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  33%|███▎      | 133/408 [05:19<15:36,  3.40s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  33%|███▎      | 134/408 [05:21<13:40,  2.99s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  33%|███▎      | 135/408 [05:23<12:21,  2.72s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  34%|███▎      | 137/408 [05:29<13:12,  2.92s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  34%|███▍      | 139/408 [05:30<08:51,  1.98s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  34%|███▍      | 140/408 [05:32<09:15,  2.07s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  35%|███▍      | 141/408 [05:37<12:23,  2.78s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  35%|███▍      | 142/408 [05:42<13:53,  3.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  35%|███▌      | 143/408 [05:43<11:36,  2.63s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  35%|███▌      | 144/408 [05:48<14:28,  3.29s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  36%|███▌      | 146/408 [05:50<09:39,  2.21s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  36%|███▌      | 147/408 [05:51<08:32,  1.96s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  36%|███▋      | 148/408 [05:53<08:47,  2.03s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  37%|███▋      | 149/408 [05:57<10:28,  2.43s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  37%|███▋      | 150/408 [05:59<10:32,  2.45s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  37%|███▋      | 151/408 [06:07<17:05,  3.99s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  38%|███▊      | 153/408 [06:10<12:08,  2.86s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  38%|███▊      | 155/408 [06:13<09:57,  2.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  38%|███▊      | 156/408 [06:17<11:32,  2.75s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  39%|███▊      | 158/408 [06:20<09:19,  2.24s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  39%|███▉      | 160/408 [06:26<10:13,  2.47s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  40%|███▉      | 162/408 [06:29<08:37,  2.10s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  40%|███▉      | 163/408 [06:31<08:47,  2.15s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  40%|████      | 164/408 [06:34<09:14,  2.27s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  40%|████      | 165/408 [06:35<08:23,  2.07s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  41%|████      | 166/408 [06:41<12:08,  3.01s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  41%|████      | 168/408 [06:46<11:06,  2.78s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  41%|████▏     | 169/408 [06:50<12:01,  3.02s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  42%|████▏     | 171/408 [06:57<13:13,  3.35s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  42%|████▏     | 173/408 [07:01<10:47,  2.76s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  43%|████▎     | 174/408 [07:03<10:09,  2.60s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  43%|████▎     | 175/408 [07:12<16:03,  4.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  43%|████▎     | 177/408 [07:19<14:45,  3.84s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  44%|████▎     | 178/408 [07:26<17:37,  4.60s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  44%|████▍     | 179/408 [07:31<17:26,  4.57s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  44%|████▍     | 180/408 [07:35<17:02,  4.48s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  44%|████▍     | 181/408 [07:42<19:51,  5.25s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  45%|████▍     | 182/408 [07:47<19:00,  5.04s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  45%|████▍     | 183/408 [07:54<21:45,  5.80s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  45%|████▌     | 184/408 [07:59<20:16,  5.43s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  45%|████▌     | 185/408 [08:04<19:37,  5.28s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  46%|████▌     | 186/408 [08:18<28:57,  7.83s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  46%|████▋     | 189/408 [08:24<17:10,  4.70s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  47%|████▋     | 191/408 [08:28<13:15,  3.67s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  47%|████▋     | 193/408 [08:35<13:00,  3.63s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  48%|████▊     | 195/408 [08:41<12:10,  3.43s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  48%|████▊     | 196/408 [08:43<10:52,  3.08s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  48%|████▊     | 197/408 [08:44<09:17,  2.64s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  49%|████▊     | 198/408 [08:46<08:59,  2.57s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  49%|████▉     | 199/408 [08:47<07:40,  2.20s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  49%|████▉     | 201/408 [08:51<07:03,  2.04s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  50%|████▉     | 202/408 [08:56<09:16,  2.70s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  50%|█████     | 204/408 [08:58<07:14,  2.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  50%|█████     | 205/408 [09:02<08:15,  2.44s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  50%|█████     | 206/408 [09:03<07:12,  2.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  51%|█████     | 207/408 [09:06<07:53,  2.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  51%|█████     | 208/408 [09:09<08:13,  2.47s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  51%|█████     | 209/408 [09:11<08:28,  2.56s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  51%|█████▏    | 210/408 [09:14<08:13,  2.49s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  52%|█████▏    | 211/408 [09:19<11:04,  3.37s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  52%|█████▏    | 212/408 [09:23<11:08,  3.41s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  52%|█████▏    | 214/408 [09:27<09:14,  2.86s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  53%|█████▎    | 215/408 [09:29<08:33,  2.66s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  53%|█████▎    | 216/408 [09:32<08:41,  2.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  53%|█████▎    | 217/408 [09:35<09:05,  2.86s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  53%|█████▎    | 218/408 [09:47<16:52,  5.33s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  54%|█████▍    | 220/408 [09:55<14:54,  4.76s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  54%|█████▍    | 222/408 [09:59<11:32,  3.72s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  55%|█████▍    | 223/408 [10:01<10:04,  3.27s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  55%|█████▍    | 224/408 [10:03<08:52,  2.90s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  55%|█████▌    | 225/408 [10:07<09:48,  3.22s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  55%|█████▌    | 226/408 [10:10<09:26,  3.11s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  56%|█████▌    | 228/408 [10:13<07:31,  2.51s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  56%|█████▌    | 229/408 [10:16<08:05,  2.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  57%|█████▋    | 231/408 [10:21<07:48,  2.64s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  57%|█████▋    | 233/408 [10:26<07:13,  2.48s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  58%|█████▊    | 235/408 [10:28<05:40,  1.97s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  58%|█████▊    | 236/408 [10:30<05:48,  2.03s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  58%|█████▊    | 237/408 [10:31<05:15,  1.85s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  58%|█████▊    | 238/408 [10:37<07:58,  2.81s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  59%|█████▉    | 240/408 [10:40<06:19,  2.26s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  59%|█████▉    | 241/408 [10:42<06:12,  2.23s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  59%|█████▉    | 242/408 [10:45<06:18,  2.28s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  60%|█████▉    | 243/408 [10:47<06:06,  2.22s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  60%|██████    | 245/408 [10:48<04:23,  1.62s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  60%|██████    | 246/408 [10:50<04:37,  1.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  61%|██████    | 247/408 [10:55<06:57,  2.59s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  61%|██████    | 248/408 [11:04<11:01,  4.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  61%|██████▏   | 250/408 [11:06<07:06,  2.70s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  62%|██████▏   | 251/408 [11:08<06:55,  2.65s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  62%|██████▏   | 252/408 [11:11<06:51,  2.64s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  62%|██████▏   | 253/408 [11:12<06:02,  2.34s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  62%|██████▏   | 254/408 [11:19<09:11,  3.58s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  62%|██████▎   | 255/408 [11:27<12:27,  4.89s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  63%|██████▎   | 257/408 [11:30<08:22,  3.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  63%|██████▎   | 258/408 [11:32<07:41,  3.08s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  63%|██████▎   | 259/408 [11:37<08:25,  3.39s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  64%|██████▎   | 260/408 [11:41<09:06,  3.69s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  64%|██████▍   | 261/408 [11:54<15:14,  6.22s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  64%|██████▍   | 263/408 [12:01<12:16,  5.08s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  65%|██████▍   | 264/408 [12:07<12:19,  5.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  65%|██████▍   | 265/408 [12:12<12:22,  5.19s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  65%|██████▌   | 266/408 [12:18<12:35,  5.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  65%|██████▌   | 267/408 [12:25<14:09,  6.03s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  66%|██████▌   | 268/408 [12:34<16:02,  6.87s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  66%|██████▌   | 270/408 [12:49<16:19,  7.10s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  67%|██████▋   | 272/408 [12:57<13:26,  5.93s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  67%|██████▋   | 273/408 [13:05<14:04,  6.25s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  67%|██████▋   | 274/408 [13:13<14:52,  6.66s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  67%|██████▋   | 275/408 [13:22<16:08,  7.28s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  68%|██████▊   | 278/408 [13:25<08:53,  4.10s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  68%|██████▊   | 279/408 [13:33<10:07,  4.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  69%|██████▉   | 281/408 [13:37<08:09,  3.85s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  69%|██████▉   | 282/408 [13:40<07:41,  3.67s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  69%|██████▉   | 283/408 [13:42<06:35,  3.16s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  70%|██████▉   | 284/408 [13:44<06:11,  3.00s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  70%|██████▉   | 285/408 [13:46<05:38,  2.75s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  70%|███████   | 286/408 [13:48<05:12,  2.56s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  70%|███████   | 287/408 [13:51<05:12,  2.58s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  71%|███████   | 288/408 [13:54<05:45,  2.88s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  71%|███████   | 290/408 [13:58<04:29,  2.29s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  71%|███████▏  | 291/408 [14:00<04:28,  2.30s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  72%|███████▏  | 292/408 [14:01<03:57,  2.05s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  72%|███████▏  | 293/408 [14:05<04:40,  2.44s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  72%|███████▏  | 294/408 [14:10<05:56,  3.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  72%|███████▏  | 295/408 [14:11<05:09,  2.74s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  73%|███████▎  | 297/408 [14:15<04:17,  2.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  73%|███████▎  | 298/408 [14:17<03:55,  2.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  73%|███████▎  | 299/408 [14:20<04:17,  2.36s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  74%|███████▎  | 300/408 [14:21<03:40,  2.04s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  74%|███████▍  | 301/408 [14:23<03:40,  2.06s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  74%|███████▍  | 302/408 [14:25<03:40,  2.08s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  74%|███████▍  | 303/408 [14:29<04:23,  2.51s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  75%|███████▍  | 304/408 [14:30<04:00,  2.31s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  75%|███████▍  | 305/408 [14:35<05:15,  3.06s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  75%|███████▌  | 307/408 [14:38<03:54,  2.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  75%|███████▌  | 308/408 [14:40<03:47,  2.27s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  76%|███████▌  | 309/408 [14:44<04:13,  2.56s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  76%|███████▌  | 310/408 [14:48<04:59,  3.06s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  76%|███████▌  | 311/408 [14:51<04:57,  3.07s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  76%|███████▋  | 312/408 [14:52<04:04,  2.55s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  77%|███████▋  | 313/408 [14:54<03:27,  2.18s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  77%|███████▋  | 314/408 [14:56<03:28,  2.21s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  77%|███████▋  | 316/408 [14:58<02:28,  1.62s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  78%|███████▊  | 317/408 [15:01<02:56,  1.94s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  78%|███████▊  | 318/408 [15:07<04:38,  3.09s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  78%|███████▊  | 320/408 [15:11<03:42,  2.53s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  79%|███████▊  | 321/408 [15:16<04:42,  3.25s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  79%|███████▉  | 323/408 [15:18<03:22,  2.38s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  79%|███████▉  | 324/408 [15:21<03:24,  2.43s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  80%|███████▉  | 325/408 [15:24<03:33,  2.57s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  80%|███████▉  | 326/408 [15:26<03:21,  2.46s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  80%|████████  | 327/408 [15:28<03:07,  2.32s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  80%|████████  | 328/408 [15:31<03:11,  2.39s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  81%|████████  | 329/408 [15:33<03:00,  2.28s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  81%|████████  | 330/408 [15:36<03:25,  2.63s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  81%|████████  | 331/408 [15:38<02:53,  2.25s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  81%|████████▏ | 332/408 [15:39<02:40,  2.11s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  82%|████████▏ | 333/408 [15:44<03:35,  2.87s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  82%|████████▏ | 335/408 [15:47<02:46,  2.28s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  82%|████████▏ | 336/408 [15:52<03:29,  2.91s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  83%|████████▎ | 338/408 [15:55<02:41,  2.31s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  83%|████████▎ | 339/408 [15:57<02:42,  2.35s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  83%|████████▎ | 340/408 [15:59<02:26,  2.16s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  84%|████████▎ | 341/408 [16:02<02:40,  2.39s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  84%|████████▍ | 343/408 [16:05<02:05,  1.93s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  85%|████████▍ | 345/408 [16:09<02:04,  1.98s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  85%|████████▌ | 347/408 [16:11<01:44,  1.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  85%|████████▌ | 348/408 [16:13<01:43,  1.73s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  86%|████████▌ | 349/408 [16:17<02:10,  2.22s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  86%|████████▌ | 350/408 [16:21<02:31,  2.61s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  86%|████████▋ | 352/408 [16:26<02:25,  2.61s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  87%|████████▋ | 354/408 [16:29<01:54,  2.12s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  87%|████████▋ | 355/408 [16:32<02:11,  2.49s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  87%|████████▋ | 356/408 [16:36<02:20,  2.71s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  88%|████████▊ | 357/408 [16:43<03:10,  3.74s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  88%|████████▊ | 359/408 [16:45<02:06,  2.58s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  88%|████████▊ | 360/408 [16:50<02:30,  3.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  89%|████████▊ | 362/408 [16:52<01:52,  2.46s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  89%|████████▉ | 363/408 [16:55<01:49,  2.43s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  89%|████████▉ | 364/408 [16:57<01:48,  2.47s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  89%|████████▉ | 365/408 [17:01<01:53,  2.64s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  90%|████████▉ | 367/408 [17:03<01:20,  1.96s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  90%|█████████ | 368/408 [17:05<01:25,  2.14s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  91%|█████████ | 370/408 [17:08<01:08,  1.81s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  91%|█████████ | 371/408 [17:10<01:11,  1.94s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  91%|█████████ | 372/408 [17:13<01:16,  2.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  91%|█████████▏| 373/408 [17:17<01:27,  2.51s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  92%|█████████▏| 374/408 [17:20<01:31,  2.70s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  92%|█████████▏| 376/408 [17:21<00:57,  1.79s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  93%|█████████▎| 378/408 [17:24<00:51,  1.73s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  93%|█████████▎| 379/408 [17:27<00:58,  2.00s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  93%|█████████▎| 381/408 [17:31<00:53,  1.98s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  94%|█████████▎| 382/408 [17:33<00:51,  1.97s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  94%|█████████▍| 384/408 [17:36<00:41,  1.74s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  94%|█████████▍| 385/408 [17:37<00:37,  1.63s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  95%|█████████▍| 386/408 [17:40<00:40,  1.83s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  95%|█████████▍| 387/408 [17:43<00:44,  2.13s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  95%|█████████▌| 389/408 [17:46<00:36,  1.92s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  96%|█████████▌| 390/408 [17:48<00:34,  1.92s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  96%|█████████▌| 391/408 [17:52<00:40,  2.38s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  96%|█████████▌| 392/408 [17:53<00:36,  2.25s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  96%|█████████▋| 393/408 [17:57<00:40,  2.72s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  97%|█████████▋| 394/408 [17:59<00:32,  2.33s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  97%|█████████▋| 395/408 [18:04<00:42,  3.26s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  97%|█████████▋| 396/408 [18:06<00:32,  2.68s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  97%|█████████▋| 397/408 [18:08<00:28,  2.62s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  98%|█████████▊| 398/408 [18:11<00:25,  2.55s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  98%|█████████▊| 399/408 [18:15<00:26,  2.98s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  98%|█████████▊| 401/408 [18:16<00:13,  1.94s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  99%|█████████▊| 402/408 [18:17<00:10,  1.73s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  99%|█████████▉| 403/408 [18:20<00:10,  2.11s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...:  99%|█████████▉| 405/408 [18:23<00:05,  1.73s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...: 100%|█████████▉| 406/408 [18:25<00:03,  1.96s/ examples][A
+Shuffling /data/group_data/rl/saksham3/sim_bimanual_assembly/incomplete.OXQ5BO_1.0.0/sim_bimanual_assembly-train.tfrecord*...: 100%|█████████▉| 407/408 [18:34<00:03,  3.68s/ examples][A
+                                                                                                                                                                                       [A                                                                Generating splits...:   0%|          | 0/1 [1:48:21<?, ? splits/s]Generating splits...: 100%|██████████| 1/1 [1:48:21<00:00, 6501.78s/ splits]                                                                            
