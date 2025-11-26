@@ -1,21 +1,0 @@
-/home/saksham3/miniconda3/envs/main/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
-  warnings.warn(
-/home/saksham3/miniconda3/envs/main/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
-  warnings.warn(
-wandb: Currently logged in as: sakshamsingh2002 (sakshamsingh2002-carnegie-mellon-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.22.2
-wandb: Run data is saved locally in /home/saksham3/projects/AIRe/rlds_dataset_builder/sim_bimanual/wandb/run-20251121_185925-mqg0ug9r
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run sim_double_insert_round1_0520_v2_hdf5_0
-wandb: ⭐️ View project at https://wandb.ai/sakshamsingh2002-carnegie-mellon-university/jflow_rl
-wandb: 🚀 View run at https://wandb.ai/sakshamsingh2002-carnegie-mellon-university/jflow_rl/runs/mqg0ug9r
-Wandb run initiated with name: sim_double_insert_round1_0520_v2_hdf5_0
-Generating video frames...
-  0%|          | 0/100 [00:00<?, ?it/s]  0%|          | 0/100 [00:00<?, ?it/s]
-wandb: updating run metadata; uploading requirements.txt; uploading data
-wandb: 🚀 View run sim_double_insert_round1_0520_v2_hdf5_0 at: https://wandb.ai/sakshamsingh2002-carnegie-mellon-university/jflow_rl/runs/mqg0ug9r
-wandb: ⭐️ View project at: https://wandb.ai/sakshamsingh2002-carnegie-mellon-university/jflow_rl
-wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20251121_185925-mqg0ug9r/logs
-An error occurred: 'FigureCanvasAgg' object has no attribute 'tobytes'
-Wandb run finished.

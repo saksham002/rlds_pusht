@@ -1,8 +1,0 @@
-Running on host: babel-o9-20
-Current conda environment: main
-Wandb run initiated with name: sim_double_insert_round1_0520_v2_hdf5_0
-Generating video frames...
-Saved video_frames to sim_double_insert_round1_0520_v2_hdf5_0_video_frames.npy
-Logging video to wandb...
-Video logged successfully.
-Wandb run finished.
