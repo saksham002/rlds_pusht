@@ -4,7 +4,7 @@
 
 The Sim Bimanual Assembly dataset is a simulated robotics dataset containing visuomotor control data for a particular bimanual manipulation task. The dataset features dual-arm robots performing an assembly task (double insertion) with image observations from multiple camera views, proprioceptive state information, and actions.
 
-**Source**: Local HDF5 files from simulated environments located at `/data/group_data/rl/dexterous_robot_data/sim_double_insert_*/`
+**Source**: Local HDF5 files from simulated environments located at `/data/group_data/rl/dexterous_robot_data/sim_double_insert_*/` (can be changed in code).
 
 The dataset includes data from multiple collection rounds:
 - `sim_double_insert_0226_hdf5`
@@ -75,7 +75,7 @@ tfds build --data_dir=/path/to/output
 ```
 
 Normalization statistics are saved to:
-`/data/group_data/rl/saksham3/sim_bimanual_assembly/norm_stats/norm_stats.npy`
+`/data/group_data/rl/saksham3/sim_bimanual_assembly/norm_stats/norm_stats.npy` (can be changed in code).
 
 ## Related Resources
 

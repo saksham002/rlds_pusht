@@ -76,7 +76,7 @@ tfds build --data_dir=/path/to/output
 ```
 
 Robot-wise normalization statistics are saved to:
-`/data/group_data/rl/saksham3/robocoin/norm_stats/robot_stats.json`
+`/data/group_data/rl/saksham3/robocoin/norm_stats/robot_stats.json` (can be changed in code).
 
 ## Statistics Format
 
