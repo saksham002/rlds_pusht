@@ -41,7 +41,7 @@ Each example is one episode with the following schema:
 
 #### Actions
 - **`action`**: `float32[14]` -- canonical joint action (same 14-D layout as state).
-- **`action_diff`**: `float32[14]` -- `action[t] - action[t-1]`, zeros at the first step.
+- **`action_diff`**: `float32[14]` -- `action[t+1] - action[t]`, zeros at the last step.
 
 #### End-Effector Poses
 - **`eef_sim_pose_state`**: `float32[12]` -- left/right EEF position (x,y,z) + orientation (x,y,z).
