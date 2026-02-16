@@ -53,6 +53,9 @@ MAX_NUM_WORKERS=16
 # --- Test mode (set to 1 for small test run) ---
 export TEST_MODE=0
 
+# --- Subset mode (set to 1 for 24-repo representative sample) ---
+export SUBSET_MODE=1
+
 echo "DATA_DIR=${DATA_DIR}"
 echo "STAGING_LOCATION=${STAGING_LOCATION}"
 echo "CONTAINER_IMAGE=${CONTAINER_IMAGE}"
@@ -60,6 +63,7 @@ echo "MAX_NUM_WORKERS=${MAX_NUM_WORKERS}"
 
 tfds build --overwrite \
     --data_dir="${DATA_DIR}" \
+    --num_shards=4096 \
     --beam_pipeline_options="\
 runner=DataflowRunner,\
 project=${PROJECT},\
@@ -69,6 +73,7 @@ temp_location=${TEMP_LOCATION},\
 sdk_container_image=${CONTAINER_IMAGE},\
 machine_type=${MACHINE_TYPE},\
 disk_size_gb=${DISK_SIZE_GB},\
+num_workers=8,\
 max_num_workers=${MAX_NUM_WORKERS},\
 setup_file=./setup.py,\
 sdk_worker_parallelism=1,\
