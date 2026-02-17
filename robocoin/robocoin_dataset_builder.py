@@ -6,12 +6,15 @@ Merges multiple Hugging Face RoboCOIN datasets into a single RLDS dataset.
 from typing import Iterator, Tuple, Any, List, Dict
 import os
 import json
+import fcntl
+import logging
 import random
 import subprocess
 import time
-import sys
 import traceback
 import numpy as np
+
+logger = logging.getLogger(__name__)
 from torch.utils.data import DataLoader, Subset
 
 import tensorflow as tf
@@ -227,9 +230,8 @@ def run_with_rate_limit_retry(
         out = (p.stdout or "") + "\n" + (p.stderr or "")
 
         if any(m in out for m in RATE_LIMIT_MARKERS):
-            sys.stderr.write(
-                f"[rate-limit] Command failed with rate limit markers. "
-                f"Sleeping {sleep_seconds}s then retrying. Attempt={attempt}\n"
+            logger.warning(
+                f"[rate-limit] Sleeping {sleep_seconds}s then retrying. Attempt={attempt}"
             )
             if max_retries is not None and attempt > max_retries:
                 raise RuntimeError(f"Exceeded max_retries={max_retries} for command: {cmd}")
@@ -238,12 +240,12 @@ def run_with_rate_limit_retry(
 
         if p.returncode == 0:
             if p.stdout:
-                sys.stdout.write(p.stdout)
+                logger.info(p.stdout.rstrip())
             if p.stderr:
-                sys.stderr.write(p.stderr)
+                logger.warning(p.stderr.rstrip())
             return
 
-        sys.stderr.write(out)
+        logger.error(out)
         raise subprocess.CalledProcessError(p.returncode, cmd, output=p.stdout, stderr=p.stderr)
 
 class Robocoin(tfds.core.GeneratorBasedBuilder):
@@ -335,7 +337,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
         """Define data splits."""
         from huggingface_hub import hf_hub_download
         
-        print("Starting dataset build...")
+        logger.info("Starting dataset build...")
         
         test_mode = os.environ.get("TEST_MODE", "0") == "1"
         repo_ids_file = os.environ.get("REPO_IDS_FILE")
@@ -356,7 +358,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     time.sleep(retry_delay_seconds)
                     attempt += 1
                 except Exception as download_err:
-                    print(
+                    logger.info(
                         f"  Retry {attempt} for {repo_id} "
                         f"{filename} failed: {download_err}"
                     )
@@ -379,26 +381,26 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
             with open(repo_ids_file, 'r') as f:
                 repo_ids = [line.strip() for line in f if line.strip()]
             repo_ids = [r if r.startswith(PREFIX) else PREFIX + r for r in repo_ids]
-            print(f"[REPO_IDS_FILE] Loaded {len(repo_ids)} repos from {repo_ids_file}")
+            logger.info(f"[REPO_IDS_FILE] Loaded {len(repo_ids)} repos from {repo_ids_file}")
             for repo_id in repo_ids:
                 try:
                     repo_episode_lengths[repo_id] = _load_episode_lengths(repo_id)
                 except Exception as e:
-                    print(f"  Warning: could not get episode lengths for {repo_id}: {e}")
+                    logger.info(f"  Warning: could not get episode lengths for {repo_id}: {e}")
         elif test_mode:
             repo_ids = ["RoboCOIN/Split_aloha_plate_storage"]
-            print(f"[TEST MODE] Building only {repo_ids[0]}")
+            logger.info(f"[TEST MODE] Building only {repo_ids[0]}")
             try:
                 repo_episode_lengths[repo_ids[0]] = _load_episode_lengths(repo_ids[0])
             except Exception as e:
-                print(f"  Warning: could not get episode lengths for {repo_ids[0]}: {e}")
+                logger.info(f"  Warning: could not get episode lengths for {repo_ids[0]}: {e}")
         else:
             api = HfApi()
-            print(f"Listing datasets with prefix '{PREFIX}' from Hugging Face...")
+            logger.info(f"Listing datasets with prefix '{PREFIX}' from Hugging Face...")
             infos = api.list_datasets(search = PREFIX)
             all_repo_ids = sorted([d.id for d in infos if d.id.startswith(PREFIX)])
 
-            print(f"Found {len(all_repo_ids)} total repos. Filtering based on robot_type and state_dim...")
+            logger.info(f"Found {len(all_repo_ids)} total repos. Filtering based on robot_type and state_dim...")
 
             repo_ids = []
             for repo_id in all_repo_ids:
@@ -412,14 +414,14 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                         ep_lengths = _load_episode_lengths(repo_id)
                         repo_ids.append(repo_id)
                         repo_episode_lengths[repo_id] = ep_lengths
-                        print(f"  Including {repo_id} (robot_type={robot_type}, state_dim={state_dim}, episodes={len(ep_lengths)})")
+                        logger.info(f"  Including {repo_id} (robot_type={robot_type}, state_dim={state_dim}, episodes={len(ep_lengths)})")
                     else:
-                        print(f"  Skipping {repo_id} (robot_type={robot_type}, state_dim={state_dim})")
+                        logger.info(f"  Skipping {repo_id} (robot_type={robot_type}, state_dim={state_dim})")
                 except Exception as e:
-                    print(f"  Skipping {repo_id}: Could not download meta files: {e}")
+                    logger.info(f"  Skipping {repo_id}: Could not download meta files: {e}")
                     continue
 
-        print(f"\nFiltered to {len(repo_ids)} repos")
+        logger.info(f"\nFiltered to {len(repo_ids)} repos")
 
         # Shuffle with fixed seed for reproducibility
         random.seed(86)
@@ -455,16 +457,16 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     total_steps = sum(ep_lengths[idx] for idx in indices)
                     eff_workers = min(NUM_WORKERS, (total_steps + MIN_STEPS_PER_WORKER - 1) // MIN_STEPS_PER_WORKER)
                     if WORKER_ID >= eff_workers:
-                        print(f"  Worker {WORKER_ID}: skipping {repo_id} [{split_name}] ({total_steps} steps, {eff_workers} effective workers)")
+                        logger.info(f"  Worker {WORKER_ID}: skipping {repo_id} [{split_name}] ({total_steps} steps, {eff_workers} effective workers)")
                         continue
                     indices = indices[WORKER_ID :: eff_workers]
-                    print(f"  Worker {WORKER_ID}/{NUM_WORKERS}: {len(indices)} episodes for {repo_id} [{split_name}] ({eff_workers} effective workers)")
+                    logger.info(f"  Worker {WORKER_ID}/{NUM_WORKERS}: {len(indices)} episodes for {repo_id} [{split_name}] ({eff_workers} effective workers)")
 
                 if indices:
                     repo_list.append(repo_id)
                     indices_dict[repo_id] = (indices, eff_workers)
 
-        print(f"Split assignment: {len(train_repo_ids)} repos -> train, {len(val_repo_ids)} repos -> val")
+        logger.info(f"Split assignment: {len(train_repo_ids)} repos -> train, {len(val_repo_ids)} repos -> val")
 
         splits = {}
         if train_repo_ids:
@@ -592,131 +594,138 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
         from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
         for repo_index, repo_id in enumerate(repo_ids):
-            print(f"Processing {repo_id}...")
+            logger.info(f"Processing {repo_id}...")
 
             dataset_path = os.path.join(DOWNLOAD_ROOT, repo_id)
             meta_path = os.path.join(dataset_path, "meta")
             repo_suffix = repo_id[len(PREFIX) : ]
 
-            cmd = [
-                "robocoin-download",
-                "--hub", "huggingface",
-                "--target-dir", DOWNLOAD_ROOT,
-                "--ds_lists", repo_suffix
-            ]
+            # Acquire per-repo file lock so concurrent workers don't race
+            # on download + NaN fix + LeRobotDataset creation.
+            lock_path = os.path.join(DOWNLOAD_ROOT, f".lock_{repo_suffix}")
+            lock_fd = open(lock_path, 'w')
+            fcntl.flock(lock_fd, fcntl.LOCK_EX)
+            logger.info(f"  Acquired lock for {repo_id}")
 
             try:
-                run_with_rate_limit_retry(cmd, sleep_seconds = 90)
-            except Exception as e:
-                print(f"Failed to download {repo_id}: {e}")
-                traceback.print_exc()
-                continue
+                cmd = [
+                    "robocoin-download",
+                    "--hub", "huggingface",
+                    "--target-dir", DOWNLOAD_ROOT,
+                    "--ds_lists", repo_suffix
+                ]
 
-            info_json_path = os.path.join(meta_path, "info.json")
-            with open(info_json_path, 'r') as f:
-                info_data = json.load(f)
+                try:
+                    run_with_rate_limit_retry(cmd, sleep_seconds = 90)
+                except Exception as e:
+                    logger.info(f"Failed to download {repo_id}: {e}")
+                    traceback.print_exc()
+                    continue
 
-            robot_type = extract_robot_type_from_repo_id(repo_id)
-            fps = float(info_data['fps'])
+                info_json_path = os.path.join(meta_path, "info.json")
+                with open(info_json_path, 'r') as f:
+                    info_data = json.load(f)
 
-            features = info_data['features']
-            all_camera_shapes = {}
+                robot_type = extract_robot_type_from_repo_id(repo_id)
+                fps = float(info_data['fps'])
 
-            for key, val in features.items():
-                if isinstance(val, dict) and val.get('dtype') == 'video':
-                    parts = key.split('.')
-                    cam_name = "".join(parts[2 : ])
-                    if "fisheye" in cam_name:
-                        continue
+                features = info_data['features']
+                all_camera_shapes = {}
 
-                    video_info = val['info']
-                    h = video_info['video.height']
-                    w = video_info['video.width']
-                    c = video_info['video.channels']
-                    v_fps = video_info['video.fps']
+                for key, val in features.items():
+                    if isinstance(val, dict) and val.get('dtype') == 'video':
+                        parts = key.split('.')
+                        cam_name = "".join(parts[2 : ])
+                        if "fisheye" in cam_name:
+                            continue
 
-                    if v_fps is not None and abs(v_fps - fps) > 1e-4:
-                        raise ValueError(f"Video FPS {v_fps} != global FPS {fps} in {repo_id}")
+                        video_info = val['info']
+                        h = video_info['video.height']
+                        w = video_info['video.width']
+                        c = video_info['video.channels']
+                        v_fps = video_info['video.fps']
 
-                    all_camera_shapes[cam_name] = np.array([h, w, c], dtype = np.int32)
+                        if v_fps is not None and abs(v_fps - fps) > 1e-4:
+                            raise ValueError(f"Video FPS {v_fps} != global FPS {fps} in {repo_id}")
 
-            camera_names = get_camera_names_for_repo(features, robot_type)
-            camera_shapes = [all_camera_shapes[cam] for cam in camera_names]
-            num_cameras = len(camera_names)
+                        all_camera_shapes[cam_name] = np.array([h, w, c], dtype = np.int32)
 
-            state_feat_names = features['observation.state']['names']
-            state_indices = np.array([state_feat_names.index(n) for n in REQUIRED_DIM_NAMES], dtype = np.int32)
-            print(f"  State dimension indices for {repo_id}: {state_indices.tolist()}")
+                camera_names = get_camera_names_for_repo(features, robot_type)
+                camera_shapes = [all_camera_shapes[cam] for cam in camera_names]
+                num_cameras = len(camera_names)
 
-            action_feat_names = features['action']['names'] if 'action' in features else []
-            action_indices = np.array([action_feat_names.index(n) for n in REQUIRED_DIM_NAMES], dtype = np.int32)
-            print(f"  Action dimension indices for {repo_id}: {action_indices.tolist()}")
+                state_feat_names = features['observation.state']['names']
+                state_indices = np.array([state_feat_names.index(n) for n in REQUIRED_DIM_NAMES], dtype = np.int32)
+                logger.info(f"  State dimension indices for {repo_id}: {state_indices.tolist()}")
 
-            # EEF dimension indices
-            assert 'eef_sim_pose_state' in features, f"eef_sim_pose_state not in features for {repo_id}"
-            assert 'eef_sim_pose_action' in features, f"eef_sim_pose_action not in features for {repo_id}"
-            eef_state_feat_names = features['eef_sim_pose_state']['names']
-            eef_action_feat_names = features['eef_sim_pose_action']['names']
-            eef_state_indices = np.array([eef_state_feat_names.index(n) for n in EEF_DIM_NAMES], dtype = np.int32)
-            eef_action_indices = np.array([eef_action_feat_names.index(n) for n in EEF_DIM_NAMES], dtype = np.int32)
+                action_feat_names = features['action']['names'] if 'action' in features else []
+                action_indices = np.array([action_feat_names.index(n) for n in REQUIRED_DIM_NAMES], dtype = np.int32)
+                logger.info(f"  Action dimension indices for {repo_id}: {action_indices.tolist()}")
 
-            # Subtasks
-            subtasks_path = os.path.join(dataset_path, "annotations", "subtask_annotations.jsonl")
-            subtasks_list = []
-            subtask_index_to_text = {}
-            null_subtask_index = None
-            with open(subtasks_path, 'r') as f:
-                for line in f:
-                    if line.strip():
-                        data = json.loads(line)
-                        subtasks_list.append(data['subtask'])
-                        subtask_index_to_text[data['subtask_index']] = data['subtask']
-                        if data['subtask'] == 'null':
-                            null_subtask_index = data['subtask_index']
-            if null_subtask_index is None:
-                raise ValueError(f"No null subtask found in {subtasks_path}")
+                # EEF dimension indices
+                assert 'eef_sim_pose_state' in features, f"eef_sim_pose_state not in features for {repo_id}"
+                assert 'eef_sim_pose_action' in features, f"eef_sim_pose_action not in features for {repo_id}"
+                eef_state_feat_names = features['eef_sim_pose_state']['names']
+                eef_action_feat_names = features['eef_sim_pose_action']['names']
+                eef_state_indices = np.array([eef_state_feat_names.index(n) for n in EEF_DIM_NAMES], dtype = np.int32)
+                eef_action_indices = np.array([eef_action_feat_names.index(n) for n in EEF_DIM_NAMES], dtype = np.int32)
 
-            # Tasks
-            tasks_path = os.path.join(meta_path, "tasks.jsonl")
-            tasks_list = []
-            with open(tasks_path, 'r') as f:
-                count = 0
-                for line in f:
-                    if line.strip():
-                        data = json.loads(line)
-                        assert data['task_index'] == count
-                        tasks_list.append(data)
-                        count += 1
+                # Subtasks
+                subtasks_path = os.path.join(dataset_path, "annotations", "subtask_annotations.jsonl")
+                subtasks_list = []
+                subtask_index_to_text = {}
+                null_subtask_index = None
+                with open(subtasks_path, 'r') as f:
+                    for line in f:
+                        if line.strip():
+                            data = json.loads(line)
+                            subtasks_list.append(data['subtask'])
+                            subtask_index_to_text[data['subtask_index']] = data['subtask']
+                            if data['subtask'] == 'null':
+                                null_subtask_index = data['subtask_index']
+                if null_subtask_index is None:
+                    raise ValueError(f"No null subtask found in {subtasks_path}")
 
-            # Episodes metadata
-            episodes_path = os.path.join(meta_path, "episodes.jsonl")
-            episodes_meta = []
-            with open(episodes_path, 'r') as f:
-                for line in f:
-                    if line.strip():
-                        episodes_meta.append(json.loads(line))
+                # Tasks
+                tasks_path = os.path.join(meta_path, "tasks.jsonl")
+                tasks_list = []
+                with open(tasks_path, 'r') as f:
+                    count = 0
+                    for line in f:
+                        if line.strip():
+                            data = json.loads(line)
+                            assert data['task_index'] == count
+                            tasks_list.append(data)
+                            count += 1
 
-            try:
-                ds = LeRobotDataset(root = DOWNLOAD_ROOT + repo_id, repo_id = repo_id, video_backend = "pyav")
-            except Exception as e:
+                # Episodes metadata
+                episodes_path = os.path.join(meta_path, "episodes.jsonl")
+                episodes_meta = []
+                with open(episodes_path, 'r') as f:
+                    for line in f:
+                        if line.strip():
+                            episodes_meta.append(json.loads(line))
+
+                # Fix NaN values in episodes_stats.jsonl if needed, then create dataset
                 stats_path = os.path.join(meta_path, "episodes_stats.jsonl")
                 if os.path.exists(stats_path):
                     with open(stats_path, 'r') as f:
                         content = f.read()
-                    content = content.replace('NaN', '0')
-                    with open(stats_path, 'w') as f:
-                        f.write(content)
-                    print(f"Fixed NaN values in {stats_path}, retrying...")
-                    try:
-                        ds = LeRobotDataset(root = DOWNLOAD_ROOT + repo_id, repo_id = repo_id, video_backend = "pyav")
-                    except Exception as e2:
-                        print(f"Failed to create LeRobotDataset for {repo_id}: {e2}")
-                        traceback.print_exc()
-                        continue
-                else:
-                    print(f"Failed to create LeRobotDataset for {repo_id}: {e}")
+                    if 'NaN' in content:
+                        content = content.replace('NaN', '0')
+                        with open(stats_path, 'w') as f:
+                            f.write(content)
+                        logger.info(f"  Fixed NaN values in {stats_path}")
+
+                try:
+                    ds = LeRobotDataset(root = DOWNLOAD_ROOT + repo_id, repo_id = repo_id, video_backend = "pyav")
+                except Exception as e:
+                    logger.info(f"Failed to create LeRobotDataset for {repo_id}: {e}")
                     traceback.print_exc()
                     continue
+            finally:
+                fcntl.flock(lock_fd, fcntl.LOCK_UN)
+                lock_fd.close()
 
             # Precompute cumulative episode offsets (avoids O(n^2))
             ep_lengths = [em['length'] for em in episodes_meta]
@@ -724,7 +733,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
             np.cumsum(ep_lengths, out = cumulative_offsets[1 : ])
 
             episode_indices, effective_workers = repo_episode_indices[repo_id]
-            print(f"  Processing {len(episode_indices)} episodes (total: {len(episodes_meta)})")
+            logger.info(f"  Processing {len(episode_indices)} episodes (total: {len(episodes_meta)})")
 
             for ep_count, ep_idx in enumerate(episode_indices):
                 if ep_count >= 10 and test_mode:
@@ -734,7 +743,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                 cumulative_idx = int(cumulative_offsets[ep_idx])
                 ep_len = ep_info['length']
                 ep_id = ep_info['episode_index']
-                print(f"Processing episode {ep_idx} of length {ep_len}")
+                logger.info(f"Processing episode {ep_idx} of length {ep_len}")
 
                 first_frame = ds[cumulative_idx]
                 assert ep_id == first_frame['episode_index']
@@ -779,7 +788,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                         elif raw_imgs.dtype == np.float64:
                             raw_imgs = raw_imgs.astype(np.float32)
                         scaled_imgs = tf.image.resize(raw_imgs, (224, 224)).numpy()
-                        scaled_imgs = (scaled_imgs * 255.0).astype(np.uint8)
+                        scaled_imgs = np.rint(scaled_imgs * 255.0).astype(np.uint8)
                         for b in range(batch_size_actual):
                             batch_preresized[b][cam_key] = scaled_imgs[b]
 
@@ -845,26 +854,8 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     'episode_metadata': episode_metadata
                 }
 
-            # Delete local download after train split completes (val runs before train
-            # in iteration order, so train is always last). For VAL_ONLY_REPOS, val is
-            # the only split so delete after val.
-            should_delete = (split == 'train') or (repo_suffix in VAL_ONLY_REPOS)
-            if should_delete and os.path.exists(dataset_path):
-                data_dir_root = os.environ.get("DATA_DIR_ROOT")
-                if effective_workers > 1 and data_dir_root:
-                    all_done = True
-                    for wid in range(effective_workers):
-                        marker = os.path.join(data_dir_root, repo_suffix, str(wid), "robocoin", "1.0.0", "dataset_info.json")
-                        if not tf.io.gfile.exists(marker):
-                            all_done = False
-                            break
-                    if all_done:
-                        print(f"All {effective_workers} workers done — deleting {dataset_path}...")
-                        subprocess.run(['rm', '-rf', dataset_path])
-                    else:
-                        print(f"Not all workers done for {repo_id}, keeping local data.")
-                else:
-                    print(f"Deleting {dataset_path}...")
-                    subprocess.run(['rm', '-rf', dataset_path])
+            # Deletion of local downloads is handled by the shell script (build_local.sh)
+            # after tfds build completes, since dataset_info.json (the completion marker)
+            # is only written after this generator is fully exhausted.
 
-            print(f"Processed {repo_id} successfully (index {repo_index})")
+            logger.info(f"Processed {repo_id} successfully (index {repo_index})")

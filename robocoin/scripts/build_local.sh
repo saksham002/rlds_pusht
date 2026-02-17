@@ -27,8 +27,9 @@ export FFMPEG_PREFIX=""
 export PATH="/home/saksham3/miniconda3/envs/rlds/bin:/data/user_data/saksham3/vla/bin:/home/saksham3/.local/node_modules/.bin:/usr/share/Modules/bin:/data/user_data/saksham3/ffmpeg-7/bin:/home/saksham3/.local/node_modules/.bin:/home/saksham3/miniconda3/condabin:/home/saksham3/.local/bin:/home/saksham3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
 export LD_LIBRARY_PATH=""
 export PKG_CONFIG_PATH=""
-
 export WORKER_ID=$SLURM_ARRAY_TASK_ID
+export TMPDIR="/data/group_data/rl/saksham3/robocoin/tmp/${WORKER_ID}"
+mkdir -p "$TMPDIR"
 export NUM_WORKERS=$SLURM_ARRAY_TASK_COUNT
 export REPO_IDS_FILE=repos.txt
 
@@ -48,10 +49,56 @@ while IFS= read -r REPO_SUFFIX; do
     fi
 
     echo "[BUILD] ${REPO_SUFFIX} (worker ${WORKER_ID}) -> ${DATA_DIR}"
-    TMPFILE=$(mktemp)
+    TMPFILE=$(mktemp -p /data/group_data/rl/saksham3/robocoin/)
     echo "$REPO_SUFFIX" > "$TMPFILE"
-    REPO_IDS_FILE="$TMPFILE" tfds build --overwrite --data_dir="${DATA_DIR}"
+    if REPO_IDS_FILE="$TMPFILE" tfds build --overwrite --data_dir="${DATA_DIR}"; then
+        echo "[SUCCESS] ${REPO_SUFFIX} (worker ${WORKER_ID})"
+    else
+        echo "[FAILED] ${REPO_SUFFIX} (worker ${WORKER_ID})"
+        rm -f "$TMPFILE"
+        continue
+    fi
     rm -f "$TMPFILE"
+
+    # Delete local download if all effective workers are done for this repo.
+    # Must run after tfds build so the current worker's marker exists.
+    DOWNLOAD_PATH="/data/group_data/rl/saksham3/robocoin/RoboCOIN/${REPO_SUFFIX}"
+    if [ -d "$DOWNLOAD_PATH" ]; then
+        python -c "
+import os, json, tensorflow as tf
+
+repo_suffix = '${REPO_SUFFIX}'
+data_root = '${DATA_ROOT}'
+num_workers = ${NUM_WORKERS}
+min_steps = 5000
+
+# Compute effective_workers from episode lengths
+ep_path = os.path.join('${DOWNLOAD_PATH}', 'meta', 'episodes.jsonl')
+if not os.path.exists(ep_path):
+    exit(0)
+lengths = []
+with open(ep_path) as f:
+    for line in f:
+        if line.strip():
+            lengths.append(json.loads(line)['length'])
+total_steps = sum(lengths)
+eff = min(num_workers, (total_steps + min_steps - 1) // min_steps)
+
+all_done = True
+for wid in range(eff):
+    marker = os.path.join(data_root, repo_suffix, str(wid), 'robocoin', '1.0.0', 'dataset_info.json')
+    if not tf.io.gfile.exists(marker):
+        all_done = False
+        break
+
+if all_done:
+    import subprocess
+    print(f'All {eff} workers done for {repo_suffix} — deleting local data.')
+    subprocess.run(['rm', '-rf', '${DOWNLOAD_PATH}'])
+else:
+    print(f'Not all workers done for {repo_suffix}, keeping local data.')
+"
+    fi
 
 done < "$REPO_IDS_FILE"
 
