@@ -10,8 +10,8 @@ import random
 import subprocess
 import time
 import sys
+import traceback
 import numpy as np
-import torch
 from torch.utils.data import DataLoader, Subset
 
 import tensorflow as tf
@@ -34,13 +34,29 @@ MAX_ACTION_DIM = 14  # Same as state - filtered to required 14 dimensions
 # R1_Lite is only allowed if state_dim == 14
 ALLOWED_ROBOT_TYPES = ["Split_aloha", "Cobot_Magic", "R1_Lite"]
 
-# ALLOWED_REPO_IDS = ["RoboCOIN/Split_aloha_plate_storage", "RoboCOIN/Cobot_Magic_cut_banana", "RoboCOIN/R1_Lite_tableware_cleaning"]
-
 # Default required cameras order: front/high, left wrist, right wrist
 DEFAULT_CAMERA_ORDER = ["cam_high_rgb", "cam_left_wrist_rgb", "cam_right_wrist_rgb"]
 
-PROFILE_BUILD = os.environ.get("PROFILE_BUILD", "0") == "1"
-USE_DATALOADER = os.environ.get("USE_DATALOADER", "1") == "1"
+WORKER_ID = int(os.environ.get("WORKER_ID", "0"))
+NUM_WORKERS = int(os.environ.get("NUM_WORKERS", "1"))
+MIN_STEPS_PER_WORKER = 5000
+
+# 14 required joint dimensions in canonical order
+REQUIRED_DIM_NAMES = []
+for _i in range(1, 7):
+    REQUIRED_DIM_NAMES.append(f'left_arm_joint_{_i}_rad')
+REQUIRED_DIM_NAMES.append('left_gripper_open')
+for _i in range(1, 7):
+    REQUIRED_DIM_NAMES.append(f'right_arm_joint_{_i}_rad')
+REQUIRED_DIM_NAMES.append('right_gripper_open')
+
+# 12 required EEF dimensions in canonical order (same for state and action)
+EEF_DIM_NAMES = [
+    "left_eef_pos_x", "left_eef_pos_y", "left_eef_pos_z",
+    "left_eef_ori_x", "left_eef_ori_y", "left_eef_ori_z",
+    "right_eef_pos_x", "right_eef_pos_y", "right_eef_pos_z",
+    "right_eef_ori_x", "right_eef_ori_y", "right_eef_ori_z",
+]
 
 
 def extract_robot_type_from_repo_id(repo_id: str) -> str:
@@ -151,6 +167,45 @@ def should_include_repo(repo_id: str, info_data: Dict) -> Tuple[bool, str, int]:
 # Train/val split ratio
 VAL_SPLIT_RATIO = 0.05
 
+VAL_ONLY_REPOS = {
+    "Split_aloha_plate_storage",
+    "Cobot_Magic_cut_banana",
+    "R1_Lite_tableware_cleaning",
+}
+
+
+def _get_episode_indices_for_split(total_episodes: int, split: str, repo_id: str = "") -> List[int]:
+    """Deterministically compute episode indices for train or val.
+
+    Uses a fixed seed so train/val are always disjoint regardless of call order.
+    Repos in VAL_ONLY_REPOS get all episodes assigned to val and none to train.
+
+    Args:
+        total_episodes: Total number of episodes in the repo.
+        split: 'train' or 'val'.
+        repo_id: Full repo ID (e.g. "RoboCOIN/Split_aloha_plate_storage").
+
+    Returns:
+        Sorted list of episode indices for this split.
+    """
+    repo_suffix = repo_id.split("/", 1)[1] if "/" in repo_id else repo_id
+    if repo_suffix in VAL_ONLY_REPOS:
+        if split == 'train':
+            return []
+        else:
+            return list(range(total_episodes))
+
+    val_count = max(1, int(total_episodes * VAL_SPLIT_RATIO))
+    train_count = total_episodes - val_count
+    all_indices = list(range(total_episodes))
+    rng = random.Random(86)
+    rng.shuffle(all_indices)
+    if split == 'train':
+        return sorted(all_indices[ : train_count])
+    else:
+        return sorted(all_indices[train_count : ])
+
+
 # Rate limit handling constants
 RATE_LIMIT_MARKERS = (
     "429 Too Many Requests",
@@ -225,6 +280,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                 'steps': tfds.features.Dataset({
                     **obs_features,
                     'action': action_feature,
+                    'state_diff': tfds.features.Tensor(shape=(MAX_STATE_DIM,), dtype=np.float32),
                     'action_diff': action_diff_feature,
                     'is_first': tfds.features.Scalar(dtype=np.bool_),
                     'is_terminal': tfds.features.Scalar(dtype=np.bool_),
@@ -246,6 +302,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     'scene_annotation': tfds.features.Scalar(dtype=np.int32),
                     'eef_sim_pose_state': tfds.features.Tensor(shape=(12,), dtype=np.float32),
                     'eef_sim_pose_action': tfds.features.Tensor(shape=(12,), dtype=np.float32),
+                    'eef_sim_pose_action_diff': tfds.features.Tensor(shape=(12,), dtype=np.float32),
                     'repo_index': tfds.features.Scalar(dtype=np.int32),
                 }),
                 'episode_metadata': tfds.features.FeaturesDict({
@@ -269,7 +326,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     'subtasks': tfds.features.Sequence(tfds.features.Text()),
                     
                     # Episode specific metadata
-                    'scene_description': tfds.features.Text(),
+                    # 'scene_description': tfds.features.Text(),
                     'task_description': tfds.features.Text(),
                 }),
             }))
@@ -281,10 +338,60 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
         print("Starting dataset build...")
         
         test_mode = os.environ.get("TEST_MODE", "0") == "1"
+        repo_ids_file = os.environ.get("REPO_IDS_FILE")
 
-        if test_mode:
-            repo_ids = ["RoboCOIN/Cobot_Magic_take_out_a_pen_from_the_pen_holder"]
+        def _download_hf_meta(repo_id, filename):
+            """Download a meta file from HF hub with retries, return local path."""
+            retry_delay_seconds = 5
+            attempt = 1
+            while True:
+                try:
+                    local_path = hf_hub_download(
+                        repo_id = repo_id,
+                        filename = filename,
+                        repo_type = "dataset"
+                    )
+                    if local_path and os.path.exists(local_path):
+                        return local_path
+                    time.sleep(retry_delay_seconds)
+                    attempt += 1
+                except Exception as download_err:
+                    print(
+                        f"  Retry {attempt} for {repo_id} "
+                        f"{filename} failed: {download_err}"
+                    )
+                    time.sleep(retry_delay_seconds)
+                    attempt += 1
+
+        def _load_episode_lengths(repo_id):
+            """Download meta/episodes.jsonl and return list of episode lengths."""
+            ep_path = _download_hf_meta(repo_id, "meta/episodes.jsonl")
+            lengths = []
+            with open(ep_path, 'r') as f:
+                for line in f:
+                    if line.strip():
+                        lengths.append(json.loads(line)['length'])
+            return lengths
+
+        repo_episode_lengths: Dict[str, List[int]] = {}
+
+        if repo_ids_file:
+            with open(repo_ids_file, 'r') as f:
+                repo_ids = [line.strip() for line in f if line.strip()]
+            repo_ids = [r if r.startswith(PREFIX) else PREFIX + r for r in repo_ids]
+            print(f"[REPO_IDS_FILE] Loaded {len(repo_ids)} repos from {repo_ids_file}")
+            for repo_id in repo_ids:
+                try:
+                    repo_episode_lengths[repo_id] = _load_episode_lengths(repo_id)
+                except Exception as e:
+                    print(f"  Warning: could not get episode lengths for {repo_id}: {e}")
+        elif test_mode:
+            repo_ids = ["RoboCOIN/Split_aloha_plate_storage"]
             print(f"[TEST MODE] Building only {repo_ids[0]}")
+            try:
+                repo_episode_lengths[repo_ids[0]] = _load_episode_lengths(repo_ids[0])
+            except Exception as e:
+                print(f"  Warning: could not get episode lengths for {repo_ids[0]}: {e}")
         else:
             api = HfApi()
             print(f"Listing datasets with prefix '{PREFIX}' from Hugging Face...")
@@ -296,41 +403,20 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
             repo_ids = []
             for repo_id in all_repo_ids:
                 try:
-                    info_path = None
-                    retry_delay_seconds = 5
-                    attempt = 1
-                    while True:
-                        try:
-                            info_path = hf_hub_download(
-                                repo_id = repo_id,
-                                filename = "meta/info.json",
-                                repo_type = "dataset"
-                            )
-                            if info_path and os.path.exists(info_path):
-                                break
-                            else:
-                                time.sleep(retry_delay_seconds)
-                                attempt += 1
-                                continue
-                        except Exception as download_err:
-                            print(
-                                f"  Retry {attempt} for {repo_id} "
-                                f"meta/info.json failed: {download_err}"
-                            )
-                            time.sleep(retry_delay_seconds)
-                            attempt += 1
-
+                    info_path = _download_hf_meta(repo_id, "meta/info.json")
                     with open(info_path, 'r') as f:
                         info_data = json.load(f)
 
                     should_include, robot_type, state_dim = should_include_repo(repo_id, info_data)
                     if should_include:
+                        ep_lengths = _load_episode_lengths(repo_id)
                         repo_ids.append(repo_id)
-                        print(f"  Including {repo_id} (robot_type={robot_type}, state_dim={state_dim})")
+                        repo_episode_lengths[repo_id] = ep_lengths
+                        print(f"  Including {repo_id} (robot_type={robot_type}, state_dim={state_dim}, episodes={len(ep_lengths)})")
                     else:
                         print(f"  Skipping {repo_id} (robot_type={robot_type}, state_dim={state_dim})")
                 except Exception as e:
-                    print(f"  Skipping {repo_id}: Could not download info.json: {e}")
+                    print(f"  Skipping {repo_id}: Could not download meta files: {e}")
                     continue
 
         print(f"\nFiltered to {len(repo_ids)} repos")
@@ -338,30 +424,80 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
         # Shuffle with fixed seed for reproducibility
         random.seed(86)
         random.shuffle(repo_ids)
-        
+
         # Ensure download root exists
         os.makedirs(DOWNLOAD_ROOT, exist_ok = True)
-        
-        # Global dictionary to track train episode indices per repo_id
-        # This ensures train and val splits are disjoint with randomized assignment
-        self._train_indices_per_repo: Dict[str, set] = {}
 
-        return {
-            'train': self._generate_examples(repo_ids = repo_ids, split = 'train', test_mode = test_mode),
-            'val': self._generate_examples(repo_ids = repo_ids, split = 'val', test_mode = test_mode),
-        }
+        # Pre-compute episode indices per repo per split (including worker slicing)
+        # Each dict maps repo_id -> (episode_indices, effective_workers)
+        train_repo_ids = []
+        val_repo_ids = []
+        train_episode_indices: Dict[str, Tuple[List[int], int]] = {}
+        val_episode_indices: Dict[str, Tuple[List[int], int]] = {}
+
+        for repo_id in repo_ids:
+            ep_lengths = repo_episode_lengths.get(repo_id)
+            if not ep_lengths:
+                raise ValueError(f"No episode lengths available for {repo_id}")
+            total_ep = len(ep_lengths)
+
+            for split_name, repo_list, indices_dict in [
+                ('train', train_repo_ids, train_episode_indices),
+                ('val', val_repo_ids, val_episode_indices),
+            ]:
+                indices = _get_episode_indices_for_split(total_ep, split_name, repo_id)
+                if not indices:
+                    continue
+
+                # Worker-level episode slicing
+                eff_workers = 1
+                if NUM_WORKERS > 1:
+                    total_steps = sum(ep_lengths[idx] for idx in indices)
+                    eff_workers = min(NUM_WORKERS, (total_steps + MIN_STEPS_PER_WORKER - 1) // MIN_STEPS_PER_WORKER)
+                    if WORKER_ID >= eff_workers:
+                        print(f"  Worker {WORKER_ID}: skipping {repo_id} [{split_name}] ({total_steps} steps, {eff_workers} effective workers)")
+                        continue
+                    indices = indices[WORKER_ID :: eff_workers]
+                    print(f"  Worker {WORKER_ID}/{NUM_WORKERS}: {len(indices)} episodes for {repo_id} [{split_name}] ({eff_workers} effective workers)")
+
+                if indices:
+                    repo_list.append(repo_id)
+                    indices_dict[repo_id] = (indices, eff_workers)
+
+        print(f"Split assignment: {len(train_repo_ids)} repos -> train, {len(val_repo_ids)} repos -> val")
+
+        splits = {}
+        if train_repo_ids:
+            splits['train'] = self._generate_examples(
+                repo_ids = train_repo_ids, split = 'train',
+                repo_episode_indices = train_episode_indices,
+                test_mode = test_mode,
+            )
+        if val_repo_ids:
+            splits['val'] = self._generate_examples(
+                repo_ids = val_repo_ids, split = 'val',
+                repo_episode_indices = val_episode_indices,
+                test_mode = test_mode,
+            )
+        return splits
 
     def _process_step(
         self, item, i, ep_len, ep_idx, repo_id, repo_index,
         camera_names, num_cameras, state_indices, action_indices,
+        eef_state_indices, eef_action_indices,
         null_subtask_index, subtask_index_to_text, tasks_list,
-        task_desc, prev_action, steps_list, all_subtask_annotations,
+        task_desc, prev_state, prev_action, prev_eef_action,
+        steps_list, all_subtask_annotations,
+        preresized_images,
     ):
-        """Process a single step from either DataLoader batch item or direct ds[idx].
+        """Process a single step from a DataLoader batch item.
 
         Handles image encoding, state/action filtering, subtask annotations,
-        and RLDS field population. Mutates steps_list[-1]['action_diff'] for the
-        previous step when prev_action is not None.
+        and RLDS field population. Mutates steps_list[-1] diffs for the
+        previous step when prev values are not None.
+
+        Args:
+            preresized_images: Dict mapping cam_key -> uint8 (224,224,3) array.
 
         Returns:
             step dict ready for appending to steps_list
@@ -372,15 +508,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
         for cam_idx in range(MAX_CAMERAS):
             cam_key = f'observation/image/cam_{cam_idx}'
             if cam_idx < num_cameras:
-                original_name = camera_names[cam_idx]
-                data_key = f"observation.images.{original_name}"
-                img_data = item[data_key]
-                img_data = img_data.numpy()
-                if img_data.shape[0] == 3 and img_data.ndim == 3:
-                    img_data = np.transpose(img_data, (1, 2, 0))
-                if img_data.dtype == np.float32 or img_data.dtype == np.float64:
-                    img_data = (img_data * 255).astype(np.uint8)
-                step[cam_key] = tf.image.encode_jpeg(img_data).numpy()
+                step[cam_key] = tf.image.encode_jpeg(preresized_images[cam_key]).numpy()
             else:
                 step[cam_key] = b''
 
@@ -393,6 +521,11 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                 f"expected {MAX_STATE_DIM} in {repo_id}"
             )
         step['observation/state'] = state_val
+
+        # State diff
+        step['state_diff'] = np.zeros(MAX_STATE_DIM, dtype = np.float32)
+        if prev_state is not None:
+            steps_list[-1]['state_diff'] = state_val - prev_state
 
         # Action
         act_val = item['action'].numpy().astype(np.float32)
@@ -442,169 +575,108 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
         step['episode_index'] = item['episode_index']
         step['index'] = item['index']
 
-        if 'eef_sim_pose_state' in item:
-            step['eef_sim_pose_state'] = item['eef_sim_pose_state'].numpy().astype(np.float32)
-        else:
-            step['eef_sim_pose_state'] = np.zeros(12, dtype = np.float32)
-        if 'eef_sim_pose_action' in item:
-            step['eef_sim_pose_action'] = item['eef_sim_pose_action'].numpy().astype(np.float32)
-        else:
-            step['eef_sim_pose_action'] = np.zeros(12, dtype = np.float32)
+        step['eef_sim_pose_state'] = item['eef_sim_pose_state'].numpy().astype(np.float32)[eef_state_indices]
+        eef_act_val = item['eef_sim_pose_action'].numpy().astype(np.float32)[eef_action_indices]
+        step['eef_sim_pose_action'] = eef_act_val
+
+        # EEF action diff
+        step['eef_sim_pose_action_diff'] = np.zeros(12, dtype = np.float32)
+        if prev_eef_action is not None:
+            steps_list[-1]['eef_sim_pose_action_diff'] = eef_act_val - prev_eef_action
 
         step['repo_index'] = repo_index
         return step
 
-    def _generate_examples(self, repo_ids: List[str], split: str = 'train', test_mode: bool = False) -> Iterator[Tuple[str, Any]]:
+    def _generate_examples(self, repo_ids: List[str], split: str, repo_episode_indices: Dict[str, Tuple[List[int], int]], test_mode: bool = False) -> Iterator[Tuple[str, Any]]:
         """Generator of examples for each split."""
         from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
-        if PROFILE_BUILD:
-            profile = {
-                'batch_fetch': {'total': 0.0, 'count': 0},
-                'batch_compute': {'total': 0.0, 'count': 0},
-                'repo_init': {'total': 0.0, 'count': 0},
-                'episode_init': {'total': 0.0, 'count': 0},
-            }
-
         for repo_index, repo_id in enumerate(repo_ids):
-            if PROFILE_BUILD:
-                t_repo_init_start = time.perf_counter()
-
             print(f"Processing {repo_id}...")
-            
-            # Paths
+
             dataset_path = os.path.join(DOWNLOAD_ROOT, repo_id)
             meta_path = os.path.join(dataset_path, "meta")
-            
-            # 1. Download
-            # Remove "RoboCOIN/" prefix for the download command argument if needed, 
-            # but robocoin-download usually takes the full string or suffix. 
             repo_suffix = repo_id[len(PREFIX) : ]
-            
-            # Use robocoin-download command
+
             cmd = [
-                "robocoin-download", 
-                "--hub", "huggingface", 
-                "--target-dir", DOWNLOAD_ROOT, 
+                "robocoin-download",
+                "--hub", "huggingface",
+                "--target-dir", DOWNLOAD_ROOT,
                 "--ds_lists", repo_suffix
             ]
-            
+
             try:
                 run_with_rate_limit_retry(cmd, sleep_seconds = 90)
             except Exception as e:
                 print(f"Failed to download {repo_id}: {e}")
+                traceback.print_exc()
                 continue
 
-            # 2. Extract General Metadata (Common across episodes)
             info_json_path = os.path.join(meta_path, "info.json")
             with open(info_json_path, 'r') as f:
                 info_data = json.load(f)
 
-            # 2.1 robot_type & fps
             robot_type = extract_robot_type_from_repo_id(repo_id)
             fps = float(info_data['fps'])
 
-            # 2.2 Cameras and Shapes - only include required cameras
             features = info_data['features']
-            all_camera_names = []
             all_camera_shapes = {}
-            
+
             for key, val in features.items():
                 if isinstance(val, dict) and val.get('dtype') == 'video':
-                    # Key format is "observation.images.<name>"
                     parts = key.split('.')
                     cam_name = "".join(parts[2 : ])
                     if "fisheye" in cam_name:
                         continue
-                    
+
                     video_info = val['info']
                     h = video_info['video.height']
                     w = video_info['video.width']
                     c = video_info['video.channels']
                     v_fps = video_info['video.fps']
-                    
-                    # Assert FPS match
+
                     if v_fps is not None and abs(v_fps - fps) > 1e-4:
                         raise ValueError(f"Video FPS {v_fps} != global FPS {fps} in {repo_id}")
 
-                    all_camera_names.append(cam_name)
-                    all_camera_shapes[cam_name] = np.array([h, w, c], dtype=np.int32)
-            
-            # Get camera names based on robot type (handles different naming conventions)
+                    all_camera_shapes[cam_name] = np.array([h, w, c], dtype = np.int32)
+
             camera_names = get_camera_names_for_repo(features, robot_type)
             camera_shapes = [all_camera_shapes[cam] for cam in camera_names]
             num_cameras = len(camera_names)
 
-            # 2.3 State/Action Feature Names
-            state_feat_names = []
             state_feat_names = features['observation.state']['names']
-            
-            # 2.3.1 Find indices for required state dimensions (14 total)
-            # Order: left_arm_joint_1-6_rad, left_gripper_open, right_arm_joint_1-6_rad, right_gripper_open
-            required_state_names = []
-            for i in range(1, 7):
-                required_state_names.append(f'left_arm_joint_{i}_rad')
-            required_state_names.append('left_gripper_open')
-            for i in range(1, 7):
-                required_state_names.append(f'right_arm_joint_{i}_rad')
-            required_state_names.append('right_gripper_open')
-            
-            state_indices = []
-            for req_name in required_state_names:
-                try:
-                    idx = state_feat_names.index(req_name)
-                    state_indices.append(idx)
-                except ValueError:
-                    raise ValueError(
-                        f"Required state dimension '{req_name}' not found in {repo_id}. "
-                        f"Available state names: {state_feat_names}"
-                    )
-            
-            state_indices = np.array(state_indices, dtype=np.int32)
+            state_indices = np.array([state_feat_names.index(n) for n in REQUIRED_DIM_NAMES], dtype = np.int32)
             print(f"  State dimension indices for {repo_id}: {state_indices.tolist()}")
-            print(f"  Selected state dimensions: {[state_feat_names[i] for i in state_indices]}")
-            
-            action_feat_names = []
-            if 'action' in features:
-                action_feat_names = features['action']['names']
-                        
-            # 2.3.2 Find indices for required action dimensions (14 total, same names as state)
-            # Order: left_arm_joint_1-6_rad, left_gripper_open, right_arm_joint_1-6_rad, right_gripper_open
-            action_indices = []
-            for req_name in required_state_names:
-                try:
-                    idx = action_feat_names.index(req_name)
-                    action_indices.append(idx)
-                except ValueError:
-                    raise ValueError(
-                        f"Required action dimension '{req_name}' not found in {repo_id}. "
-                        f"Available action names: {action_feat_names}"
-                    )
-            
-            action_indices = np.array(action_indices, dtype=np.int32)
-            print(f"  Action dimension indices for {repo_id}: {action_indices.tolist()}")
-            print(f"  Selected action dimensions: {[action_feat_names[i] for i in action_indices]}")
 
-            # 2.4 Subtasks
+            action_feat_names = features['action']['names'] if 'action' in features else []
+            action_indices = np.array([action_feat_names.index(n) for n in REQUIRED_DIM_NAMES], dtype = np.int32)
+            print(f"  Action dimension indices for {repo_id}: {action_indices.tolist()}")
+
+            # EEF dimension indices
+            assert 'eef_sim_pose_state' in features, f"eef_sim_pose_state not in features for {repo_id}"
+            assert 'eef_sim_pose_action' in features, f"eef_sim_pose_action not in features for {repo_id}"
+            eef_state_feat_names = features['eef_sim_pose_state']['names']
+            eef_action_feat_names = features['eef_sim_pose_action']['names']
+            eef_state_indices = np.array([eef_state_feat_names.index(n) for n in EEF_DIM_NAMES], dtype = np.int32)
+            eef_action_indices = np.array([eef_action_feat_names.index(n) for n in EEF_DIM_NAMES], dtype = np.int32)
+
+            # Subtasks
             subtasks_path = os.path.join(dataset_path, "annotations", "subtask_annotations.jsonl")
             subtasks_list = []
+            subtask_index_to_text = {}
+            null_subtask_index = None
             with open(subtasks_path, 'r') as f:
                 for line in f:
                     if line.strip():
                         data = json.loads(line)
                         subtasks_list.append(data['subtask'])
+                        subtask_index_to_text[data['subtask_index']] = data['subtask']
+                        if data['subtask'] == 'null':
+                            null_subtask_index = data['subtask_index']
+            if null_subtask_index is None:
+                raise ValueError(f"No null subtask found in {subtasks_path}")
 
-            # 3. Load Episode Specific Data
-            
-            # Load Scene Annotations
-            scene_path = os.path.join(dataset_path, "annotations", "scene_annotations.jsonl")
-            scene_annotations = []
-            with open(scene_path, 'r') as f:
-                for line in f:
-                    if line.strip():
-                        scene_annotations.append(json.loads(line))
-
-            # Load Tasks
+            # Tasks
             tasks_path = os.path.join(meta_path, "tasks.jsonl")
             tasks_list = []
             with open(tasks_path, 'r') as f:
@@ -616,17 +688,17 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                         tasks_list.append(data)
                         count += 1
 
-            # Load Episodes Metadata (for lengths)
+            # Episodes metadata
             episodes_path = os.path.join(meta_path, "episodes.jsonl")
             episodes_meta = []
             with open(episodes_path, 'r') as f:
                 for line in f:
                     if line.strip():
                         episodes_meta.append(json.loads(line))
-            
+
             try:
                 ds = LeRobotDataset(root = DOWNLOAD_ROOT + repo_id, repo_id = repo_id, video_backend = "pyav")
-            except Exception:
+            except Exception as e:
                 stats_path = os.path.join(meta_path, "episodes_stats.jsonl")
                 if os.path.exists(stats_path):
                     with open(stats_path, 'r') as f:
@@ -637,75 +709,37 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     print(f"Fixed NaN values in {stats_path}, retrying...")
                     try:
                         ds = LeRobotDataset(root = DOWNLOAD_ROOT + repo_id, repo_id = repo_id, video_backend = "pyav")
-                    except Exception as e:
-                        print(f"Failed to create LeRobotDataset for {repo_id}: {e}")
+                    except Exception as e2:
+                        print(f"Failed to create LeRobotDataset for {repo_id}: {e2}")
+                        traceback.print_exc()
                         continue
                 else:
-                    print(f"Failed to create LeRobotDataset for {repo_id}")
+                    print(f"Failed to create LeRobotDataset for {repo_id}: {e}")
+                    traceback.print_exc()
                     continue
 
-            # # OLD LOGIC: Create DataLoader for efficient iteration (outside episode loop)
-            # ds_loader = DataLoader(
-            #     ds,
-            #     batch_size=32,
-            #     shuffle=False,
-            #     num_workers=4,
-            #     prefetch_factor=2,
-            # )
-            # ds_iter = iter(ds_loader)
+            # Precompute cumulative episode offsets (avoids O(n^2))
+            ep_lengths = [em['length'] for em in episodes_meta]
+            cumulative_offsets = np.zeros(len(ep_lengths) + 1, dtype = np.int64)
+            np.cumsum(ep_lengths, out = cumulative_offsets[1 : ])
 
-            # 4. Iterate Episodes (split into train/val with randomized assignment)
-            total_episodes = len(episodes_meta)
-            val_count = max(1, int(total_episodes * VAL_SPLIT_RATIO))  # At least 1 val episode
-            train_count = total_episodes - val_count
-            
-            # Determine episode indices based on split
-            if split == 'train':
-                # Randomly select train_count indices and store them
-                all_indices = list(range(total_episodes))
-                random.seed(86)  # Fixed seed for reproducibility
-                random.shuffle(all_indices)
-                train_indices = set(all_indices[:train_count])
-                self._train_indices_per_repo[repo_id] = train_indices
-                episode_indices = sorted(train_indices)
-            else:  # val
-                # Val indices are the complement of train indices
-                train_indices = self._train_indices_per_repo[repo_id]
-                episode_indices = sorted(set(range(total_episodes)) - train_indices)
-            
-            print(f"  Split '{split}': {len(episode_indices)} episodes (total: {total_episodes}, train: {train_count}, val: {val_count})")
+            episode_indices, effective_workers = repo_episode_indices[repo_id]
+            print(f"  Processing {len(episode_indices)} episodes (total: {len(episodes_meta)})")
 
-            if PROFILE_BUILD:
-                profile['repo_init']['total'] += time.perf_counter() - t_repo_init_start
-                profile['repo_init']['count'] += 1
-
-            for ep_idx in episode_indices:
-                if episode_indices.index(ep_idx) >= 50 and test_mode:
+            for ep_count, ep_idx in enumerate(episode_indices):
+                if ep_count >= 10 and test_mode:
                     break
 
-                if PROFILE_BUILD:
-                    t_ep_init_start = time.perf_counter()
-
                 ep_info = episodes_meta[ep_idx]
-                
-                # Calculate cumulative_idx for this episode
-                cumulative_idx = sum(episodes_meta[i]['length'] for i in range(ep_idx))                
-                # 4.1 Get Episode Specific Metadata
+                cumulative_idx = int(cumulative_offsets[ep_idx])
                 ep_len = ep_info['length']
                 ep_id = ep_info['episode_index']
                 print(f"Processing episode {ep_idx} of length {ep_len}")
-                
-                # Scene Description
-                scene_desc = scene_annotations[ep_idx]['scene']
-                
-                # Task Description via LeRobotDataset access
+
                 first_frame = ds[cumulative_idx]
                 assert ep_id == first_frame['episode_index']
-                task_index = first_frame['task_index']
-                    
-                task_desc = tasks_list[int(task_index)]['task']
+                task_desc = tasks_list[int(first_frame['task_index'])]['task']
 
-                # Build Metadata Dictionary
                 episode_metadata = {
                     'repo_id': repo_id,
                     'robot_type': robot_type,
@@ -716,168 +750,121 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                     'state_feature_names': state_feat_names,
                     'action_feature_names': action_feat_names,
                     'subtasks': subtasks_list,
-                    'scene_description': scene_desc,
                     'task_description': task_desc
                 }
 
-                # 4.2 Build subtask index to text mapping from annotations/subtask_annotations.jsonl
-                subtask_ann_path = os.path.join(dataset_path, "annotations", "subtask_annotations.jsonl")
-                subtask_index_to_text = {}  # subtask_index -> subtask text
-                null_subtask_index = None
-                with open(subtask_ann_path, 'r') as f:
-                    for line in f:
-                        if line.strip():
-                            data = json.loads(line)
-                            subtask_idx = data['subtask_index']
-                            subtask_text = data['subtask']
-                            subtask_index_to_text[subtask_idx] = subtask_text
-                            if subtask_text == 'null':
-                                null_subtask_index = subtask_idx
-                
-                if null_subtask_index is None:
-                    raise ValueError(f"Could not find null subtask index in {subtask_ann_path}")
-                
-                # 4.3 Single pass: build steps_list and collect subtask annotations
                 steps_list = []
                 all_subtask_annotations = []
-                prev_action = None  # Track previous action for action_diff computation
-                
+                prev_state = None
+                prev_action = None
+                prev_eef_action = None
+
                 episode_frame_indices = list(range(cumulative_idx, cumulative_idx + ep_len))
+                episode_loader = DataLoader(Subset(ds, episode_frame_indices), batch_size = 8, num_workers = 4, prefetch_factor = 2, shuffle = False, drop_last = False)
 
-                if USE_DATALOADER:
-                    episode_loader = DataLoader(Subset(ds, episode_frame_indices), batch_size = 8, num_workers = 16, prefetch_factor = 4, shuffle = False)
+                step_counter = 0
+                for batch_idx, batch in enumerate(episode_loader):
+                    batch_size_actual = next(iter(batch.values())).shape[0]
 
-                if PROFILE_BUILD:
-                    profile['episode_init']['total'] += time.perf_counter() - t_ep_init_start
-                    profile['episode_init']['count'] += 1
-                    t_batch_fetch_start = time.perf_counter()
-
-                if USE_DATALOADER:
-                    step_counter = 0
-                    for batch_idx, batch in enumerate(episode_loader):
-                        if PROFILE_BUILD:
-                            profile['batch_fetch']['total'] += time.perf_counter() - t_batch_fetch_start
-                            profile['batch_fetch']['count'] += 1
-                            t_compute_start = time.perf_counter()
-
-                        batch_size_actual = next(iter(batch.values())).shape[0]
+                    # Batch image resize
+                    batch_preresized = [{} for _ in range(batch_size_actual)]
+                    for cam_idx in range(num_cameras):
+                        cam_key = f'observation/image/cam_{cam_idx}'
+                        data_key = f"observation.images.{camera_names[cam_idx]}"
+                        raw_imgs = batch[data_key].numpy()
+                        if raw_imgs.shape[1] == 3 and raw_imgs.ndim == 4:
+                            raw_imgs = np.transpose(raw_imgs, (0, 2, 3, 1))
+                        if raw_imgs.dtype == np.uint8:
+                            raw_imgs = raw_imgs.astype(np.float32) / 255.0
+                        elif raw_imgs.dtype == np.float64:
+                            raw_imgs = raw_imgs.astype(np.float32)
+                        scaled_imgs = tf.image.resize(raw_imgs, (224, 224)).numpy()
+                        scaled_imgs = (scaled_imgs * 255.0).astype(np.uint8)
                         for b in range(batch_size_actual):
-                            i = step_counter
-                            item = {k: v[b] for k, v in batch.items()}
+                            batch_preresized[b][cam_key] = scaled_imgs[b]
 
-                            step = self._process_step(
-                                item, i, ep_len, ep_idx, repo_id, repo_index,
-                                camera_names, num_cameras, state_indices, action_indices,
-                                null_subtask_index, subtask_index_to_text, tasks_list,
-                                task_desc, prev_action, steps_list, all_subtask_annotations,
-                            )
-                            prev_action = step['action'].copy()
-                            steps_list.append(step)
-                            step_counter += 1
-
-                        if PROFILE_BUILD:
-                            profile['batch_compute']['total'] += time.perf_counter() - t_compute_start
-                            profile['batch_compute']['count'] += 1
-                            t_batch_fetch_start = time.perf_counter()
-                else:
-                    for i in range(ep_len):
-                        if PROFILE_BUILD:
-                            profile['batch_fetch']['total'] += time.perf_counter() - t_batch_fetch_start
-                            profile['batch_fetch']['count'] += 1
-                            t_compute_start = time.perf_counter()
-
-                        global_idx = cumulative_idx + i
-                        item = ds[global_idx]
+                    for b in range(batch_size_actual):
+                        i = step_counter
+                        item = {k: v[b] for k, v in batch.items()}
 
                         step = self._process_step(
                             item, i, ep_len, ep_idx, repo_id, repo_index,
                             camera_names, num_cameras, state_indices, action_indices,
+                            eef_state_indices, eef_action_indices,
                             null_subtask_index, subtask_index_to_text, tasks_list,
-                            task_desc, prev_action, steps_list, all_subtask_annotations,
+                            task_desc, prev_state, prev_action, prev_eef_action,
+                            steps_list, all_subtask_annotations,
+                            preresized_images = batch_preresized[b],
                         )
+                        prev_state = step['observation/state'].copy()
                         prev_action = step['action'].copy()
+                        prev_eef_action = step['eef_sim_pose_action'].copy()
                         steps_list.append(step)
+                        step_counter += 1
 
-                        if PROFILE_BUILD:
-                            profile['batch_compute']['total'] += time.perf_counter() - t_compute_start
-                            profile['batch_compute']['count'] += 1
-                            t_batch_fetch_start = time.perf_counter()
-                
-                # 4.4 Compute subtask timing features using set difference logic
-                # A subtask ends when it disappears from the active set (not when it changes position)
-                # Subtasks can appear multiple times in different intervals
-                
-                # Initialize lists of arrays for each feature
-                steps_to_subtask_end_list = [np.zeros(5, dtype=np.int32) for _ in range(ep_len)]
-                subtask_len_list = [np.zeros(5, dtype=np.int32) for _ in range(ep_len)]
-                subtask_is_first_list = [np.zeros(5, dtype=np.bool_) for _ in range(ep_len)]
-                subtask_is_last_list = [np.zeros(5, dtype=np.bool_) for _ in range(ep_len)]
-                
-                subtask_start_steps = {}  # subtask_id -> start_step (for active subtasks)
+                # Subtask timing features (set-difference logic)
+                steps_to_subtask_end_list = [np.zeros(5, dtype = np.int32) for _ in range(ep_len)]
+                subtask_len_list = [np.zeros(5, dtype = np.int32) for _ in range(ep_len)]
+                subtask_is_first_list = [np.zeros(5, dtype = np.bool_) for _ in range(ep_len)]
+                subtask_is_last_list = [np.zeros(5, dtype = np.bool_) for _ in range(ep_len)]
+
+                subtask_start_steps = {}
                 current_subtasks = set()
-                
+
                 def fill_subtask_interval(subtask_id: int, start_step: int, end_step: int):
-                    """Fill subtask timing features for an interval [start_step, end_step]."""
                     interval_len = end_step - start_step + 1
                     for t in range(start_step, end_step + 1):
                         ann = all_subtask_annotations[t]
-                        # Find the position where this subtask_id appears at timestep t
                         for pos in range(5):
                             if int(ann[pos]) == subtask_id:
                                 steps_to_subtask_end_list[t][pos] = end_step - t
                                 subtask_len_list[t][pos] = interval_len
                                 subtask_is_first_list[t][pos] = (t == start_step)
                                 subtask_is_last_list[t][pos] = (t == end_step)
-                                break  # Found the position, move to next timestep
-                
+                                break
+
                 for step_idx, ann in enumerate(all_subtask_annotations):
                     valid_subtasks = set(int(s) for s in ann if s != null_subtask_index)
-                    
-                    # Subtasks that ended (were in current but not in new)
-                    ended_subtasks = current_subtasks - valid_subtasks
-                    for subtask_id in ended_subtasks:
-                        start_step = subtask_start_steps.pop(subtask_id)
-                        end_step = step_idx - 1
-                        fill_subtask_interval(subtask_id, start_step, end_step)
-                    
-                    # Subtasks that started (are in new but not in current)
-                    new_subtasks = valid_subtasks - current_subtasks
-                    for subtask_id in new_subtasks:
-                        subtask_start_steps[subtask_id] = step_idx
-                    
+                    for sid in (current_subtasks - valid_subtasks):
+                        fill_subtask_interval(sid, subtask_start_steps.pop(sid), step_idx - 1)
+                    for sid in (valid_subtasks - current_subtasks):
+                        subtask_start_steps[sid] = step_idx
                     current_subtasks = valid_subtasks
-                
-                # Close subtasks still active at the end
-                end_step = ep_len - 1
-                for subtask_id in current_subtasks:
-                    start_step = subtask_start_steps.pop(subtask_id)
-                    fill_subtask_interval(subtask_id, start_step, end_step)
-                
-                # 4.6 Assign subtask timing fields to steps_list
+
+                for sid in current_subtasks:
+                    fill_subtask_interval(sid, subtask_start_steps.pop(sid), ep_len - 1)
+
                 for i, step in enumerate(steps_list):
                     step['steps_to_subtask_end'] = steps_to_subtask_end_list[i]
                     step['subtask_len'] = subtask_len_list[i]
                     step['subtask_is_first'] = subtask_is_first_list[i]
                     step['subtask_is_last'] = subtask_is_last_list[i]
-                
-                # Yield Episode
-                # Unique key: repo_id + episode_index (ep_idx is disjoint between train/val)
+
                 yield f"{repo_id}_{ep_idx}", {
                     'steps': steps_list,
                     'episode_metadata': episode_metadata
                 }
 
-            if os.path.exists(dataset_path):
-                print(f"Deleting {dataset_path}...")
-                subprocess.run(['rm', '-rf', dataset_path])
+            # Delete local download after train split completes (val runs before train
+            # in iteration order, so train is always last). For VAL_ONLY_REPOS, val is
+            # the only split so delete after val.
+            should_delete = (split == 'train') or (repo_suffix in VAL_ONLY_REPOS)
+            if should_delete and os.path.exists(dataset_path):
+                data_dir_root = os.environ.get("DATA_DIR_ROOT")
+                if effective_workers > 1 and data_dir_root:
+                    all_done = True
+                    for wid in range(effective_workers):
+                        marker = os.path.join(data_dir_root, repo_suffix, str(wid), "robocoin", "1.0.0", "dataset_info.json")
+                        if not tf.io.gfile.exists(marker):
+                            all_done = False
+                            break
+                    if all_done:
+                        print(f"All {effective_workers} workers done — deleting {dataset_path}...")
+                        subprocess.run(['rm', '-rf', dataset_path])
+                    else:
+                        print(f"Not all workers done for {repo_id}, keeping local data.")
+                else:
+                    print(f"Deleting {dataset_path}...")
+                    subprocess.run(['rm', '-rf', dataset_path])
 
             print(f"Processed {repo_id} successfully (index {repo_index})")
-
-        if PROFILE_BUILD:
-            print("\n" + "=" * 80)
-            print(f"[PROFILE] Build Profiling Summary (split={split})")
-            print("=" * 80)
-            for key, stats in profile.items():
-                avg = stats['total'] / stats['count'] if stats['count'] > 0 else 0.0
-                print(f"  {key}: total={stats['total']:.2f}s, avg={avg:.4f}s, count={stats['count']}")
-            print("=" * 80)

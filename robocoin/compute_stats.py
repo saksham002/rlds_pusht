@@ -536,6 +536,13 @@ def main():
              "Skips per-repo computation entirely."
     )
     parser.add_argument(
+        "--repo_file",
+        type = str,
+        default = None,
+        help = "Path to a text file with one repo name per line (without RoboCOIN/ prefix). "
+             "Used as the repo list instead of auto-discovery or --repo_ids."
+    )
+    parser.add_argument(
         "--calc_indices",
         type = str,
         default = None,
@@ -552,6 +559,15 @@ def main():
     norm_stats_dir.mkdir(parents = True, exist_ok = True)
     repo_wise_dir = norm_stats_dir / "repo_wise"
     repo_wise_dir.mkdir(parents = True, exist_ok = True)
+
+    # Load repo file if provided
+    repo_file_set = None
+    if args.repo_file is not None:
+        with open(args.repo_file, 'r') as f:
+            repo_file_set = set(
+                PREFIX + line.strip() for line in f if line.strip()
+            )
+        print(f"Loaded {len(repo_file_set)} repo names from {args.repo_file}")
 
     # ── only_global: aggregate from existing repo-wise JSONs ──
     if args.only_global:
@@ -572,6 +588,8 @@ def main():
                     with gfile.GFile(candidate, 'r') as f:
                         repo_data = json.load(f)
                     repo_id = repo_data['repo_id']
+                    if repo_file_set is not None and repo_id not in repo_file_set:
+                        continue
                     all_stats[repo_id] = repo_data
                     print(f"  Loaded {repo_id} ({repo_data['num_episodes']} episodes, {repo_data['num_steps']} steps)")
         else:
@@ -579,6 +597,8 @@ def main():
                 with open(json_file, 'r') as f:
                     repo_data = json.load(f)
                 repo_id = repo_data['repo_id']
+                if repo_file_set is not None and repo_id not in repo_file_set:
+                    continue
                 all_stats[repo_id] = repo_data
                 print(f"  Loaded {repo_id} ({repo_data['num_episodes']} episodes, {repo_data['num_steps']} steps)")
 
@@ -601,14 +621,17 @@ def main():
         return
 
     # ── Normal mode: compute per-repo stats ──
-    if args.repo_ids is None or len(args.repo_ids) == 0:
+    if repo_file_set is not None:
+        repo_ids = sorted(repo_file_set)
+        print(f"Using {len(repo_ids)} repos from --repo_file")
+    elif args.repo_ids is not None and len(args.repo_ids) > 0:
+        repo_ids = args.repo_ids
+    else:
         print("No repo_ids provided, auto-discovering based on filtering criteria...")
         repo_ids = get_filtered_repo_ids()
         if len(repo_ids) == 0:
             print("No repos found matching filtering criteria. Exiting.")
             return
-    else:
-        repo_ids = args.repo_ids
 
     # Apply calc_indices slicing
     if args.calc_indices is not None:
