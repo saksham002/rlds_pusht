@@ -214,29 +214,20 @@ RATE_LIMIT_MARKERS = (
     "429 Too Many Requests",
 )
 
-def run_with_rate_limit_retry(
+def run_with_retry(
     cmd: List[str],
-    sleep_seconds: int = 300,
-    max_retries: int = None,
+    rate_limit_sleep: int = 300,
+    error_sleep: int = 60,
+    max_retries: int = 25,
 ) -> None:
     """
-    Run a command, retrying on Hugging Face Hub rate limit errors.
+    Run a command, retrying on any failure (rate limits or non-zero exit codes).
     """
     attempt = 0
     while True:
         attempt += 1
-        # Capture output to check for rate limits
         p = subprocess.run(cmd, capture_output=True, text=True)
         out = (p.stdout or "") + "\n" + (p.stderr or "")
-
-        if any(m in out for m in RATE_LIMIT_MARKERS):
-            logger.warning(
-                f"[rate-limit] Sleeping {sleep_seconds}s then retrying. Attempt={attempt}"
-            )
-            if max_retries is not None and attempt > max_retries:
-                raise RuntimeError(f"Exceeded max_retries={max_retries} for command: {cmd}")
-            time.sleep(sleep_seconds)
-            continue
 
         if p.returncode == 0:
             if p.stdout:
@@ -245,8 +236,18 @@ def run_with_rate_limit_retry(
                 logger.warning(p.stderr.rstrip())
             return
 
-        logger.error(out)
-        raise subprocess.CalledProcessError(p.returncode, cmd, output=p.stdout, stderr=p.stderr)
+        if attempt >= max_retries:
+            logger.error(out)
+            raise RuntimeError(f"Exceeded max_retries={max_retries} for command: {cmd}")
+
+        if any(m in out for m in RATE_LIMIT_MARKERS):
+            sleep = rate_limit_sleep
+            logger.warning(f"[rate-limit] Attempt {attempt}/{max_retries}, sleeping {sleep}s")
+        else:
+            sleep = error_sleep
+            logger.warning(f"[retry] Attempt {attempt}/{max_retries} failed (exit {p.returncode}), sleeping {sleep}s")
+
+        time.sleep(sleep)
 
 class Robocoin(tfds.core.GeneratorBasedBuilder):
     """DatasetBuilder for RoboCOIN datasets."""
@@ -616,7 +617,7 @@ class Robocoin(tfds.core.GeneratorBasedBuilder):
                 ]
 
                 try:
-                    run_with_rate_limit_retry(cmd, sleep_seconds = 90)
+                    run_with_retry(cmd, rate_limit_sleep = 90)
                 except Exception as e:
                     logger.info(f"Failed to download {repo_id}: {e}")
                     traceback.print_exc()

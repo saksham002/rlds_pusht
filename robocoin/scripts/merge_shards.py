@@ -14,11 +14,87 @@ Usage:
         --repo_list repos.txt
 """
 import argparse
+import concurrent.futures
 import json
 import os
 import sys
 
 import tensorflow as tf
+
+
+MIN_STEPS_PER_WORKER = 5000
+
+
+def _get_episode_lengths(repo_suffix):
+    """Return episode lengths from local download if available, else HF hub."""
+    local = f"/data/group_data/rl/saksham3/robocoin/RoboCOIN/{repo_suffix}/meta/episodes.jsonl"
+    if os.path.exists(local):
+        with open(local) as f:
+            return [json.loads(l)['length'] for l in f if l.strip()]
+    from huggingface_hub import hf_hub_download
+    p = hf_hub_download(
+        repo_id = f"RoboCOIN/{repo_suffix}",
+        filename = "meta/episodes.jsonl",
+        repo_type = "dataset",
+    )
+    with open(p) as f:
+        return [json.loads(l)['length'] for l in f if l.strip()]
+
+
+def _effective_workers(lengths, num_workers):
+    total = sum(lengths)
+    return min(num_workers, max(1, (total + MIN_STEPS_PER_WORKER - 1) // MIN_STEPS_PER_WORKER))
+
+
+def run_dry_run(args, repo_suffixes):
+    """Print per-worker involvement and completion table, then exit."""
+    print(f"Fetching episode lengths for {len(repo_suffixes)} repos...")
+    with concurrent.futures.ThreadPoolExecutor(max_workers = 16) as ex:
+        all_lengths = list(ex.map(_get_episode_lengths, repo_suffixes))
+
+    repo_eff = {s: _effective_workers(l, args.num_workers) for s, l in zip(repo_suffixes, all_lengths)}
+
+    # Check GCS markers in parallel for all (repo, worker) pairs
+    pairs = [(s, w) for s in repo_suffixes for w in range(args.num_workers) if w < repo_eff[s]]
+
+    def check(pair):
+        s, w = pair
+        path = os.path.join(args.root, s, str(w), 'robocoin', '1.0.0', 'dataset_info.json')
+        try:
+            return tf.io.gfile.exists(path)
+        except Exception:
+            return False
+
+    print(f"Checking {len(pairs)} (repo, worker) markers on GCS...")
+    with concurrent.futures.ThreadPoolExecutor(max_workers = 64) as ex:
+        results = list(ex.map(check, pairs))
+
+    marker_map = {pair: res for pair, res in zip(pairs, results)}
+
+    print()
+    print(f"{'W':<5} {'Involved':>10} {'Done':>8} {'Missing':>10}  Status")
+    print('-' * 48)
+    all_complete = True
+    for w in range(args.num_workers):
+        involved = [s for s in repo_suffixes if w < repo_eff[s]]
+        done = sum(1 for s in involved if marker_map.get((s, w), False))
+        missing = len(involved) - done
+        ok = missing == 0
+        if not ok:
+            all_complete = False
+        flag = '✓' if ok else f'✗ {missing} missing'
+        print(f"W{w:<4} {len(involved):>10} {done:>8} {missing:>10}  {flag}")
+
+    total_pairs = len(pairs)
+    total_done = sum(results)
+    total_missing = total_pairs - total_done
+    print()
+    print(f"Total pairs: {total_pairs}  Done: {total_done}  Missing: {total_missing}")
+    if all_complete:
+        print("\nAll workers complete — ready to merge.")
+    else:
+        print("\nBuild incomplete — relaunch build_local.sh before merging.")
+    sys.exit(0)
 
 
 def main():
@@ -29,10 +105,14 @@ def main():
     parser.add_argument('--repo_list', default = 'repos.txt')
     parser.add_argument('--splits', nargs = '+', default = ['train', 'val'], help = 'Split names to merge')
     parser.add_argument('--overwrite', action = 'store_true', help = 'Overwrite existing shards')
+    parser.add_argument('--dry_run', action = 'store_true', help = 'Print per-worker completion table and exit without merging')
     args = parser.parse_args()
 
     with open(args.repo_list, 'r') as f:
         repo_suffixes = [line.strip() for line in f if line.strip()]
+
+    if args.dry_run:
+        run_dry_run(args, repo_suffixes)
 
     dataset_name = 'robocoin'
     version = '1.0.0'
