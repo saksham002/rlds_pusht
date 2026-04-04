@@ -1,0 +1,5801 @@
+{
+    "subtask_definitions": [
+        {
+            "subtask_index": 0,
+            "subtask": "Grasp the hanger"
+        },
+        {
+            "subtask_index": 1,
+            "subtask": "Lift the hanger off the rod"
+        },
+        {
+            "subtask_index": 2,
+            "subtask": "Pass hanger from right to left arm"
+        },
+        {
+            "subtask_index": 3,
+            "subtask": "Hook one side of the shirt onto the hanger"
+        },
+        {
+            "subtask_index": 4,
+            "subtask": "Hook the other side of the shirt onto the hanger"
+        },
+        {
+            "subtask_index": 5,
+            "subtask": "Place the hanger on the rod"
+        }
+    ],
+    "datasets": {
+        "real_hang_full_success_r4_hdf5": {
+            "0": {
+                "total_steps": 1886,
+                "boundaries": [
+                    146,
+                    265,
+                    519,
+                    1133,
+                    1574
+                ]
+            },
+            "1": {
+                "total_steps": 1788,
+                "boundaries": [
+                    135,
+                    244,
+                    544,
+                    1068,
+                    1495
+                ]
+            },
+            "10": {
+                "total_steps": 1777,
+                "boundaries": [
+                    165,
+                    277,
+                    525,
+                    1017,
+                    1440
+                ]
+            },
+            "11": {
+                "total_steps": 1856,
+                "boundaries": [
+                    175,
+                    339,
+                    622,
+                    1155,
+                    1562
+                ]
+            },
+            "12": {
+                "total_steps": 1771,
+                "boundaries": [
+                    132,
+                    231,
+                    468,
+                    988,
+                    1457
+                ]
+            },
+            "13": {
+                "total_steps": 2123,
+                "boundaries": [
+                    471,
+                    585,
+                    789,
+                    1274,
+                    1783
+                ]
+            },
+            "14": {
+                "total_steps": 2071,
+                "boundaries": [
+                    153,
+                    300,
+                    536,
+                    1317,
+                    1740
+                ]
+            },
+            "15": {
+                "total_steps": 1768,
+                "boundaries": [
+                    158,
+                    256,
+                    472,
+                    964,
+                    1473
+                ]
+            },
+            "16": {
+                "total_steps": 1872,
+                "boundaries": [
+                    148,
+                    240,
+                    475,
+                    995,
+                    1559
+                ]
+            },
+            "17": {
+                "total_steps": 2191,
+                "boundaries": [
+                    157,
+                    275,
+                    527,
+                    1436,
+                    1877
+                ]
+            },
+            "18": {
+                "total_steps": 1736,
+                "boundaries": [
+                    158,
+                    274,
+                    457,
+                    923,
+                    1447
+                ]
+            },
+            "19": {
+                "total_steps": 1689,
+                "boundaries": [
+                    139,
+                    241,
+                    482,
+                    971,
+                    1388
+                ]
+            },
+            "2": {
+                "total_steps": 1841,
+                "boundaries": [
+                    135,
+                    260,
+                    479,
+                    1005,
+                    1528
+                ]
+            },
+            "20": {
+                "total_steps": 1801,
+                "boundaries": [
+                    157,
+                    275,
+                    485,
+                    1012,
+                    1470
+                ]
+            },
+            "21": {
+                "total_steps": 1846,
+                "boundaries": [
+                    303,
+                    418,
+                    619,
+                    1144,
+                    1574
+                ]
+            },
+            "22": {
+                "total_steps": 1964,
+                "boundaries": [
+                    135,
+                    240,
+                    630,
+                    1170,
+                    1614
+                ]
+            },
+            "23": {
+                "total_steps": 1846,
+                "boundaries": [
+                    137,
+                    235,
+                    441,
+                    1004,
+                    1547
+                ]
+            },
+            "24": {
+                "total_steps": 2041,
+                "boundaries": [
+                    181,
+                    285,
+                    516,
+                    1044,
+                    1695
+                ]
+            },
+            "25": {
+                "total_steps": 1906,
+                "boundaries": [
+                    157,
+                    253,
+                    512,
+                    1140,
+                    1601
+                ]
+            },
+            "26": {
+                "total_steps": 1719,
+                "boundaries": [
+                    137,
+                    279,
+                    519,
+                    1023,
+                    1424
+                ]
+            },
+            "27": {
+                "total_steps": 1821,
+                "boundaries": [
+                    168,
+                    288,
+                    523,
+                    1089,
+                    1525
+                ]
+            },
+            "28": {
+                "total_steps": 1840,
+                "boundaries": [
+                    127,
+                    225,
+                    515,
+                    1010,
+                    1417
+                ]
+            },
+            "3": {
+                "total_steps": 1801,
+                "boundaries": [
+                    168,
+                    289,
+                    518,
+                    1073,
+                    1514
+                ]
+            },
+            "4": {
+                "total_steps": 1961,
+                "boundaries": [
+                    145,
+                    251,
+                    476,
+                    1200,
+                    1680
+                ]
+            },
+            "5": {
+                "total_steps": 1842,
+                "boundaries": [
+                    146,
+                    262,
+                    469,
+                    1082,
+                    1517
+                ]
+            },
+            "6": {
+                "total_steps": 2065,
+                "boundaries": [
+                    308,
+                    405,
+                    638,
+                    1120,
+                    1790
+                ]
+            },
+            "7": {
+                "total_steps": 1786,
+                "boundaries": [
+                    161,
+                    255,
+                    483,
+                    1050,
+                    1506
+                ]
+            },
+            "8": {
+                "total_steps": 1826,
+                "boundaries": [
+                    167,
+                    260,
+                    547,
+                    1086,
+                    1568
+                ]
+            },
+            "9": {
+                "total_steps": 1802,
+                "boundaries": [
+                    143,
+                    260,
+                    475,
+                    1046,
+                    1501
+                ]
+            }
+        },
+        "real_hang_full_success_r5_hdf5": {
+            "0": {
+                "total_steps": 1739,
+                "boundaries": [
+                    159,
+                    277,
+                    527,
+                    1028,
+                    1458
+                ]
+            },
+            "1": {
+                "total_steps": 1876,
+                "boundaries": [
+                    150,
+                    261,
+                    462,
+                    960,
+                    1414
+                ]
+            },
+            "10": {
+                "total_steps": 2062,
+                "boundaries": [
+                    135,
+                    231,
+                    470,
+                    1106,
+                    1753
+                ]
+            },
+            "11": {
+                "total_steps": 1951,
+                "boundaries": [
+                    142,
+                    233,
+                    457,
+                    1178,
+                    1638
+                ]
+            },
+            "12": {
+                "total_steps": 2256,
+                "boundaries": [
+                    195,
+                    302,
+                    487,
+                    1050,
+                    1895
+                ]
+            },
+            "13": {
+                "total_steps": 1867,
+                "boundaries": [
+                    173,
+                    270,
+                    464,
+                    1123,
+                    1578
+                ]
+            },
+            "14": {
+                "total_steps": 1803,
+                "boundaries": [
+                    148,
+                    309,
+                    484,
+                    1068,
+                    1532
+                ]
+            },
+            "15": {
+                "total_steps": 1767,
+                "boundaries": [
+                    188,
+                    314,
+                    510,
+                    1005,
+                    1483
+                ]
+            },
+            "16": {
+                "total_steps": 2059,
+                "boundaries": [
+                    154,
+                    260,
+                    553,
+                    1234,
+                    1689
+                ]
+            },
+            "17": {
+                "total_steps": 2123,
+                "boundaries": [
+                    457,
+                    569,
+                    779,
+                    1334,
+                    1772
+                ]
+            },
+            "18": {
+                "total_steps": 1983,
+                "boundaries": [
+                    147,
+                    243,
+                    480,
+                    1247,
+                    1668
+                ]
+            },
+            "19": {
+                "total_steps": 1984,
+                "boundaries": [
+                    202,
+                    435,
+                    625,
+                    1232,
+                    1695
+                ]
+            },
+            "2": {
+                "total_steps": 1882,
+                "boundaries": [
+                    182,
+                    285,
+                    531,
+                    1133,
+                    1607
+                ]
+            },
+            "20": {
+                "total_steps": 1849,
+                "boundaries": [
+                    152,
+                    253,
+                    442,
+                    1106,
+                    1524
+                ]
+            },
+            "21": {
+                "total_steps": 1801,
+                "boundaries": [
+                    171,
+                    293,
+                    479,
+                    1038,
+                    1473
+                ]
+            },
+            "22": {
+                "total_steps": 1907,
+                "boundaries": [
+                    137,
+                    237,
+                    455,
+                    1083,
+                    1583
+                ]
+            },
+            "23": {
+                "total_steps": 2017,
+                "boundaries": [
+                    159,
+                    297,
+                    506,
+                    1121,
+                    1787
+                ]
+            },
+            "24": {
+                "total_steps": 1878,
+                "boundaries": [
+                    182,
+                    307,
+                    509,
+                    1069,
+                    1548
+                ]
+            },
+            "25": {
+                "total_steps": 1872,
+                "boundaries": [
+                    140,
+                    240,
+                    457,
+                    1007,
+                    1513
+                ]
+            },
+            "26": {
+                "total_steps": 1727,
+                "boundaries": [
+                    137,
+                    238,
+                    441,
+                    959,
+                    1447
+                ]
+            },
+            "27": {
+                "total_steps": 1928,
+                "boundaries": [
+                    127,
+                    238,
+                    527,
+                    1048,
+                    1665
+                ]
+            },
+            "28": {
+                "total_steps": 1846,
+                "boundaries": [
+                    142,
+                    254,
+                    461,
+                    1006,
+                    1505
+                ]
+            },
+            "29": {
+                "total_steps": 1719,
+                "boundaries": [
+                    135,
+                    237,
+                    469,
+                    973,
+                    1421
+                ]
+            },
+            "3": {
+                "total_steps": 1767,
+                "boundaries": [
+                    133,
+                    246,
+                    492,
+                    1019,
+                    1510
+                ]
+            },
+            "30": {
+                "total_steps": 1796,
+                "boundaries": [
+                    173,
+                    270,
+                    488,
+                    1046,
+                    1492
+                ]
+            },
+            "31": {
+                "total_steps": 1744,
+                "boundaries": [
+                    167,
+                    279,
+                    506,
+                    1014,
+                    1472
+                ]
+            },
+            "32": {
+                "total_steps": 2080,
+                "boundaries": [
+                    141,
+                    251,
+                    508,
+                    1307,
+                    1808
+                ]
+            },
+            "33": {
+                "total_steps": 1898,
+                "boundaries": [
+                    171,
+                    279,
+                    480,
+                    1046,
+                    1529
+                ]
+            },
+            "34": {
+                "total_steps": 1751,
+                "boundaries": [
+                    142,
+                    263,
+                    489,
+                    979,
+                    1424
+                ]
+            },
+            "35": {
+                "total_steps": 1973,
+                "boundaries": [
+                    180,
+                    285,
+                    508,
+                    1170,
+                    1653
+                ]
+            },
+            "36": {
+                "total_steps": 1861,
+                "boundaries": [
+                    167,
+                    279,
+                    490,
+                    1013,
+                    1474
+                ]
+            },
+            "37": {
+                "total_steps": 2093,
+                "boundaries": [
+                    156,
+                    267,
+                    514,
+                    1050,
+                    1525
+                ]
+            },
+            "38": {
+                "total_steps": 2001,
+                "boundaries": [
+                    139,
+                    266,
+                    553,
+                    1144,
+                    1740
+                ]
+            },
+            "39": {
+                "total_steps": 2112,
+                "boundaries": [
+                    172,
+                    358,
+                    620,
+                    1254,
+                    1879
+                ]
+            },
+            "4": {
+                "total_steps": 2011,
+                "boundaries": [
+                    248,
+                    361,
+                    554,
+                    1224,
+                    1697
+                ]
+            },
+            "40": {
+                "total_steps": 1809,
+                "boundaries": [
+                    132,
+                    234,
+                    460,
+                    1012,
+                    1520
+                ]
+            },
+            "41": {
+                "total_steps": 2166,
+                "boundaries": [
+                    163,
+                    279,
+                    547,
+                    1262,
+                    1755
+                ]
+            },
+            "42": {
+                "total_steps": 1790,
+                "boundaries": [
+                    141,
+                    257,
+                    484,
+                    1040,
+                    1494
+                ]
+            },
+            "43": {
+                "total_steps": 1789,
+                "boundaries": [
+                    150,
+                    245,
+                    474,
+                    1092,
+                    1517
+                ]
+            },
+            "44": {
+                "total_steps": 1968,
+                "boundaries": [
+                    306,
+                    420,
+                    655,
+                    1213,
+                    1679
+                ]
+            },
+            "45": {
+                "total_steps": 1778,
+                "boundaries": [
+                    161,
+                    276,
+                    463,
+                    1040,
+                    1472
+                ]
+            },
+            "46": {
+                "total_steps": 1747,
+                "boundaries": [
+                    171,
+                    289,
+                    476,
+                    985,
+                    1428
+                ]
+            },
+            "47": {
+                "total_steps": 1796,
+                "boundaries": [
+                    154,
+                    282,
+                    487,
+                    1003,
+                    1457
+                ]
+            },
+            "48": {
+                "total_steps": 1903,
+                "boundaries": [
+                    155,
+                    275,
+                    542,
+                    1143,
+                    1608
+                ]
+            },
+            "49": {
+                "total_steps": 1782,
+                "boundaries": [
+                    180,
+                    305,
+                    502,
+                    1015,
+                    1483
+                ]
+            },
+            "5": {
+                "total_steps": 1944,
+                "boundaries": [
+                    155,
+                    248,
+                    529,
+                    1080,
+                    1571
+                ]
+            },
+            "50": {
+                "total_steps": 1915,
+                "boundaries": [
+                    140,
+                    300,
+                    483,
+                    1035,
+                    1550
+                ]
+            },
+            "6": {
+                "total_steps": 1842,
+                "boundaries": [
+                    165,
+                    276,
+                    517,
+                    1046,
+                    1520
+                ]
+            },
+            "7": {
+                "total_steps": 2067,
+                "boundaries": [
+                    272,
+                    394,
+                    608,
+                    1155,
+                    1739
+                ]
+            },
+            "8": {
+                "total_steps": 1810,
+                "boundaries": [
+                    135,
+                    249,
+                    532,
+                    1011,
+                    1517
+                ]
+            },
+            "9": {
+                "total_steps": 1787,
+                "boundaries": [
+                    164,
+                    255,
+                    517,
+                    1049,
+                    1485
+                ]
+            }
+        },
+        "real_hang_jasmine_0331_hdf5": {
+            "0": {
+                "total_steps": 3600,
+                "boundaries": [
+                    188,
+                    406,
+                    695,
+                    1447,
+                    3305
+                ]
+            },
+            "1": {
+                "total_steps": 2428,
+                "boundaries": [
+                    141,
+                    301,
+                    568,
+                    1246,
+                    1994
+                ]
+            },
+            "10": {
+                "total_steps": 3266,
+                "boundaries": [
+                    127,
+                    315,
+                    590,
+                    1894,
+                    3009
+                ]
+            },
+            "11": {
+                "total_steps": 2872,
+                "boundaries": [
+                    134,
+                    317,
+                    626,
+                    1234,
+                    2269
+                ]
+            },
+            "12": {
+                "total_steps": 2582,
+                "boundaries": [
+                    171,
+                    291,
+                    523,
+                    1151,
+                    2121
+                ]
+            },
+            "13": {
+                "total_steps": 2445,
+                "boundaries": null
+            },
+            "14": {
+                "total_steps": 2751,
+                "boundaries": [
+                    346,
+                    480,
+                    687,
+                    1475,
+                    2255
+                ]
+            },
+            "2": {
+                "total_steps": 2297,
+                "boundaries": [
+                    180,
+                    271,
+                    527,
+                    1198,
+                    1898
+                ]
+            },
+            "3": {
+                "total_steps": 2071,
+                "boundaries": null
+            },
+            "4": {
+                "total_steps": 2745,
+                "boundaries": [
+                    155,
+                    298,
+                    611,
+                    1241,
+                    2362
+                ]
+            },
+            "5": {
+                "total_steps": 2478,
+                "boundaries": [
+                    119,
+                    228,
+                    445,
+                    956,
+                    2035
+                ]
+            },
+            "6": {
+                "total_steps": 2451,
+                "boundaries": [
+                    141,
+                    260,
+                    580,
+                    1419,
+                    1905
+                ]
+            },
+            "7": {
+                "total_steps": 2688,
+                "boundaries": [
+                    138,
+                    256,
+                    703,
+                    1360,
+                    2152
+                ]
+            },
+            "8": {
+                "total_steps": 2463,
+                "boundaries": [
+                    164,
+                    297,
+                    595,
+                    1251,
+                    2097
+                ]
+            },
+            "9": {
+                "total_steps": 2719,
+                "boundaries": [
+                    175,
+                    308,
+                    619,
+                    1197,
+                    2135
+                ]
+            }
+        },
+        "real_hang_riya_0327_hdf5": {
+            "0": {
+                "total_steps": 3050,
+                "boundaries": [
+                    236,
+                    514,
+                    752,
+                    1544,
+                    2570
+                ]
+            },
+            "1": {
+                "total_steps": 2575,
+                "boundaries": [
+                    237,
+                    364,
+                    825,
+                    1491,
+                    2159
+                ]
+            },
+            "10": {
+                "total_steps": 3444,
+                "boundaries": [
+                    213,
+                    461,
+                    703,
+                    1828,
+                    2876
+                ]
+            },
+            "11": {
+                "total_steps": 3425,
+                "boundaries": [
+                    204,
+                    342,
+                    606,
+                    1414,
+                    2577
+                ]
+            },
+            "12": {
+                "total_steps": 3555,
+                "boundaries": [
+                    266,
+                    492,
+                    727,
+                    1636,
+                    3045
+                ]
+            },
+            "13": {
+                "total_steps": 3600,
+                "boundaries": [
+                    233,
+                    416,
+                    700,
+                    1910,
+                    3243
+                ]
+            },
+            "14": {
+                "total_steps": 3061,
+                "boundaries": [
+                    277,
+                    436,
+                    720,
+                    1715,
+                    2456
+                ]
+            },
+            "2": {
+                "total_steps": 3567,
+                "boundaries": [
+                    217,
+                    353,
+                    619,
+                    1640,
+                    2851
+                ]
+            },
+            "3": {
+                "total_steps": 2461,
+                "boundaries": [
+                    189,
+                    365,
+                    600,
+                    1410,
+                    2077
+                ]
+            },
+            "4": {
+                "total_steps": 2911,
+                "boundaries": [
+                    226,
+                    412,
+                    729,
+                    1425,
+                    2341
+                ]
+            },
+            "5": {
+                "total_steps": 2588,
+                "boundaries": [
+                    225,
+                    356,
+                    662,
+                    1474,
+                    2244
+                ]
+            },
+            "6": {
+                "total_steps": 3330,
+                "boundaries": [
+                    230,
+                    434,
+                    723,
+                    1558,
+                    2988
+                ]
+            },
+            "7": {
+                "total_steps": 3223,
+                "boundaries": [
+                    319,
+                    538,
+                    864,
+                    1688,
+                    2755
+                ]
+            },
+            "8": {
+                "total_steps": 2688,
+                "boundaries": null
+            },
+            "9": {
+                "total_steps": 2945,
+                "boundaries": [
+                    282,
+                    439,
+                    699,
+                    1777,
+                    2511
+                ]
+            }
+        },
+        "real_hang_robyn_0324_hdf5": {
+            "0": {
+                "total_steps": 2780,
+                "boundaries": [
+                    157,
+                    336,
+                    490,
+                    1081,
+                    2288
+                ]
+            },
+            "1": {
+                "total_steps": 2424,
+                "boundaries": null
+            },
+            "10": {
+                "total_steps": 2330,
+                "boundaries": null
+            },
+            "11": {
+                "total_steps": 2803,
+                "boundaries": null
+            },
+            "12": {
+                "total_steps": 2291,
+                "boundaries": [
+                    132,
+                    249,
+                    560,
+                    1118,
+                    1869
+                ]
+            },
+            "13": {
+                "total_steps": 2015,
+                "boundaries": null
+            },
+            "14": {
+                "total_steps": 2330,
+                "boundaries": null
+            },
+            "2": {
+                "total_steps": 2382,
+                "boundaries": null
+            },
+            "3": {
+                "total_steps": 2442,
+                "boundaries": null
+            },
+            "4": {
+                "total_steps": 2170,
+                "boundaries": [
+                    118,
+                    205,
+                    399,
+                    971,
+                    1765
+                ]
+            },
+            "5": {
+                "total_steps": 2594,
+                "boundaries": [
+                    140,
+                    241,
+                    563,
+                    1373,
+                    2139
+                ]
+            },
+            "6": {
+                "total_steps": 2321,
+                "boundaries": [
+                    92,
+                    194,
+                    533,
+                    1184,
+                    1733
+                ]
+            },
+            "7": {
+                "total_steps": 2475,
+                "boundaries": null
+            },
+            "8": {
+                "total_steps": 2398,
+                "boundaries": null
+            },
+            "9": {
+                "total_steps": 2066,
+                "boundaries": [
+                    107,
+                    193,
+                    507,
+                    1087,
+                    1611
+                ]
+            }
+        },
+        "real_hang_round1_0623_hdf5": {
+            "0": {
+                "total_steps": 547,
+                "boundaries": [
+                    295,
+                    465
+                ]
+            },
+            "1": {
+                "total_steps": 1689,
+                "boundaries": null
+            },
+            "10": {
+                "total_steps": 1590,
+                "boundaries": null
+            },
+            "100": {
+                "total_steps": 1111,
+                "boundaries": [
+                    405,
+                    620,
+                    773
+                ]
+            },
+            "101": {
+                "total_steps": 721,
+                "boundaries": [
+                    133,
+                    296,
+                    562
+                ]
+            },
+            "102": {
+                "total_steps": 1171,
+                "boundaries": [
+                    502,
+                    639,
+                    866
+                ]
+            },
+            "103": {
+                "total_steps": 699,
+                "boundaries": [
+                    203,
+                    330,
+                    569
+                ]
+            },
+            "104": {
+                "total_steps": 791,
+                "boundaries": null
+            },
+            "105": {
+                "total_steps": 1294,
+                "boundaries": [
+                    335,
+                    475,
+                    733,
+                    1222
+                ]
+            },
+            "106": {
+                "total_steps": 1615,
+                "boundaries": null
+            },
+            "107": {
+                "total_steps": 836,
+                "boundaries": null
+            },
+            "108": {
+                "total_steps": 1068,
+                "boundaries": [
+                    336,
+                    470,
+                    792
+                ]
+            },
+            "109": {
+                "total_steps": 935,
+                "boundaries": [
+                    434,
+                    568,
+                    820
+                ]
+            },
+            "11": {
+                "total_steps": 2072,
+                "boundaries": [
+                    285,
+                    406,
+                    714,
+                    1277,
+                    1753
+                ]
+            },
+            "110": {
+                "total_steps": 678,
+                "boundaries": null
+            },
+            "111": {
+                "total_steps": 1482,
+                "boundaries": null
+            },
+            "112": {
+                "total_steps": 1493,
+                "boundaries": [
+                    288,
+                    444,
+                    715,
+                    1414
+                ]
+            },
+            "113": {
+                "total_steps": 731,
+                "boundaries": [
+                    265,
+                    387,
+                    625
+                ]
+            },
+            "114": {
+                "total_steps": 811,
+                "boundaries": [
+                    304,
+                    439,
+                    665
+                ]
+            },
+            "115": {
+                "total_steps": 423,
+                "boundaries": null
+            },
+            "116": {
+                "total_steps": 2126,
+                "boundaries": [
+                    358,
+                    473,
+                    687,
+                    1262,
+                    1807
+                ]
+            },
+            "117": {
+                "total_steps": 782,
+                "boundaries": [
+                    282,
+                    391,
+                    659
+                ]
+            },
+            "118": {
+                "total_steps": 1653,
+                "boundaries": null
+            },
+            "119": {
+                "total_steps": 1475,
+                "boundaries": null
+            },
+            "12": {
+                "total_steps": 2341,
+                "boundaries": [
+                    345,
+                    492,
+                    799,
+                    1378,
+                    2068
+                ]
+            },
+            "120": {
+                "total_steps": 2376,
+                "boundaries": [
+                    299,
+                    410,
+                    681,
+                    1492,
+                    2006
+                ]
+            },
+            "121": {
+                "total_steps": 910,
+                "boundaries": [
+                    371,
+                    494,
+                    747
+                ]
+            },
+            "122": {
+                "total_steps": 915,
+                "boundaries": [
+                    320,
+                    441,
+                    670
+                ]
+            },
+            "123": {
+                "total_steps": 1039,
+                "boundaries": [
+                    135,
+                    268,
+                    475,
+                    967
+                ]
+            },
+            "124": {
+                "total_steps": 1377,
+                "boundaries": [
+                    322,
+                    542,
+                    919,
+                    1320
+                ]
+            },
+            "125": {
+                "total_steps": 943,
+                "boundaries": [
+                    306,
+                    424,
+                    705
+                ]
+            },
+            "126": {
+                "total_steps": 1074,
+                "boundaries": [
+                    323,
+                    450,
+                    681
+                ]
+            },
+            "13": {
+                "total_steps": 550,
+                "boundaries": [
+                    296,
+                    437
+                ]
+            },
+            "14": {
+                "total_steps": 646,
+                "boundaries": null
+            },
+            "15": {
+                "total_steps": 761,
+                "boundaries": [
+                    258,
+                    457,
+                    640
+                ]
+            },
+            "16": {
+                "total_steps": 1519,
+                "boundaries": null
+            },
+            "17": {
+                "total_steps": 2043,
+                "boundaries": [
+                    131,
+                    260,
+                    546,
+                    1062,
+                    1757
+                ]
+            },
+            "18": {
+                "total_steps": 904,
+                "boundaries": [
+                    336,
+                    500,
+                    745
+                ]
+            },
+            "19": {
+                "total_steps": 812,
+                "boundaries": [
+                    281,
+                    414,
+                    716
+                ]
+            },
+            "2": {
+                "total_steps": 781,
+                "boundaries": [
+                    126,
+                    249,
+                    602
+                ]
+            },
+            "20": {
+                "total_steps": 1216,
+                "boundaries": [
+                    143,
+                    265,
+                    562,
+                    1151
+                ]
+            },
+            "21": {
+                "total_steps": 1371,
+                "boundaries": [
+                    278,
+                    404,
+                    729,
+                    1298
+                ]
+            },
+            "22": {
+                "total_steps": 1015,
+                "boundaries": [
+                    336,
+                    479,
+                    690
+                ]
+            },
+            "23": {
+                "total_steps": 727,
+                "boundaries": [
+                    120,
+                    249,
+                    600
+                ]
+            },
+            "24": {
+                "total_steps": 1279,
+                "boundaries": [
+                    177,
+                    315,
+                    555,
+                    1202
+                ]
+            },
+            "25": {
+                "total_steps": 1456,
+                "boundaries": [
+                    302,
+                    455,
+                    652,
+                    1378
+                ]
+            },
+            "26": {
+                "total_steps": 826,
+                "boundaries": [
+                    306,
+                    408,
+                    668
+                ]
+            },
+            "27": {
+                "total_steps": 674,
+                "boundaries": null
+            },
+            "28": {
+                "total_steps": 2172,
+                "boundaries": null
+            },
+            "29": {
+                "total_steps": 813,
+                "boundaries": [
+                    123,
+                    244,
+                    525
+                ]
+            },
+            "3": {
+                "total_steps": 936,
+                "boundaries": [
+                    323,
+                    434,
+                    690
+                ]
+            },
+            "30": {
+                "total_steps": 826,
+                "boundaries": [
+                    318,
+                    454,
+                    694
+                ]
+            },
+            "31": {
+                "total_steps": 1948,
+                "boundaries": null
+            },
+            "32": {
+                "total_steps": 832,
+                "boundaries": [
+                    314,
+                    452,
+                    712
+                ]
+            },
+            "33": {
+                "total_steps": 909,
+                "boundaries": [
+                    295,
+                    420,
+                    764
+                ]
+            },
+            "34": {
+                "total_steps": 1363,
+                "boundaries": [
+                    263,
+                    392,
+                    642
+                ]
+            },
+            "35": {
+                "total_steps": 661,
+                "boundaries": [
+                    157,
+                    292,
+                    505
+                ]
+            },
+            "36": {
+                "total_steps": 1060,
+                "boundaries": [
+                    375,
+                    578,
+                    754
+                ]
+            },
+            "37": {
+                "total_steps": 933,
+                "boundaries": [
+                    293,
+                    386,
+                    702
+                ]
+            },
+            "38": {
+                "total_steps": 1120,
+                "boundaries": null
+            },
+            "39": {
+                "total_steps": 924,
+                "boundaries": [
+                    381,
+                    487,
+                    776
+                ]
+            },
+            "4": {
+                "total_steps": 864,
+                "boundaries": [
+                    322,
+                    643,
+                    731
+                ]
+            },
+            "40": {
+                "total_steps": 2252,
+                "boundaries": [
+                    267,
+                    392,
+                    675,
+                    1305,
+                    1935
+                ]
+            },
+            "41": {
+                "total_steps": 1537,
+                "boundaries": [
+                    430,
+                    559,
+                    929,
+                    1440
+                ]
+            },
+            "42": {
+                "total_steps": 1621,
+                "boundaries": [
+                    129,
+                    354,
+                    566,
+                    1513
+                ]
+            },
+            "43": {
+                "total_steps": 897,
+                "boundaries": [
+                    327,
+                    556,
+                    761
+                ]
+            },
+            "44": {
+                "total_steps": 1188,
+                "boundaries": [
+                    158,
+                    290,
+                    611,
+                    1136
+                ]
+            },
+            "45": {
+                "total_steps": 569,
+                "boundaries": null
+            },
+            "46": {
+                "total_steps": 2056,
+                "boundaries": null
+            },
+            "47": {
+                "total_steps": 1392,
+                "boundaries": null
+            },
+            "48": {
+                "total_steps": 619,
+                "boundaries": null
+            },
+            "49": {
+                "total_steps": 731,
+                "boundaries": [
+                    352,
+                    494
+                ]
+            },
+            "5": {
+                "total_steps": 1189,
+                "boundaries": [
+                    317,
+                    456,
+                    969
+                ]
+            },
+            "50": {
+                "total_steps": 706,
+                "boundaries": [
+                    326,
+                    465,
+                    697
+                ]
+            },
+            "51": {
+                "total_steps": 670,
+                "boundaries": [
+                    125,
+                    248,
+                    551
+                ]
+            },
+            "52": {
+                "total_steps": 1092,
+                "boundaries": [
+                    377,
+                    527,
+                    793
+                ]
+            },
+            "53": {
+                "total_steps": 929,
+                "boundaries": [
+                    168,
+                    270,
+                    644
+                ]
+            },
+            "54": {
+                "total_steps": 924,
+                "boundaries": [
+                    112,
+                    231,
+                    542
+                ]
+            },
+            "55": {
+                "total_steps": 1027,
+                "boundaries": [
+                    380,
+                    498,
+                    729
+                ]
+            },
+            "56": {
+                "total_steps": 1207,
+                "boundaries": [
+                    324,
+                    483,
+                    777
+                ]
+            },
+            "57": {
+                "total_steps": 1386,
+                "boundaries": [
+                    282,
+                    425,
+                    699,
+                    1288
+                ]
+            },
+            "58": {
+                "total_steps": 1667,
+                "boundaries": [
+                    125,
+                    254,
+                    460,
+                    941,
+                    1326
+                ]
+            },
+            "59": {
+                "total_steps": 773,
+                "boundaries": [
+                    133,
+                    278,
+                    543
+                ]
+            },
+            "6": {
+                "total_steps": 2216,
+                "boundaries": [
+                    126,
+                    291,
+                    527,
+                    1067,
+                    1935
+                ]
+            },
+            "60": {
+                "total_steps": 2394,
+                "boundaries": [
+                    568,
+                    652,
+                    947,
+                    1358,
+                    2049
+                ]
+            },
+            "61": {
+                "total_steps": 2334,
+                "boundaries": [
+                    348,
+                    476,
+                    806,
+                    1455,
+                    1985
+                ]
+            },
+            "62": {
+                "total_steps": 1642,
+                "boundaries": [
+                    311,
+                    446,
+                    735
+                ]
+            },
+            "63": {
+                "total_steps": 676,
+                "boundaries": [
+                    221,
+                    345,
+                    570
+                ]
+            },
+            "64": {
+                "total_steps": 1427,
+                "boundaries": [
+                    354,
+                    472,
+                    754,
+                    1362
+                ]
+            },
+            "65": {
+                "total_steps": 858,
+                "boundaries": [
+                    272,
+                    401,
+                    675
+                ]
+            },
+            "66": {
+                "total_steps": 1036,
+                "boundaries": [
+                    443,
+                    583,
+                    794
+                ]
+            },
+            "67": {
+                "total_steps": 1012,
+                "boundaries": [
+                    299,
+                    421,
+                    746
+                ]
+            },
+            "68": {
+                "total_steps": 756,
+                "boundaries": [
+                    147,
+                    326,
+                    553
+                ]
+            },
+            "69": {
+                "total_steps": 733,
+                "boundaries": [
+                    264,
+                    390,
+                    630
+                ]
+            },
+            "7": {
+                "total_steps": 1324,
+                "boundaries": null
+            },
+            "70": {
+                "total_steps": 641,
+                "boundaries": [
+                    165,
+                    293,
+                    505
+                ]
+            },
+            "71": {
+                "total_steps": 790,
+                "boundaries": [
+                    162,
+                    267,
+                    500
+                ]
+            },
+            "72": {
+                "total_steps": 1027,
+                "boundaries": null
+            },
+            "73": {
+                "total_steps": 1307,
+                "boundaries": null
+            },
+            "74": {
+                "total_steps": 809,
+                "boundaries": [
+                    272,
+                    399,
+                    628
+                ]
+            },
+            "75": {
+                "total_steps": 1763,
+                "boundaries": [
+                    435,
+                    690,
+                    903
+                ]
+            },
+            "76": {
+                "total_steps": 832,
+                "boundaries": [
+                    307,
+                    430,
+                    738
+                ]
+            },
+            "77": {
+                "total_steps": 2270,
+                "boundaries": null
+            },
+            "78": {
+                "total_steps": 569,
+                "boundaries": [
+                    309,
+                    490
+                ]
+            },
+            "79": {
+                "total_steps": 968,
+                "boundaries": [
+                    328,
+                    492,
+                    707
+                ]
+            },
+            "8": {
+                "total_steps": 860,
+                "boundaries": [
+                    302,
+                    431,
+                    720
+                ]
+            },
+            "80": {
+                "total_steps": 1081,
+                "boundaries": [
+                    307,
+                    388,
+                    673
+                ]
+            },
+            "81": {
+                "total_steps": 1500,
+                "boundaries": null
+            },
+            "82": {
+                "total_steps": 557,
+                "boundaries": [
+                    328,
+                    477
+                ]
+            },
+            "83": {
+                "total_steps": 1606,
+                "boundaries": [
+                    156,
+                    330,
+                    570,
+                    1557
+                ]
+            },
+            "84": {
+                "total_steps": 862,
+                "boundaries": [
+                    275,
+                    391,
+                    741
+                ]
+            },
+            "85": {
+                "total_steps": 1467,
+                "boundaries": [
+                    339,
+                    510,
+                    853,
+                    1413
+                ]
+            },
+            "86": {
+                "total_steps": 1305,
+                "boundaries": [
+                    367,
+                    498,
+                    770,
+                    1228
+                ]
+            },
+            "87": {
+                "total_steps": 1406,
+                "boundaries": null
+            },
+            "88": {
+                "total_steps": 1809,
+                "boundaries": null
+            },
+            "89": {
+                "total_steps": 853,
+                "boundaries": [
+                    359,
+                    504,
+                    708
+                ]
+            },
+            "9": {
+                "total_steps": 781,
+                "boundaries": [
+                    293,
+                    403,
+                    679
+                ]
+            },
+            "90": {
+                "total_steps": 681,
+                "boundaries": [
+                    438,
+                    557
+                ]
+            },
+            "91": {
+                "total_steps": 2363,
+                "boundaries": [
+                    279,
+                    393,
+                    612,
+                    1262,
+                    2023
+                ]
+            },
+            "92": {
+                "total_steps": 893,
+                "boundaries": [
+                    331,
+                    494,
+                    749
+                ]
+            },
+            "93": {
+                "total_steps": 939,
+                "boundaries": [
+                    309,
+                    444,
+                    765
+                ]
+            },
+            "94": {
+                "total_steps": 800,
+                "boundaries": [
+                    153,
+                    287,
+                    562
+                ]
+            },
+            "95": {
+                "total_steps": 695,
+                "boundaries": [
+                    140,
+                    280,
+                    551
+                ]
+            },
+            "96": {
+                "total_steps": 495,
+                "boundaries": null
+            },
+            "97": {
+                "total_steps": 2133,
+                "boundaries": [
+                    185,
+                    327,
+                    643,
+                    1242,
+                    1808
+                ]
+            },
+            "98": {
+                "total_steps": 971,
+                "boundaries": [
+                    270,
+                    390,
+                    645
+                ]
+            },
+            "99": {
+                "total_steps": 2156,
+                "boundaries": [
+                    127,
+                    300,
+                    569,
+                    1179,
+                    1838
+                ]
+            }
+        },
+        "real_hang_round2_0624_hdf5": {
+            "0": {
+                "total_steps": 1668,
+                "boundaries": [
+                    403,
+                    587,
+                    796,
+                    1504
+                ]
+            },
+            "1": {
+                "total_steps": 1248,
+                "boundaries": [
+                    275,
+                    407,
+                    703,
+                    1203
+                ]
+            },
+            "10": {
+                "total_steps": 2771,
+                "boundaries": [
+                    350,
+                    466,
+                    761,
+                    1427,
+                    2534
+                ]
+            },
+            "100": {
+                "total_steps": 596,
+                "boundaries": [
+                    130,
+                    244,
+                    497
+                ]
+            },
+            "101": {
+                "total_steps": 1629,
+                "boundaries": [
+                    554,
+                    670,
+                    938,
+                    1568
+                ]
+            },
+            "102": {
+                "total_steps": 646,
+                "boundaries": [
+                    110,
+                    247,
+                    542
+                ]
+            },
+            "103": {
+                "total_steps": 987,
+                "boundaries": [
+                    369,
+                    507,
+                    722
+                ]
+            },
+            "104": {
+                "total_steps": 937,
+                "boundaries": null
+            },
+            "105": {
+                "total_steps": 1549,
+                "boundaries": [
+                    369,
+                    514,
+                    687,
+                    1466
+                ]
+            },
+            "106": {
+                "total_steps": 916,
+                "boundaries": [
+                    428,
+                    549,
+                    867
+                ]
+            },
+            "11": {
+                "total_steps": 1365,
+                "boundaries": [
+                    799,
+                    945,
+                    1239
+                ]
+            },
+            "12": {
+                "total_steps": 1344,
+                "boundaries": null
+            },
+            "13": {
+                "total_steps": 2265,
+                "boundaries": null
+            },
+            "14": {
+                "total_steps": 1034,
+                "boundaries": [
+                    336,
+                    490,
+                    701
+                ]
+            },
+            "15": {
+                "total_steps": 446,
+                "boundaries": [
+                    309,
+                    399
+                ]
+            },
+            "16": {
+                "total_steps": 1698,
+                "boundaries": [
+                    277,
+                    399,
+                    611,
+                    1249,
+                    1586
+                ]
+            },
+            "17": {
+                "total_steps": 1036,
+                "boundaries": null
+            },
+            "18": {
+                "total_steps": 1859,
+                "boundaries": [
+                    542,
+                    656,
+                    949,
+                    1778
+                ]
+            },
+            "19": {
+                "total_steps": 1447,
+                "boundaries": [
+                    465,
+                    592,
+                    806,
+                    1379
+                ]
+            },
+            "2": {
+                "total_steps": 1254,
+                "boundaries": [
+                    180,
+                    320,
+                    671
+                ]
+            },
+            "20": {
+                "total_steps": 2487,
+                "boundaries": null
+            },
+            "21": {
+                "total_steps": 1402,
+                "boundaries": [
+                    399,
+                    521,
+                    743,
+                    1325
+                ]
+            },
+            "22": {
+                "total_steps": 1379,
+                "boundaries": null
+            },
+            "23": {
+                "total_steps": 718,
+                "boundaries": [
+                    112,
+                    340,
+                    609
+                ]
+            },
+            "24": {
+                "total_steps": 1989,
+                "boundaries": null
+            },
+            "25": {
+                "total_steps": 1779,
+                "boundaries": [
+                    672,
+                    819,
+                    1142,
+                    1702
+                ]
+            },
+            "26": {
+                "total_steps": 1530,
+                "boundaries": [
+                    471,
+                    561,
+                    857,
+                    1464
+                ]
+            },
+            "27": {
+                "total_steps": 760,
+                "boundaries": [
+                    247,
+                    324,
+                    657
+                ]
+            },
+            "28": {
+                "total_steps": 950,
+                "boundaries": [
+                    425,
+                    542,
+                    808
+                ]
+            },
+            "29": {
+                "total_steps": 1291,
+                "boundaries": [
+                    227,
+                    382,
+                    608,
+                    1237
+                ]
+            },
+            "3": {
+                "total_steps": 1246,
+                "boundaries": [
+                    153,
+                    259,
+                    552,
+                    1202
+                ]
+            },
+            "30": {
+                "total_steps": 1461,
+                "boundaries": [
+                    503,
+                    641,
+                    913,
+                    1392
+                ]
+            },
+            "31": {
+                "total_steps": 807,
+                "boundaries": [
+                    317,
+                    430,
+                    670
+                ]
+            },
+            "32": {
+                "total_steps": 1619,
+                "boundaries": [
+                    288,
+                    407,
+                    702,
+                    1539
+                ]
+            },
+            "33": {
+                "total_steps": 1468,
+                "boundaries": [
+                    180,
+                    355,
+                    582,
+                    1400
+                ]
+            },
+            "34": {
+                "total_steps": 1787,
+                "boundaries": [
+                    606,
+                    754,
+                    947,
+                    1697
+                ]
+            },
+            "35": {
+                "total_steps": 1423,
+                "boundaries": [
+                    461,
+                    598,
+                    837
+                ]
+            },
+            "36": {
+                "total_steps": 1588,
+                "boundaries": null
+            },
+            "37": {
+                "total_steps": 792,
+                "boundaries": [
+                    139,
+                    284,
+                    652
+                ]
+            },
+            "38": {
+                "total_steps": 1021,
+                "boundaries": [
+                    292,
+                    449,
+                    790
+                ]
+            },
+            "39": {
+                "total_steps": 1253,
+                "boundaries": [
+                    168,
+                    308,
+                    540,
+                    1208
+                ]
+            },
+            "4": {
+                "total_steps": 1561,
+                "boundaries": [
+                    577,
+                    699,
+                    927,
+                    1434
+                ]
+            },
+            "40": {
+                "total_steps": 1521,
+                "boundaries": [
+                    158,
+                    281,
+                    507,
+                    1461
+                ]
+            },
+            "41": {
+                "total_steps": 770,
+                "boundaries": [
+                    137,
+                    387,
+                    633
+                ]
+            },
+            "42": {
+                "total_steps": 1564,
+                "boundaries": [
+                    459,
+                    580,
+                    797,
+                    1476
+                ]
+            },
+            "43": {
+                "total_steps": 1273,
+                "boundaries": [
+                    144,
+                    276,
+                    593
+                ]
+            },
+            "44": {
+                "total_steps": 1556,
+                "boundaries": [
+                    255,
+                    352,
+                    585,
+                    1477
+                ]
+            },
+            "45": {
+                "total_steps": 1359,
+                "boundaries": [
+                    312,
+                    438,
+                    733
+                ]
+            },
+            "46": {
+                "total_steps": 1479,
+                "boundaries": [
+                    219,
+                    360,
+                    650,
+                    1405
+                ]
+            },
+            "47": {
+                "total_steps": 734,
+                "boundaries": [
+                    558,
+                    690
+                ]
+            },
+            "48": {
+                "total_steps": 2454,
+                "boundaries": [
+                    423,
+                    534,
+                    748,
+                    1308,
+                    2085
+                ]
+            },
+            "49": {
+                "total_steps": 1842,
+                "boundaries": null
+            },
+            "5": {
+                "total_steps": 1933,
+                "boundaries": null
+            },
+            "50": {
+                "total_steps": 837,
+                "boundaries": [
+                    109,
+                    225,
+                    495
+                ]
+            },
+            "51": {
+                "total_steps": 1389,
+                "boundaries": null
+            },
+            "52": {
+                "total_steps": 1320,
+                "boundaries": [
+                    287,
+                    467,
+                    722,
+                    1257
+                ]
+            },
+            "53": {
+                "total_steps": 1456,
+                "boundaries": null
+            },
+            "54": {
+                "total_steps": 1327,
+                "boundaries": [
+                    600,
+                    728,
+                    1020
+                ]
+            },
+            "55": {
+                "total_steps": 1394,
+                "boundaries": null
+            },
+            "56": {
+                "total_steps": 2360,
+                "boundaries": [
+                    274,
+                    426,
+                    648,
+                    1383,
+                    2020
+                ]
+            },
+            "57": {
+                "total_steps": 1301,
+                "boundaries": null
+            },
+            "58": {
+                "total_steps": 2446,
+                "boundaries": [
+                    270,
+                    371,
+                    694,
+                    1380,
+                    2105
+                ]
+            },
+            "59": {
+                "total_steps": 1847,
+                "boundaries": null
+            },
+            "6": {
+                "total_steps": 1364,
+                "boundaries": [
+                    409,
+                    533,
+                    861
+                ]
+            },
+            "60": {
+                "total_steps": 1370,
+                "boundaries": null
+            },
+            "61": {
+                "total_steps": 2116,
+                "boundaries": [
+                    203,
+                    390,
+                    586,
+                    1185,
+                    1759
+                ]
+            },
+            "62": {
+                "total_steps": 1697,
+                "boundaries": [
+                    305,
+                    514,
+                    694,
+                    770,
+                    1611
+                ]
+            },
+            "63": {
+                "total_steps": 1681,
+                "boundaries": [
+                    351,
+                    468,
+                    788,
+                    1592
+                ]
+            },
+            "64": {
+                "total_steps": 941,
+                "boundaries": [
+                    170,
+                    292,
+                    559
+                ]
+            },
+            "65": {
+                "total_steps": 1636,
+                "boundaries": null
+            },
+            "66": {
+                "total_steps": 2864,
+                "boundaries": [
+                    277,
+                    390,
+                    651,
+                    1223,
+                    2446
+                ]
+            },
+            "67": {
+                "total_steps": 1420,
+                "boundaries": null
+            },
+            "68": {
+                "total_steps": 1676,
+                "boundaries": null
+            },
+            "69": {
+                "total_steps": 1887,
+                "boundaries": [
+                    123,
+                    246,
+                    530,
+                    1093,
+                    1563
+                ]
+            },
+            "7": {
+                "total_steps": 956,
+                "boundaries": [
+                    434,
+                    546,
+                    820
+                ]
+            },
+            "70": {
+                "total_steps": 1411,
+                "boundaries": [
+                    244,
+                    398,
+                    634,
+                    1341
+                ]
+            },
+            "71": {
+                "total_steps": 753,
+                "boundaries": [
+                    103,
+                    183,
+                    479
+                ]
+            },
+            "72": {
+                "total_steps": 1421,
+                "boundaries": null
+            },
+            "73": {
+                "total_steps": 1281,
+                "boundaries": [
+                    545,
+                    663,
+                    912,
+                    1183
+                ]
+            },
+            "74": {
+                "total_steps": 2503,
+                "boundaries": [
+                    643,
+                    745,
+                    974,
+                    1529,
+                    2158
+                ]
+            },
+            "75": {
+                "total_steps": 931,
+                "boundaries": [
+                    345,
+                    478,
+                    767
+                ]
+            },
+            "76": {
+                "total_steps": 1389,
+                "boundaries": null
+            },
+            "77": {
+                "total_steps": 1986,
+                "boundaries": [
+                    402,
+                    519,
+                    824,
+                    1502,
+                    1807
+                ]
+            },
+            "78": {
+                "total_steps": 714,
+                "boundaries": [
+                    141,
+                    270,
+                    574
+                ]
+            },
+            "79": {
+                "total_steps": 1444,
+                "boundaries": [
+                    227,
+                    356,
+                    600,
+                    1382
+                ]
+            },
+            "8": {
+                "total_steps": 1138,
+                "boundaries": [
+                    335,
+                    480,
+                    830
+                ]
+            },
+            "80": {
+                "total_steps": 1118,
+                "boundaries": [
+                    146,
+                    344,
+                    561,
+                    1057
+                ]
+            },
+            "81": {
+                "total_steps": 661,
+                "boundaries": [
+                    497,
+                    631
+                ]
+            },
+            "82": {
+                "total_steps": 1355,
+                "boundaries": [
+                    287,
+                    396,
+                    720,
+                    1303
+                ]
+            },
+            "83": {
+                "total_steps": 2051,
+                "boundaries": null
+            },
+            "84": {
+                "total_steps": 1807,
+                "boundaries": [
+                    339,
+                    486,
+                    771,
+                    1732
+                ]
+            },
+            "85": {
+                "total_steps": 1020,
+                "boundaries": [
+                    313,
+                    401,
+                    747
+                ]
+            },
+            "86": {
+                "total_steps": 1064,
+                "boundaries": [
+                    390,
+                    570,
+                    731
+                ]
+            },
+            "87": {
+                "total_steps": 767,
+                "boundaries": [
+                    134,
+                    262,
+                    647
+                ]
+            },
+            "88": {
+                "total_steps": 988,
+                "boundaries": [
+                    459,
+                    538,
+                    808
+                ]
+            },
+            "89": {
+                "total_steps": 2143,
+                "boundaries": [
+                    204,
+                    356,
+                    628,
+                    1213,
+                    1750
+                ]
+            },
+            "9": {
+                "total_steps": 1441,
+                "boundaries": [
+                    269,
+                    380,
+                    662,
+                    1382
+                ]
+            },
+            "90": {
+                "total_steps": 993,
+                "boundaries": [
+                    278,
+                    423,
+                    693
+                ]
+            },
+            "91": {
+                "total_steps": 1385,
+                "boundaries": [
+                    138,
+                    269,
+                    478,
+                    1309
+                ]
+            },
+            "92": {
+                "total_steps": 1112,
+                "boundaries": [
+                    163,
+                    315,
+                    527,
+                    1052
+                ]
+            },
+            "93": {
+                "total_steps": 1331,
+                "boundaries": [
+                    159,
+                    358,
+                    609,
+                    1272
+                ]
+            },
+            "94": {
+                "total_steps": 1048,
+                "boundaries": [
+                    162,
+                    342,
+                    671
+                ]
+            },
+            "95": {
+                "total_steps": 1662,
+                "boundaries": null
+            },
+            "96": {
+                "total_steps": 2350,
+                "boundaries": [
+                    118,
+                    244,
+                    527,
+                    1212,
+                    1962
+                ]
+            },
+            "97": {
+                "total_steps": 2131,
+                "boundaries": [
+                    257,
+                    395,
+                    596,
+                    1154,
+                    1835
+                ]
+            },
+            "98": {
+                "total_steps": 1240,
+                "boundaries": [
+                    119,
+                    261,
+                    492,
+                    1188
+                ]
+            },
+            "99": {
+                "total_steps": 1404,
+                "boundaries": null
+            }
+        },
+        "real_hang_round3_0703_hdf5": {
+            "0": {
+                "total_steps": 1331,
+                "boundaries": null
+            },
+            "1": {
+                "total_steps": 1171,
+                "boundaries": [
+                    175,
+                    321,
+                    605,
+                    1049
+                ]
+            },
+            "10": {
+                "total_steps": 2041,
+                "boundaries": [
+                    318,
+                    513,
+                    735,
+                    1326,
+                    1785
+                ]
+            },
+            "11": {
+                "total_steps": 1312,
+                "boundaries": [
+                    168,
+                    294,
+                    558,
+                    1233
+                ]
+            },
+            "12": {
+                "total_steps": 1228,
+                "boundaries": [
+                    338,
+                    490,
+                    723
+                ]
+            },
+            "13": {
+                "total_steps": 2172,
+                "boundaries": null
+            },
+            "14": {
+                "total_steps": 1709,
+                "boundaries": null
+            },
+            "15": {
+                "total_steps": 1878,
+                "boundaries": [
+                    168,
+                    300,
+                    522,
+                    1356,
+                    1731
+                ]
+            },
+            "16": {
+                "total_steps": 1268,
+                "boundaries": [
+                    339,
+                    455,
+                    660,
+                    1202
+                ]
+            },
+            "17": {
+                "total_steps": 1861,
+                "boundaries": null
+            },
+            "18": {
+                "total_steps": 1103,
+                "boundaries": [
+                    168,
+                    282,
+                    632
+                ]
+            },
+            "19": {
+                "total_steps": 1692,
+                "boundaries": [
+                    128,
+                    299,
+                    514,
+                    1098,
+                    1474
+                ]
+            },
+            "2": {
+                "total_steps": 1304,
+                "boundaries": [
+                    217,
+                    369,
+                    675,
+                    1245
+                ]
+            },
+            "20": {
+                "total_steps": 2488,
+                "boundaries": [
+                    146,
+                    283,
+                    644,
+                    1285,
+                    2095
+                ]
+            },
+            "21": {
+                "total_steps": 2176,
+                "boundaries": [
+                    143,
+                    267,
+                    555,
+                    1323,
+                    1845
+                ]
+            },
+            "22": {
+                "total_steps": 1951,
+                "boundaries": null
+            },
+            "23": {
+                "total_steps": 1349,
+                "boundaries": [
+                    398,
+                    548,
+                    860
+                ]
+            },
+            "24": {
+                "total_steps": 1388,
+                "boundaries": [
+                    428,
+                    567,
+                    915
+                ]
+            },
+            "25": {
+                "total_steps": 890,
+                "boundaries": [
+                    229,
+                    388,
+                    710
+                ]
+            },
+            "26": {
+                "total_steps": 1796,
+                "boundaries": null
+            },
+            "27": {
+                "total_steps": 1255,
+                "boundaries": null
+            },
+            "28": {
+                "total_steps": 1967,
+                "boundaries": [
+                    156,
+                    315,
+                    658,
+                    1157,
+                    1635
+                ]
+            },
+            "29": {
+                "total_steps": 1752,
+                "boundaries": null
+            },
+            "3": {
+                "total_steps": 958,
+                "boundaries": [
+                    292,
+                    442,
+                    831
+                ]
+            },
+            "30": {
+                "total_steps": 1346,
+                "boundaries": [
+                    202,
+                    320,
+                    642,
+                    1277
+                ]
+            },
+            "31": {
+                "total_steps": 1715,
+                "boundaries": null
+            },
+            "32": {
+                "total_steps": 1337,
+                "boundaries": [
+                    255,
+                    386,
+                    600,
+                    1259
+                ]
+            },
+            "33": {
+                "total_steps": 774,
+                "boundaries": [
+                    198,
+                    330,
+                    615
+                ]
+            },
+            "34": {
+                "total_steps": 1531,
+                "boundaries": [
+                    150,
+                    299,
+                    604,
+                    1003,
+                    1388
+                ]
+            },
+            "35": {
+                "total_steps": 1756,
+                "boundaries": [
+                    307,
+                    448,
+                    704,
+                    1308,
+                    1588
+                ]
+            },
+            "36": {
+                "total_steps": 739,
+                "boundaries": [
+                    122,
+                    236,
+                    609
+                ]
+            },
+            "37": {
+                "total_steps": 1094,
+                "boundaries": [
+                    153,
+                    277,
+                    582,
+                    1024
+                ]
+            },
+            "38": {
+                "total_steps": 866,
+                "boundaries": [
+                    174,
+                    309,
+                    754
+                ]
+            },
+            "39": {
+                "total_steps": 2204,
+                "boundaries": [
+                    153,
+                    273,
+                    723,
+                    1200,
+                    1881
+                ]
+            },
+            "4": {
+                "total_steps": 2239,
+                "boundaries": null
+            },
+            "40": {
+                "total_steps": 1238,
+                "boundaries": [
+                    147,
+                    282,
+                    555
+                ]
+            },
+            "41": {
+                "total_steps": 1748,
+                "boundaries": [
+                    183,
+                    320,
+                    573,
+                    1087,
+                    1482
+                ]
+            },
+            "42": {
+                "total_steps": 1915,
+                "boundaries": [
+                    634,
+                    789,
+                    1101,
+                    1836
+                ]
+            },
+            "43": {
+                "total_steps": 1387,
+                "boundaries": [
+                    320,
+                    440,
+                    660,
+                    1249
+                ]
+            },
+            "44": {
+                "total_steps": 1336,
+                "boundaries": [
+                    259,
+                    390,
+                    636,
+                    1234
+                ]
+            },
+            "45": {
+                "total_steps": 1766,
+                "boundaries": null
+            },
+            "46": {
+                "total_steps": 1704,
+                "boundaries": [
+                    547,
+                    665,
+                    966,
+                    1532
+                ]
+            },
+            "47": {
+                "total_steps": 1120,
+                "boundaries": [
+                    130,
+                    235,
+                    465,
+                    1002
+                ]
+            },
+            "48": {
+                "total_steps": 1823,
+                "boundaries": null
+            },
+            "49": {
+                "total_steps": 736,
+                "boundaries": [
+                    122,
+                    216,
+                    576
+                ]
+            },
+            "5": {
+                "total_steps": 1565,
+                "boundaries": null
+            },
+            "50": {
+                "total_steps": 1533,
+                "boundaries": [
+                    154,
+                    269,
+                    577,
+                    1132,
+                    1383
+                ]
+            },
+            "51": {
+                "total_steps": 2380,
+                "boundaries": [
+                    480,
+                    623,
+                    892,
+                    1459,
+                    1931
+                ]
+            },
+            "52": {
+                "total_steps": 2033,
+                "boundaries": null
+            },
+            "53": {
+                "total_steps": 1527,
+                "boundaries": [
+                    250,
+                    375,
+                    698,
+                    1155,
+                    1399
+                ]
+            },
+            "54": {
+                "total_steps": 1929,
+                "boundaries": null
+            },
+            "55": {
+                "total_steps": 1609,
+                "boundaries": [
+                    144,
+                    263,
+                    644,
+                    1350
+                ]
+            },
+            "56": {
+                "total_steps": 1163,
+                "boundaries": [
+                    131,
+                    299,
+                    540
+                ]
+            },
+            "57": {
+                "total_steps": 787,
+                "boundaries": [
+                    159,
+                    264,
+                    644
+                ]
+            },
+            "58": {
+                "total_steps": 816,
+                "boundaries": [
+                    220,
+                    360,
+                    707
+                ]
+            },
+            "59": {
+                "total_steps": 881,
+                "boundaries": [
+                    412,
+                    519,
+                    747
+                ]
+            },
+            "6": {
+                "total_steps": 1994,
+                "boundaries": [
+                    150,
+                    279,
+                    548,
+                    985,
+                    1890
+                ]
+            },
+            "60": {
+                "total_steps": 1666,
+                "boundaries": [
+                    154,
+                    292,
+                    587,
+                    1230,
+                    1507
+                ]
+            },
+            "61": {
+                "total_steps": 1906,
+                "boundaries": [
+                    120,
+                    279,
+                    521,
+                    1098,
+                    1649
+                ]
+            },
+            "62": {
+                "total_steps": 1515,
+                "boundaries": [
+                    368,
+                    485,
+                    793,
+                    1430
+                ]
+            },
+            "63": {
+                "total_steps": 1143,
+                "boundaries": [
+                    135,
+                    299,
+                    543,
+                    1069
+                ]
+            },
+            "64": {
+                "total_steps": 1342,
+                "boundaries": [
+                    170,
+                    296,
+                    632,
+                    1245
+                ]
+            },
+            "65": {
+                "total_steps": 1235,
+                "boundaries": [
+                    145,
+                    284,
+                    576,
+                    1148
+                ]
+            },
+            "66": {
+                "total_steps": 1054,
+                "boundaries": [
+                    137,
+                    284,
+                    508
+                ]
+            },
+            "67": {
+                "total_steps": 1426,
+                "boundaries": [
+                    150,
+                    329,
+                    768
+                ]
+            },
+            "68": {
+                "total_steps": 1860,
+                "boundaries": [
+                    321,
+                    477,
+                    807,
+                    1240,
+                    1652
+                ]
+            },
+            "69": {
+                "total_steps": 1068,
+                "boundaries": [
+                    150,
+                    317,
+                    587
+                ]
+            },
+            "7": {
+                "total_steps": 1771,
+                "boundaries": null
+            },
+            "70": {
+                "total_steps": 1706,
+                "boundaries": [
+                    169,
+                    297,
+                    574,
+                    1050,
+                    1509
+                ]
+            },
+            "71": {
+                "total_steps": 2029,
+                "boundaries": null
+            },
+            "72": {
+                "total_steps": 1385,
+                "boundaries": [
+                    203,
+                    387,
+                    760,
+                    1292
+                ]
+            },
+            "73": {
+                "total_steps": 1555,
+                "boundaries": [
+                    236,
+                    380,
+                    724,
+                    1412
+                ]
+            },
+            "74": {
+                "total_steps": 1210,
+                "boundaries": [
+                    173,
+                    315,
+                    600,
+                    1074
+                ]
+            },
+            "75": {
+                "total_steps": 816,
+                "boundaries": [
+                    154,
+                    285,
+                    694
+                ]
+            },
+            "76": {
+                "total_steps": 742,
+                "boundaries": [
+                    142,
+                    240,
+                    440
+                ]
+            },
+            "77": {
+                "total_steps": 2039,
+                "boundaries": [
+                    288,
+                    390,
+                    618,
+                    1080,
+                    1652
+                ]
+            },
+            "78": {
+                "total_steps": 1633,
+                "boundaries": [
+                    137,
+                    344,
+                    622,
+                    1132,
+                    1461
+                ]
+            },
+            "79": {
+                "total_steps": 1583,
+                "boundaries": [
+                    207,
+                    345,
+                    585,
+                    1108,
+                    1422
+                ]
+            },
+            "8": {
+                "total_steps": 1531,
+                "boundaries": [
+                    298,
+                    456,
+                    780,
+                    1467
+                ]
+            },
+            "80": {
+                "total_steps": 1364,
+                "boundaries": [
+                    315,
+                    489,
+                    729,
+                    1299
+                ]
+            },
+            "81": {
+                "total_steps": 1929,
+                "boundaries": [
+                    173,
+                    298,
+                    560,
+                    1007,
+                    1455
+                ]
+            },
+            "82": {
+                "total_steps": 1389,
+                "boundaries": [
+                    139,
+                    299,
+                    516,
+                    954,
+                    1239
+                ]
+            },
+            "83": {
+                "total_steps": 845,
+                "boundaries": [
+                    164,
+                    309,
+                    711
+                ]
+            },
+            "84": {
+                "total_steps": 2009,
+                "boundaries": [
+                    144,
+                    340,
+                    583,
+                    1135,
+                    1822
+                ]
+            },
+            "85": {
+                "total_steps": 1171,
+                "boundaries": [
+                    150,
+                    306,
+                    529
+                ]
+            },
+            "86": {
+                "total_steps": 904,
+                "boundaries": [
+                    315,
+                    465,
+                    768
+                ]
+            },
+            "87": {
+                "total_steps": 2074,
+                "boundaries": [
+                    139,
+                    327,
+                    578,
+                    1092,
+                    1797
+                ]
+            },
+            "88": {
+                "total_steps": 1637,
+                "boundaries": [
+                    145,
+                    289,
+                    795,
+                    1565
+                ]
+            },
+            "89": {
+                "total_steps": 2055,
+                "boundaries": null
+            },
+            "9": {
+                "total_steps": 1620,
+                "boundaries": null
+            },
+            "90": {
+                "total_steps": 1164,
+                "boundaries": [
+                    183,
+                    328,
+                    579,
+                    1100
+                ]
+            },
+            "91": {
+                "total_steps": 1608,
+                "boundaries": null
+            },
+            "92": {
+                "total_steps": 1899,
+                "boundaries": [
+                    158,
+                    330,
+                    533,
+                    1132,
+                    1622
+                ]
+            },
+            "93": {
+                "total_steps": 1633,
+                "boundaries": null
+            },
+            "94": {
+                "total_steps": 1276,
+                "boundaries": [
+                    125,
+                    291,
+                    562,
+                    1209
+                ]
+            },
+            "95": {
+                "total_steps": 1859,
+                "boundaries": [
+                    154,
+                    291,
+                    630,
+                    1158,
+                    1687
+                ]
+            },
+            "96": {
+                "total_steps": 1876,
+                "boundaries": [
+                    157,
+                    310,
+                    648,
+                    1102,
+                    1594
+                ]
+            },
+            "97": {
+                "total_steps": 1801,
+                "boundaries": [
+                    144,
+                    264,
+                    660,
+                    1239,
+                    1672
+                ]
+            },
+            "98": {
+                "total_steps": 1432,
+                "boundaries": [
+                    140,
+                    313,
+                    545,
+                    1371
+                ]
+            }
+        },
+        "real_hang_round4_0705_hdf5": {
+            "0": {
+                "total_steps": 1975,
+                "boundaries": [
+                    125,
+                    233,
+                    480,
+                    1133,
+                    1622
+                ]
+            },
+            "1": {
+                "total_steps": 2124,
+                "boundaries": [
+                    128,
+                    226,
+                    450,
+                    1138,
+                    1785
+                ]
+            },
+            "10": {
+                "total_steps": 2192,
+                "boundaries": [
+                    149,
+                    255,
+                    480,
+                    1145,
+                    1755
+                ]
+            },
+            "11": {
+                "total_steps": 2507,
+                "boundaries": [
+                    289,
+                    400,
+                    608,
+                    1230,
+                    2181
+                ]
+            },
+            "12": {
+                "total_steps": 1627,
+                "boundaries": [
+                    180,
+                    287,
+                    474,
+                    1184,
+                    1417
+                ]
+            },
+            "13": {
+                "total_steps": 1869,
+                "boundaries": null
+            },
+            "14": {
+                "total_steps": 2089,
+                "boundaries": null
+            },
+            "15": {
+                "total_steps": 1994,
+                "boundaries": [
+                    133,
+                    220,
+                    449,
+                    1124,
+                    1619
+                ]
+            },
+            "16": {
+                "total_steps": 2081,
+                "boundaries": [
+                    161,
+                    263,
+                    557,
+                    1226,
+                    1679
+                ]
+            },
+            "17": {
+                "total_steps": 907,
+                "boundaries": [
+                    155,
+                    251,
+                    597
+                ]
+            },
+            "18": {
+                "total_steps": 932,
+                "boundaries": [
+                    434,
+                    538,
+                    813
+                ]
+            },
+            "19": {
+                "total_steps": 2844,
+                "boundaries": null
+            },
+            "2": {
+                "total_steps": 2128,
+                "boundaries": [
+                    125,
+                    235,
+                    472,
+                    1138,
+                    1769
+                ]
+            },
+            "20": {
+                "total_steps": 2247,
+                "boundaries": null
+            },
+            "21": {
+                "total_steps": 1786,
+                "boundaries": [
+                    167,
+                    267,
+                    469,
+                    1045,
+                    1502
+                ]
+            },
+            "22": {
+                "total_steps": 2683,
+                "boundaries": [
+                    163,
+                    266,
+                    505,
+                    1174,
+                    2368
+                ]
+            },
+            "23": {
+                "total_steps": 1981,
+                "boundaries": [
+                    132,
+                    245,
+                    488,
+                    930,
+                    1701
+                ]
+            },
+            "24": {
+                "total_steps": 1930,
+                "boundaries": null
+            },
+            "25": {
+                "total_steps": 1964,
+                "boundaries": [
+                    228,
+                    330,
+                    569,
+                    1035,
+                    1680
+                ]
+            },
+            "26": {
+                "total_steps": 2221,
+                "boundaries": [
+                    147,
+                    253,
+                    463,
+                    1132,
+                    1920
+                ]
+            },
+            "27": {
+                "total_steps": 1951,
+                "boundaries": [
+                    141,
+                    248,
+                    493,
+                    1032,
+                    1743
+                ]
+            },
+            "28": {
+                "total_steps": 2056,
+                "boundaries": [
+                    163,
+                    255,
+                    450,
+                    988,
+                    1691
+                ]
+            },
+            "29": {
+                "total_steps": 2011,
+                "boundaries": [
+                    140,
+                    249,
+                    560,
+                    1038,
+                    1735
+                ]
+            },
+            "3": {
+                "total_steps": 2209,
+                "boundaries": [
+                    212,
+                    313,
+                    544,
+                    1054,
+                    1734
+                ]
+            },
+            "30": {
+                "total_steps": 2068,
+                "boundaries": [
+                    154,
+                    251,
+                    454,
+                    959,
+                    1706
+                ]
+            },
+            "31": {
+                "total_steps": 1936,
+                "boundaries": [
+                    150,
+                    255,
+                    495,
+                    1089,
+                    1497
+                ]
+            },
+            "32": {
+                "total_steps": 1500,
+                "boundaries": [
+                    125,
+                    320,
+                    628,
+                    1383
+                ]
+            },
+            "33": {
+                "total_steps": 2071,
+                "boundaries": [
+                    150,
+                    242,
+                    472,
+                    1194,
+                    1806
+                ]
+            },
+            "34": {
+                "total_steps": 783,
+                "boundaries": [
+                    287,
+                    382,
+                    671
+                ]
+            },
+            "35": {
+                "total_steps": 1874,
+                "boundaries": [
+                    127,
+                    219,
+                    443,
+                    1017,
+                    1545
+                ]
+            },
+            "36": {
+                "total_steps": 2368,
+                "boundaries": [
+                    129,
+                    225,
+                    490,
+                    1187,
+                    2006
+                ]
+            },
+            "37": {
+                "total_steps": 2119,
+                "boundaries": [
+                    165,
+                    280,
+                    501,
+                    1069,
+                    1793
+                ]
+            },
+            "38": {
+                "total_steps": 1847,
+                "boundaries": [
+                    133,
+                    222,
+                    429,
+                    1015,
+                    1451
+                ]
+            },
+            "39": {
+                "total_steps": 1921,
+                "boundaries": [
+                    156,
+                    255,
+                    459,
+                    984,
+                    1438
+                ]
+            },
+            "4": {
+                "total_steps": 1897,
+                "boundaries": null
+            },
+            "40": {
+                "total_steps": 1920,
+                "boundaries": [
+                    137,
+                    249,
+                    463,
+                    1080,
+                    1569
+                ]
+            },
+            "41": {
+                "total_steps": 2328,
+                "boundaries": [
+                    147,
+                    261,
+                    460,
+                    1247,
+                    2049
+                ]
+            },
+            "42": {
+                "total_steps": 2015,
+                "boundaries": [
+                    128,
+                    221,
+                    480,
+                    952,
+                    1731
+                ]
+            },
+            "43": {
+                "total_steps": 755,
+                "boundaries": null
+            },
+            "44": {
+                "total_steps": 1705,
+                "boundaries": null
+            },
+            "45": {
+                "total_steps": 2397,
+                "boundaries": [
+                    137,
+                    241,
+                    474,
+                    1208,
+                    2090
+                ]
+            },
+            "46": {
+                "total_steps": 1542,
+                "boundaries": [
+                    143,
+                    242,
+                    453,
+                    1463
+                ]
+            },
+            "47": {
+                "total_steps": 672,
+                "boundaries": [
+                    140,
+                    232,
+                    545
+                ]
+            },
+            "48": {
+                "total_steps": 1977,
+                "boundaries": [
+                    119,
+                    204,
+                    411,
+                    978,
+                    1635
+                ]
+            },
+            "49": {
+                "total_steps": 2208,
+                "boundaries": [
+                    380,
+                    487,
+                    705,
+                    1270,
+                    1916
+                ]
+            },
+            "5": {
+                "total_steps": 2582,
+                "boundaries": [
+                    153,
+                    259,
+                    470,
+                    1711,
+                    2277
+                ]
+            },
+            "50": {
+                "total_steps": 2222,
+                "boundaries": [
+                    163,
+                    254,
+                    455,
+                    1239,
+                    1806
+                ]
+            },
+            "51": {
+                "total_steps": 2060,
+                "boundaries": [
+                    126,
+                    216,
+                    501,
+                    1239,
+                    1760
+                ]
+            },
+            "52": {
+                "total_steps": 2508,
+                "boundaries": [
+                    121,
+                    217,
+                    439,
+                    994,
+                    2257
+                ]
+            },
+            "53": {
+                "total_steps": 1953,
+                "boundaries": null
+            },
+            "54": {
+                "total_steps": 2423,
+                "boundaries": [
+                    331,
+                    429,
+                    633,
+                    1199,
+                    1917
+                ]
+            },
+            "55": {
+                "total_steps": 785,
+                "boundaries": [
+                    174,
+                    279,
+                    669
+                ]
+            },
+            "56": {
+                "total_steps": 1947,
+                "boundaries": [
+                    132,
+                    223,
+                    474,
+                    945,
+                    1585
+                ]
+            },
+            "57": {
+                "total_steps": 1967,
+                "boundaries": [
+                    172,
+                    274,
+                    467,
+                    1018,
+                    1685
+                ]
+            },
+            "58": {
+                "total_steps": 2485,
+                "boundaries": [
+                    155,
+                    300,
+                    625,
+                    1470,
+                    2129
+                ]
+            },
+            "59": {
+                "total_steps": 1846,
+                "boundaries": [
+                    119,
+                    217,
+                    441,
+                    922,
+                    1510
+                ]
+            },
+            "6": {
+                "total_steps": 1332,
+                "boundaries": [
+                    123,
+                    225,
+                    471,
+                    1249
+                ]
+            },
+            "60": {
+                "total_steps": 2032,
+                "boundaries": [
+                    132,
+                    247,
+                    475,
+                    1163,
+                    1676
+                ]
+            },
+            "61": {
+                "total_steps": 2326,
+                "boundaries": [
+                    139,
+                    252,
+                    512,
+                    1349,
+                    2044
+                ]
+            },
+            "62": {
+                "total_steps": 2217,
+                "boundaries": [
+                    174,
+                    281,
+                    480,
+                    1212,
+                    1888
+                ]
+            },
+            "63": {
+                "total_steps": 1444,
+                "boundaries": [
+                    909,
+                    1001,
+                    1275
+                ]
+            },
+            "64": {
+                "total_steps": 2416,
+                "boundaries": [
+                    153,
+                    262,
+                    475,
+                    990,
+                    2136
+                ]
+            },
+            "65": {
+                "total_steps": 2353,
+                "boundaries": null
+            },
+            "66": {
+                "total_steps": 2048,
+                "boundaries": [
+                    129,
+                    212,
+                    435,
+                    577,
+                    1763
+                ]
+            },
+            "67": {
+                "total_steps": 1823,
+                "boundaries": [
+                    131,
+                    236,
+                    439,
+                    1173,
+                    1669
+                ]
+            },
+            "68": {
+                "total_steps": 2265,
+                "boundaries": [
+                    150,
+                    248,
+                    460,
+                    1209,
+                    1991
+                ]
+            },
+            "69": {
+                "total_steps": 2081,
+                "boundaries": null
+            },
+            "7": {
+                "total_steps": 2274,
+                "boundaries": [
+                    136,
+                    240,
+                    495,
+                    1315,
+                    1785
+                ]
+            },
+            "70": {
+                "total_steps": 1986,
+                "boundaries": [
+                    127,
+                    213,
+                    446,
+                    983,
+                    1682
+                ]
+            },
+            "71": {
+                "total_steps": 2446,
+                "boundaries": null
+            },
+            "72": {
+                "total_steps": 2226,
+                "boundaries": [
+                    149,
+                    246,
+                    527,
+                    1176,
+                    1935
+                ]
+            },
+            "73": {
+                "total_steps": 2041,
+                "boundaries": [
+                    143,
+                    239,
+                    487,
+                    1055,
+                    1644
+                ]
+            },
+            "74": {
+                "total_steps": 1980,
+                "boundaries": [
+                    131,
+                    225,
+                    467,
+                    1134,
+                    1718
+                ]
+            },
+            "75": {
+                "total_steps": 711,
+                "boundaries": [
+                    124,
+                    225,
+                    585
+                ]
+            },
+            "8": {
+                "total_steps": 1915,
+                "boundaries": [
+                    146,
+                    255,
+                    522,
+                    1073,
+                    1468
+                ]
+            },
+            "9": {
+                "total_steps": 2358,
+                "boundaries": [
+                    152,
+                    257,
+                    503,
+                    1448,
+                    2083
+                ]
+            }
+        },
+        "real_hang_round5_0709_hdf5": {
+            "0": {
+                "total_steps": 2119,
+                "boundaries": [
+                    157,
+                    280,
+                    471,
+                    1060,
+                    1812
+                ]
+            },
+            "1": {
+                "total_steps": 1771,
+                "boundaries": [
+                    159,
+                    295,
+                    640,
+                    762,
+                    1678
+                ]
+            },
+            "10": {
+                "total_steps": 2163,
+                "boundaries": [
+                    142,
+                    233,
+                    456,
+                    983,
+                    1849
+                ]
+            },
+            "11": {
+                "total_steps": 1906,
+                "boundaries": [
+                    135,
+                    245,
+                    585,
+                    1040,
+                    1592
+                ]
+            },
+            "12": {
+                "total_steps": 2380,
+                "boundaries": null
+            },
+            "13": {
+                "total_steps": 1796,
+                "boundaries": [
+                    140,
+                    242,
+                    463,
+                    1008,
+                    1444
+                ]
+            },
+            "14": {
+                "total_steps": 2474,
+                "boundaries": [
+                    159,
+                    282,
+                    510,
+                    995,
+                    2185
+                ]
+            },
+            "15": {
+                "total_steps": 2347,
+                "boundaries": null
+            },
+            "16": {
+                "total_steps": 2074,
+                "boundaries": [
+                    135,
+                    226,
+                    527,
+                    1037,
+                    1695
+                ]
+            },
+            "17": {
+                "total_steps": 2222,
+                "boundaries": null
+            },
+            "18": {
+                "total_steps": 2055,
+                "boundaries": [
+                    145,
+                    259,
+                    477,
+                    977,
+                    1781
+                ]
+            },
+            "19": {
+                "total_steps": 2011,
+                "boundaries": [
+                    141,
+                    251,
+                    463,
+                    965,
+                    1450
+                ]
+            },
+            "2": {
+                "total_steps": 1539,
+                "boundaries": [
+                    170,
+                    372,
+                    596,
+                    1454
+                ]
+            },
+            "20": {
+                "total_steps": 1953,
+                "boundaries": [
+                    150,
+                    254,
+                    458,
+                    939,
+                    1649
+                ]
+            },
+            "21": {
+                "total_steps": 2113,
+                "boundaries": null
+            },
+            "22": {
+                "total_steps": 2896,
+                "boundaries": [
+                    135,
+                    236,
+                    499,
+                    1828,
+                    2630
+                ]
+            },
+            "23": {
+                "total_steps": 1858,
+                "boundaries": null
+            },
+            "24": {
+                "total_steps": 2314,
+                "boundaries": null
+            },
+            "25": {
+                "total_steps": 1801,
+                "boundaries": null
+            },
+            "26": {
+                "total_steps": 1769,
+                "boundaries": [
+                    146,
+                    242,
+                    562,
+                    1670
+                ]
+            },
+            "27": {
+                "total_steps": 1918,
+                "boundaries": null
+            },
+            "28": {
+                "total_steps": 2070,
+                "boundaries": [
+                    135,
+                    246,
+                    471,
+                    1200,
+                    1777
+                ]
+            },
+            "29": {
+                "total_steps": 1732,
+                "boundaries": null
+            },
+            "3": {
+                "total_steps": 1915,
+                "boundaries": null
+            },
+            "30": {
+                "total_steps": 1715,
+                "boundaries": null
+            },
+            "31": {
+                "total_steps": 2926,
+                "boundaries": [
+                    158,
+                    255,
+                    463,
+                    1442,
+                    2642
+                ]
+            },
+            "32": {
+                "total_steps": 1911,
+                "boundaries": [
+                    149,
+                    249,
+                    471,
+                    1005,
+                    1637
+                ]
+            },
+            "33": {
+                "total_steps": 2412,
+                "boundaries": [
+                    158,
+                    261,
+                    533,
+                    1035,
+                    2125
+                ]
+            },
+            "34": {
+                "total_steps": 2295,
+                "boundaries": [
+                    178,
+                    291,
+                    686,
+                    1503,
+                    1972
+                ]
+            },
+            "35": {
+                "total_steps": 1320,
+                "boundaries": [
+                    150,
+                    257,
+                    497,
+                    692
+                ]
+            },
+            "36": {
+                "total_steps": 2071,
+                "boundaries": [
+                    135,
+                    246,
+                    515,
+                    996,
+                    1720
+                ]
+            },
+            "37": {
+                "total_steps": 2112,
+                "boundaries": [
+                    142,
+                    242,
+                    547,
+                    998,
+                    1778
+                ]
+            },
+            "38": {
+                "total_steps": 2027,
+                "boundaries": null
+            },
+            "39": {
+                "total_steps": 2799,
+                "boundaries": [
+                    142,
+                    254,
+                    491,
+                    1791,
+                    2507
+                ]
+            },
+            "4": {
+                "total_steps": 2189,
+                "boundaries": null
+            },
+            "40": {
+                "total_steps": 2293,
+                "boundaries": [
+                    124,
+                    221,
+                    441,
+                    982,
+                    2013
+                ]
+            },
+            "41": {
+                "total_steps": 1980,
+                "boundaries": [
+                    135,
+                    255,
+                    465,
+                    1018,
+                    1678
+                ]
+            },
+            "42": {
+                "total_steps": 2083,
+                "boundaries": [
+                    126,
+                    322,
+                    527,
+                    999,
+                    1691
+                ]
+            },
+            "43": {
+                "total_steps": 2175,
+                "boundaries": null
+            },
+            "44": {
+                "total_steps": 1901,
+                "boundaries": null
+            },
+            "45": {
+                "total_steps": 2191,
+                "boundaries": [
+                    142,
+                    244,
+                    503,
+                    1609,
+                    2100
+                ]
+            },
+            "46": {
+                "total_steps": 1801,
+                "boundaries": null
+            },
+            "47": {
+                "total_steps": 2184,
+                "boundaries": [
+                    152,
+                    269,
+                    470,
+                    1054,
+                    1815
+                ]
+            },
+            "48": {
+                "total_steps": 2325,
+                "boundaries": [
+                    125,
+                    226,
+                    455,
+                    2100
+                ]
+            },
+            "49": {
+                "total_steps": 2086,
+                "boundaries": [
+                    188,
+                    305,
+                    528,
+                    1361,
+                    1789
+                ]
+            },
+            "5": {
+                "total_steps": 2098,
+                "boundaries": [
+                    210,
+                    336,
+                    570,
+                    1168,
+                    1829
+                ]
+            },
+            "50": {
+                "total_steps": 2028,
+                "boundaries": [
+                    168,
+                    365,
+                    595,
+                    1353,
+                    1852
+                ]
+            },
+            "51": {
+                "total_steps": 1992,
+                "boundaries": [
+                    149,
+                    244,
+                    485,
+                    1052,
+                    1590
+                ]
+            },
+            "52": {
+                "total_steps": 2949,
+                "boundaries": null
+            },
+            "53": {
+                "total_steps": 2254,
+                "boundaries": [
+                    129,
+                    223,
+                    456,
+                    1032,
+                    1964
+                ]
+            },
+            "54": {
+                "total_steps": 1666,
+                "boundaries": [
+                    104,
+                    208,
+                    438,
+                    941,
+                    1370
+                ]
+            },
+            "55": {
+                "total_steps": 2130,
+                "boundaries": [
+                    149,
+                    246,
+                    459,
+                    1023,
+                    1817
+                ]
+            },
+            "56": {
+                "total_steps": 1832,
+                "boundaries": [
+                    168,
+                    285,
+                    502,
+                    1033,
+                    1663
+                ]
+            },
+            "57": {
+                "total_steps": 2458,
+                "boundaries": [
+                    135,
+                    266,
+                    540,
+                    1140,
+                    2156
+                ]
+            },
+            "58": {
+                "total_steps": 2011,
+                "boundaries": [
+                    149,
+                    296,
+                    543,
+                    1317,
+                    1835
+                ]
+            },
+            "59": {
+                "total_steps": 2409,
+                "boundaries": null
+            },
+            "6": {
+                "total_steps": 1328,
+                "boundaries": [
+                    135,
+                    228,
+                    440,
+                    675,
+                    1251
+                ]
+            },
+            "60": {
+                "total_steps": 2102,
+                "boundaries": [
+                    156,
+                    259,
+                    487,
+                    1110,
+                    1766
+                ]
+            },
+            "61": {
+                "total_steps": 2416,
+                "boundaries": [
+                    125,
+                    220,
+                    429,
+                    1098,
+                    2146
+                ]
+            },
+            "62": {
+                "total_steps": 2106,
+                "boundaries": null
+            },
+            "63": {
+                "total_steps": 2325,
+                "boundaries": [
+                    150,
+                    250,
+                    459,
+                    1003,
+                    2059
+                ]
+            },
+            "64": {
+                "total_steps": 1333,
+                "boundaries": [
+                    135,
+                    235,
+                    529,
+                    1250
+                ]
+            },
+            "65": {
+                "total_steps": 2160,
+                "boundaries": null
+            },
+            "66": {
+                "total_steps": 1443,
+                "boundaries": [
+                    140,
+                    245,
+                    498,
+                    735,
+                    1343
+                ]
+            },
+            "67": {
+                "total_steps": 1621,
+                "boundaries": null
+            },
+            "68": {
+                "total_steps": 1842,
+                "boundaries": [
+                    152,
+                    265,
+                    453,
+                    1002,
+                    1520
+                ]
+            },
+            "69": {
+                "total_steps": 1981,
+                "boundaries": null
+            },
+            "7": {
+                "total_steps": 2194,
+                "boundaries": null
+            },
+            "70": {
+                "total_steps": 2261,
+                "boundaries": [
+                    135,
+                    329,
+                    587,
+                    1373,
+                    1989
+                ]
+            },
+            "71": {
+                "total_steps": 2435,
+                "boundaries": [
+                    126,
+                    224,
+                    613,
+                    1097,
+                    2128
+                ]
+            },
+            "72": {
+                "total_steps": 2080,
+                "boundaries": [
+                    135,
+                    291,
+                    590,
+                    1260,
+                    1792
+                ]
+            },
+            "8": {
+                "total_steps": 1783,
+                "boundaries": null
+            },
+            "9": {
+                "total_steps": 2406,
+                "boundaries": null
+            }
+        },
+        "real_hang_round6_0717_hdf5": {
+            "0": {
+                "total_steps": 1554,
+                "boundaries": [
+                    155,
+                    261,
+                    488,
+                    1045,
+                    1380
+                ]
+            },
+            "1": {
+                "total_steps": 1344,
+                "boundaries": [
+                    159,
+                    256,
+                    538,
+                    1282
+                ]
+            },
+            "10": {
+                "total_steps": 1536,
+                "boundaries": [
+                    133,
+                    233,
+                    442,
+                    1412
+                ]
+            },
+            "11": {
+                "total_steps": 1411,
+                "boundaries": [
+                    137,
+                    252,
+                    568,
+                    1350
+                ]
+            },
+            "12": {
+                "total_steps": 1984,
+                "boundaries": null
+            },
+            "13": {
+                "total_steps": 1903,
+                "boundaries": [
+                    158,
+                    285,
+                    476,
+                    1048,
+                    1480
+                ]
+            },
+            "14": {
+                "total_steps": 2041,
+                "boundaries": null
+            },
+            "15": {
+                "total_steps": 1865,
+                "boundaries": [
+                    142,
+                    238,
+                    437,
+                    1373,
+                    1687
+                ]
+            },
+            "16": {
+                "total_steps": 1600,
+                "boundaries": [
+                    278,
+                    376,
+                    613,
+                    1116,
+                    1440
+                ]
+            },
+            "17": {
+                "total_steps": 2442,
+                "boundaries": [
+                    150,
+                    255,
+                    485,
+                    1354,
+                    2132
+                ]
+            },
+            "18": {
+                "total_steps": 857,
+                "boundaries": [
+                    126,
+                    400,
+                    579
+                ]
+            },
+            "19": {
+                "total_steps": 1599,
+                "boundaries": null
+            },
+            "2": {
+                "total_steps": 1306,
+                "boundaries": [
+                    147,
+                    265,
+                    501,
+                    1225
+                ]
+            },
+            "20": {
+                "total_steps": 1313,
+                "boundaries": [
+                    135,
+                    236,
+                    436,
+                    1232
+                ]
+            },
+            "21": {
+                "total_steps": 2015,
+                "boundaries": null
+            },
+            "22": {
+                "total_steps": 1756,
+                "boundaries": null
+            },
+            "23": {
+                "total_steps": 2528,
+                "boundaries": null
+            },
+            "24": {
+                "total_steps": 2034,
+                "boundaries": null
+            },
+            "25": {
+                "total_steps": 1552,
+                "boundaries": [
+                    303,
+                    410,
+                    623,
+                    1337
+                ]
+            },
+            "26": {
+                "total_steps": 1471,
+                "boundaries": [
+                    175,
+                    419,
+                    689,
+                    1399
+                ]
+            },
+            "27": {
+                "total_steps": 2084,
+                "boundaries": null
+            },
+            "28": {
+                "total_steps": 2508,
+                "boundaries": [
+                    160,
+                    258,
+                    518,
+                    1811,
+                    2417
+                ]
+            },
+            "29": {
+                "total_steps": 2099,
+                "boundaries": [
+                    157,
+                    334,
+                    604,
+                    1233,
+                    1827
+                ]
+            },
+            "3": {
+                "total_steps": 1992,
+                "boundaries": [
+                    169,
+                    315,
+                    525,
+                    1109,
+                    1586
+                ]
+            },
+            "30": {
+                "total_steps": 1856,
+                "boundaries": null
+            },
+            "31": {
+                "total_steps": 1778,
+                "boundaries": [
+                    171,
+                    283,
+                    486,
+                    1192,
+                    1635
+                ]
+            },
+            "32": {
+                "total_steps": 1562,
+                "boundaries": null
+            },
+            "33": {
+                "total_steps": 1424,
+                "boundaries": [
+                    307,
+                    401,
+                    653,
+                    1362
+                ]
+            },
+            "34": {
+                "total_steps": 1888,
+                "boundaries": [
+                    127,
+                    235,
+                    521,
+                    980,
+                    1431
+                ]
+            },
+            "35": {
+                "total_steps": 2356,
+                "boundaries": [
+                    173,
+                    294,
+                    495,
+                    980,
+                    1901
+                ]
+            },
+            "36": {
+                "total_steps": 2311,
+                "boundaries": [
+                    141,
+                    258,
+                    475,
+                    1165,
+                    1974
+                ]
+            },
+            "37": {
+                "total_steps": 1718,
+                "boundaries": [
+                    333,
+                    450,
+                    673,
+                    1182,
+                    1542
+                ]
+            },
+            "38": {
+                "total_steps": 1685,
+                "boundaries": [
+                    156,
+                    268,
+                    475,
+                    1470
+                ]
+            },
+            "39": {
+                "total_steps": 1931,
+                "boundaries": [
+                    227,
+                    344,
+                    555,
+                    1076,
+                    1595
+                ]
+            },
+            "4": {
+                "total_steps": 2296,
+                "boundaries": [
+                    128,
+                    278,
+                    495,
+                    1100,
+                    1948
+                ]
+            },
+            "40": {
+                "total_steps": 1784,
+                "boundaries": [
+                    133,
+                    279,
+                    465,
+                    913,
+                    1370
+                ]
+            },
+            "41": {
+                "total_steps": 1754,
+                "boundaries": null
+            },
+            "42": {
+                "total_steps": 1863,
+                "boundaries": null
+            },
+            "43": {
+                "total_steps": 1374,
+                "boundaries": [
+                    152,
+                    270,
+                    478,
+                    1263
+                ]
+            },
+            "44": {
+                "total_steps": 1951,
+                "boundaries": null
+            },
+            "45": {
+                "total_steps": 2403,
+                "boundaries": [
+                    134,
+                    224,
+                    452,
+                    1324,
+                    2087
+                ]
+            },
+            "46": {
+                "total_steps": 1259,
+                "boundaries": [
+                    163,
+                    285,
+                    471,
+                    1184
+                ]
+            },
+            "47": {
+                "total_steps": 1311,
+                "boundaries": [
+                    154,
+                    250,
+                    495,
+                    1248
+                ]
+            },
+            "48": {
+                "total_steps": 2145,
+                "boundaries": null
+            },
+            "49": {
+                "total_steps": 3049,
+                "boundaries": [
+                    145,
+                    261,
+                    472,
+                    1658,
+                    2636
+                ]
+            },
+            "5": {
+                "total_steps": 1369,
+                "boundaries": [
+                    141,
+                    231,
+                    475,
+                    1290
+                ]
+            },
+            "50": {
+                "total_steps": 2446,
+                "boundaries": [
+                    162,
+                    258,
+                    540,
+                    1660,
+                    2180
+                ]
+            },
+            "51": {
+                "total_steps": 1490,
+                "boundaries": [
+                    165,
+                    270,
+                    621,
+                    1427
+                ]
+            },
+            "52": {
+                "total_steps": 2048,
+                "boundaries": null
+            },
+            "53": {
+                "total_steps": 1721,
+                "boundaries": null
+            },
+            "54": {
+                "total_steps": 2176,
+                "boundaries": [
+                    294,
+                    390,
+                    598,
+                    1226,
+                    2010
+                ]
+            },
+            "55": {
+                "total_steps": 1710,
+                "boundaries": null
+            },
+            "56": {
+                "total_steps": 2005,
+                "boundaries": [
+                    159,
+                    261,
+                    465,
+                    1100,
+                    1595
+                ]
+            },
+            "57": {
+                "total_steps": 2022,
+                "boundaries": [
+                    111,
+                    220,
+                    459,
+                    1025,
+                    1580
+                ]
+            },
+            "58": {
+                "total_steps": 1965,
+                "boundaries": [
+                    187,
+                    300,
+                    483,
+                    1014,
+                    1513
+                ]
+            },
+            "59": {
+                "total_steps": 2410,
+                "boundaries": [
+                    301,
+                    410,
+                    630,
+                    1225,
+                    2024
+                ]
+            },
+            "6": {
+                "total_steps": 1519,
+                "boundaries": null
+            },
+            "60": {
+                "total_steps": 1883,
+                "boundaries": null
+            },
+            "61": {
+                "total_steps": 1588,
+                "boundaries": [
+                    141,
+                    234,
+                    481,
+                    1030,
+                    1500
+                ]
+            },
+            "62": {
+                "total_steps": 1856,
+                "boundaries": [
+                    154,
+                    253,
+                    467,
+                    1526,
+                    1775
+                ]
+            },
+            "63": {
+                "total_steps": 1799,
+                "boundaries": [
+                    152,
+                    254,
+                    491,
+                    975,
+                    1415
+                ]
+            },
+            "64": {
+                "total_steps": 1856,
+                "boundaries": [
+                    150,
+                    256,
+                    497,
+                    1018,
+                    1547
+                ]
+            },
+            "65": {
+                "total_steps": 1409,
+                "boundaries": [
+                    139,
+                    240,
+                    438,
+                    1351
+                ]
+            },
+            "66": {
+                "total_steps": 1645,
+                "boundaries": null
+            },
+            "67": {
+                "total_steps": 1096,
+                "boundaries": [
+                    664,
+                    763,
+                    959
+                ]
+            },
+            "68": {
+                "total_steps": 2128,
+                "boundaries": [
+                    162,
+                    253,
+                    485,
+                    1124,
+                    1833
+                ]
+            },
+            "69": {
+                "total_steps": 1846,
+                "boundaries": null
+            },
+            "7": {
+                "total_steps": 1568,
+                "boundaries": [
+                    152,
+                    257,
+                    485,
+                    1207,
+                    1426
+                ]
+            },
+            "70": {
+                "total_steps": 1631,
+                "boundaries": null
+            },
+            "71": {
+                "total_steps": 1955,
+                "boundaries": [
+                    177,
+                    299,
+                    523,
+                    1256,
+                    1740
+                ]
+            },
+            "72": {
+                "total_steps": 967,
+                "boundaries": [
+                    186,
+                    360,
+                    697
+                ]
+            },
+            "73": {
+                "total_steps": 2229,
+                "boundaries": null
+            },
+            "74": {
+                "total_steps": 1823,
+                "boundaries": [
+                    165,
+                    284,
+                    515,
+                    1458,
+                    1743
+                ]
+            },
+            "75": {
+                "total_steps": 2142,
+                "boundaries": null
+            },
+            "76": {
+                "total_steps": 1489,
+                "boundaries": [
+                    370,
+                    473,
+                    726,
+                    1422
+                ]
+            },
+            "77": {
+                "total_steps": 1415,
+                "boundaries": [
+                    153,
+                    253,
+                    484,
+                    1358
+                ]
+            },
+            "78": {
+                "total_steps": 2093,
+                "boundaries": null
+            },
+            "79": {
+                "total_steps": 1577,
+                "boundaries": [
+                    306,
+                    397,
+                    628,
+                    1499
+                ]
+            },
+            "8": {
+                "total_steps": 2085,
+                "boundaries": null
+            },
+            "80": {
+                "total_steps": 2022,
+                "boundaries": [
+                    135,
+                    225,
+                    461,
+                    1123,
+                    1802
+                ]
+            },
+            "81": {
+                "total_steps": 2088,
+                "boundaries": null
+            },
+            "9": {
+                "total_steps": 2363,
+                "boundaries": [
+                    155,
+                    265,
+                    513,
+                    1073,
+                    1893
+                ]
+            }
+        },
+        "real_hang_zheyuan_0325_hdf5": {
+            "0": {
+                "total_steps": 1569,
+                "boundaries": [
+                    136,
+                    293,
+                    404,
+                    810,
+                    1215
+                ]
+            },
+            "1": {
+                "total_steps": 2288,
+                "boundaries": [
+                    166,
+                    373,
+                    481,
+                    992,
+                    1961
+                ]
+            },
+            "10": {
+                "total_steps": 1918,
+                "boundaries": null
+            },
+            "11": {
+                "total_steps": 1794,
+                "boundaries": [
+                    161,
+                    324,
+                    410,
+                    759,
+                    1161
+                ]
+            },
+            "12": {
+                "total_steps": 1840,
+                "boundaries": [
+                    149,
+                    321,
+                    416,
+                    792,
+                    1316
+                ]
+            },
+            "13": {
+                "total_steps": 2129,
+                "boundaries": [
+                    157,
+                    328,
+                    450,
+                    853,
+                    1442
+                ]
+            },
+            "14": {
+                "total_steps": 1864,
+                "boundaries": [
+                    156,
+                    358,
+                    496,
+                    980,
+                    1527
+                ]
+            },
+            "2": {
+                "total_steps": 1912,
+                "boundaries": [
+                    166,
+                    405,
+                    486,
+                    887,
+                    1520
+                ]
+            },
+            "3": {
+                "total_steps": 1807,
+                "boundaries": null
+            },
+            "4": {
+                "total_steps": 1907,
+                "boundaries": [
+                    134,
+                    313,
+                    389,
+                    792,
+                    1369
+                ]
+            },
+            "5": {
+                "total_steps": 2053,
+                "boundaries": [
+                    179,
+                    404,
+                    572,
+                    1123,
+                    1737
+                ]
+            },
+            "6": {
+                "total_steps": 2312,
+                "boundaries": [
+                    157,
+                    384,
+                    565,
+                    981,
+                    1583
+                ]
+            },
+            "7": {
+                "total_steps": 1761,
+                "boundaries": [
+                    157,
+                    353,
+                    511,
+                    878,
+                    1290
+                ]
+            },
+            "8": {
+                "total_steps": 1896,
+                "boundaries": [
+                    129,
+                    288,
+                    426,
+                    938,
+                    1504
+                ]
+            },
+            "9": {
+                "total_steps": 2161,
+                "boundaries": [
+                    165,
+                    386,
+                    504,
+                    989,
+                    1771
+                ]
+            }
+        }
+    }
+}
