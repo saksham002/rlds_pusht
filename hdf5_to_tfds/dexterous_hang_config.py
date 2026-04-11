@@ -47,11 +47,41 @@ _DATASET_DIRS = [
 _ANNOTATIONS_DIR = os.path.join(os.path.dirname(__file__), 'annotations')
 _FPS = 30.0
 _MAX_CAMERAS = 3
-_MAX_STATE_DIM = 16
 _MAX_ACTION_DIM = 14
 _MAX_SUBTASKS = 5
 _VAL_FRACTION = 0.05
 _DIR_TO_REPO_INDEX = {ds: i for i, ds in enumerate(_DATASET_DIRS)}
+
+# Env overrides: set STATE_DIM to 14 or 16, SUBSET_DIRS to a comma-separated
+# list of dataset subdirs to restrict the episode pool, and TRAIN_COUNT /
+# VAL_COUNT to override the default val-fraction split with fixed counts.
+_STATE_DIM = int(os.environ.get('REAL_HANG_STATE_DIM', '16'))
+assert _STATE_DIM in (14, 16), f'REAL_HANG_STATE_DIM must be 14 or 16, got {_STATE_DIM}'
+_MAX_STATE_DIM = _STATE_DIM
+
+_SUBSET_DIRS_ENV = os.environ.get('REAL_HANG_SUBSET_DIRS', '').strip()
+_SUBSET_DIRS = set(_SUBSET_DIRS_ENV.split(',')) if _SUBSET_DIRS_ENV else None
+
+_TRAIN_COUNT_ENV = os.environ.get('REAL_HANG_TRAIN_COUNT', '').strip()
+_VAL_COUNT_ENV = os.environ.get('REAL_HANG_VAL_COUNT', '').strip()
+_TRAIN_COUNT = int(_TRAIN_COUNT_ENV) if _TRAIN_COUNT_ENV else None
+_VAL_COUNT = int(_VAL_COUNT_ENV) if _VAL_COUNT_ENV else None
+
+_ACTION_FEATURE_NAMES = [
+    'dummy_1', 'dummy_2', 'dummy_3',
+    'dummy_4', 'dummy_5', 'dummy_6', 'left_gripper_open',
+    'dummy_7', 'dummy_8', 'dummy_9',
+    'dummy_10', 'dummy_11', 'dummy_12', 'right_gripper_open',
+]
+if _STATE_DIM == 16:
+    _STATE_FEATURE_NAMES = [
+        'left_joint_0', 'left_joint_1', 'left_joint_2', 'left_joint_3',
+        'left_joint_4', 'left_joint_5', 'left_joint_6', 'left_gripper_open',
+        'right_joint_0', 'right_joint_1', 'right_joint_2', 'right_joint_3',
+        'right_joint_4', 'right_joint_5', 'right_joint_6', 'right_gripper_open',
+    ]
+else:
+    _STATE_FEATURE_NAMES = list(_ACTION_FEATURE_NAMES)
 
 
 def _load_annotations():
@@ -67,6 +97,8 @@ def _build_episode_list():
     """Enumerate episodes with valid annotations and split into train/val."""
     all_eps = []
     for ds in _DATASET_DIRS:
+        if _SUBSET_DIRS is not None and ds not in _SUBSET_DIRS:
+            continue
         ds_data = _ANNOTATIONS['datasets'].get(ds, {})
         for ep_str, info in ds_data.items():
             if info['boundaries'] is not None:
@@ -74,12 +106,21 @@ def _build_episode_list():
     all_eps.sort()
 
     rng = np.random.RandomState(86)
-    num_val = max(1, int(len(all_eps) * _VAL_FRACTION))
     indices = rng.permutation(len(all_eps))
-    val_set = set(indices[:num_val].tolist())
-
-    train = [all_eps[i] for i in range(len(all_eps)) if i not in val_set]
-    val = [all_eps[i] for i in range(len(all_eps)) if i in val_set]
+    if _TRAIN_COUNT is not None and _VAL_COUNT is not None:
+        assert _TRAIN_COUNT + _VAL_COUNT <= len(all_eps), (
+            f'Requested {_TRAIN_COUNT} train + {_VAL_COUNT} val = {_TRAIN_COUNT + _VAL_COUNT} '
+            f'episodes but only {len(all_eps)} available after filtering.'
+        )
+        val_set = set(indices[:_VAL_COUNT].tolist())
+        train_set = set(indices[_VAL_COUNT : _VAL_COUNT + _TRAIN_COUNT].tolist())
+        train = [all_eps[i] for i in range(len(all_eps)) if i in train_set]
+        val = [all_eps[i] for i in range(len(all_eps)) if i in val_set]
+    else:
+        num_val = max(1, int(len(all_eps) * _VAL_FRACTION))
+        val_set = set(indices[:num_val].tolist())
+        train = [all_eps[i] for i in range(len(all_eps)) if i not in val_set]
+        val = [all_eps[i] for i in range(len(all_eps)) if i in val_set]
     return train, val
 
 _TRAIN_EPISODES, _VAL_EPISODES = _build_episode_list()
@@ -208,18 +249,27 @@ def get_episodes(split):
 
 
 def _build_state(left_joints, left_gripper, right_joints, right_gripper):
-    """16-D state: [left_joint_qpos(7), left_gripper(1), right_joint_qpos(7), right_gripper(1)]."""
-    return np.concatenate([
-        left_joints,
-        [left_gripper],
-        right_joints,
-        [right_gripper],
-    ]).astype(np.float32)
+    """State vector, 16-D or 14-D depending on _STATE_DIM.
+
+    16-D: [left_joint_qpos(7), left_gripper(1), right_joint_qpos(7), right_gripper(1)]
+    14-D: [zeros(6), left_gripper(1), zeros(6), right_gripper(1)] (matches action layout)
+    """
+    if _STATE_DIM == 16:
+        return np.concatenate([
+            left_joints,
+            [left_gripper],
+            right_joints,
+            [right_gripper],
+        ]).astype(np.float32)
+    state = np.zeros(14, dtype = np.float32)
+    state[6] = left_gripper
+    state[13] = right_gripper
+    return state
 
 
 def _quat_to_euler(quat):
-    """Convert quaternion (x, y, z, w) to Euler angles (roll, pitch, yaw)."""
-    x, y, z, w = quat[0], quat[1], quat[2], quat[3]
+    """Convert quaternion (w, x, y, z) to Euler angles (roll, pitch, yaw)."""
+    w, x, y, z = quat[0], quat[1], quat[2], quat[3]
 
     sinr_cosp = 2.0 * (w * x + y * z)
     cosr_cosp = 1.0 - 2.0 * (x * x + y * y)
@@ -362,18 +412,8 @@ def parse_episode(episode_path):
             'camera_names': ['right_top', 'left_wrist', 'right_wrist'],
             'camera_shapes': camera_shapes,
             'num_cameras': np.int64(len(camera_shapes)),
-            'state_feature_names': [
-                'left_joint_0', 'left_joint_1', 'left_joint_2', 'left_joint_3',
-                'left_joint_4', 'left_joint_5', 'left_joint_6', 'left_gripper_open',
-                'right_joint_0', 'right_joint_1', 'right_joint_2', 'right_joint_3',
-                'right_joint_4', 'right_joint_5', 'right_joint_6', 'right_gripper_open',
-            ],
-            'action_feature_names': [
-                'dummy_1', 'dummy_2', 'dummy_3',
-                'dummy_4', 'dummy_5', 'dummy_6', 'left_gripper_open',
-                'dummy_7', 'dummy_8', 'dummy_9',
-                'dummy_10', 'dummy_11', 'dummy_12', 'right_gripper_open',
-            ],
+            'state_feature_names': _STATE_FEATURE_NAMES,
+            'action_feature_names': _ACTION_FEATURE_NAMES,
             'subtasks': _SUBTASK_NAMES + ['null'],
             'task_description': task,
         },

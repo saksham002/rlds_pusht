@@ -22,12 +22,6 @@ import dexterous_hang_config as cfg
 from stats.generic_stats import FeatureSpec, NormStatsAccumulator
 
 
-STATE_NAMES = [
-    'left_joint_0', 'left_joint_1', 'left_joint_2', 'left_joint_3',
-    'left_joint_4', 'left_joint_5', 'left_joint_6', 'left_gripper_open',
-    'right_joint_0', 'right_joint_1', 'right_joint_2', 'right_joint_3',
-    'right_joint_4', 'right_joint_5', 'right_joint_6', 'right_gripper_open',
-]
 EEF_NAMES = [
     'left_eef_pos_x', 'left_eef_pos_y', 'left_eef_pos_z',
     'left_eef_ori_x', 'left_eef_ori_y', 'left_eef_ori_z',
@@ -35,24 +29,20 @@ EEF_NAMES = [
     'right_eef_ori_x', 'right_eef_ori_y', 'right_eef_ori_z',
 ]
 
-ACTION_NAMES = [
-    'dummy_1', 'dummy_2', 'dummy_3',
-    'dummy_4', 'dummy_5', 'dummy_6', 'left_gripper_open',
-    'dummy_7', 'dummy_8', 'dummy_9',
-    'dummy_10', 'dummy_11', 'dummy_12', 'right_gripper_open',
-]
+STATE_NAMES = cfg._STATE_FEATURE_NAMES
+ACTION_NAMES = cfg._ACTION_FEATURE_NAMES
 
 SPECS = [
-    FeatureSpec(key = 'observation.state', dim = 16, names = STATE_NAMES),
-    FeatureSpec(key = 'action', dim = 14, names = ACTION_NAMES),
+    FeatureSpec(key = 'observation.state', dim = cfg._MAX_STATE_DIM, names = STATE_NAMES),
+    FeatureSpec(key = 'action', dim = cfg._MAX_ACTION_DIM, names = ACTION_NAMES),
     FeatureSpec(key = 'eef_sim_pose_state', dim = 12, names = EEF_NAMES),
     FeatureSpec(key = 'eef_sim_pose_action', dim = 12, names = EEF_NAMES),
 ]
 
 
 def _quat_to_euler(quat):
-    """Convert quaternion (x, y, z, w) to Euler angles (roll, pitch, yaw)."""
-    x, y, z, w = quat[0], quat[1], quat[2], quat[3]
+    """Convert quaternion (w, x, y, z) to Euler angles (roll, pitch, yaw)."""
+    w, x, y, z = quat[0], quat[1], quat[2], quat[3]
 
     sinr_cosp = 2.0 * (w * x + y * z)
     cosr_cosp = 1.0 - 2.0 * (x * x + y * y)
@@ -70,13 +60,18 @@ def _quat_to_euler(quat):
 
 
 def _build_state_batch(left_joints, left_gripper, right_joints, right_gripper):
-    """Build (N, 16) state: [left_joint_qpos(7), left_gripper(1), right_joint_qpos(7), right_gripper(1)]."""
+    """Build (N, D) state matching dexterous_hang_config._build_state."""
     n = len(left_gripper)
-    state = np.zeros((n, 16), dtype = np.float64)
-    state[:, :7] = left_joints
-    state[:, 7] = left_gripper
-    state[:, 8:15] = right_joints
-    state[:, 15] = right_gripper
+    if cfg._STATE_DIM == 16:
+        state = np.zeros((n, 16), dtype = np.float64)
+        state[:, :7] = left_joints
+        state[:, 7] = left_gripper
+        state[:, 8:15] = right_joints
+        state[:, 15] = right_gripper
+        return state
+    state = np.zeros((n, 14), dtype = np.float64)
+    state[:, 6] = left_gripper
+    state[:, 13] = right_gripper
     return state
 
 
