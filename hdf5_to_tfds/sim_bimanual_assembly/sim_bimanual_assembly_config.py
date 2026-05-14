@@ -197,12 +197,12 @@ def _build_is_intervention(ep_len, intervention_indices):
 
 
 def _build_state(left_joints, left_gripper, right_joints, right_gripper):
-    """16-D: [left_joint_qpos(7), left_gripper(1), right_joint_qpos(7), right_gripper(1)]."""
+    """16-D: [left_joint_qpos(7), 1 - left_gripper, right_joint_qpos(7), 1 - right_gripper]."""
     return np.concatenate([
         left_joints,
-        [left_gripper],
+        [1.0 - left_gripper],
         right_joints,
-        [right_gripper],
+        [1.0 - right_gripper],
     ]).astype(np.float32)
 
 
