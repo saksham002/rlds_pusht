@@ -15,11 +15,13 @@ import sys
 
 import h5py
 import numpy as np
+from scipy.spatial.transform import Rotation as R
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'robocoin')))
 import dexterous_hang_config as cfg
 
-from stats.generic_stats import FeatureSpec, NormStatsAccumulator
+from utils.stats_utils import FeatureSpec, NormStatsAccumulator
 
 
 EEF_NAMES = [
@@ -32,11 +34,49 @@ EEF_NAMES = [
 STATE_NAMES = cfg._STATE_FEATURE_NAMES
 ACTION_NAMES = cfg._ACTION_FEATURE_NAMES
 
+
+def _rel_transform_batch(state_pq, action_pq):
+    """state_pq, action_pq: (N, 2, 7) = [left, right] × [pos(3) + quat_wxyz(4)].
+    Returns (N, 12): [l_dpos(3), l_drot_xyz(3), r_dpos(3), r_drot_xyz(3)]."""
+    n = state_pq.shape[0]
+    out = np.zeros((n, 12), dtype = np.float64)
+    for arm, base in ((0, 0), (1, 6)):
+        out[:, base : base + 3] = action_pq[:, arm, : 3] - state_pq[:, arm, : 3]
+        r_state = R.from_quat(state_pq[:, arm, 3 : 7], scalar_first = True)
+        r_action = R.from_quat(action_pq[:, arm, 3 : 7], scalar_first = True)
+        out[:, base + 3 : base + 6] = (r_action * r_state.inv()).as_euler('xyz')
+    return out
+
+
+def _eef_action_diff_computer(arrays, horizon):
+    """Per-offset relative transform of eef_sim_pose_action[t+k] vs eef_sim_pose_state[t]."""
+    state_pq = arrays['_eef_state_pq']
+    action_pq = arrays['_eef_action_pq']
+    total = state_pq.shape[0]
+    out = []
+    for k in range(horizon):
+        if k >= total:
+            out.append(None)
+            continue
+        valid = total - k
+        out.append(_rel_transform_batch(state_pq[: valid], action_pq[k :]))
+    return out
+
+
+def _build_gripper_action_batch(curr_gripper, rel_action):
+    """Convert relative gripper action to clipped absolute gripper command."""
+    return np.clip(curr_gripper - 80.0 * rel_action, 80.0, 840.0)
+
+
 SPECS = [
-    FeatureSpec(key = 'observation.state', dim = cfg._MAX_STATE_DIM, names = STATE_NAMES),
-    FeatureSpec(key = 'action', dim = cfg._MAX_ACTION_DIM, names = ACTION_NAMES),
-    FeatureSpec(key = 'eef_sim_pose_state', dim = 12, names = EEF_NAMES),
-    FeatureSpec(key = 'eef_sim_pose_action', dim = 12, names = EEF_NAMES),
+    FeatureSpec(key = 'observation.state', dim = cfg._MAX_STATE_DIM, names = STATE_NAMES, track_diff = False),
+    FeatureSpec(key = 'action', dim = cfg._MAX_ACTION_DIM, names = ACTION_NAMES, track_diff = False),
+    FeatureSpec(key = 'relative_action', dim = cfg._MAX_ACTION_DIM, names = ACTION_NAMES, track_diff = False),
+    FeatureSpec(key = 'eef_sim_pose_state', dim = 12, names = EEF_NAMES, track_diff = False),
+    FeatureSpec(
+        key = 'eef_sim_pose_action', dim = 12, names = EEF_NAMES,
+        diff_computer = _eef_action_diff_computer,
+    ),
 ]
 
 
@@ -93,28 +133,44 @@ def extract_episode(filepath):
     """Read one HDF5 episode and return arrays for the accumulator."""
     with h5py.File(filepath, 'r') as f:
         total_frames = f['obses/state/left/gripper_pos'].shape[0]
-        idx = np.arange(0, total_frames, 2)
+        if cfg._SUBSAMPLE:
+            idx = np.arange(0, total_frames, 2)
+            next_idx = np.minimum(idx + 1, total_frames - 1)
+        else:
+            idx = np.arange(total_frames)
+            next_idx = idx
 
         left_joints = f['obses/state/left/joint_qpos'][idx]
         left_tcp = f['obses/state/left/tcp_pose'][idx]
+        left_target_tcp = f['obses/state/left/target_tcp_pose'][next_idx]
         right_joints = f['obses/state/right/joint_qpos'][idx]
         right_tcp = f['obses/state/right/tcp_pose'][idx]
+        right_target_tcp = f['obses/state/right/target_tcp_pose'][next_idx]
+        relative_action = f['actions/relative_action'][next_idx]
         left_gripper = f['obses/state/left/gripper_pos'][idx, 0]
+        next_left_gripper = f['obses/state/left/gripper_pos'][next_idx, 0]
         right_gripper = f['obses/state/right/gripper_pos'][idx, 0]
-
+        next_right_gripper = f['obses/state/right/gripper_pos'][next_idx, 0]
     state = _build_state_batch(left_joints, left_gripper, right_joints, right_gripper)
-    eef = _build_eef_batch(left_tcp, right_tcp)
+    eef_state = _build_eef_batch(left_tcp, right_tcp)
+    eef_action = _build_eef_batch(left_target_tcp, right_target_tcp)
 
     n = len(left_gripper)
     action = np.zeros((n, 14), dtype = np.float64)
-    action[:, 6] = left_gripper
-    action[:, 13] = right_gripper
+    action[:, 6] = _build_gripper_action_batch(next_left_gripper, relative_action[:, 6])
+    action[:, 13] = _build_gripper_action_batch(next_right_gripper, relative_action[:, 13])
+
+    state_pq = np.stack([left_tcp, right_tcp], axis = 1)
+    action_pq = np.stack([left_target_tcp, right_target_tcp], axis = 1)
 
     return {
         'observation.state': state,
         'action': action,
-        'eef_sim_pose_state': eef,
-        'eef_sim_pose_action': eef.copy(),
+        'relative_action': relative_action.astype(np.float64),
+        'eef_sim_pose_state': eef_state,
+        'eef_sim_pose_action': eef_action,
+        '_eef_state_pq': state_pq,
+        '_eef_action_pq': action_pq,
     }
 
 
@@ -123,7 +179,10 @@ def compute_total_steps(episodes):
     for filepath in episodes:
         with h5py.File(filepath, 'r') as f:
             total_frames = f['obses/state/left/gripper_pos'].shape[0]
-        total_steps += len(np.arange(0, total_frames, 2))
+        if cfg._SUBSAMPLE:
+            total_steps += len(np.arange(0, total_frames, 2))
+        else:
+            total_steps += total_frames
     return total_steps
 
 

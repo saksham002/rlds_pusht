@@ -49,7 +49,10 @@ def main():
 
     with h5py.File(ep_path, 'r') as f:
         total_frames = f[f'obses/images/{args.camera}'].shape[0]
-        frame_indices = np.arange(0, total_frames, 2)
+        if cfg._SUBSAMPLE:
+            frame_indices = np.arange(0, total_frames, 2)
+        else:
+            frame_indices = np.arange(total_frames)
         ep_len = len(frame_indices)
 
         segments = cfg._get_subtask_segments(ds_name, ep_num, ep_len)
@@ -72,8 +75,9 @@ def main():
     w = w - (w % 16)
     frames = [f[:h, :w] for f in frames]
 
-    imageio.mimsave(args.output, frames, format = "mp4", fps = 30, codec = "libx264", quality = 8)
-    print(f'Wrote {args.output} ({len(frames)} frames, {len(frames)/30:.1f}s)')
+    fps = int(cfg._FPS)
+    imageio.mimsave(args.output, frames, format = "mp4", fps = fps, codec = "libx264", quality = 8)
+    print(f'Wrote {args.output} ({len(frames)} frames @ {fps} fps, {len(frames)/fps:.1f}s)')
 
 
 if __name__ == '__main__':

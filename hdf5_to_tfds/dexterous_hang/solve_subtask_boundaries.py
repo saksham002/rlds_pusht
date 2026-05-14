@@ -66,11 +66,17 @@ def _check_gaps(boundaries, n, full):
     return all(all_pts[i + 1] - all_pts[i] > MIN_BOUNDARY_GAP for i in range(len(all_pts) - 1))
 
 
-def detect_boundaries(episode_path, counters = None):
+def detect_boundaries(episode_path, counters = None, subsample_output = True):
     """Detect subtask boundaries from a single HDF5 episode.
 
     Returns (boundaries, total_steps) where boundaries is a list of up to 5
-    ints representing the first step of subtasks 1-5 (at 30 FPS indexing).
+    ints representing the first step of subtasks 1-5.
+
+    When ``subsample_output`` is True (default), indices are in 30 FPS space
+    (matching np.arange(0, n_orig, 2)). When False, detection still runs on the
+    30 FPS signal but output indices are mapped to 60 FPS (boundaries doubled,
+    total_steps reports the raw frame count).
+
     Returns (None, total_steps) if:
       - no boundaries are found at all, or
       - all 5 found but any gap (including last→end) <= MIN_BOUNDARY_GAP, or
@@ -82,17 +88,19 @@ def detect_boundaries(episode_path, counters = None):
     """
 
     def _return(boundaries, n, num_found, full):
+        out_n = n if subsample_output else n_orig
+        out_bounds = boundaries if subsample_output else [2 * b for b in boundaries]
         if num_found == 0:
             if counters is not None:
                 counters['no_transition'] += 1
-            return None, n
+            return None, out_n
         if _check_gaps(boundaries, n, full):
             if counters is not None:
                 counters['valid_ends_at'][num_found - 1] += 1
-            return boundaries, n
+            return out_bounds, out_n
         if counters is not None:
             counters['failed_ends_at'][num_found - 1] += 1
-        return None, n
+        return None, out_n
 
     f = h5py.File(episode_path, "r")
     n_orig = f["obses/state/timestamp"].shape[0]
@@ -187,6 +195,11 @@ def main():
     parser = argparse.ArgumentParser(description = "Solve subtask boundaries for dexterous hang episodes")
     parser.add_argument("--episode_list", required = True, help = "Text file with one HDF5 path per line")
     parser.add_argument("--output", required = True, help = "Output JSON path")
+    parser.add_argument(
+        "--no_subsample",
+        action = "store_true",
+        help = "Emit boundaries at 60 FPS indices (double the 30 FPS detection output).",
+    )
     args = parser.parse_args()
 
     with open(args.episode_list) as f:
@@ -208,7 +221,9 @@ def main():
         if parent not in datasets:
             datasets[parent] = {}
 
-        boundaries, total_steps = detect_boundaries(path, counters = counters)
+        boundaries, total_steps = detect_boundaries(
+            path, counters = counters, subsample_output = not args.no_subsample,
+        )
 
         entry = {"total_steps": total_steps}
 
