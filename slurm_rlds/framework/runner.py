@@ -74,9 +74,12 @@ def main():
     for split, eps in worker_episodes.items():
         print(f'  {split}: {len(eps)} episodes')
 
-    # Dynamically create a named builder class (TFDS uses the class name for the dataset name)
+    # Dynamically create a named builder class (TFDS uses the class name for the dataset name).
+    # __module__ must be set explicitly: type() under ABCMeta yields __module__='abc',
+    # which breaks TFDS get_metadata() (it lists the defining module's package dir).
     cls_name = ''.join(w.capitalize() for w in config.DATASET_NAME.split('_'))
     BuilderCls = type(cls_name, (GenericBuilder,), {
+        '__module__':      GenericBuilder.__module__,
         'VERSION':         tfds.core.Version(config.DATASET_VERSION),
         'USER_CONFIG':     config,
         'WORKER_EPISODES': worker_episodes,
