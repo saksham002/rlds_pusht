@@ -5,6 +5,13 @@ every other frame). Set REAL_HANG_SUBSAMPLE=0 to disable subsampling and emit ev
 raw frame at 60fps; in that mode actions and eef_sim_pose_action are read at the
 current frame (no look-ahead).
 
+B1 (state shift): in the raw HDF5, observation index k stores the state AFTER
+action k. To pair (obs_t, action_t) as 'action taken FROM obs_t', every
+per-step observation array (images, tcp_pose, joint_qpos, gripper_pos) is
+shifted back by one — new[t] = old[t-1] for t >= 1, with new[0] = old[0].
+target_tcp_pose and relative_action are action arrays and keep their original
+indices.
+
 Produces fields compatible with the RoboCOIN data loader.
 
 Annotations are loaded from annotations/heuristic_annotations.json at 30fps, or
@@ -45,7 +52,7 @@ assert not _SUBSAMPLE, (
     'updated if subsampling is on.'
 )
 
-DATASET_NAME = 'real_hang'
+DATASET_NAME = 'real_shirt_hang'
 DATASET_VERSION = '1.0.0'
 
 _TASK_PROMPT = 'Place the shirt on the hanger and hang it from the rod.'
@@ -68,7 +75,7 @@ _DATASET_DIRS = [
 _ANNOTATIONS_DIR = os.path.join(os.path.dirname(__file__), 'annotations')
 _ANNOTATIONS_FILENAME = os.environ.get(
     'REAL_HANG_ANNOTATIONS_FILE',
-    'heuristic_annotations.json' if _SUBSAMPLE else 'heuristic_annotations_60hz.json',
+    'subtask_annotations_all.json',
 )
 _FPS = 30.0 if _SUBSAMPLE else 60.0
 _MAX_CAMERAS = 3
@@ -119,9 +126,10 @@ _SUBTASK_NAMES = [d['subtask'] for d in _ANNOTATIONS['subtask_definitions']]
 
 
 def _build_episode_list():
-    """Enumerate every annotated episode and split into train/val.
+    """Enumerate every episode on disk and split into train/val.
 
-    Episodes without subtask boundaries are still included; the per-step
+    All hdf5 episodes under each dataset dir are included regardless of
+    whether the annotation file has subtask boundaries for them; the per-step
     subtask fields are filled with dummy values and 'has_subtask_annotations'
     in episode_metadata records whether boundaries were available.
     """
@@ -129,9 +137,10 @@ def _build_episode_list():
     for ds in _DATASET_DIRS:
         if _SUBSET_DIRS is not None and ds not in _SUBSET_DIRS:
             continue
-        ds_data = _ANNOTATIONS['datasets'].get(ds, {})
-        for ep_str in ds_data:
-            all_eps.append((ds, int(ep_str)))
+        ds_dir = os.path.join(_DATA_ROOT, ds)
+        for fn in os.listdir(ds_dir):
+            if fn.startswith('episode_') and fn.endswith('.hdf5'):
+                all_eps.append((ds, int(fn[len('episode_'):-len('.hdf5')])))
     all_eps.sort()
 
     rng = np.random.RandomState(86)
@@ -231,6 +240,11 @@ def _build_is_intervention(frame_indices, intervention_indices):
 def _build_gripper_action(curr_gripper, rel_action):
     """Convert relative gripper action to clipped absolute gripper command."""
     return np.float32(np.clip(curr_gripper - 80.0 * rel_action, 80.0, 840.0))
+
+
+def _shift_state_back(arr):
+    """B1 shift: new[0] = arr[0], new[t] = arr[t-1] for t >= 1. Preserves length."""
+    return np.concatenate([arr[:1], arr[:-1]])
 
 
 def get_features():
@@ -343,32 +357,11 @@ def _build_eef(left_tcp_pose, right_tcp_pose):
         right_tcp_pose[:3], right_euler,
     ]).astype(np.float32)
 
-
-def _rel_rot_xyz(prev_quat_wxyz, curr_quat_wxyz):
-    """Relative rotation R_curr · R_prev^-1 as extrinsic XYZ Euler."""
-    prev = R.from_quat(prev_quat_wxyz, scalar_first = True)
-    curr = R.from_quat(curr_quat_wxyz, scalar_first = True)
-    return (curr * prev.inv()).as_euler('xyz').astype(np.float32)
-
-
-def _build_eef_diff(prev_left_tcp, prev_right_tcp, curr_left_tcp, curr_right_tcp):
-    """12-D relative EEF transform between two absolute poses (prev → curr).
-
-    Position is curr - prev (world frame). Rotation is the relative rotation
-    R_curr · R_prev^-1 expressed as extrinsic XYZ Euler angles.
-    """
-    left_dpos = (curr_left_tcp[:3] - prev_left_tcp[:3]).astype(np.float32)
-    right_dpos = (curr_right_tcp[:3] - prev_right_tcp[:3]).astype(np.float32)
-    left_drot = _rel_rot_xyz(prev_left_tcp[3:7], curr_left_tcp[3:7])
-    right_drot = _rel_rot_xyz(prev_right_tcp[3:7], curr_right_tcp[3:7])
-    return np.concatenate([left_dpos, left_drot, right_dpos, right_drot]).astype(np.float32)
-
-
 def _decode_and_reencode_jpeg(raw_uint8):
-    """Decode JPEG from numpy uint8 array, resize to 224x224, re-encode."""
+    """Decode JPEG from numpy uint8 array, resize to 480x480, re-encode."""
     img = Image.open(io.BytesIO(raw_uint8.tobytes()))
     img_array = np.asarray(img, dtype = np.float32) / 255.0
-    img_resized = tf.image.resize(img_array, (224, 224)).numpy()
+    img_resized = tf.image.resize(img_array, (480, 480)).numpy()
     img_uint8 = np.rint(img_resized * 255.0).astype(np.uint8)
     return tf.image.encode_jpeg(img_uint8).numpy()
 
@@ -390,9 +383,8 @@ def parse_episode(episode_path):
             next_frame_indices = np.asarray(frame_indices)
         ep_len = len(frame_indices)
 
-        has_subtask_annotations = (
-            _ANNOTATIONS['datasets'][dataset_key][str(ep_idx)]['boundaries'] is not None
-        )
+        ep_ann = _ANNOTATIONS['datasets'].get(dataset_key, {}).get(str(ep_idx))
+        has_subtask_annotations = ep_ann is not None and ep_ann['boundaries'] is not None
         if has_subtask_annotations:
             segments = _get_subtask_segments(dataset_key, ep_idx, ep_len)
         else:
@@ -400,21 +392,25 @@ def parse_episode(episode_path):
             # null values for every step.
             segments = []
 
-        left_joints = f['obses/state/left/joint_qpos'][:]
-        left_gripper = f['obses/state/left/gripper_pos'][:, 0]
-        right_joints = f['obses/state/right/joint_qpos'][:]
-        right_gripper = f['obses/state/right/gripper_pos'][:, 0]
-        left_tcp = f['obses/state/left/tcp_pose'][:]
-        right_tcp = f['obses/state/right/tcp_pose'][:]
+        # B1: observation-like arrays are shifted back by one at load time
+        # (new[0] = old[0], new[t] = old[t-1] for t >= 1) so that index t now
+        # holds the pre-action-t state. target_tcp_pose and relative_action
+        # are action arrays and stay at their original indices.
+        left_joints = _shift_state_back(f['obses/state/left/joint_qpos'][:])
+        left_gripper = _shift_state_back(f['obses/state/left/gripper_pos'][:, 0])
+        right_joints = _shift_state_back(f['obses/state/right/joint_qpos'][:])
+        right_gripper = _shift_state_back(f['obses/state/right/gripper_pos'][:, 0])
+        left_tcp = _shift_state_back(f['obses/state/left/tcp_pose'][:])
+        right_tcp = _shift_state_back(f['obses/state/right/tcp_pose'][:])
         left_target_tcp = f['obses/state/left/target_tcp_pose'][:]
         right_target_tcp = f['obses/state/right/target_tcp_pose'][:]
         relative_action = f['actions/relative_action'][:]
         intervention_indices = None
         if 'interventions' in f['metadata']:
             intervention_indices = f['metadata/interventions'][:]
-        images_right_top = f['obses/images/right/top']
-        images_left_wrist = f['obses/images/left/wrist']
-        images_right_wrist = f['obses/images/right/wrist']
+        images_right_top = _shift_state_back(f['obses/images/right/top'][:])
+        images_left_wrist = _shift_state_back(f['obses/images/left/wrist'][:])
+        images_right_wrist = _shift_state_back(f['obses/images/right/wrist'][:])
 
         first_top_img = Image.open(io.BytesIO(images_right_top[0].tobytes()))
         first_left_wrist_img = Image.open(io.BytesIO(images_left_wrist[0].tobytes()))
@@ -437,14 +433,14 @@ def parse_episode(episode_path):
             eef_state = _build_eef(left_tcp[fi], right_tcp[fi])
             eef_action = _build_eef(left_target_tcp[next_fi], right_target_tcp[next_fi])
 
-            img_bytes = _decode_and_reencode_jpeg(images_right_top[fi])
+            img_right_top = _decode_and_reencode_jpeg(images_right_top[fi])
             img_left_wrist = _decode_and_reencode_jpeg(images_left_wrist[fi])
             img_right_wrist = _decode_and_reencode_jpeg(images_right_wrist[fi])
 
             sub = _get_subtask_info_for_step(i, segments, ep_len)
 
             step = {
-                'observation/image/cam_0': img_bytes,
+                'observation/image/cam_0': img_right_top,
                 'observation/image/cam_1': img_left_wrist,
                 'observation/image/cam_2': img_right_wrist,
                 'observation/state': state,

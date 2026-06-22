@@ -83,10 +83,7 @@ def _generate_slurm_script(args, array_spec):
 #SBATCH --output={log_dir}/build_%a.out
 #SBATCH --error={log_dir}/build_%a.err
 
-source ~/miniconda3/etc/profile.d/conda.sh && conda activate rlds
-
-export CURL_CA_BUNDLE="/data/user_data/saksham3/conda-envs/rlds/lib/python3.12/site-packages/certifi/cacert.pem"
-export SSL_CERT_FILE="$CURL_CA_BUNDLE"
+source /data/user_data/saksham3/vla/bin/activate
 
 cd "{framework_dir}"
 python -m framework.runner \\
@@ -455,6 +452,8 @@ def main():
                         help = 'Skip build phase (assume all workers already done)')
     parser.add_argument('--skip_merge',      action = 'store_true',
                         help = 'Skip merge phase (read existing shard_map.json from output)')
+    parser.add_argument('--skip_scan',       action = 'store_true',
+                        help = 'Skip the scan + fix phases (no shard verification or repair)')
     # SLURM-specific
     parser.add_argument('--slurm_partition', default = 'preempt')
     parser.add_argument('--slurm_time',      default = '48:00:00')
@@ -493,11 +492,13 @@ def main():
         print('\nNo splits produced — nothing to scan. Done.')
         return
 
-    # Phase 3
-    bad_map = phase_scan(args, out_dir, split_infos)
-
-    # Phase 4
-    phase_fix(args, out_dir, bad_map, shard_map, split_infos)
+    # Phases 3 + 4
+    if args.skip_scan:
+        print('\n=== Phase 3: Scan [skipped] ===')
+        print('=== Phase 4: Fix [skipped] ===')
+    else:
+        bad_map = phase_scan(args, out_dir, split_infos)
+        phase_fix(args, out_dir, bad_map, shard_map, split_infos)
 
     print('\n=== Pipeline complete ===')
 

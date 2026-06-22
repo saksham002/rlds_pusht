@@ -3,14 +3,32 @@
 Converts sim_double_insert HDF5 episodes to RLDS tfrecords at the native
 60 fps.
 
-Per-frame action is the next-step state derived by composing the current
-state with actions/global_action[t]:
-    arm xyz : state_tcp_xyz + global_xyz
-    arm rpy : state_R composed with R.from_euler('xyz', global_rpy),
-              re-extracted as extrinsic xyz Euler
-    gripper : 1 - (state_gripper + 0.1 * global_gripper)
+B1 (state shift): in the raw HDF5, observation index k stores the state AFTER
+action k (the result of action k, not the antecedent of it). To make
+(obs_t, action_t) pair as 'action taken FROM obs_t', every per-step
+observation array (images, tcp_pose, joint_qpos, gripper_pos) is shifted back
+by one — new[t] = old[t-1] for t >= 1, with new[0] = old[0] as the boundary
+fallback. Action arrays (global_action, relative_action) stay at their
+original indices. This introduces a 1-step misalignment at t=0, symmetric to
+the 'hold last frame' alternative.
+
+O1 (mocap-anchored absolute action): the env integrates global_action onto an
+IK mocap target (not directly onto tcp), so a tcp-anchored absolute action
+does not round-trip. The mocap target is reconstructed deterministically from
+HOME + sum of (norm-limited, Cartesian-clipped) global_action deltas, and the
+absolute `action` at step t is the mocap target AFTER step t. Mocap is only
+used internally here to compute the absolute action — it is NOT written as a
+dataset field. Training computes the chunk-wise delta relative to the
+existing `observation/state`; at inference, the predicted absolute action is
+converted to a step-wise env delta against the live mocap target.
+
+Per-arm action / mocap_state layout (14-D total):
+    [mocap_xyz(3), mocap_rpy(3), gripper_open(1)] x 2
+gripper_open = 1 - HDF5 gripper_pos (close-scale -> open-scale).
+
 relative_action is copied straight from actions/relative_action with the
-gripper slots scaled by -0.1.
+gripper slots scaled by -0.1, kept at the original index (action arrays do
+not shift).
 
 Annotations come from
   /data/user_data/saksham3/sim_bimanual_assembly/annotations/subtask_annotations_all.json
@@ -76,6 +94,18 @@ _MAX_SUBTASKS = 5
 _VAL_FRACTION = 0.05
 _TERMINAL_REWARD_THRESHOLD = 3.0
 _DIR_TO_REPO_INDEX = {ds: i for i, ds in enumerate(_DATASET_DIRS)}
+
+# Mocap-recurrence constants — must mirror dual_xarms_sim's collect_insert_data.py.
+# HOME quaternions are scalar-first (w, x, y, z).
+_LEFT_HOME_POS = np.array([-0.35, 0.4, 0.2], dtype = np.float64)
+_LEFT_HOME_QUAT = np.array([0.0, 0.7071068, -0.7071068, 0.0], dtype = np.float64)
+_RIGHT_HOME_POS = np.array([0.35, 0.4, 0.2], dtype = np.float64)
+_RIGHT_HOME_QUAT = np.array([0.0, 0.7071068, -0.7071068, 0.0], dtype = np.float64)
+_LEFT_BOUNDS = np.array([[-0.7, 0.2, 0.0], [0.1, 0.6, 0.3]], dtype = np.float64)
+_RIGHT_BOUNDS = np.array([[-0.1, 0.2, 0.0], [0.7, 0.6, 0.3]], dtype = np.float64)
+_CONTROL_FREQ = 60.0
+_MAX_LIN = 1.0 / _CONTROL_FREQ
+_MAX_ANG = (np.pi / 3.0) / _CONTROL_FREQ
 
 _ACTION_FEATURE_NAMES = [
     'left_x', 'left_y', 'left_z',
@@ -196,6 +226,11 @@ def _build_is_intervention(ep_len, intervention_indices):
     return np.isin(np.arange(ep_len), intervention_indices).astype(np.bool_)
 
 
+def _shift_state_back(arr):
+    """B1 shift: new[0] = arr[0], new[t] = arr[t-1] for t >= 1. Preserves length."""
+    return np.concatenate([arr[:1], arr[:-1]])
+
+
 def _build_state(left_joints, left_gripper, right_joints, right_gripper):
     """16-D: [left_joint_qpos(7), 1 - left_gripper, right_joint_qpos(7), 1 - right_gripper]."""
     return np.concatenate([
@@ -207,8 +242,8 @@ def _build_state(left_joints, left_gripper, right_joints, right_gripper):
 
 
 def _quat_to_euler(quat):
-    """quaternion (w, x, y, z) -> (roll, pitch, yaw) extrinsic XYZ Euler."""
-    w, x, y, z = quat[0], quat[1], quat[2], quat[3]
+    """quaternion (x, y, z, w) -> (roll, pitch, yaw) extrinsic XYZ Euler."""
+    x, y, z, w = quat[0], quat[1], quat[2], quat[3]
     sinr_cosp = 2.0 * (w * x + y * z)
     cosr_cosp = 1.0 - 2.0 * (x * x + y * y)
     roll = np.arctan2(sinr_cosp, cosr_cosp)
@@ -231,22 +266,65 @@ def _build_eef_state(left_tcp_pose, right_tcp_pose):
     ]).astype(np.float32)
 
 
-def _compose_arm_action(tcp_pose, global_arm_action):
-    """Compose tcp_pose (xyz + quat wxyz) with a 6-D global action (xyz + rpy).
+def _norm_limit(offset, max_norm):
+    """Clip a 3-vector to max L2 norm (no change if already within)."""
+    n = np.linalg.norm(offset)
+    if n > max_norm:
+        return offset / n * max_norm
+    return offset
 
-    Returns a 6-D float32 [xyz(3), rpy(3)] arm action where:
-        xyz = state_xyz + global_xyz
-        rpy = (R(state_quat) * R.from_euler('xyz', global_rpy)).as_euler('xyz')
+
+def reconstruct_mocap(global_action):
+    """Replay actions/global_action through the env's mocap recurrence.
+
+    Per the dual-xArm sim, each step advances the IK mocap target by the
+    norm-limited global-frame xyz / rpy deltas, then clips xyz to per-arm
+    Cartesian bounds. Returns the mocap target AFTER each step (length N).
+    Quaternions are scalar-first (w, x, y, z).
     """
-    state_R = R.from_quat(tcp_pose[3:7], scalar_first = True)
-    delta_R = R.from_euler('xyz', global_arm_action[3:6])
-    composed_rpy = (state_R * delta_R).as_euler('xyz').astype(np.float32)
-    composed_xyz = (tcp_pose[:3] + global_arm_action[:3]).astype(np.float32)
-    return np.concatenate([composed_xyz, composed_rpy]).astype(np.float32)
+    n = len(global_action)
+    out = {
+        'left/pos':   np.zeros((n, 3), dtype = np.float64),
+        'left/quat':  np.zeros((n, 4), dtype = np.float64),
+        'right/pos':  np.zeros((n, 3), dtype = np.float64),
+        'right/quat': np.zeros((n, 4), dtype = np.float64),
+    }
+    l_pos, l_quat = _LEFT_HOME_POS.copy(),  _LEFT_HOME_QUAT.copy()
+    r_pos, r_quat = _RIGHT_HOME_POS.copy(), _RIGHT_HOME_QUAT.copy()
+    for k in range(n):
+        g = global_action[k]
+        l_pos = np.clip(l_pos + _norm_limit(g[0:3], _MAX_LIN), _LEFT_BOUNDS[0], _LEFT_BOUNDS[1])
+        l_quat = (R.from_euler('xyz', _norm_limit(g[3:6], _MAX_ANG))
+                  * R.from_quat(l_quat, scalar_first = True)).as_quat(scalar_first = True)
+        r_pos = np.clip(r_pos + _norm_limit(g[7:10], _MAX_LIN), _RIGHT_BOUNDS[0], _RIGHT_BOUNDS[1])
+        r_quat = (R.from_euler('xyz', _norm_limit(g[10:13], _MAX_ANG))
+                  * R.from_quat(r_quat, scalar_first = True)).as_quat(scalar_first = True)
+        out['left/pos'][k],   out['left/quat'][k]  = l_pos, l_quat
+        out['right/pos'][k],  out['right/quat'][k] = r_pos, r_quat
+    return out
+
+
+def _build_mocap_arms(mocap, idx):
+    """12-D mocap-anchored arm target at mocap[idx]:
+
+        [left_mocap_xyz(3), left_mocap_rpy(3),
+         right_mocap_xyz(3), right_mocap_rpy(3)]
+
+    Quaternions in `mocap` are scalar-first (w, x, y, z); extrinsic xyz Euler
+    is extracted.
+    """
+    le = R.from_quat(mocap['left/quat'][idx],  scalar_first = True).as_euler('xyz')
+    re = R.from_quat(mocap['right/quat'][idx], scalar_first = True).as_euler('xyz')
+    return np.concatenate([
+        mocap['left/pos'][idx],  le,
+        mocap['right/pos'][idx], re,
+    ]).astype(np.float32)
 
 
 def _compose_gripper_action(gripper_state, gripper_global_action):
-    """1 - (state + 0.1 * global)."""
+    """1 - (state + 0.1 * global). With B1 state shift, gripper_state is the
+    pre-action (shifted) gripper, so this still computes the post-action
+    open-scale gripper."""
     return np.float32(1.0 - (gripper_state + 0.1 * gripper_global_action))
 
 
@@ -343,21 +421,25 @@ def parse_episode(episode_path):
             )
         segments = _get_subtask_segments(dataset_key, ep_idx, ep_len)
 
-        left_joints = f['obses/state/left/joint_qpos'][:]
-        left_gripper = f['obses/state/left/gripper_pos'][:, 0]
-        right_joints = f['obses/state/right/joint_qpos'][:]
-        right_gripper = f['obses/state/right/gripper_pos'][:, 0]
-        left_tcp = f['obses/state/left/tcp_pose'][:]
-        right_tcp = f['obses/state/right/tcp_pose'][:]
+        # B1: all state-like arrays are shifted back by one at load time
+        # (new[0] = old[0], new[t] = old[t-1] for t >= 1) so that index t now
+        # holds the pre-action-t state. Action arrays stay at their original
+        # indices.
+        left_joints   = _shift_state_back(f['obses/state/left/joint_qpos'][:])
+        left_gripper  = _shift_state_back(f['obses/state/left/gripper_pos'][:, 0])
+        right_joints  = _shift_state_back(f['obses/state/right/joint_qpos'][:])
+        right_gripper = _shift_state_back(f['obses/state/right/gripper_pos'][:, 0])
+        left_tcp      = _shift_state_back(f['obses/state/left/tcp_pose'][:])
+        right_tcp     = _shift_state_back(f['obses/state/right/tcp_pose'][:])
+        images_right_top   = _shift_state_back(f['obses/images/right/top'][:])
+        images_left_wrist  = _shift_state_back(f['obses/images/left/wrist'][:])
+        images_right_wrist = _shift_state_back(f['obses/images/right/wrist'][:])
         global_action = f['actions/global_action'][:]
         relative_action = f['actions/relative_action'][:]
         rewards = f['rewards/rewards'][:]
         intervention_indices = None
         if 'interventions' in f['metadata']:
             intervention_indices = f['metadata/interventions'][:]
-        images_right_top = f['obses/images/right/top']
-        images_left_wrist = f['obses/images/left/wrist']
-        images_right_wrist = f['obses/images/right/wrist']
 
         first_top_img = Image.open(io.BytesIO(images_right_top[0].tobytes()))
         first_left_wrist_img = Image.open(io.BytesIO(images_left_wrist[0].tobytes()))
@@ -372,35 +454,46 @@ def parse_episode(episode_path):
             1.0 if float(rewards.max()) >= _TERMINAL_REWARD_THRESHOLD else 0.0
         )
 
+        # Mocap targets after each original step k (length ep_len). Only used
+        # here to build the absolute action — not written to the dataset.
+        mocap = reconstruct_mocap(global_action)
+
         steps = []
-        for i in range(ep_len):
+        for t in range(ep_len):
             state = _build_state(
-                left_joints[i], left_gripper[i], right_joints[i], right_gripper[i],
+                left_joints[t], left_gripper[t], right_joints[t], right_gripper[t],
             )
 
-            left_arm = _compose_arm_action(left_tcp[i], global_action[i, 0:6])
-            right_arm = _compose_arm_action(right_tcp[i], global_action[i, 7:13])
-            left_grip_action = _compose_gripper_action(left_gripper[i], global_action[i, 6])
-            right_grip_action = _compose_gripper_action(right_gripper[i], global_action[i, 13])
+            # Action[t]: arm portion is mocap target AFTER action t (O1
+            # mocap-anchored). Gripper portion is the legacy compose-with-
+            # delta formula, now fed the shifted (pre-action) gripper so it
+            # predicts the post-action open-scale gripper.
+            arms = _build_mocap_arms(mocap, t)
+            left_grip  = _compose_gripper_action(left_gripper[t],  global_action[t, 6])
+            right_grip = _compose_gripper_action(right_gripper[t], global_action[t, 13])
             action = np.concatenate([
-                left_arm, [left_grip_action],
-                right_arm, [right_grip_action],
+                arms[0:6], [left_grip],
+                arms[6:12], [right_grip],
             ]).astype(np.float32)
 
-            eef_state = _build_eef_state(left_tcp[i], right_tcp[i])
-            eef_action = np.concatenate([left_arm, right_arm]).astype(np.float32)
+            # eef_sim_pose_state: tcp-derived robot pose at the observation
+            # (differs from the mocap target by the IK lag).
+            eef_state = _build_eef_state(left_tcp[t], right_tcp[t])
 
-            rel_act = relative_action[i].astype(np.float32).copy()
+            # eef_sim_pose_action: 12-D arm-only slice of the mocap action.
+            eef_action = arms
+
+            rel_act = relative_action[t].astype(np.float32).copy()
             rel_act[6] *= -0.1
             rel_act[13] *= -0.1
 
-            img_right_top = _decode_and_reencode_jpeg(images_right_top[i])
-            img_left_wrist = _decode_and_reencode_jpeg(images_left_wrist[i])
-            img_right_wrist = _decode_and_reencode_jpeg(images_right_wrist[i])
+            img_right_top   = _decode_and_reencode_jpeg(images_right_top[t])
+            img_left_wrist  = _decode_and_reencode_jpeg(images_left_wrist[t])
+            img_right_wrist = _decode_and_reencode_jpeg(images_right_wrist[t])
 
-            sub = _get_subtask_info_for_step(i, segments, ep_len)
+            sub = _get_subtask_info_for_step(t, segments, ep_len)
 
-            reward = terminal_reward if i == ep_len - 1 else np.float32(0.0)
+            reward = terminal_reward if t == ep_len - 1 else np.float32(0.0)
 
             step = {
                 'observation/image/cam_0': img_right_top,
@@ -409,14 +502,14 @@ def parse_episode(episode_path):
                 'observation/state': state,
                 'action': action,
                 'relative_action': rel_act,
-                'is_first': (i == 0),
-                'is_terminal': (i == ep_len - 1),
-                'is_intervention': is_intervention[i],
+                'is_first': (t == 0),
+                'is_terminal': (t == ep_len - 1),
+                'is_intervention': is_intervention[t],
                 'reward': reward,
-                'frame_index': np.int64(i),
+                'frame_index': np.int64(t),
                 'task': task,
                 'episode_index': np.int64(ep_idx),
-                'index': np.int64(i),
+                'index': np.int64(t),
                 'subtask_1': sub['subtask_names'][0],
                 'subtask_2': sub['subtask_names'][1],
                 'subtask_3': sub['subtask_names'][2],
