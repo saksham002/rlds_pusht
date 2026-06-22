@@ -79,16 +79,18 @@ def _generate_slurm_script(args, array_spec):
 #SBATCH --time={args.slurm_time}
 #SBATCH --cpus-per-task={args.slurm_cpus}
 #SBATCH --mem={args.slurm_mem}
+#SBATCH --gres={args.slurm_gres}
 #SBATCH --output={log_dir}/build_%a.out
 #SBATCH --error={log_dir}/build_%a.err
 
 source ~/miniconda3/etc/profile.d/conda.sh && conda activate rlds
 
-export CURL_CA_BUNDLE="/home/saksham3/miniconda3/envs/rlds/lib/python3.12/site-packages/certifi/cacert.pem"
+export PYTHONUNBUFFERED=1
+export CURL_CA_BUNDLE="/data/user_data/saksham3/conda-envs/rlds/lib/python3.12/site-packages/certifi/cacert.pem"
 export SSL_CERT_FILE="$CURL_CA_BUNDLE"
 
 cd "{framework_dir}"
-python -m framework.runner \\
+python -u -m framework.runner \\
     --config "{config_path}" \\
     --data_dir "{args.data_root}/$SLURM_ARRAY_TASK_ID" \\
     --worker_id "$SLURM_ARRAY_TASK_ID" \\
@@ -454,11 +456,14 @@ def main():
                         help = 'Skip build phase (assume all workers already done)')
     parser.add_argument('--skip_merge',      action = 'store_true',
                         help = 'Skip merge phase (read existing shard_map.json from output)')
+    parser.add_argument('--skip_scan',       action = 'store_true',
+                        help = 'Skip scan + fix phases (merge only; no shard integrity check/repair)')
     # SLURM-specific
     parser.add_argument('--slurm_partition', default = 'preempt')
     parser.add_argument('--slurm_time',      default = '48:00:00')
     parser.add_argument('--slurm_cpus',      type = int, default = 8)
     parser.add_argument('--slurm_mem',       default = '64G')
+    parser.add_argument('--slurm_gres',      default = 'gpu:1')
     args = parser.parse_args()
 
     os.makedirs(args.log_dir, exist_ok = True)
@@ -488,6 +493,11 @@ def main():
 
     if not split_infos:
         print('\nNo splits produced — nothing to scan. Done.')
+        return
+
+    if args.skip_scan:
+        print('\n=== Phase 3: Scan + Phase 4: Fix [skipped] ===')
+        print('\n=== Pipeline complete ===')
         return
 
     # Phase 3
