@@ -2,8 +2,7 @@
 
 Converts the 13 ImitationLearning tasks of AgiBot World 2026 (LeRobot v2.1
 shards, ~273 h / ~11.7k episodes) into RLDS tfrecords in the RoboCOIN loader
-format, via the generic `slurm_rlds/` framework. See `agibot.md` in this
-folder for the dataset survey and build notes.
+format, via the generic `slurm_rlds/` framework.
 
 ## Inputs
 
@@ -68,27 +67,17 @@ python -m framework.runner \
     --num_workers 24
 ```
 
-Full build (SLURM array, 24 workers):
+The production build runs one tfds build per (worker, task) unit
+`<task_idx * 24 + worker_id>` on node-local scratch, uploads each unit to
+`gs://saksham-euw4/datasets/agibot_world/<unit>/` (copying `dataset_info.json`
+LAST, so a GCS marker implies a complete unit), then deletes it locally — a
+preemption only loses the in-progress unit. The full dataset is ~8 TB, too
+large for the group share, hence GCS. The bespoke SLURM-array build/upload
+orchestration is preemption-resilient and per-unit; it is not part of this
+commit.
 
-```bash
-cd agibot/
-mkdir -p logs
-sbatch scripts/build.sh
-```
-
-Each worker runs one tfds build per task (13 sequential builds). Each
-(worker, task) unit `<task_idx * 24 + worker_id>` is built on node-local
-scratch (`/scratch/saksham3/`), uploaded to
-`gs://saksham-euw4/datasets/agibot_world/<unit>/` via
-`scripts/upload_unit.py` (which copies `dataset_info.json` LAST, so a GCS
-marker implies a complete unit), then deleted locally. A preemption only
-loses the in-progress unit (~1.6 h worst case). The full dataset is ~8 TB —
-too large for the group share, hence GCS. Units whose (task, worker) slice
-is empty (small tasks with fewer episodes than workers) produce no marker;
-`merge_shards.py` skips them.
-
-Then standalone merge on GCS over the 13 × 24 = 312 unit dirs (no scan/fix
-phases):
+Then merge on GCS over the 13 × 24 = 312 unit dirs (no scan/fix phases) with
+the shared framework merge:
 
 ```bash
 cd ../slurm_rlds/
@@ -100,6 +89,9 @@ python scripts/merge_shards.py \
     --dataset_version 1.0.0
 ```
 
-Note: `scripts/build.sh` here is used instead of `pipeline.py`'s built-in
-build phase because babel requires `--gres=gpu:1` on every job and the
-group-data certificate paths, which the generated sbatch script lacks.
+Note: agibot uses a bespoke per-unit build/upload rather than `slurm_rlds`'s
+`pipeline.py` because the ~8 TB output is streamed to GCS one unit at a time
+(build on scratch → upload → delete) instead of written to a single per-worker
+`data_root`. (`pipeline.py` now parameterizes the build env and `--gres` via
+`--env_setup`, so those are no longer blockers — only the GCS-unit streaming
+is.)
