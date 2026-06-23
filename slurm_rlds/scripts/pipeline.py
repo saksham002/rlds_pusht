@@ -68,6 +68,27 @@ def _check_markers(root, num_workers, dataset_name, version):
     return [w for w, exists in results if not exists]
 
 
+# ─── GCS-aware copy ───────────────────────────────────────────────────────────
+
+_GCS_CLIENT = None
+
+
+def _copy_file(src, dst, overwrite = False):
+    """Copy one object. For gs://->gs:// use a server-side GCS rewrite (no bytes
+    transit this node); any other src/dst pair falls back to tf.io.gfile.copy."""
+    if src.startswith('gs://') and dst.startswith('gs://'):
+        global _GCS_CLIENT
+        if _GCS_CLIENT is None:
+            from google.cloud import storage
+            _GCS_CLIENT = storage.Client()
+        src_bucket_name, _, src_name = src[len('gs://'):].partition('/')
+        dst_bucket_name, _, dst_name = dst[len('gs://'):].partition('/')
+        src_bucket = _GCS_CLIENT.bucket(src_bucket_name)
+        src_bucket.copy_blob(src_bucket.blob(src_name), _GCS_CLIENT.bucket(dst_bucket_name), dst_name)
+        return
+    tf.io.gfile.copy(src, dst, overwrite = overwrite)
+
+
 # ─── Phase 1: Build ───────────────────────────────────────────────────────────
 
 def _array_spec(worker_ids):
@@ -247,7 +268,7 @@ def phase_merge(args):
                 dst_file = f'{dataset_name}-{split_name}.tfrecord-{new_idx:05d}-of-{n_total:05d}'
                 if not do_overwrite and dst_file in dst_set:
                     return
-                tf.io.gfile.copy(src_path, os.path.join(out_dir, dst_file), overwrite = do_overwrite)
+                _copy_file(src_path, os.path.join(out_dir, dst_file), overwrite = do_overwrite)
             return copy_shard
 
         copy_fn = _make_copy_fn(split, total_shards, existing_dst, args.overwrite)
@@ -278,7 +299,7 @@ def phase_merge(args):
         })
 
     if features_json_src:
-        tf.io.gfile.copy(features_json_src, os.path.join(out_dir, 'features.json'), overwrite = True)
+        _copy_file(features_json_src, os.path.join(out_dir, 'features.json'), overwrite = True)
 
     merged_info = {
         'description':  description or '',
@@ -400,7 +421,7 @@ def phase_fix(args, out_dir, bad_map, shard_map, split_infos):
             print(f'    shard {final_idx:>5} [{status}]: W{worker_id}[{worker_shard}/{n_worker_shards}] reason={reason}', flush = True)
             for attempt in range(5):
                 try:
-                    tf.io.gfile.copy(src_path, dst_path, overwrite = True)
+                    _copy_file(src_path, dst_path, overwrite = True)
                     print(f'      attempt {attempt + 1}/5 OK', flush = True)
                     repaired += 1
                     break
