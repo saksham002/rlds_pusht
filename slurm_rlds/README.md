@@ -126,10 +126,13 @@ The script runs four phases in sequence:
 | `--overwrite` | off | Overwrite existing merged shards |
 | `--skip_build` | off | Skip phase 1 (assume workers already done) |
 | `--skip_merge` | off | Skip phases 1–2, read existing `shard_map.json` from output |
+| `--skip_scan` | off | Skip phases 3–4 (scan + fix); merge only, no integrity check/repair |
 | `--slurm_partition` | `preempt` | SLURM partition |
 | `--slurm_time` | `48:00:00` | Wall time per worker |
 | `--slurm_cpus` | `8` | CPUs per worker task |
 | `--slurm_mem` | `64G` | Memory per worker task |
+| `--slurm_gres` | `gpu:1` | SLURM `--gres` for the build array (empty string omits it) |
+| `--env_setup` | conda `rlds` + certs | Shell snippet to activate the build env in the generated script; override per dataset, e.g. `--env_setup 'source /path/to/venv/bin/activate'` |
 | `--log_dir` | `logs/` | Directory for SLURM worker stdout/stderr |
 
 ---

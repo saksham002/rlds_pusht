@@ -39,6 +39,16 @@ import tempfile
 import tensorflow as tf
 
 
+# Default env-activation block injected into the generated SLURM build script.
+# Override per dataset with --env_setup (e.g. a venv 'source .../activate'),
+# so a single pipeline.py serves every config — only the config file is per-dataset.
+_DEFAULT_ENV_SETUP = '''source ~/miniconda3/etc/profile.d/conda.sh && conda activate rlds
+
+export PYTHONUNBUFFERED=1
+export CURL_CA_BUNDLE="/data/user_data/saksham3/conda-envs/rlds/lib/python3.12/site-packages/certifi/cacert.pem"
+export SSL_CERT_FILE="$CURL_CA_BUNDLE"'''
+
+
 # ─── Marker helpers ───────────────────────────────────────────────────────────
 
 def _marker_path(root, worker_id, dataset_name, version):
@@ -79,15 +89,11 @@ def _generate_slurm_script(args, array_spec):
 #SBATCH --time={args.slurm_time}
 #SBATCH --cpus-per-task={args.slurm_cpus}
 #SBATCH --mem={args.slurm_mem}
-#SBATCH --gres={args.slurm_gres}
+{f'#SBATCH --gres={args.slurm_gres}' if args.slurm_gres else ''}
 #SBATCH --output={log_dir}/build_%a.out
 #SBATCH --error={log_dir}/build_%a.err
 
-source ~/miniconda3/etc/profile.d/conda.sh && conda activate rlds
-
-export PYTHONUNBUFFERED=1
-export CURL_CA_BUNDLE="/data/user_data/saksham3/conda-envs/rlds/lib/python3.12/site-packages/certifi/cacert.pem"
-export SSL_CERT_FILE="$CURL_CA_BUNDLE"
+{args.env_setup}
 
 cd "{framework_dir}"
 python -u -m framework.runner \\
@@ -463,7 +469,12 @@ def main():
     parser.add_argument('--slurm_time',      default = '48:00:00')
     parser.add_argument('--slurm_cpus',      type = int, default = 8)
     parser.add_argument('--slurm_mem',       default = '64G')
-    parser.add_argument('--slurm_gres',      default = 'gpu:1')
+    parser.add_argument('--slurm_gres',      default = 'gpu:1',
+                        help = 'SLURM --gres for the build array (e.g. gpu:1); empty string omits it')
+    parser.add_argument('--env_setup',       default = _DEFAULT_ENV_SETUP,
+                        help = "Shell snippet to activate the build env in the generated SLURM "
+                               "script (default: conda rlds + cert exports). Override per dataset, "
+                               "e.g. --env_setup 'source /data/user_data/saksham3/vla/bin/activate'.")
     args = parser.parse_args()
 
     os.makedirs(args.log_dir, exist_ok = True)
