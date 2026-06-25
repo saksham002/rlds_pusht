@@ -2,3 +2,10 @@
 wandb
 __pycache__
 .idea
+
+# logs and build caches
+logs/
+*.log
+*.egg-info/
+dist/
+.codex

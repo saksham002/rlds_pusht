@@ -1,0 +1,2629 @@
+=== chunk   0 | xarm_baseline_round1 | 5 subtasks | 2478 frames ===
+    - Remove Microfiber cloth from the medium box.
+    - Remove Sponge from the medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Croissant into medium box.
+  => Remove the Microfiber cloth and Sponge from the medium box, then pack the Cheez-It container, Altoids container, and Croissant into the medium box.
+
+=== chunk   1 | xarm_baseline_round1 | 5 subtasks | 2543 frames ===
+    - Remove Pringles chip bag from the large box.
+    - Remove Soccer ball plush from the large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+  => Remove the Pringles chip bag and Soccer ball plush from the large box, then pack the Nesquik container, Soda can, and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk   2 | xarm_baseline_round1 | 6 subtasks | 3891 frames ===
+    - Remove Pink tumbler from the small box.
+    - Remove Whiteboard eraser from the small box.
+    - Remove Soccer ball plush from the small box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into small box.
+    - Pack Box of M&Ms into small box.
+  => Remove the Pink tumbler, Whiteboard eraser, and Soccer ball plush from the small box, then pack the Cheez-It container, Altoids container, and Box of M&Ms into the small box.
+
+=== chunk   3 | xarm_baseline_round1 | 7 subtasks | 3407 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into the large box.
+    - Pack sponge into the large box.
+    - Pack Soda can into medium box.
+    - Pack Pringles chip bag into medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Stuffed yak into large box.
+  => Pack the Cinnamon Toast Crunch cereal, Nesquik container, and sponge into the large box, then pack the Soda can and Pringles chip bag into the medium box, then pack the Microfiber cloth and Stuffed yak into the large box.
+
+=== chunk   4 | xarm_baseline_round1 | 5 subtasks | 4122 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+    - Pack Liquid hand soap into small box.
+    - Pack sponge into the medium box.
+  => Pack the Cheez-It container, Soda can, Altoids container, and Liquid hand soap into the small box, then pack the sponge into the medium box.
+
+=== chunk   5 | xarm_baseline_round1 | 9 subtasks | 6058 frames ===
+    - Pack Soda can into small box.
+    - Pack Nesquik container into small box.
+    - Pack Pink tumbler into small box.
+    - Remove Soda can from the small box.
+    - Pack Pink tumbler into small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into large box.
+    - Pack Donut into large box.
+    - Pack Pringles chip bag into large box.
+  => Pack the Soda can, Nesquik container, and Pink tumbler into the small box, then remove the Soda can from the small box, then pack the Pink tumbler and Soda can into the small box, then pack the Altoids container, Donut, and Pringles chip bag into the large box.
+
+=== chunk   6 | xarm_baseline_round1 | 5 subtasks | 2337 frames ===
+    - Pack spatula into the large box.
+    - Pack Cling n' seal wrap into large box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+    - Pack sponge into the small box.
+  => Pack the spatula and Cling n' seal wrap into the large box, then pack the Soda can, Altoids container, and sponge into the small box.
+
+=== chunk   7 | xarm_baseline_round1 | 5 subtasks | 3554 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack sponge into the medium box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Cheez-It container, Altoids container, and sponge into the medium box.
+
+=== chunk   8 | xarm_baseline_round1 | 7 subtasks | 4217 frames ===
+    - Pack Altoids container into small box.
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into small box.
+    - Pack Box of M&Ms into medium box.
+    - Pack sponge into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+  => Pack the Altoids container, Cheez-It container, and Whiteboard eraser into the small box, then pack the Box of M&Ms, sponge, Donut, and Croissant into the medium box.
+
+=== chunk   9 | xarm_baseline_round1 | 4 subtasks | 2561 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Soda can into medium box.
+    - Pack Cheez-It container into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+  => Pack the Nesquik container and Soda can into the medium box, then pack the Cheez-It container and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk  10 | xarm_baseline_round1 | 6 subtasks | 3402 frames ===
+    - Pack Microfiber cloth into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Soda can into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Cheez-It container into the large box.
+    - Pack Nesquik container into large box.
+  => Pack the Microfiber cloth, Pink tumbler, Soda can, and Altoids container into the medium box, then pack the Cheez-It container and Nesquik container into the large box.
+
+=== chunk  11 | xarm_baseline_round1 | 10 subtasks | 6519 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Nesquik container into medium box.
+    - Pack Altoids container into large box.
+    - Pack sponge into the large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack croissant into the large box.
+    - Pack Whiteboard eraser into large box.
+  => Pack the Soda can, Pink tumbler, and Nesquik container into the medium box, then pack the Altoids container, sponge, Microfiber cloth, Pringles chip bag, Soccer ball plush, croissant, and Whiteboard eraser into the large box.
+
+=== chunk  12 | xarm_baseline_round1 | 5 subtasks | 3356 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into small box.
+    - Pack sponge into the small box.
+    - Pack Microfiber cloth into medium box.
+    - Pack GoGo fruit pouch into the small box.
+  => Pack the Cheez-It container into the medium box, then pack the Altoids container and sponge into the small box, then pack the Microfiber cloth into the medium box, then pack the GoGo fruit pouch into the small box.
+
+=== chunk  13 | xarm_baseline_round1 | 4 subtasks | 2115 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack mustard into the large box.
+    - Pack donut into the large box.
+  => Pack the Soda can and Pink tumbler into the medium box, then pack the mustard and donut into the large box.
+
+=== chunk  14 | xarm_baseline_round1 | 5 subtasks | 3155 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into small box.
+    - Pack Soda can into small box.
+    - Pack sponge into the medium box.
+    - Pack Microfiber cloth into medium box.
+  => Pack the Cheez-It container, Altoids container, and Soda can into the small box, then pack the sponge and Microfiber cloth into the medium box.
+
+=== chunk  15 | xarm_baseline_round1 | 3 subtasks | 1707 frames ===
+    - Pack Altoids container into small box.
+    - Pack sponge into the small box.
+    - Pack Whiteboard eraser into small box.
+  => Pack the Altoids container, sponge, and Whiteboard eraser into the small box.
+
+=== chunk  16 | xarm_baseline_round1 | 3 subtasks | 1705 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+  => Pack the Cheez-It container, Soda can, and Altoids container into the small box.
+
+=== chunk  17 | xarm_baseline_round1 | 4 subtasks | 2097 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into small box.
+    - Pack sponge into the large box.
+    - Pack Soda can into large box.
+  => Pack the Cheez-It container and Whiteboard eraser into the small box, then pack the sponge and Soda can into the large box.
+
+=== chunk  18 | xarm_baseline_round1 | 5 subtasks | 2715 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into large box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the medium box, then pack the Microfiber cloth, Marker, and Soccer ball plush into the large box.
+
+=== chunk  19 | xarm_baseline_round1 | 8 subtasks | 4607 frames ===
+    - Pack Soda can into medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Nesquik container into medium box.
+    - Pack Croissant into medium box.
+    - Pack Pringles chip bag into small box.
+    - Pack donut into the small box.
+    - Pack Altoids container into small box.
+    - Pack Microfiber cloth into small box.
+  => Pack the Soda can, Cheez-It container, Nesquik container, and Croissant into the medium box, then pack the Pringles chip bag, donut, Altoids container, and Microfiber cloth into the small box.
+
+=== chunk  20 | xarm_baseline_round1 | 7 subtasks | 6179 frames ===
+    - Pack Soda can into medium box.
+    - Pack Soccer ball plush into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Pringles chip bag into medium box.
+    - Pack marker into the medium box.
+    - Pack Cheez-It container into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+  => Pack the Soda can, Soccer ball plush, GoGo fruit pouch, Pringles chip bag, and marker into the medium box, then pack the Cheez-It container and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk  21 | xarm_baseline_round1 | 6 subtasks | 3276 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pringles chip bag into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Soccer ball plush into small box.
+    - Pack Sponge into small box.
+    - Pack Liquid hand soap into small box.
+  => Pack the Soda can, Pringles chip bag, and Altoids container into the medium box, then pack the Soccer ball plush, Sponge, and Liquid hand soap into the small box.
+
+=== chunk  22 | xarm_baseline_round1 | 5 subtasks | 2588 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into large box.
+    - Pack Sponge into large box.
+    - Pack Altoids container into large box.
+    - Pack Microfiber cloth into the medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Nesquik container, Sponge, and Altoids container into the large box, then pack the Microfiber cloth into the medium box.
+
+=== chunk  23 | xarm_baseline_round1 | 5 subtasks | 2649 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Whiteboard eraser into medium box.
+    - Pack Donut into medium box.
+    - Pack Box of M&Ms into small box.
+    - Pack sponge into the small box.
+  => Pack the Cheez-It container, Whiteboard eraser, and Donut into the medium box, then pack the Box of M&Ms and sponge into the small box.
+
+=== chunk  24 | xarm_baseline_round1 | 6 subtasks | 2377 frames ===
+    - Pack Nesquik container into small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Altoids container, Whiteboard eraser, and Microfiber cloth into the large box.
+
+=== chunk  25 | xarm_baseline_round1 | 4 subtasks | 2627 frames ===
+    - Remove Box of M&Ms from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into small box.
+  => Remove the Box of M&Ms and Microfiber cloth from the medium box, then pack the Cheez-It container and Altoids container into the small box.
+
+=== chunk  26 | xarm_baseline_round1 | 6 subtasks | 3787 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack spatula into the large box.
+  => Pack the Cinnamon Toast Crunch cereal, Soccer ball plush, Pringles chip bag, Nesquik container, Soda can, and spatula into the large box.
+
+=== chunk  27 | xarm_baseline_round1 | 6 subtasks | 3726 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Cheez-It container into large box.
+    - Pack sponge into the large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Altoids container, Cheez-It container, sponge, and Microfiber cloth into the large box.
+
+=== chunk  28 | xarm_baseline_round1 | 3 subtasks | 1045 frames ===
+    - Pack Pringles chip bag into small box.
+    - Pack Altoids container into small box.
+    - Pack sponge into the medium box.
+  => Pack the Pringles chip bag and Altoids container into the small box, then pack the sponge into the medium box.
+
+=== chunk  29 | xarm_baseline_round1 | 5 subtasks | 2722 frames ===
+    - Pack Stuffed yak into medium box.
+    - Pack sponge into the medium box.
+    - Pack Cling n' seal wrap into large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack donut into the large box.
+  => Pack the Stuffed yak and sponge into the medium box, then pack the Cling n' seal wrap, Whiteboard eraser, and donut into the large box.
+
+=== chunk  30 | xarm_baseline_round1good | 6 subtasks | 2781 frames ===
+    - Remove Microfiber cloth from the large box.
+    - Remove Whiteboard eraser from the large box.
+    - Remove Sponge from the small box.
+    - Remove Altoids container from the small box.
+    - Pack Marker into the large box.
+    - Pack Cheez-It container into small box.
+  => Remove the Microfiber cloth and Whiteboard eraser from the large box, then remove the Sponge and Altoids container from the small box, then pack the Marker into the large box, then pack the Cheez-It container into the small box.
+
+=== chunk  31 | xarm_baseline_round1good | 3 subtasks | 1517 frames ===
+    - Pack Soccer ball plush into large box.
+    - Pack Spatula into the large box.
+    - Pack Cling n' seal wrap into large box.
+  => Pack the Soccer ball plush, Spatula, and Cling n' seal wrap into the large box.
+
+=== chunk  32 | xarm_baseline_round1good | 6 subtasks | 4318 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Marker into the medium box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Microfiber cloth, Box of M&Ms, Nutella container, and Marker into the medium box.
+
+=== chunk  33 | xarm_baseline_round1good | 6 subtasks | 2794 frames ===
+    - Pack Nesquik container into small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Liquid hand soap into large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Cinnamon Toast Crunch cereal, Pringles chip bag, and Liquid hand soap into the large box.
+
+=== chunk  34 | xarm_baseline_round1good | 8 subtasks | 4297 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Donut into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, Box of M&Ms, Donut, and GoGo fruit pouch into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk  35 | xarm_baseline_round1good | 5 subtasks | 1743 frames ===
+    - Pack Sponge into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into small box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+  => Pack the Sponge, Altoids container, and Box of M&Ms into the small box, then pack the Nesquik container and Soda can into the large box.
+
+=== chunk  36 | xarm_baseline_round1good | 8 subtasks | 3065 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Soda can into large box.
+    - Pack Nesquik container into the large box.
+    - Pack Box of M&Ms into large box.
+    - Pack Marker into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Soccer ball plush into the large box.
+  => Pack the Cheez-It container into the small box, then pack the Cinnamon Toast Crunch cereal, Soda can, Nesquik container, Box of M&Ms, Marker, Pringles chip bag, and Soccer ball plush into the large box.
+
+=== chunk  37 | xarm_baseline_round1good | 8 subtasks | 4679 frames ===
+    - Pack GoGo fruit pouch into medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Nutella container into large box.
+    - Pack Mustard into the large box.
+    - Pack Liquid hand soap into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the GoGo fruit pouch, Donut, Croissant, and Baking soda into the medium box, then pack the Nutella container, Mustard, Liquid hand soap, and Microfiber cloth into the large box.
+
+=== chunk  38 | xarm_baseline_round1good | 4 subtasks | 3076 frames ===
+    - Pack Pringles chip bag into large box.
+    - Pack Microfiber cloth into small box.
+    - Pack Marker into large box.
+    - Pack Altoids container into the small box.
+  => Pack the Pringles chip bag into the large box, then pack the Microfiber cloth into the small box, then pack the Marker into the large box, then pack the Altoids container into the small box.
+
+=== chunk  39 | xarm_baseline_round1good | 5 subtasks | 3216 frames ===
+    - Pack Box of M&Ms into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+  => Pack the Box of M&Ms and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container, Donut, and Croissant into the medium box.
+
+=== chunk  40 | xarm_baseline_round1good | 8 subtasks | 3712 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into the large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Nesquik container, Soda can, Donut, Croissant, Nutella container, and GoGo fruit pouch into the medium box, then pack the Marker and Microfiber cloth into the large box.
+
+=== chunk  41 | xarm_baseline_round1good | 5 subtasks | 2170 frames ===
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pink tumbler into large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into small box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk  42 | xarm_baseline_round1good | 3 subtasks | 1092 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk  43 | xarm_baseline_round1good | 3 subtasks | 1756 frames ===
+    - Pack Soda can into small box.
+    - Pack Pringles chip bag into small box.
+    - Pack Pink tumbler into the small box.
+  => Pack the Soda can, Pringles chip bag, and Pink tumbler into the small box.
+
+=== chunk  44 | xarm_baseline_round1good | 2 subtasks | 1425 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+  => Pack the Cheez-It container and Cinnamon Toast Crunch cereal into the medium box.
+
+=== chunk  45 | xarm_baseline_round1good | 4 subtasks | 2073 frames ===
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack GoGo fruit pouch into the small box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Soda can, Altoids container, and GoGo fruit pouch into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk  46 | xarm_baseline_round1good | 6 subtasks | 3982 frames ===
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Whiteboard eraser into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Sponge into the medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Microfiber cloth, Whiteboard eraser, Box of M&Ms, and Sponge into the medium box.
+
+=== chunk  47 | xarm_baseline_round1good | 5 subtasks | 2781 frames ===
+    - Pack Pringles chip bag into large box.
+    - Pack Soda can into large box.
+    - Pack Sponge into the large box.
+    - Pack Pink tumbler into large box.
+    - Pack Liquid hand soap into the small box.
+  => Pack the Pringles chip bag, Soda can, Sponge, and Pink tumbler into the large box, then pack the Liquid hand soap into the small box.
+
+=== chunk  48 | xarm_baseline_round1good | 6 subtasks | 2201 frames ===
+    - Pack Nesquik container into small box.
+    - Pack Altoids container into the small box.
+    - Pack Donut into the small box.
+    - Pack Soda can into large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack Sponge into the large box.
+  => Pack the Nesquik container, Altoids container, and Donut into the small box, then pack the Soda can, Whiteboard eraser, and Sponge into the large box.
+
+=== chunk  49 | xarm_baseline_round1good | 6 subtasks | 2160 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Donut into medium box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, and Donut into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk  50 | xarm_baseline_round1good | 6 subtasks | 2460 frames ===
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pink tumbler into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, Pink tumbler, and Pringles chip bag into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk  51 | xarm_baseline_round1good | 8 subtasks | 5401 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into the medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Stuffed yak into large box.
+    - Pack Liquid hand soap into large box.
+  => Pack the Cheez-It container, Baking soda, Donut, Croissant, and Nutella container into the medium box, then pack the Microfiber cloth, Stuffed yak, and Liquid hand soap into the large box.
+
+=== chunk  52 | xarm_baseline_round2 | 5 subtasks | 3385 frames ===
+    - Remove Sponge from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Croissant into the medium box.
+  => Remove the Sponge and Microfiber cloth from the medium box, then pack the Cheez-It container, Altoids container, and Croissant into the medium box.
+
+=== chunk  53 | xarm_baseline_round2 | 5 subtasks | 3217 frames ===
+    - Remove Pringles chip bag from the large box.
+    - Remove Soccer ball plush from the large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+  => Remove the Pringles chip bag and Soccer ball plush from the large box, then pack the Nesquik container, Soda can, and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk  54 | xarm_baseline_round2 | 6 subtasks | 3421 frames ===
+    - Remove Altoids container from the small box.
+    - Remove Sponge from the small box.
+    - Remove Whiteboard eraser from the large box.
+    - Remove Microfiber cloth from the large box.
+    - Pack Marker into large box.
+    - Pack Cheez-It container into the small box.
+  => Remove the Altoids container and Sponge from the small box, then remove the Whiteboard eraser and Microfiber cloth from the large box, then pack the Marker into the large box, then pack the Cheez-It container into the small box.
+
+=== chunk  55 | xarm_baseline_round2 | 6 subtasks | 2576 frames ===
+    - Remove Pink tumbler from the small box.
+    - Remove Whiteboard eraser from the small box.
+    - Remove Soccer ball plush from the small box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+  => Remove the Pink tumbler, Whiteboard eraser, and Soccer ball plush from the small box, then pack the Cheez-It container, Altoids container, and Box of M&Ms into the small box.
+
+=== chunk  56 | xarm_baseline_round2 | 7 subtasks | 3236 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Soda can into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Nesquik container into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Sponge into medium box.
+    - Pack Stuffed yak into medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Soda can, and Pringles chip bag into the large box, then pack the Nesquik container, Microfiber cloth, Sponge, and Stuffed yak into the medium box.
+
+=== chunk  57 | xarm_baseline_round2 | 5 subtasks | 2976 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Liquid hand soap into the small box.
+    - Pack Sponge into the medium box.
+  => Pack the Cheez-It container, Soda can, Altoids container, and Liquid hand soap into the small box, then pack the Sponge into the medium box.
+
+=== chunk  58 | xarm_baseline_round2 | 3 subtasks | 2343 frames ===
+    - Pack Cling n' seal wrap into large box.
+    - Pack Spatula into large box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Cling n' seal wrap, Spatula, and Soccer ball plush into the large box.
+
+=== chunk  59 | xarm_baseline_round2 | 6 subtasks | 2864 frames ===
+    - Pack Soda can into the small box.
+    - Pack Nesquik container into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Donut into the large box.
+    - Pack Pringles chip bag into the large box.
+  => Pack the Soda can, Nesquik container, and Pink tumbler into the small box, then pack the Altoids container, Donut, and Pringles chip bag into the large box.
+
+=== chunk  60 | xarm_baseline_round2 | 6 subtasks | 4126 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Nutella container into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Marker into medium box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Nutella container, Microfiber cloth, Box of M&Ms, and Marker into the medium box.
+
+=== chunk  61 | xarm_baseline_round2 | 6 subtasks | 4175 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Liquid hand soap into large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Cinnamon Toast Crunch cereal, Pringles chip bag, and Liquid hand soap into the large box.
+
+=== chunk  62 | xarm_baseline_round2 | 5 subtasks | 2011 frames ===
+    - Pack Spatula into large box.
+    - Pack Cling n' seal wrap into large box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into small box.
+  => Pack the Spatula and Cling n' seal wrap into the large box, then pack the Soda can, Altoids container, and Sponge into the small box.
+
+=== chunk  63 | xarm_baseline_round2 | 5 subtasks | 4901 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into medium box.
+    - Pack Sponge into the medium box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Cheez-It container, Altoids container, and Sponge into the medium box.
+
+=== chunk  64 | xarm_baseline_round2 | 8 subtasks | 4366 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Donut into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into large box.
+  => Pack the Cheez-It container, Altoids container, Box of M&Ms, Donut, and GoGo fruit pouch into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk  65 | xarm_baseline_round2 | 5 subtasks | 3232 frames ===
+    - Pack Sponge into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+  => Pack the Sponge, Altoids container, and Box of M&Ms into the small box, then pack the Nesquik container and Soda can into the large box.
+
+=== chunk  66 | xarm_baseline_round2 | 7 subtasks | 5114 frames ===
+    - Pack Altoids container into small box.
+    - Pack Cheez-It container into the small box.
+    - Pack Whiteboard eraser into the small box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Sponge into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+  => Pack the Altoids container, Cheez-It container, and Whiteboard eraser into the small box, then pack the Box of M&Ms, Sponge, Donut, and Croissant into the medium box.
+
+=== chunk  67 | xarm_baseline_round2 | 4 subtasks | 2036 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into medium box.
+    - Pack Cheez-It container into the large box.
+    - Pack Mustard into the large box.
+  => Pack the Nesquik container and Soda can into the medium box, then pack the Cheez-It container and Mustard into the large box.
+
+=== chunk  68 | xarm_baseline_round2 | 8 subtasks | 3823 frames ===
+    - Pack Cheez-It container into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into large box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Marker into the small box.
+    - Pack Pringles chip bag into small box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Nesquik container, and Soda can into the large box, then pack the Box of M&Ms, Marker, and Pringles chip bag into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk  69 | xarm_baseline_round2 | 6 subtasks | 2650 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Nesquik container into large box.
+    - Pack Cheez-It container into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Soda can, Pink tumbler, and Altoids container into the medium box, then pack the Nesquik container, Cheez-It container, and Microfiber cloth into the large box.
+
+=== chunk  70 | xarm_baseline_round2 | 10 subtasks | 6119 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Nesquik container into medium box.
+    - Pack Altoids container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Croissant into large box.
+    - Pack Whiteboard eraser into the large box.
+  => Pack the Soda can, Pink tumbler, and Nesquik container into the medium box, then pack the Altoids container, Sponge, Microfiber cloth, Pringles chip bag, Soccer ball plush, Croissant, and Whiteboard eraser into the large box.
+
+=== chunk  71 | xarm_baseline_round2 | 8 subtasks | 4143 frames ===
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Baking soda into medium box.
+    - Pack Nutella container into large box.
+    - Pack Mustard into large box.
+    - Pack Liquid hand soap into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the GoGo fruit pouch, Donut, Croissant, and Baking soda into the medium box, then pack the Nutella container, Mustard, Liquid hand soap, and Microfiber cloth into the large box.
+
+=== chunk  72 | xarm_baseline_round2 | 5 subtasks | 3712 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into small box.
+    - Pack Microfiber cloth into medium box.
+    - Pack GoGo fruit pouch into the small box.
+  => Pack the Cheez-It container into the medium box, then pack the Altoids container and Sponge into the small box, then pack the Microfiber cloth into the medium box, then pack the GoGo fruit pouch into the small box.
+
+=== chunk  73 | xarm_baseline_round2 | 3 subtasks | 1646 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Mustard into the large box.
+    - Pack Donut into the large box.
+  => Pack the Nesquik container into the medium box, then pack the Mustard and Donut into the large box.
+
+=== chunk  74 | xarm_baseline_round2 | 4 subtasks | 2520 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Microfiber cloth into small box.
+    - Pack Marker into the large box.
+    - Pack Altoids container into small box.
+  => Pack the Pringles chip bag into the large box, then pack the Microfiber cloth into the small box, then pack the Marker into the large box, then pack the Altoids container into the small box.
+
+=== chunk  75 | xarm_baseline_round2 | 5 subtasks | 2913 frames ===
+    - Pack Box of M&Ms into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Cheez-It container into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+  => Pack the Box of M&Ms and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container, Donut, and Croissant into the medium box.
+
+=== chunk  76 | xarm_baseline_round2 | 5 subtasks | 3481 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Sponge into the medium box.
+    - Pack Microfiber cloth into the medium box.
+  => Pack the Cheez-It container, Altoids container, and Soda can into the small box, then pack the Sponge and Microfiber cloth into the medium box.
+
+=== chunk  77 | xarm_baseline_round2 | 8 subtasks | 4804 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Nutella container into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, Donut, Croissant, Nutella container, and GoGo fruit pouch into the medium box, then pack the Marker and Microfiber cloth into the large box.
+
+=== chunk  78 | xarm_baseline_round2 | 5 subtasks | 3824 frames ===
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pink tumbler into large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into small box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk  79 | xarm_baseline_round2 | 3 subtasks | 1670 frames ===
+    - Pack Altoids container into small box.
+    - Pack Sponge into small box.
+    - Pack Whiteboard eraser into small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk  80 | xarm_baseline_round2 | 3 subtasks | 2949 frames ===
+    - Pack Soda can into small box.
+    - Pack Pringles chip bag into small box.
+    - Pack Pink tumbler into small box.
+  => Pack the Soda can, Pringles chip bag, and Pink tumbler into the small box.
+
+=== chunk  81 | xarm_baseline_round2 | 2 subtasks | 1677 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+  => Pack the Cheez-It container and Cinnamon Toast Crunch cereal into the medium box.
+
+=== chunk  82 | xarm_baseline_round2 | 3 subtasks | 1621 frames ===
+    - Pack Altoids container into small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk  83 | xarm_baseline_round2 | 4 subtasks | 2031 frames ===
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+    - Pack GoGo fruit pouch into the small box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Soda can, Altoids container, and GoGo fruit pouch into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk  84 | xarm_baseline_round2 | 3 subtasks | 1513 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+  => Pack the Cheez-It container, Soda can, and Altoids container into the small box.
+
+=== chunk  85 | xarm_baseline_round2 | 6 subtasks | 6096 frames ===
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Whiteboard eraser into medium box.
+    - Pack Sponge into medium box.
+    - Pack Microfiber cloth into medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Box of M&Ms, Whiteboard eraser, Sponge, and Microfiber cloth into the medium box.
+
+=== chunk  86 | xarm_baseline_round2 | 5 subtasks | 2280 frames ===
+    - Pack Pringles chip bag into large box.
+    - Pack Soda can into large box.
+    - Pack Sponge into large box.
+    - Pack Pink tumbler into large box.
+    - Pack Liquid hand soap into the small box.
+  => Pack the Pringles chip bag, Soda can, Sponge, and Pink tumbler into the large box, then pack the Liquid hand soap into the small box.
+
+=== chunk  87 | xarm_baseline_round2 | 4 subtasks | 1779 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into small box.
+    - Pack Sponge into large box.
+    - Pack Soda can into large box.
+  => Pack the Cheez-It container and Whiteboard eraser into the small box, then pack the Sponge and Soda can into the large box.
+
+=== chunk  88 | xarm_baseline_round2 | 5 subtasks | 4459 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into the large box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the medium box, then pack the Microfiber cloth, Marker, and Soccer ball plush into the large box.
+
+=== chunk  89 | xarm_baseline_round2 | 8 subtasks | 4871 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Nesquik container into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Croissant into the small box.
+    - Pack Microfiber cloth into the small box.
+  => Pack the Cheez-It container, Nesquik container, Donut, and Soda can into the medium box, then pack the Pringles chip bag, Altoids container, Croissant, and Microfiber cloth into the small box.
+
+=== chunk  90 | xarm_baseline_round2 | 7 subtasks | 2941 frames ===
+    - Pack Soda can into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Pringles chip bag into medium box.
+    - Pack Soccer ball plush into medium box.
+    - Pack Marker into medium box.
+    - Pack Mustard into large box.
+    - Pack Cheez-It container into large box.
+  => Pack the Soda can, GoGo fruit pouch, Pringles chip bag, Soccer ball plush, and Marker into the medium box, then pack the Mustard and Cheez-It container into the large box.
+
+=== chunk  91 | xarm_baseline_round2 | 7 subtasks | 4088 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Donut into the small box.
+    - Pack Nutella container into the small box.
+    - Pack Soda can into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Sponge into large box.
+  => Pack the Nesquik container, Altoids container, Donut, and Nutella container into the small box, then pack the Soda can, Whiteboard eraser, and Sponge into the large box.
+
+=== chunk  92 | xarm_baseline_round2 | 6 subtasks | 2144 frames ===
+    - Pack Soda can into small box.
+    - Pack Soccer ball plush into small box.
+    - Pack Sponge into small box.
+    - Pack Liquid hand soap into medium box.
+    - Pack Pringles chip bag into medium box.
+    - Pack Altoids container into medium box.
+  => Pack the Soda can, Soccer ball plush, and Sponge into the small box, then pack the Liquid hand soap, Pringles chip bag, and Altoids container into the medium box.
+
+=== chunk  93 | xarm_baseline_round2 | 5 subtasks | 2297 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into large box.
+    - Pack Sponge into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Microfiber cloth into medium box.
+  => Pack the Cinnamon Toast Crunch cereal and Nesquik container into the large box, then pack the Sponge, Altoids container, and Microfiber cloth into the medium box.
+
+=== chunk  94 | xarm_baseline_round2 | 6 subtasks | 3958 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Donut into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, and Donut into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk  95 | xarm_baseline_round2 | 6 subtasks | 2050 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, Pink tumbler, and Pringles chip bag into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk  96 | xarm_baseline_round2 | 5 subtasks | 2568 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Whiteboard eraser into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Cheez-It container, Whiteboard eraser, and Donut into the medium box, then pack the Box of M&Ms and Sponge into the small box.
+
+=== chunk  97 | xarm_baseline_round2 | 6 subtasks | 3250 frames ===
+    - Pack Nesquik container into small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Altoids container, Whiteboard eraser, and Microfiber cloth into the large box.
+
+=== chunk  98 | xarm_baseline_round2 | 4 subtasks | 2827 frames ===
+    - Remove Box of M&Ms from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+  => Remove the Box of M&Ms and Microfiber cloth from the medium box, then pack the Cheez-It container and Altoids container into the small box.
+
+=== chunk  99 | xarm_baseline_round2 | 6 subtasks | 3986 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soda can into large box.
+    - Pack Nesquik container into large box.
+    - Pack Spatula into large box.
+  => Pack the Cinnamon Toast Crunch cereal, Soccer ball plush, Pringles chip bag, Soda can, Nesquik container, and Spatula into the large box.
+
+=== chunk 100 | xarm_baseline_round2 | 6 subtasks | 3404 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Cheez-It container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Altoids container, Cheez-It container, Sponge, and Microfiber cloth into the large box.
+
+=== chunk 101 | xarm_baseline_round2 | 3 subtasks | 1448 frames ===
+    - Pack Pringles chip bag into small box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into medium box.
+  => Pack the Pringles chip bag and Altoids container into the small box, then pack the Sponge into the medium box.
+
+=== chunk 102 | xarm_baseline_round2 | 8 subtasks | 5952 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Baking soda into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Stuffed yak into large box.
+    - Pack Liquid hand soap into large box.
+  => Pack the Cheez-It container, Baking soda, Donut, Croissant, and Nutella container into the medium box, then pack the Microfiber cloth, Stuffed yak, and Liquid hand soap into the large box.
+
+=== chunk 103 | xarm_baseline_round2 | 5 subtasks | 2139 frames ===
+    - Pack Stuffed yak into medium box.
+    - Pack Sponge into medium box.
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack Donut into large box.
+  => Pack the Stuffed yak and Sponge into the medium box, then pack the Cling n' seal wrap, Whiteboard eraser, and Donut into the large box.
+
+=== chunk 104 | xarm_baseline_round3 | 5 subtasks | 2739 frames ===
+    - Remove Sponge from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Croissant into the medium box.
+  => Remove the Sponge and Microfiber cloth from the medium box, then pack the Cheez-It container, Altoids container, and Croissant into the medium box.
+
+=== chunk 105 | xarm_baseline_round3 | 5 subtasks | 2762 frames ===
+    - Remove Pringles chip bag from the large box.
+    - Remove Soccer ball plush from the large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+  => Remove the Pringles chip bag and Soccer ball plush from the large box, then pack the Nesquik container, Soda can, and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk 106 | xarm_baseline_round3 | 6 subtasks | 2709 frames ===
+    - Remove Altoids container from the small box.
+    - Remove Sponge from the small box.
+    - Remove Microfiber cloth from the large box.
+    - Remove Whiteboard eraser from the large box.
+    - Pack Marker into the large box.
+    - Pack Cheez-It container into the small box.
+  => Remove the Altoids container and Sponge from the small box, then remove the Microfiber cloth and Whiteboard eraser from the large box, then pack the Marker into the large box, then pack the Cheez-It container into the small box.
+
+=== chunk 107 | xarm_baseline_round3 | 6 subtasks | 4541 frames ===
+    - Remove Pink tumbler from the small box.
+    - Remove Whiteboard eraser from the small box.
+    - Remove Soccer ball plush from the small box.
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into small box.
+    - Pack Box of M&Ms into the small box.
+  => Remove the Pink tumbler, Whiteboard eraser, and Soccer ball plush from the small box, then pack the Cheez-It container, Altoids container, and Box of M&Ms into the small box.
+
+=== chunk 108 | xarm_baseline_round3 | 7 subtasks | 2664 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soda can into large box.
+    - Pack Nesquik container into the large box.
+    - Pack Sponge into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Stuffed yak into large box.
+  => Pack the Cinnamon Toast Crunch cereal, Pringles chip bag, Soda can, and Nesquik container into the large box, then pack the Sponge and Microfiber cloth into the medium box, then pack the Stuffed yak into the large box.
+
+=== chunk 109 | xarm_baseline_round3 | 5 subtasks | 3002 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into the small box.
+    - Pack Liquid hand soap into the small box.
+    - Pack Sponge into medium box.
+  => Pack the Cheez-It container, Soda can, Altoids container, and Liquid hand soap into the small box, then pack the Sponge into the medium box.
+
+=== chunk 110 | xarm_baseline_round3 | 3 subtasks | 2149 frames ===
+    - Pack Cling n' seal wrap into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Spatula into large box.
+  => Pack the Cling n' seal wrap, Soccer ball plush, and Spatula into the large box.
+
+=== chunk 111 | xarm_baseline_round3 | 6 subtasks | 2590 frames ===
+    - Pack Soda can into the small box.
+    - Pack Nesquik container into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Donut into the large box.
+    - Pack Pringles chip bag into the large box.
+  => Pack the Soda can, Nesquik container, and Pink tumbler into the small box, then pack the Altoids container, Donut, and Pringles chip bag into the large box.
+
+=== chunk 112 | xarm_baseline_round3 | 6 subtasks | 3382 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Marker into medium box.
+    - Pack Nutella container into the medium box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Microfiber cloth, Box of M&Ms, Marker, and Nutella container into the medium box.
+
+=== chunk 113 | xarm_baseline_round3 | 6 subtasks | 2709 frames ===
+    - Pack Nesquik container into small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Liquid hand soap into large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Cinnamon Toast Crunch cereal, Pringles chip bag, and Liquid hand soap into the large box.
+
+=== chunk 114 | xarm_baseline_round3 | 5 subtasks | 1821 frames ===
+    - Pack Spatula into the large box.
+    - Pack Cling n' seal wrap into large box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Spatula and Cling n' seal wrap into the large box, then pack the Soda can, Altoids container, and Sponge into the small box.
+
+=== chunk 115 | xarm_baseline_round3 | 5 subtasks | 3104 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into small box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Sponge into the medium box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Cheez-It container, Altoids container, and Sponge into the medium box.
+
+=== chunk 116 | xarm_baseline_round3 | 8 subtasks | 4864 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Donut into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into large box.
+  => Pack the Cheez-It container, Altoids container, Box of M&Ms, Donut, and GoGo fruit pouch into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 117 | xarm_baseline_round3 | 5 subtasks | 2597 frames ===
+    - Pack Sponge into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+  => Pack the Sponge, Altoids container, and Box of M&Ms into the small box, then pack the Nesquik container and Soda can into the large box.
+
+=== chunk 118 | xarm_baseline_round3 | 7 subtasks | 3619 frames ===
+    - Pack Altoids container into small box.
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into small box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+  => Pack the Altoids container, Cheez-It container, and Whiteboard eraser into the small box, then pack the Box of M&Ms, Sponge, Donut, and Croissant into the medium box.
+
+=== chunk 119 | xarm_baseline_round3 | 4 subtasks | 1879 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Soda can into medium box.
+    - Pack Cheez-It container into large box.
+    - Pack Mustard into large box.
+  => Pack the Nesquik container and Soda can into the medium box, then pack the Cheez-It container and Mustard into the large box.
+
+=== chunk 120 | xarm_baseline_round3 | 8 subtasks | 4514 frames ===
+    - Pack Cheez-It container into the large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Pringles chip bag into small box.
+    - Pack Marker into the small box.
+    - Pack Box of M&Ms into small box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Nesquik container, Soda can, and Soccer ball plush into the large box, then pack the Pringles chip bag, Marker, and Box of M&Ms into the small box.
+
+=== chunk 121 | xarm_baseline_round3 | 6 subtasks | 2736 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Soda can into medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Pink tumbler into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Altoids container into large box.
+  => Pack the Nesquik container, Soda can, and Cheez-It container into the medium box, then pack the Pink tumbler, Microfiber cloth, and Altoids container into the large box.
+
+=== chunk 122 | xarm_baseline_round3 | 10 subtasks | 4633 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Nesquik container into medium box.
+    - Pack Altoids container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Croissant into large box.
+    - Pack Whiteboard eraser into large box.
+  => Pack the Soda can, Pink tumbler, and Nesquik container into the medium box, then pack the Altoids container, Sponge, Microfiber cloth, Pringles chip bag, Soccer ball plush, Croissant, and Whiteboard eraser into the large box.
+
+=== chunk 123 | xarm_baseline_round3 | 8 subtasks | 3004 frames ===
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into the medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Nutella container into the large box.
+    - Pack Mustard into large box.
+    - Pack Liquid hand soap into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the GoGo fruit pouch, Donut, Croissant, and Baking soda into the medium box, then pack the Nutella container, Mustard, Liquid hand soap, and Microfiber cloth into the large box.
+
+=== chunk 124 | xarm_baseline_round3 | 5 subtasks | 3703 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into small box.
+    - Pack Microfiber cloth into medium box.
+    - Pack GoGo fruit pouch into the small box.
+  => Pack the Cheez-It container into the medium box, then pack the Altoids container and Sponge into the small box, then pack the Microfiber cloth into the medium box, then pack the GoGo fruit pouch into the small box.
+
+=== chunk 125 | xarm_baseline_round3 | 3 subtasks | 1567 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Mustard into the large box.
+    - Pack Donut into the large box.
+  => Pack the Nesquik container into the medium box, then pack the Mustard and Donut into the large box.
+
+=== chunk 126 | xarm_baseline_round3 | 4 subtasks | 2157 frames ===
+    - Pack Pringles chip bag into large box.
+    - Pack Microfiber cloth into the small box.
+    - Pack Marker into large box.
+    - Pack Altoids container into small box.
+  => Pack the Pringles chip bag into the large box, then pack the Microfiber cloth into the small box, then pack the Marker into the large box, then pack the Altoids container into the small box.
+
+=== chunk 127 | xarm_baseline_round3 | 5 subtasks | 2617 frames ===
+    - Pack Box of M&Ms into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+  => Pack the Box of M&Ms and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container, Donut, and Croissant into the medium box.
+
+=== chunk 128 | xarm_baseline_round3 | 5 subtasks | 3230 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Sponge into the medium box.
+    - Pack Microfiber cloth into medium box.
+  => Pack the Cheez-It container, Altoids container, and Soda can into the small box, then pack the Sponge and Microfiber cloth into the medium box.
+
+=== chunk 129 | xarm_baseline_round3 | 8 subtasks | 3571 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Nutella container into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, Donut, Croissant, Nutella container, and GoGo fruit pouch into the medium box, then pack the Marker and Microfiber cloth into the large box.
+
+=== chunk 130 | xarm_baseline_round3 | 5 subtasks | 1831 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 131 | xarm_baseline_round3 | 3 subtasks | 1890 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 132 | xarm_baseline_round3 | 3 subtasks | 1972 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pringles chip bag into small box.
+    - Pack Pink tumbler into the small box.
+  => Pack the Soda can, Pringles chip bag, and Pink tumbler into the small box.
+
+=== chunk 133 | xarm_baseline_round3 | 2 subtasks | 1669 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+  => Pack the Cheez-It container and Cinnamon Toast Crunch cereal into the medium box.
+
+=== chunk 134 | xarm_baseline_round3 | 3 subtasks | 1492 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 135 | xarm_baseline_round3 | 4 subtasks | 1335 frames ===
+    - Pack Soda can into small box.
+    - Pack Altoids container into the small box.
+    - Pack GoGo fruit pouch into the small box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Soda can, Altoids container, and GoGo fruit pouch into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk 136 | xarm_baseline_round3 | 3 subtasks | 1925 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+  => Pack the Cheez-It container, Soda can, and Altoids container into the small box.
+
+=== chunk 137 | xarm_baseline_round3 | 6 subtasks | 4607 frames ===
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Sponge into medium box.
+    - Pack Whiteboard eraser into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Box of M&Ms into medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Sponge, Whiteboard eraser, Microfiber cloth, and Box of M&Ms into the medium box.
+
+=== chunk 138 | xarm_baseline_round3 | 5 subtasks | 3978 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Soda can into large box.
+    - Pack Sponge into large box.
+    - Pack Pink tumbler into large box.
+    - Pack Liquid hand soap into small box.
+  => Pack the Pringles chip bag, Soda can, Sponge, and Pink tumbler into the large box, then pack the Liquid hand soap into the small box.
+
+=== chunk 139 | xarm_baseline_round3 | 4 subtasks | 1894 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into the small box.
+    - Pack Sponge into large box.
+    - Pack Soda can into large box.
+  => Pack the Cheez-It container and Whiteboard eraser into the small box, then pack the Sponge and Soda can into the large box.
+
+=== chunk 140 | xarm_baseline_round3 | 5 subtasks | 2630 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into large box.
+    - Pack Soccer ball plush into the large box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the medium box, then pack the Microfiber cloth, Marker, and Soccer ball plush into the large box.
+
+=== chunk 141 | xarm_baseline_round3 | 8 subtasks | 3866 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Croissant into the small box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Microfiber cloth into the small box.
+  => Pack the Nesquik container, Soda can, Cheez-It container, Donut, and Altoids container into the medium box, then pack the Croissant, Pringles chip bag, and Microfiber cloth into the small box.
+
+=== chunk 142 | xarm_baseline_round3 | 7 subtasks | 3140 frames ===
+    - Pack Soda can into medium box.
+    - Pack Mustard into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into medium box.
+    - Pack Soccer ball plush into medium box.
+    - Pack Cheez-It container into large box.
+    - Pack Pringles chip bag into large box.
+  => Pack the Soda can, Mustard, GoGo fruit pouch, Marker, and Soccer ball plush into the medium box, then pack the Cheez-It container and Pringles chip bag into the large box.
+
+=== chunk 143 | xarm_baseline_round3 | 8 subtasks | 4606 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Donut into the small box.
+    - Pack Nutella container into the small box.
+    - Pack Croissant into the small box.
+    - Pack Soda can into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Sponge into the large box.
+  => Pack the Nesquik container, Altoids container, Donut, Nutella container, and Croissant into the small box, then pack the Soda can, Whiteboard eraser, and Sponge into the large box.
+
+=== chunk 144 | xarm_baseline_round3 | 6 subtasks | 2307 frames ===
+    - Pack Soda can into small box.
+    - Pack Soccer ball plush into small box.
+    - Pack Sponge into small box.
+    - Pack Liquid hand soap into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Pringles chip bag into medium box.
+  => Pack the Soda can, Soccer ball plush, and Sponge into the small box, then pack the Liquid hand soap, Altoids container, and Pringles chip bag into the medium box.
+
+=== chunk 145 | xarm_baseline_round3 | 5 subtasks | 2374 frames ===
+    - Pack Nesquik container into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Altoids container into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Sponge into medium box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the large box, then pack the Altoids container, Microfiber cloth, and Sponge into the medium box.
+
+=== chunk 146 | xarm_baseline_round3 | 6 subtasks | 2871 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Donut into medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, and Donut into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 147 | xarm_baseline_round3 | 6 subtasks | 2242 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, Pink tumbler, and Pringles chip bag into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 148 | xarm_baseline_round3 | 5 subtasks | 2090 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Whiteboard eraser into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Cheez-It container, Whiteboard eraser, and Donut into the medium box, then pack the Box of M&Ms and Sponge into the small box.
+
+=== chunk 149 | xarm_baseline_round3 | 6 subtasks | 3257 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Altoids container, Whiteboard eraser, and Microfiber cloth into the large box.
+
+=== chunk 150 | xarm_baseline_round3 | 4 subtasks | 1925 frames ===
+    - Remove Box of M&Ms from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into small box.
+  => Remove the Box of M&Ms and Microfiber cloth from the medium box, then pack the Cheez-It container and Altoids container into the small box.
+
+=== chunk 151 | xarm_baseline_round3 | 6 subtasks | 3414 frames ===
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Spatula into large box.
+  => Pack the Nesquik container, Soda can, Pringles chip bag, Cinnamon Toast Crunch cereal, Soccer ball plush, and Spatula into the large box.
+
+=== chunk 152 | xarm_baseline_round3 | 6 subtasks | 2987 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Cheez-It container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Altoids container, Cheez-It container, Sponge, and Microfiber cloth into the large box.
+
+=== chunk 153 | xarm_baseline_round3 | 3 subtasks | 1765 frames ===
+    - Pack Pringles chip bag into small box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into medium box.
+  => Pack the Pringles chip bag and Altoids container into the small box, then pack the Sponge into the medium box.
+
+=== chunk 154 | xarm_baseline_round3 | 8 subtasks | 4248 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Baking soda into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Stuffed yak into the large box.
+    - Pack Liquid hand soap into the large box.
+  => Pack the Cheez-It container, Baking soda, Donut, Croissant, and Nutella container into the medium box, then pack the Microfiber cloth, Stuffed yak, and Liquid hand soap into the large box.
+
+=== chunk 155 | xarm_baseline_round3 | 5 subtasks | 1933 frames ===
+    - Pack Stuffed yak into medium box.
+    - Pack Sponge into medium box.
+    - Pack Cling n' seal wrap into large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack Donut into large box.
+  => Pack the Stuffed yak and Sponge into the medium box, then pack the Cling n' seal wrap, Whiteboard eraser, and Donut into the large box.
+
+=== chunk 156 | xarm_baseline_round4 | 5 subtasks | 2361 frames ===
+    - Remove Microfiber cloth from the medium box.
+    - Remove Sponge from the medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Croissant into the medium box.
+  => Remove the Microfiber cloth and Sponge from the medium box, then pack the Cheez-It container, Altoids container, and Croissant into the medium box.
+
+=== chunk 157 | xarm_baseline_round4 | 5 subtasks | 2846 frames ===
+    - Remove Soccer ball plush from the large box.
+    - Remove Pringles chip bag from the large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+  => Remove the Soccer ball plush and Pringles chip bag from the large box, then pack the Nesquik container, Soda can, and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk 158 | xarm_baseline_round4 | 6 subtasks | 2687 frames ===
+    - Remove Microfiber cloth from the large box.
+    - Remove Whiteboard eraser from the large box.
+    - Remove Sponge from the small box.
+    - Remove Altoids container from the small box.
+    - Pack Marker into large box.
+    - Pack Cheez-It container into the small box.
+  => Remove the Microfiber cloth and Whiteboard eraser from the large box, then remove the Sponge and Altoids container from the small box, then pack the Marker into the large box, then pack the Cheez-It container into the small box.
+
+=== chunk 159 | xarm_baseline_round4 | 6 subtasks | 3329 frames ===
+    - Remove Pink tumbler from the small box.
+    - Remove Whiteboard eraser from the small box.
+    - Remove Soccer ball plush from the small box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into small box.
+    - Pack Box of M&Ms into the small box.
+  => Remove the Pink tumbler, Whiteboard eraser, and Soccer ball plush from the small box, then pack the Cheez-It container, Altoids container, and Box of M&Ms into the small box.
+
+=== chunk 160 | xarm_baseline_round4 | 7 subtasks | 3179 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Sponge into large box.
+    - Pack Nesquik container into medium box.
+    - Pack Pringles chip bag into medium box.
+    - Pack Soda can into medium box.
+    - Pack Stuffed yak into the large box.
+  => Pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Sponge into the large box, then pack the Nesquik container, Pringles chip bag, and Soda can into the medium box, then pack the Stuffed yak into the large box.
+
+=== chunk 161 | xarm_baseline_round4 | 5 subtasks | 3247 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into the small box.
+    - Pack Liquid hand soap into the small box.
+    - Pack Sponge into medium box.
+  => Pack the Cheez-It container, Soda can, Altoids container, and Liquid hand soap into the small box, then pack the Sponge into the medium box.
+
+=== chunk 162 | xarm_baseline_round4 | 3 subtasks | 1861 frames ===
+    - Pack Spatula into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Cling n' seal wrap into large box.
+  => Pack the Spatula, Soccer ball plush, and Cling n' seal wrap into the large box.
+
+=== chunk 163 | xarm_baseline_round4 | 6 subtasks | 4245 frames ===
+    - Pack Soda can into small box.
+    - Pack Nesquik container into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Donut into large box.
+    - Pack Pringles chip bag into the large box.
+  => Pack the Soda can, Nesquik container, and Pink tumbler into the small box, then pack the Altoids container, Donut, and Pringles chip bag into the large box.
+
+=== chunk 164 | xarm_baseline_round4 | 6 subtasks | 4062 frames ===
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Marker into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Nutella container into medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Microfiber cloth, Marker, Box of M&Ms, and Nutella container into the medium box.
+
+=== chunk 165 | xarm_baseline_round4 | 6 subtasks | 2649 frames ===
+    - Pack Nesquik container into small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Liquid hand soap into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Cinnamon Toast Crunch cereal, Pringles chip bag, and Liquid hand soap into the large box.
+
+=== chunk 166 | xarm_baseline_round4 | 5 subtasks | 4210 frames ===
+    - Pack Spatula into large box.
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into small box.
+  => Pack the Spatula and Cling n' seal wrap into the large box, then pack the Soda can, Altoids container, and Sponge into the small box.
+
+=== chunk 167 | xarm_baseline_round4 | 5 subtasks | 3175 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Sponge into medium box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Cheez-It container, Altoids container, and Sponge into the medium box.
+
+=== chunk 168 | xarm_baseline_round4 | 8 subtasks | 4767 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Donut into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, Box of M&Ms, Donut, and GoGo fruit pouch into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 169 | xarm_baseline_round4 | 5 subtasks | 2537 frames ===
+    - Pack Sponge into small box.
+    - Pack Altoids container into small box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+  => Pack the Sponge, Altoids container, and Box of M&Ms into the small box, then pack the Nesquik container and Soda can into the large box.
+
+=== chunk 170 | xarm_baseline_round4 | 7 subtasks | 4674 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into small box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Sponge into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into the medium box.
+  => Pack the Altoids container, Cheez-It container, and Whiteboard eraser into the small box, then pack the Box of M&Ms, Sponge, Donut, and Croissant into the medium box.
+
+=== chunk 171 | xarm_baseline_round4 | 4 subtasks | 2070 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Soda can into medium box.
+    - Pack Cheez-It container into large box.
+    - Pack Mustard into large box.
+  => Pack the Nesquik container and Soda can into the medium box, then pack the Cheez-It container and Mustard into the large box.
+
+=== chunk 172 | xarm_baseline_round4 | 8 subtasks | 4474 frames ===
+    - Pack Cheez-It container into large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Box of M&Ms into small box.
+    - Pack Soccer ball plush into small box.
+    - Pack Marker into large box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Nesquik container, Soda can, and Pringles chip bag into the large box, then pack the Box of M&Ms and Soccer ball plush into the small box, then pack the Marker into the large box.
+
+=== chunk 173 | xarm_baseline_round4 | 6 subtasks | 3207 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Soda can into the medium box.
+    - Pack Altoids container into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Pink tumbler into the large box.
+    - Pack Cheez-It container into the large box.
+  => Pack the Nesquik container, Soda can, Altoids container, and Microfiber cloth into the medium box, then pack the Pink tumbler and Cheez-It container into the large box.
+
+=== chunk 174 | xarm_baseline_round4 | 10 subtasks | 5466 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Nesquik container into the medium box.
+    - Pack Altoids container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Croissant into large box.
+    - Pack Whiteboard eraser into large box.
+  => Pack the Soda can, Pink tumbler, and Nesquik container into the medium box, then pack the Altoids container, Sponge, Microfiber cloth, Pringles chip bag, Soccer ball plush, Croissant, and Whiteboard eraser into the large box.
+
+=== chunk 175 | xarm_baseline_round4 | 8 subtasks | 3548 frames ===
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Nutella container into large box.
+    - Pack Mustard into large box.
+    - Pack Liquid hand soap into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the GoGo fruit pouch, Donut, Croissant, and Baking soda into the medium box, then pack the Nutella container, Mustard, Liquid hand soap, and Microfiber cloth into the large box.
+
+=== chunk 176 | xarm_baseline_round4 | 5 subtasks | 3728 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into small box.
+    - Pack Microfiber cloth into medium box.
+    - Pack GoGo fruit pouch into the small box.
+  => Pack the Cheez-It container into the medium box, then pack the Altoids container and Sponge into the small box, then pack the Microfiber cloth into the medium box, then pack the GoGo fruit pouch into the small box.
+
+=== chunk 177 | xarm_baseline_round4 | 3 subtasks | 1649 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Mustard into large box.
+    - Pack Donut into large box.
+  => Pack the Nesquik container into the medium box, then pack the Mustard and Donut into the large box.
+
+=== chunk 178 | xarm_baseline_round4 | 4 subtasks | 2741 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Microfiber cloth into small box.
+    - Pack Marker into large box.
+    - Pack Altoids container into small box.
+  => Pack the Pringles chip bag into the large box, then pack the Microfiber cloth into the small box, then pack the Marker into the large box, then pack the Altoids container into the small box.
+
+=== chunk 179 | xarm_baseline_round4 | 5 subtasks | 3183 frames ===
+    - Pack Box of M&Ms into the large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Cheez-It container into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+  => Pack the Box of M&Ms and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container, Donut, and Croissant into the medium box.
+
+=== chunk 180 | xarm_baseline_round4 | 5 subtasks | 3708 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Soda can into small box.
+    - Pack Sponge into the medium box.
+    - Pack Microfiber cloth into medium box.
+  => Pack the Cheez-It container, Altoids container, and Soda can into the small box, then pack the Sponge and Microfiber cloth into the medium box.
+
+=== chunk 181 | xarm_baseline_round4 | 8 subtasks | 4576 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Nesquik container, Soda can, Donut, Croissant, Nutella container, and GoGo fruit pouch into the medium box, then pack the Marker and Microfiber cloth into the large box.
+
+=== chunk 182 | xarm_baseline_round4 | 5 subtasks | 2725 frames ===
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 183 | xarm_baseline_round4 | 3 subtasks | 1477 frames ===
+    - Pack Altoids container into small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 184 | xarm_baseline_round4 | 3 subtasks | 1888 frames ===
+    - Pack Soda can into small box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Pink tumbler into the small box.
+  => Pack the Soda can, Pringles chip bag, and Pink tumbler into the small box.
+
+=== chunk 185 | xarm_baseline_round4 | 2 subtasks | 904 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+  => Pack the Cheez-It container and Cinnamon Toast Crunch cereal into the medium box.
+
+=== chunk 186 | xarm_baseline_round4 | 3 subtasks | 1849 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into small box.
+    - Pack Whiteboard eraser into small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 187 | xarm_baseline_round4 | 4 subtasks | 2107 frames ===
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+    - Pack GoGo fruit pouch into the small box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Soda can, Altoids container, and GoGo fruit pouch into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk 188 | xarm_baseline_round4 | 3 subtasks | 1729 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Soda can into small box.
+    - Pack Altoids container into small box.
+  => Pack the Cheez-It container, Soda can, and Altoids container into the small box.
+
+=== chunk 189 | xarm_baseline_round4 | 6 subtasks | 5218 frames ===
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Sponge into medium box.
+    - Pack Box of M&Ms into medium box.
+    - Pack Whiteboard eraser into medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Microfiber cloth, Sponge, Box of M&Ms, and Whiteboard eraser into the medium box.
+
+=== chunk 190 | xarm_baseline_round4 | 5 subtasks | 2830 frames ===
+    - Pack Pringles chip bag into large box.
+    - Pack Soda can into large box.
+    - Pack Sponge into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Liquid hand soap into the small box.
+  => Pack the Pringles chip bag, Soda can, Sponge, and Pink tumbler into the large box, then pack the Liquid hand soap into the small box.
+
+=== chunk 191 | xarm_baseline_round4 | 4 subtasks | 2195 frames ===
+    - Pack Cheez-It container into small box.
+    - Pack Whiteboard eraser into small box.
+    - Pack Sponge into large box.
+    - Pack Soda can into large box.
+  => Pack the Cheez-It container and Whiteboard eraser into the small box, then pack the Sponge and Soda can into the large box.
+
+=== chunk 192 | xarm_baseline_round4 | 5 subtasks | 2179 frames ===
+    - Pack Nesquik container into medium box.
+    - Pack Cinnamon Toast Crunch cereal into medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into large box.
+    - Pack Soccer ball plush into large box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the medium box, then pack the Microfiber cloth, Marker, and Soccer ball plush into the large box.
+
+=== chunk 193 | xarm_baseline_round4 | 8 subtasks | 3696 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Nesquik container into medium box.
+    - Pack Soda can into medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Donut into small box.
+    - Pack Altoids container into small box.
+    - Pack Croissant into small box.
+    - Pack Pringles chip bag into the small box.
+  => Pack the Cheez-It container, Nesquik container, Soda can, and Microfiber cloth into the medium box, then pack the Donut, Altoids container, Croissant, and Pringles chip bag into the small box.
+
+=== chunk 194 | xarm_baseline_round4 | 7 subtasks | 3702 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Mustard into medium box.
+    - Pack Marker into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Soda can into medium box.
+    - Pack Soccer ball plush into large box.
+    - Pack Pringles chip bag into large box.
+  => Pack the Cheez-It container, Mustard, Marker, GoGo fruit pouch, and Soda can into the medium box, then pack the Soccer ball plush and Pringles chip bag into the large box.
+
+=== chunk 195 | xarm_baseline_round4 | 6 subtasks | 2895 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Altoids container into small box.
+    - Pack Donut into small box.
+    - Pack Soda can into large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack Sponge into large box.
+  => Pack the Nesquik container, Altoids container, and Donut into the small box, then pack the Soda can, Whiteboard eraser, and Sponge into the large box.
+
+=== chunk 196 | xarm_baseline_round4 | 6 subtasks | 2829 frames ===
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into small box.
+    - Pack Pringles chip bag into the medium box.
+    - Pack Liquid hand soap into medium box.
+    - Pack Soccer ball plush into medium box.
+  => Pack the Soda can, Altoids container, and Sponge into the small box, then pack the Pringles chip bag, Liquid hand soap, and Soccer ball plush into the medium box.
+
+=== chunk 197 | xarm_baseline_round4 | 5 subtasks | 2082 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into the large box.
+    - Pack Sponge into the large box.
+    - Pack Altoids container into the large box.
+    - Pack Microfiber cloth into medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Nesquik container, Sponge, and Altoids container into the large box, then pack the Microfiber cloth into the medium box.
+
+=== chunk 198 | xarm_baseline_round4 | 6 subtasks | 2503 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Donut into medium box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into large box.
+  => Pack the Cheez-It container, Altoids container, and Donut into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 199 | xarm_baseline_round4 | 6 subtasks | 3597 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into large box.
+    - Pack Pink tumbler into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Altoids container into small box.
+    - Pack Sponge into small box.
+  => Pack the Nesquik container, Soda can, Pink tumbler, and Pringles chip bag into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 200 | xarm_baseline_round4 | 5 subtasks | 2367 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Whiteboard eraser into medium box.
+    - Pack Donut into the medium box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Cheez-It container, Whiteboard eraser, and Donut into the medium box, then pack the Box of M&Ms and Sponge into the small box.
+
+=== chunk 201 | xarm_baseline_round4 | 6 subtasks | 2830 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Altoids container, Whiteboard eraser, and Microfiber cloth into the large box.
+
+=== chunk 202 | xarm_baseline_round4 | 4 subtasks | 2698 frames ===
+    - Remove Box of M&Ms from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into the small box.
+  => Remove the Box of M&Ms and Microfiber cloth from the medium box, then pack the Cheez-It container and Altoids container into the small box.
+
+=== chunk 203 | xarm_baseline_round4 | 6 subtasks | 3268 frames ===
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Spatula into the large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Nesquik container into large box.
+    - Pack Soda can into large box.
+    - Pack Pringles chip bag into large box.
+  => Pack the Cinnamon Toast Crunch cereal, Spatula, Soccer ball plush, Nesquik container, Soda can, and Pringles chip bag into the large box.
+
+=== chunk 204 | xarm_baseline_round4 | 6 subtasks | 3292 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Cheez-It container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Altoids container, Cheez-It container, Sponge, and Microfiber cloth into the large box.
+
+=== chunk 205 | xarm_baseline_round4 | 3 subtasks | 1973 frames ===
+    - Pack Pringles chip bag into small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into medium box.
+  => Pack the Pringles chip bag and Altoids container into the small box, then pack the Sponge into the medium box.
+
+=== chunk 206 | xarm_baseline_round4 | 8 subtasks | 4108 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Baking soda into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into large box.
+    - Pack Stuffed yak into large box.
+    - Pack Liquid hand soap into large box.
+  => Pack the Cheez-It container, Baking soda, Donut, Croissant, and Nutella container into the medium box, then pack the Microfiber cloth, Stuffed yak, and Liquid hand soap into the large box.
+
+=== chunk 207 | xarm_baseline_round4 | 5 subtasks | 2696 frames ===
+    - Pack Stuffed yak into medium box.
+    - Pack Sponge into medium box.
+    - Pack Cling n' seal wrap into large box.
+    - Pack Whiteboard eraser into large box.
+    - Pack Donut into large box.
+  => Pack the Stuffed yak and Sponge into the medium box, then pack the Cling n' seal wrap, Whiteboard eraser, and Donut into the large box.
+
+=== chunk 208 | xarm_baseline_round5 | 5 subtasks | 2576 frames ===
+    - Remove Microfiber cloth from the medium box.
+    - Remove Sponge from medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Croissant into medium box.
+  => Remove the Microfiber cloth and Sponge from the medium box, then pack the Cheez-It container, Altoids container, and Croissant into the medium box.
+
+=== chunk 209 | xarm_baseline_round5 | 5 subtasks | 2855 frames ===
+    - Remove Pringles chip bag from the large box.
+    - Remove Soccer ball plush from the large box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+  => Remove the Pringles chip bag and Soccer ball plush from the large box, then pack the Nesquik container, Soda can, and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk 210 | xarm_baseline_round5 | 6 subtasks | 3334 frames ===
+    - Remove Microfiber cloth from the large box.
+    - Remove Whiteboard eraser from the large box.
+    - Remove Sponge from the small box.
+    - Remove Altoids container from the small box.
+    - Pack Marker into the large box.
+    - Pack Cheez-It container into small box.
+  => Remove the Microfiber cloth and Whiteboard eraser from the large box, then remove the Sponge and Altoids container from the small box, then pack the Marker into the large box, then pack the Cheez-It container into the small box.
+
+=== chunk 211 | xarm_baseline_round5 | 6 subtasks | 3486 frames ===
+    - Remove Pink tumbler from the small box.
+    - Remove Whiteboard eraser from the small box.
+    - Remove Soccer ball plush from the small box.
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+  => Remove the Pink tumbler, Whiteboard eraser, and Soccer ball plush from the small box, then pack the Cheez-It container, Altoids container, and Box of M&Ms into the small box.
+
+=== chunk 212 | xarm_baseline_round5 | 7 subtasks | 3690 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Sponge into the large box.
+    - Pack Stuffed yak into the large box.
+  => Pack the Cinnamon Toast Crunch cereal, Nesquik container, and Soda can into the medium box, then pack the Pringles chip bag, Microfiber cloth, Sponge, and Stuffed yak into the large box.
+
+=== chunk 213 | xarm_baseline_round5 | 5 subtasks | 3370 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Liquid hand soap into the small box.
+    - Pack Sponge into the medium box.
+  => Pack the Cheez-It container, Soda can, Altoids container, and Liquid hand soap into the small box, then pack the Sponge into the medium box.
+
+=== chunk 214 | xarm_baseline_round5 | 3 subtasks | 1631 frames ===
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Soccer ball plush into the large box.
+    - Pack Spatula into the large box.
+  => Pack the Cling n' seal wrap, Soccer ball plush, and Spatula into the large box.
+
+=== chunk 215 | xarm_baseline_round5 | 6 subtasks | 2936 frames ===
+    - Pack Soda can into the small box.
+    - Pack Nesquik container into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Donut into the large box.
+    - Pack Pringles chip bag into the large box.
+  => Pack the Soda can, Nesquik container, and Pink tumbler into the small box, then pack the Altoids container, Donut, and Pringles chip bag into the large box.
+
+=== chunk 216 | xarm_baseline_round5 | 6 subtasks | 4539 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Cheez-It container into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Marker into the medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Nutella container, Microfiber cloth, Box of M&Ms, and Marker into the medium box.
+
+=== chunk 217 | xarm_baseline_round5 | 6 subtasks | 2623 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Liquid hand soap into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Cinnamon Toast Crunch cereal, Pringles chip bag, and Liquid hand soap into the large box.
+
+=== chunk 218 | xarm_baseline_round5 | 5 subtasks | 3706 frames ===
+    - Pack Spatula into the large box.
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Spatula and Cling n' seal wrap into the large box, then pack the Soda can, Altoids container, and Sponge into the small box.
+
+=== chunk 219 | xarm_baseline_round5 | 5 subtasks | 2929 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Sponge into the medium box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Cheez-It container, Altoids container, and Sponge into the medium box.
+
+=== chunk 220 | xarm_baseline_round5 | 8 subtasks | 3809 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Gogo fruit pouch into medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into large box.
+  => Pack the Cheez-It container, Altoids container, Box of M&Ms, Donut, and Gogo fruit pouch into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 221 | xarm_baseline_round5 | 5 subtasks | 2137 frames ===
+    - Pack Sponge into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+  => Pack the Sponge, Altoids container, and Box of M&Ms into the small box, then pack the Nesquik container and Soda can into the large box.
+
+=== chunk 222 | xarm_baseline_round5 | 7 subtasks | 3638 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Cheez-It container into the small box.
+    - Pack Whiteboard eraser into the small box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+  => Pack the Altoids container, Cheez-It container, and Whiteboard eraser into the small box, then pack the Box of M&Ms, Sponge, Donut, and Croissant into the medium box.
+
+=== chunk 223 | xarm_baseline_round5 | 4 subtasks | 2344 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Cheez-It container into the large box.
+    - Pack Mustard into the large box.
+  => Pack the Nesquik container and Soda can into the medium box, then pack the Cheez-It container and Mustard into the large box.
+
+=== chunk 224 | xarm_baseline_round5 | 8 subtasks | 3496 frames ===
+    - Pack Soccer ball plush into the large box.
+    - Pack Marker into the large box.
+    - Pack Nesquik container into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Soda can into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Cheez-It container into the small box.
+    - Pack Box of M&Ms into the small box.
+  => Pack the Soccer ball plush, Marker, Nesquik container, Pringles chip bag, Soda can, and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container and Box of M&Ms into the small box.
+
+=== chunk 225 | xarm_baseline_round5 | 6 subtasks | 3505 frames ===
+    - Pack Pink tumbler into medium box.
+    - Pack Soda can into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Microfiber cloth into medium box.
+    - Pack Nesquik container into large box.
+  => Pack the Pink tumbler, Soda can, Altoids container, Cheez-It container, and Microfiber cloth into the medium box, then pack the Nesquik container into the large box.
+
+=== chunk 226 | xarm_baseline_round5 | 10 subtasks | 4687 frames ===
+    - Pack Soda can into medium box.
+    - Pack Pink tumbler into medium box.
+    - Pack Nesquik container into medium box.
+    - Pack Altoids container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Pringles chip bag into large box.
+    - Pack Soccer ball plush into large box.
+    - Pack Croissant into the large box.
+    - Pack Whiteboard eraser into large box.
+  => Pack the Soda can, Pink tumbler, and Nesquik container into the medium box, then pack the Altoids container, Sponge, Microfiber cloth, Pringles chip bag, Soccer ball plush, Croissant, and Whiteboard eraser into the large box.
+
+=== chunk 227 | xarm_baseline_round5 | 8 subtasks | 3723 frames ===
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Nutella container into the large box.
+    - Pack Mustard into the large box.
+    - Pack Liquid hand soap into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the GoGo fruit pouch, Donut, Croissant, and Baking soda into the medium box, then pack the Nutella container, Mustard, Liquid hand soap, and Microfiber cloth into the large box.
+
+=== chunk 228 | xarm_baseline_round5 | 5 subtasks | 3417 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack GoGo fruit pouch into the small box.
+  => Pack the Cheez-It container into the medium box, then pack the Altoids container and Sponge into the small box, then pack the Microfiber cloth into the medium box, then pack the GoGo fruit pouch into the small box.
+
+=== chunk 229 | xarm_baseline_round5 | 3 subtasks | 1656 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Mustard into the large box.
+    - Pack Donut into the large box.
+  => Pack the Nesquik container into the medium box, then pack the Mustard and Donut into the large box.
+
+=== chunk 230 | xarm_baseline_round5 | 4 subtasks | 2737 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Microfiber cloth into the small box.
+    - Pack Marker into the large box.
+    - Pack Altoids container into the small box.
+  => Pack the Pringles chip bag into the large box, then pack the Microfiber cloth into the small box, then pack the Marker into the large box, then pack the Altoids container into the small box.
+
+=== chunk 231 | xarm_baseline_round5 | 5 subtasks | 3655 frames ===
+    - Pack Box of M&Ms into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+  => Pack the Box of M&Ms and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container, Donut, and Croissant into the medium box.
+
+=== chunk 232 | xarm_baseline_round5 | 5 subtasks | 2638 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Sponge into the medium box.
+    - Pack Microfiber cloth into the medium box.
+  => Pack the Cheez-It container, Altoids container, and Soda can into the small box, then pack the Sponge and Microfiber cloth into the medium box.
+
+=== chunk 233 | xarm_baseline_round5 | 8 subtasks | 4177 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, Donut, Croissant, Nutella container, and GoGo fruit pouch into the medium box, then pack the Marker and Microfiber cloth into the large box.
+
+=== chunk 234 | xarm_baseline_round5 | 5 subtasks | 3282 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 235 | xarm_baseline_round5 | 3 subtasks | 1935 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 236 | xarm_baseline_round5 | 3 subtasks | 2598 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Pink tumbler into the small box.
+  => Pack the Soda can, Pringles chip bag, and Pink tumbler into the small box.
+
+=== chunk 237 | xarm_baseline_round5 | 2 subtasks | 1546 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+  => Pack the Cheez-It container and Cinnamon Toast Crunch cereal into the medium box.
+
+=== chunk 238 | xarm_baseline_round5 | 3 subtasks | 1571 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 239 | xarm_baseline_round5 | 4 subtasks | 2054 frames ===
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack GoGo fruit pouch into the small box.
+    - Pack Soccer ball plush into the large box.
+  => Pack the Soda can, Altoids container, and GoGo fruit pouch into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk 240 | xarm_baseline_round5 | 3 subtasks | 1854 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+  => Pack the Cheez-It container, Soda can, and Altoids container into the small box.
+
+=== chunk 241 | xarm_baseline_round5 | 6 subtasks | 4278 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Whiteboard eraser into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Box of M&Ms into the medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Whiteboard eraser, Microfiber cloth, Sponge, and Box of M&Ms into the medium box.
+
+=== chunk 242 | xarm_baseline_round5 | 5 subtasks | 2239 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Soda can into the large box.
+    - Pack Sponge into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Liquid hand soap into the small box.
+  => Pack the Pringles chip bag, Soda can, Sponge, and Pink tumbler into the large box, then pack the Liquid hand soap into the small box.
+
+=== chunk 243 | xarm_baseline_round5 | 4 subtasks | 2451 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Whiteboard eraser into the small box.
+    - Pack Sponge into the large box.
+    - Pack Soda can into the large box.
+  => Pack the Cheez-It container and Whiteboard eraser into the small box, then pack the Sponge and Soda can into the large box.
+
+=== chunk 244 | xarm_baseline_round5 | 5 subtasks | 3165 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into the large box.
+    - Pack Soccer ball plush into the large box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the medium box, then pack the Microfiber cloth, Marker, and Soccer ball plush into the large box.
+
+=== chunk 245 | xarm_baseline_round5 | 7 subtasks | 4197 frames ===
+    - Pack Microfiber cloth into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Nesquik container into the small box.
+    - Pack Pringles chip bag into the small box.
+  => Pack the Microfiber cloth, Altoids container, Soda can, Croissant, and Cheez-It container into the medium box, then pack the Nesquik container and Pringles chip bag into the small box.
+
+=== chunk 246 | xarm_baseline_round5 | 7 subtasks | 3713 frames ===
+    - Pack Mustard into the medium box.
+    - Pack Pringles chip bag into the medium box.
+    - Pack Soccer ball plush into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into medium box.
+    - Pack Cheez-It container into the large box.
+  => Pack the Mustard, Pringles chip bag, Soccer ball plush, Soda can, GoGo fruit pouch, and Marker into the medium box, then pack the Cheez-It container into the large box.
+
+=== chunk 247 | xarm_baseline_round5 | 6 subtasks | 3445 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Donut into the small box.
+    - Pack Soda can into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Sponge into the large box.
+  => Pack the Nesquik container, Altoids container, and Donut into the small box, then pack the Soda can, Whiteboard eraser, and Sponge into the large box.
+
+=== chunk 248 | xarm_baseline_round5 | 6 subtasks | 2990 frames ===
+    - Pack Liquid hand soap into the medium box.
+    - Pack Soccer ball plush into the medium box.
+    - Pack Pringles chip bag into the medium box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Liquid hand soap, Soccer ball plush, and Pringles chip bag into the medium box, then pack the Soda can, Altoids container, and Sponge into the small box.
+
+=== chunk 249 | xarm_baseline_round5 | 5 subtasks | 2263 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Nesquik container into the large box.
+    - Pack Altoids container into the medium box.
+    - Pack Sponge into the medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Nesquik container into the large box, then pack the Altoids container and Sponge into the medium box.
+
+=== chunk 250 | xarm_baseline_round5 | 6 subtasks | 2483 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Altoids container into medium box.
+    - Pack Donut into medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, and Donut into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 251 | xarm_baseline_round5 | 6 subtasks | 3639 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, Pink tumbler, and Pringles chip bag into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 252 | xarm_baseline_round5 | 5 subtasks | 2769 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Whiteboard eraser into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Cheez-It container, Whiteboard eraser, and Donut into the medium box, then pack the Box of M&Ms and Sponge into the small box.
+
+=== chunk 253 | xarm_baseline_round5 | 6 subtasks | 2323 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Altoids container, Whiteboard eraser, and Microfiber cloth into the large box.
+
+=== chunk 254 | xarm_baseline_round5 | 4 subtasks | 1993 frames ===
+    - Remove Box of M&Ms from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into the small box.
+  => Remove the Box of M&Ms and Microfiber cloth from the medium box, then pack the Cheez-It container and Altoids container into the small box.
+
+=== chunk 255 | xarm_baseline_round5 | 6 subtasks | 4059 frames ===
+    - Pack Soccer ball plush into the large box.
+    - Pack Cinnamon Toast Crunch cereal into large box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Spatula into the large box.
+  => Pack the Soccer ball plush, Cinnamon Toast Crunch cereal, Nesquik container, Soda can, Pringles chip bag, and Spatula into the large box.
+
+=== chunk 256 | xarm_baseline_round5 | 6 subtasks | 2928 frames ===
+    - Pack Soda can into small box.
+    - Pack Pink tumbler into small box.
+    - Pack Altoids container into large box.
+    - Pack Cheez-It container into large box.
+    - Pack Sponge into large box.
+    - Pack Microfiber cloth into large box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Altoids container, Cheez-It container, Sponge, and Microfiber cloth into the large box.
+
+=== chunk 257 | xarm_baseline_round5 | 3 subtasks | 1708 frames ===
+    - Pack Pringles chip bag into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the medium box.
+  => Pack the Pringles chip bag and Altoids container into the small box, then pack the Sponge into the medium box.
+
+=== chunk 258 | xarm_baseline_round5 | 8 subtasks | 3132 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into medium box.
+    - Pack Nutella container into medium box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Stuffed yak into the large box.
+    - Pack Liquid hand soap into the large box.
+  => Pack the Cheez-It container, Baking soda, Donut, Croissant, and Nutella container into the medium box, then pack the Microfiber cloth, Stuffed yak, and Liquid hand soap into the large box.
+
+=== chunk 259 | xarm_baseline_round5 | 5 subtasks | 2899 frames ===
+    - Pack Stuffed yak into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Donut into the large box.
+  => Pack the Stuffed yak and Sponge into the medium box, then pack the Cling n' seal wrap, Whiteboard eraser, and Donut into the large box.
+
+=== chunk 260 | xarm_baseline_round6 | 5 subtasks | 2457 frames ===
+    - Remove Sponge from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Croissant into the medium box.
+  => Remove the Sponge and Microfiber cloth from the medium box, then pack the Cheez-It container, Altoids container, and Croissant into the medium box.
+
+=== chunk 261 | xarm_baseline_round6 | 5 subtasks | 2766 frames ===
+    - Remove Pringles chip bag from the large box.
+    - Remove Soccer ball plush from the large box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+  => Remove the Pringles chip bag and Soccer ball plush from the large box, then pack the Nesquik container, Soda can, and Cinnamon Toast Crunch cereal into the large box.
+
+=== chunk 262 | xarm_baseline_round6 | 6 subtasks | 3518 frames ===
+    - Remove Microfiber cloth from the large box.
+    - Remove Whiteboard eraser from the large box.
+    - Remove Sponge from the small box.
+    - Remove Altoids container from the small box.
+    - Pack Marker into the large box.
+    - Pack Cheez-It container into small box.
+  => Remove the Microfiber cloth and Whiteboard eraser from the large box, then remove the Sponge and Altoids container from the small box, then pack the Marker into the large box, then pack the Cheez-It container into the small box.
+
+=== chunk 263 | xarm_baseline_round6 | 6 subtasks | 3882 frames ===
+    - Remove Pink tumbler from small box.
+    - Remove Whiteboard eraser from small box.
+    - Remove Soccer ball plush from the small box.
+    - Pack Cheez-It container into small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+  => Remove the Pink tumbler, Whiteboard eraser, and Soccer ball plush from the small box, then pack the Cheez-It container, Altoids container, and Box of M&Ms into the small box.
+
+=== chunk 264 | xarm_baseline_round6 | 7 subtasks | 3226 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Pringles chip bag into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Stuffed yak into the large box.
+  => Pack the Nesquik container, Microfiber cloth, Soda can, Sponge, and Pringles chip bag into the medium box, then pack the Cinnamon Toast Crunch cereal and Stuffed yak into the large box.
+
+=== chunk 265 | xarm_baseline_round6 | 5 subtasks | 3888 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Liquid hand soap into the small box.
+    - Pack Sponge into the medium box.
+  => Pack the Cheez-It container, Soda can, Altoids container, and Liquid hand soap into the small box, then pack the Sponge into the medium box.
+
+=== chunk 266 | xarm_baseline_round6 | 3 subtasks | 1957 frames ===
+    - Pack Spatula into the large box.
+    - Pack Soccer ball plush into the large box.
+    - Pack Cling n' seal wrap into the large box.
+  => Pack the Spatula, Soccer ball plush, and Cling n' seal wrap into the large box.
+
+=== chunk 267 | xarm_baseline_round6 | 6 subtasks | 2477 frames ===
+    - Pack Soda can into the small box.
+    - Pack Nesquik container into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Donut into the large box.
+    - Pack Pringles chip bag into the large box.
+  => Pack the Soda can, Nesquik container, and Pink tumbler into the small box, then pack the Altoids container, Donut, and Pringles chip bag into the large box.
+
+=== chunk 268 | xarm_baseline_round6 | 6 subtasks | 4540 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Marker into the medium box.
+  => Pack the Cinnamon Toast Crunch cereal, Cheez-It container, Box of M&Ms, Nutella container, Microfiber cloth, and Marker into the medium box.
+
+=== chunk 269 | xarm_baseline_round6 | 6 subtasks | 2336 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Liquid hand soap into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Cinnamon Toast Crunch cereal, Pringles chip bag, and Liquid hand soap into the large box.
+
+=== chunk 270 | xarm_baseline_round6 | 5 subtasks | 2796 frames ===
+    - Pack Spatula into the large box.
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Spatula and Cling n' seal wrap into the large box, then pack the Soda can, Altoids container, and Sponge into the small box.
+
+=== chunk 271 | xarm_baseline_round6 | 5 subtasks | 1941 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Sponge into medium box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Cheez-It container, Altoids container, and Sponge into the medium box.
+
+=== chunk 272 | xarm_baseline_round6 | 8 subtasks | 4392 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into medium box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Donut into medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, Box of M&Ms, Donut, and GoGo fruit pouch into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 273 | xarm_baseline_round6 | 5 subtasks | 2468 frames ===
+    - Pack Sponge into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+  => Pack the Sponge, Altoids container, and Box of M&Ms into the small box, then pack the Nesquik container and Soda can into the large box.
+
+=== chunk 274 | xarm_baseline_round6 | 7 subtasks | 2682 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Cheez-It container into the small box.
+    - Pack Whiteboard eraser into the small box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+  => Pack the Altoids container, Cheez-It container, and Whiteboard eraser into the small box, then pack the Box of M&Ms, Sponge, Donut, and Croissant into the medium box.
+
+=== chunk 275 | xarm_baseline_round6 | 4 subtasks | 1689 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Cheez-It container into the large box.
+    - Pack Mustard into the large box.
+  => Pack the Nesquik container and Soda can into the medium box, then pack the Cheez-It container and Mustard into the large box.
+
+=== chunk 276 | xarm_baseline_round6 | 8 subtasks | 3082 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Marker into the large box.
+    - Pack Soda can into the large box.
+    - Pack Cheez-It container into the large box.
+    - Pack Soccer ball plush into the small box.
+    - Pack Box of M&Ms into the small box.
+  => Pack the Nesquik container, Cinnamon Toast Crunch cereal, Pringles chip bag, Marker, Soda can, and Cheez-It container into the large box, then pack the Soccer ball plush and Box of M&Ms into the small box.
+
+=== chunk 277 | xarm_baseline_round6 | 6 subtasks | 3609 frames ===
+    - Pack Pink tumbler into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Nesquik container into the medium box.
+    - Pack Cheez-It container into large box.
+  => Pack the Pink tumbler, Microfiber cloth, Soda can, Altoids container, and Nesquik container into the medium box, then pack the Cheez-It container into the large box.
+
+=== chunk 278 | xarm_baseline_round6 | 10 subtasks | 6142 frames ===
+    - Pack Soda can into the medium box.
+    - Pack Pink tumbler into the medium box.
+    - Pack Nesquik container into the medium box.
+    - Pack Altoids container into the large box.
+    - Pack Sponge into the large box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Soccer ball plush into the large box.
+    - Pack Croissant into the large box.
+    - Pack Whiteboard eraser into the large box.
+  => Pack the Soda can, Pink tumbler, and Nesquik container into the medium box, then pack the Altoids container, Sponge, Microfiber cloth, Pringles chip bag, Soccer ball plush, Croissant, and Whiteboard eraser into the large box.
+
+=== chunk 279 | xarm_baseline_round6 | 8 subtasks | 3327 frames ===
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Baking soda into the medium box.
+    - Pack Nutella container into the large box.
+    - Pack Mustard into the large box.
+    - Pack Liquid hand soap into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the GoGo fruit pouch, Donut, Croissant, and Baking soda into the medium box, then pack the Nutella container, Mustard, Liquid hand soap, and Microfiber cloth into the large box.
+
+=== chunk 280 | xarm_baseline_round6 | 5 subtasks | 2773 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack GoGo fruit pouch into the small box.
+  => Pack the Cheez-It container into the medium box, then pack the Altoids container and Sponge into the small box, then pack the Microfiber cloth into the medium box, then pack the GoGo fruit pouch into the small box.
+
+=== chunk 281 | xarm_baseline_round6 | 3 subtasks | 1595 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Mustard into the large box.
+    - Pack Donut into the large box.
+  => Pack the Nesquik container into the medium box, then pack the Mustard and Donut into the large box.
+
+=== chunk 282 | xarm_baseline_round6 | 4 subtasks | 2997 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Microfiber cloth into the small box.
+    - Pack Marker into the large box.
+    - Pack Altoids container into the small box.
+  => Pack the Pringles chip bag into the large box, then pack the Microfiber cloth into the small box, then pack the Marker into the large box, then pack the Altoids container into the small box.
+
+=== chunk 283 | xarm_baseline_round6 | 5 subtasks | 2515 frames ===
+    - Pack Box of M&Ms into the large box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+  => Pack the Box of M&Ms and Cinnamon Toast Crunch cereal into the large box, then pack the Cheez-It container, Donut, and Croissant into the medium box.
+
+=== chunk 284 | xarm_baseline_round6 | 5 subtasks | 1931 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Sponge into the medium box.
+    - Pack Microfiber cloth into the medium box.
+  => Pack the Cheez-It container, Altoids container, and Soda can into the small box, then pack the Sponge and Microfiber cloth into the medium box.
+
+=== chunk 285 | xarm_baseline_round6 | 8 subtasks | 3905 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Nutella container into the medium box.
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Marker into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, Donut, Croissant, Nutella container, and GoGo fruit pouch into the medium box, then pack the Marker and Microfiber cloth into the large box.
+
+=== chunk 286 | xarm_baseline_round6 | 5 subtasks | 2208 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 287 | xarm_baseline_round6 | 3 subtasks | 1570 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 288 | xarm_baseline_round6 | 3 subtasks | 1496 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Pink tumbler into the small box.
+  => Pack the Soda can, Pringles chip bag, and Pink tumbler into the small box.
+
+=== chunk 289 | xarm_baseline_round6 | 2 subtasks | 1846 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+  => Pack the Cheez-It container and Cinnamon Toast Crunch cereal into the medium box.
+
+=== chunk 290 | xarm_baseline_round6 | 3 subtasks | 1633 frames ===
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+    - Pack Whiteboard eraser into the small box.
+  => Pack the Altoids container, Sponge, and Whiteboard eraser into the small box.
+
+=== chunk 291 | xarm_baseline_round6 | 4 subtasks | 2669 frames ===
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+    - Pack GoGo fruit pouch into the small box.
+    - Pack Soccer ball plush into the large box.
+  => Pack the Soda can, Altoids container, and GoGo fruit pouch into the small box, then pack the Soccer ball plush into the large box.
+
+=== chunk 292 | xarm_baseline_round6 | 3 subtasks | 1997 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Altoids container into the small box.
+  => Pack the Cheez-It container, Soda can, and Altoids container into the small box.
+
+=== chunk 293 | xarm_baseline_round6 | 6 subtasks | 4367 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Whiteboard eraser into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Box of M&Ms into the medium box.
+    - Pack Sponge into the medium box.
+  => Pack the Cheez-It container, Cinnamon Toast Crunch cereal, Whiteboard eraser, Microfiber cloth, Box of M&Ms, and Sponge into the medium box.
+
+=== chunk 294 | xarm_baseline_round6 | 5 subtasks | 3691 frames ===
+    - Pack Pringles chip bag into the large box.
+    - Pack Soda can into the large box.
+    - Pack Sponge into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Liquid hand soap into the small box.
+  => Pack the Pringles chip bag, Soda can, Sponge, and Pink tumbler into the large box, then pack the Liquid hand soap into the small box.
+
+=== chunk 295 | xarm_baseline_round6 | 4 subtasks | 3011 frames ===
+    - Pack Cheez-It container into the small box.
+    - Pack Whiteboard eraser into the small box.
+    - Pack Sponge into the large box.
+    - Pack Soda can into the large box.
+  => Pack the Cheez-It container and Whiteboard eraser into the small box, then pack the Sponge and Soda can into the large box.
+
+=== chunk 296 | xarm_baseline_round6 | 5 subtasks | 3012 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the medium box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Marker into the large box.
+    - Pack Soccer ball plush into the large box.
+  => Pack the Nesquik container and Cinnamon Toast Crunch cereal into the medium box, then pack the Microfiber cloth, Marker, and Soccer ball plush into the large box.
+
+=== chunk 297 | xarm_baseline_round6 | 8 subtasks | 4359 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Cheez-It container into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Croissant into the medium box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Microfiber cloth into the small box.
+  => Pack the Nesquik container, Cheez-It container, Soda can, Donut, Altoids container, and Croissant into the medium box, then pack the Pringles chip bag and Microfiber cloth into the small box.
+
+=== chunk 298 | xarm_baseline_round6 | 7 subtasks | 3633 frames ===
+    - Pack GoGo fruit pouch into the medium box.
+    - Pack Soccer ball plush into the medium box.
+    - Pack Mustard into the medium box.
+    - Pack Marker into the medium box.
+    - Pack Soda can into medium box.
+    - Pack Pringles chip bag into the medium box.
+    - Pack Cheez-It container into the large box.
+  => Pack the GoGo fruit pouch, Soccer ball plush, Mustard, Marker, Soda can, and Pringles chip bag into the medium box, then pack the Cheez-It container into the large box.
+
+=== chunk 299 | xarm_baseline_round6 | 7 subtasks | 3761 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Donut into the small box.
+    - Pack Nutella container into the small box.
+    - Pack Soda can into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Sponge into the large box.
+  => Pack the Nesquik container, Altoids container, Donut, and Nutella container into the small box, then pack the Soda can, Whiteboard eraser, and Sponge into the large box.
+
+=== chunk 300 | xarm_baseline_round6 | 6 subtasks | 2807 frames ===
+    - Pack Liquid hand soap into the medium box.
+    - Pack Soccer ball plush into the medium box.
+    - Pack Soda can into the medium box.
+    - Pack Pringles chip bag into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Liquid hand soap, Soccer ball plush, and Soda can into the medium box, then pack the Pringles chip bag, Altoids container, and Sponge into the small box.
+
+=== chunk 301 | xarm_baseline_round6 | 5 subtasks | 2349 frames ===
+    - Pack Nesquik container into the medium box.
+    - Pack Microfiber cloth into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Altoids container into the large box.
+  => Pack the Nesquik container, Microfiber cloth, and Sponge into the medium box, then pack the Cinnamon Toast Crunch cereal and Altoids container into the large box.
+
+=== chunk 302 | xarm_baseline_round6 | 6 subtasks | 3512 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Altoids container into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Microfiber cloth into large box.
+    - Pack Marker into the large box.
+  => Pack the Cheez-It container, Altoids container, and Donut into the medium box, then pack the Cinnamon Toast Crunch cereal, Microfiber cloth, and Marker into the large box.
+
+=== chunk 303 | xarm_baseline_round6 | 6 subtasks | 2194 frames ===
+    - Pack Nesquik container into the large box.
+    - Pack Soda can into the large box.
+    - Pack Pink tumbler into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Nesquik container, Soda can, Pink tumbler, and Pringles chip bag into the large box, then pack the Altoids container and Sponge into the small box.
+
+=== chunk 304 | xarm_baseline_round6 | 5 subtasks | 2259 frames ===
+    - Pack Cheez-It container into the medium box.
+    - Pack Whiteboard eraser into the medium box.
+    - Pack Donut into the medium box.
+    - Pack Box of M&Ms into the small box.
+    - Pack Sponge into the small box.
+  => Pack the Cheez-It container, Whiteboard eraser, and Donut into the medium box, then pack the Box of M&Ms and Sponge into the small box.
+
+=== chunk 305 | xarm_baseline_round6 | 6 subtasks | 2494 frames ===
+    - Pack Nesquik container into the small box.
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Nesquik container, Soda can, and Pink tumbler into the small box, then pack the Altoids container, Whiteboard eraser, and Microfiber cloth into the large box.
+
+=== chunk 306 | xarm_baseline_round6 | 4 subtasks | 1975 frames ===
+    - Remove Box of M&Ms from the medium box.
+    - Remove Microfiber cloth from the medium box.
+    - Pack Cheez-It container into the small box.
+    - Pack Altoids container into the small box.
+  => Remove the Box of M&Ms and Microfiber cloth from the medium box, then pack the Cheez-It container and Altoids container into the small box.
+
+=== chunk 307 | xarm_baseline_round6 | 6 subtasks | 4274 frames ===
+    - Pack Cinnamon Toast Crunch cereal into the large box.
+    - Pack Nesquik container into the large box.
+    - Pack Pringles chip bag into the large box.
+    - Pack Soda can into the large box.
+    - Pack Soccer ball plush into the large box.
+    - Pack Spatula into the large box.
+  => Pack the Cinnamon Toast Crunch cereal, Nesquik container, Pringles chip bag, Soda can, Soccer ball plush, and Spatula into the large box.
+
+=== chunk 308 | xarm_baseline_round6 | 6 subtasks | 3264 frames ===
+    - Pack Soda can into the small box.
+    - Pack Pink tumbler into the small box.
+    - Pack Altoids container into the large box.
+    - Pack Cheez-It container into the large box.
+    - Pack Sponge into the large box.
+    - Pack Microfiber cloth into the large box.
+  => Pack the Soda can and Pink tumbler into the small box, then pack the Altoids container, Cheez-It container, Sponge, and Microfiber cloth into the large box.
+
+=== chunk 309 | xarm_baseline_round6 | 3 subtasks | 1545 frames ===
+    - Pack Pringles chip bag into the small box.
+    - Pack Altoids container into the small box.
+    - Pack Sponge into the medium box.
+  => Pack the Pringles chip bag and Altoids container into the small box, then pack the Sponge into the medium box.
+
+=== chunk 310 | xarm_baseline_round6 | 8 subtasks | 3914 frames ===
+    - Pack Cheez-It container into medium box.
+    - Pack Baking soda into medium box.
+    - Pack Donut into medium box.
+    - Pack Croissant into the medium box.
+    - Pack Nutella container into the medium box.
+    - Pack Microfiber cloth into the large box.
+    - Pack Stuffed yak into the large box.
+    - Pack Liquid hand soap into the large box.
+  => Pack the Cheez-It container, Baking soda, Donut, Croissant, and Nutella container into the medium box, then pack the Microfiber cloth, Stuffed yak, and Liquid hand soap into the large box.
+
+=== chunk 311 | xarm_baseline_round6 | 5 subtasks | 2458 frames ===
+    - Pack Stuffed yak into the medium box.
+    - Pack Sponge into the medium box.
+    - Pack Cling n' seal wrap into the large box.
+    - Pack Whiteboard eraser into the large box.
+    - Pack Donut into the large box.
+  => Pack the Stuffed yak and Sponge into the medium box, then pack the Cling n' seal wrap, Whiteboard eraser, and Donut into the large box.
+

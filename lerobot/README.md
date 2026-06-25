@@ -1,10 +1,29 @@
-# lerobot — real-world dual-xArm packing → RLDS
+# lerobot — bimanual LeRobot teleop → RLDS
 
-Converts the real-world dual-xArm packing LeRobot dataset
-(`/data/group_data/rl/saksham3/realworld_xarm_packing_lerobot/`, 7
-`xarm_baseline_round*` folders, LeRobot v2.1, 60 fps) into RLDS tfrecords via
-the `slurm_rlds/` framework, with each **combined episode (chunk)** as one
-RLDS episode.
+Converts bimanual LeRobot teleop datasets into RLDS tfrecords via the
+`slurm_rlds/` framework, with each **combined episode (chunk)** as one RLDS
+episode. `realworld_xarm_packing_config.py` is generalized over multiple
+source datasets via a **PROFILE** (env `LEROBOT_PROFILE`, default
+`xarm_packing`); only the dataset-specific differences are parameterized
+(state/action transform, cameras, image size, data root, robot_type). The
+chunks.json schema and all RLDS fields are identical across profiles.
+
+| profile | robot | state/action | cameras | images |
+|---|---|---|---|---|
+| `xarm_packing` (default) | dual_xArm | 20-dim EEF pose (6D-rot cols) → 14-dim `[x,y,z,r,p,y,grip]×2` | base/left_wrist/right_wrist | 480×480 |
+| `yam_3lego` | YAM | 14-dim **joint** `[joint(6),grip]×2` written through (no transform) | top/left_wrist/right_wrist | 480×480 (upscaled from 224) |
+
+The default (xarm_packing) dataset is at
+`/data/group_data/rl/saksham3/realworld_xarm_packing_lerobot/` (7
+`xarm_baseline_round*` folders, LeRobot v2.1, 60 fps). For `yam_3lego`, the
+scope is **only the 5 subtask-segmented** HF datasets (1 LeRobot episode = 1
+subtask): `3lego_round1`, `round2`, `round3`, `round4`, `round1_baseline`
+(the eval/rejection full-rollout sets are excluded). Download those 5
+`huzheyuan/3lego_*` folders under the profile's `data_root` and generate a
+`yam` chunks.json first (see Chunking — the YAM chunking method is TBD:
+per-subtask episodes, or group subtasks into full tasks at each "Take apart"
+marker). Select with `LEROBOT_PROFILE=yam_3lego` and set the matching
+`DATASET_NAME` in `scripts/build.sh`.
 
 ## Chunking
 

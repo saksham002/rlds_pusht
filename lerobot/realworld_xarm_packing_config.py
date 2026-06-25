@@ -1,30 +1,36 @@
-"""slurm_rlds config: real-world dual-xArm packing dataset (LeRobot -> RLDS).
+"""slurm_rlds config: bimanual LeRobot teleop datasets -> RLDS.
 
-Each RLDS episode is a COMBINED episode (chunk): a contiguous run of short
-subtask mp4s within one round, grouped by base-camera scene continuity
-(see scripts/build_chunks_json.py -> chunks.json). Subtask frames are
-concatenated in order with NO frame dropping.
+Generalized over multiple source LeRobot datasets via a PROFILE (selected by
+the LEROBOT_PROFILE env var, default 'xarm_packing'). Each RLDS episode is a
+COMBINED episode (chunk): an ordered run of subtask mp4s (1+) within one
+source folder, described by scripts/build_chunks_json.py -> chunks.json.
+Subtask frames are concatenated in order with NO frame dropping. The
+chunks.json schema and all per-frame/episode RLDS fields are identical across
+profiles; only the dataset-specific differences below are parameterized.
 
-State/action (per A1/A2 decisions):
-- Source observation.state / action are 20-dim per frame, per arm
-  [pos(3), 6D-rotation(6), gripper(1)], expressed in the robot BASE frame.
-- The 6D rotation is the first two COLUMNS of the EEF-wrt-base rotation matrix:
-  col0 = [r00,r10,r20], col1 = [r01,r11,r21], col2 = col0 x col1.
-- Output is 14-dim: per arm [x, y, z, roll, pitch, yaw, gripper] with gripper
-  at positions 7 and 14. Euler is scipy 'xyz' extrinsic, radians. Gripper is
-  the raw encoder value (~80-842). The `action` column is used directly for
-  the action (reformatted identically to state).
+Profiles
+--------
+- 'xarm_packing' (default): real-world dual-xArm packing.
+  * Source observation.state/action are 20-dim per arm [pos(3), 6D-rot(6),
+    gripper(1)] in the BASE frame; 6D-rot = first two COLUMNS of R_eef_in_base
+    (col0=[r00,r10,r20], col1=[r01,r11,r21], col2=col0xcol1). Converted to
+    14-dim [x,y,z,roll,pitch,yaw,gripper] x{L,R} (gripper at idx 7 & 14, Euler
+    scipy 'xyz' extrinsic radians, raw gripper encoder). Cameras base/
+    left_wrist/right_wrist, images 480x480.
+- 'yam_3lego': YAM bimanual 3-lego take-apart-and-sort (HuggingFace
+  huzheyuan/3lego_*, downloaded locally).
+  * Source observation.state/action are ALREADY 14-dim JOINT space
+    [left_joint(6), left_gripper, right_joint(6), right_gripper] -> written
+    through unchanged (no EEF/rotation conversion). Cameras top/left_wrist/
+    right_wrist, images native 224x224.
 
-Per-frame subtask fields are single-valued for the ACTIVE subtask (no
-length-5 slot arrays).
-
-The LeRobot data is already (obs_t, action_t) aligned by the converter
-(convert_xarm_data_to_lerobot.py: action[i] == state_pose[i+1]), so state,
+Both: data already (obs_t, action_t) aligned by their converters, so state,
 images and action are read straight through at their original indices.
+Per-frame subtask fields are single-valued for the ACTIVE subtask.
 
 Usage (single worker, local debug):
     cd slurm_rlds/
-    python -m framework.runner \
+    LEROBOT_PROFILE=xarm_packing python -m framework.runner \
         --config ../lerobot/realworld_xarm_packing_config.py \
         --data_dir /tmp/xarm_packing/0 --worker_id 0 --num_workers 8
 """
@@ -39,28 +45,65 @@ import tensorflow as tf
 import tensorflow_datasets as tfds
 
 
-DATASET_NAME = 'realworld_xarm_packing'
+# --- output state/action feature-name layouts ---
+_EEF_NAMES, _JOINT_NAMES = [], []
+for _arm in ['left', 'right']:
+    _EEF_NAMES += [f'{_arm}_x', f'{_arm}_y', f'{_arm}_z',
+                   f'{_arm}_roll', f'{_arm}_pitch', f'{_arm}_yaw', f'{_arm}_gripper']
+    _JOINT_NAMES += [f'{_arm}_joint_{_i}' for _i in range(6)] + [f'{_arm}_gripper']
+
+# Dataset-specific differences between the two LeRobot source datasets.
+PROFILES = {
+    'xarm_packing': {
+        'dataset_name': 'realworld_xarm_packing',
+        'data_root': '/data/group_data/rl/saksham3/realworld_xarm_packing_lerobot',
+        'cameras': ['base', 'left_wrist', 'right_wrist'],   # -> cam_0, cam_1, cam_2
+        'image_size': (480, 480),
+        'jpeg_quality': 95,
+        'state_action_mode': 'eef_pose_6d_cols',            # 20-dim source -> 14-dim
+        'state_feature_names': _EEF_NAMES,
+        'robot_type': 'dual_xarm',
+        'fps': 60.0,
+    },
+    'yam_3lego': {
+        'dataset_name': '3lego_yam',
+        # Scope: ONLY the 5 subtask-segmented HF datasets (1 LeRobot episode =
+        # 1 subtask) -- 3lego_round1, round2, round3, round4, round1_baseline.
+        # The eval/rejection full-rollout sets are excluded. Download those 5
+        # huzheyuan/3lego_* folders under here before building.
+        'data_root': '/data/group_data/rl/saksham3/3lego_lerobot',
+        'cameras': ['top', 'left_wrist', 'right_wrist'],    # -> cam_0, cam_1, cam_2
+        'image_size': (480, 480),                           # upscaled from native 224 to match xarm
+        'jpeg_quality': 95,
+        'state_action_mode': 'joint_passthrough',           # 14-dim source -> 14-dim (no transform)
+        'state_feature_names': _JOINT_NAMES,
+        'robot_type': 'yam',
+        'fps': 60.0,
+    },
+}
+
+LEROBOT_PROFILE = os.environ.get('LEROBOT_PROFILE', 'xarm_packing')
+assert LEROBOT_PROFILE in PROFILES, f'unknown LEROBOT_PROFILE {LEROBOT_PROFILE!r}; choices: {list(PROFILES)}'
+_P = PROFILES[LEROBOT_PROFILE]
+
+DATASET_NAME = _P['dataset_name']
 DATASET_VERSION = '1.0.0'
 
-_DATA_ROOT = '/data/group_data/rl/saksham3/realworld_xarm_packing_lerobot'
+_DATA_ROOT = _P['data_root']
 _CHUNKS_PATH = os.path.join(_DATA_ROOT, 'chunks.json')
 
-_CAMERAS = ['base', 'left_wrist', 'right_wrist']   # cam_0, cam_1, cam_2
-_MAX_CAMERAS = 3
-_IMAGE_SIZE = (480, 480)
-_JPEG_QUALITY = 95
+_CAMERAS = _P['cameras']
+_MAX_CAMERAS = len(_CAMERAS)
+_IMAGE_SIZE = _P['image_size']
+_JPEG_QUALITY = _P['jpeg_quality']
+_STATE_ACTION_MODE = _P['state_action_mode']
 _STATE_DIM = 14
 _ACTION_DIM = 14
-_FPS = 60.0
+_FPS = _P['fps']
 _VAL_FRACTION = 0.05
-_ROBOT_TYPE = 'dual_xarm'
+_ROBOT_TYPE = _P['robot_type']
 
-_ARM_NAMES = ['left', 'right']
-_STATE_FEATURE_NAMES = []
-for _arm in _ARM_NAMES:
-    _STATE_FEATURE_NAMES += [f'{_arm}_x', f'{_arm}_y', f'{_arm}_z',
-                             f'{_arm}_roll', f'{_arm}_pitch', f'{_arm}_yaw',
-                             f'{_arm}_gripper']
+_STATE_FEATURE_NAMES = list(_P['state_feature_names'])
 _ACTION_FEATURE_NAMES = list(_STATE_FEATURE_NAMES)
 
 
@@ -171,6 +214,22 @@ def _pose20_to_14(vec20):
     return out
 
 
+def _adapt_state_action(vec):
+    """Map one source state/action vector to the 14-dim output for the profile.
+
+    - 'eef_pose_6d_cols': 20-dim EEF pose -> 14-dim [x,y,z,r,p,y,grip] x{L,R}.
+    - 'joint_passthrough': source is already 14-dim joint space -> written as-is.
+    """
+    if _STATE_ACTION_MODE == 'eef_pose_6d_cols':
+        return _pose20_to_14(vec)
+    if _STATE_ACTION_MODE == 'joint_passthrough':
+        v = np.asarray(vec, dtype = np.float32)
+        assert v.shape[0] == _STATE_DIM, (
+            f'joint_passthrough expects {_STATE_DIM}-dim source, got {v.shape[0]}')
+        return v.copy()
+    raise ValueError(f'unknown state_action_mode {_STATE_ACTION_MODE!r}')
+
+
 def _encode_frame(frame_rgb):
     """uint8 (H,W,3) -> resize 480x480 -> JPEG q95 bytes."""
     img = tf.image.resize(frame_rgb.astype(np.float32) / 255.0, _IMAGE_SIZE).numpy()
@@ -198,8 +257,9 @@ def parse_episode(chunk_id):
     for sub_idx, sub in enumerate(chunk['subtasks']):
         ep = sub['episode_index']
         length = sub['length']
+        lerobot_chunk = f'chunk-{ep // 1000:03d}'   # LeRobot stores 1000 episodes per chunk dir
         pq = pd.read_parquet(
-            os.path.join(rdir, 'data', 'chunk-000', f'episode_{ep:06d}.parquet'),
+            os.path.join(rdir, 'data', lerobot_chunk, f'episode_{ep:06d}.parquet'),
             columns = ['observation.state', 'action'])
         states = np.stack(pq['observation.state'].values).astype(np.float32)
         actions = np.stack(pq['action'].values).astype(np.float32)
@@ -207,7 +267,7 @@ def parse_episode(chunk_id):
 
         cam_frames = []
         for cam in _CAMERAS:
-            vp = os.path.join(rdir, 'videos', 'chunk-000',
+            vp = os.path.join(rdir, 'videos', lerobot_chunk,
                               f'observation.images.{cam}', f'episode_{ep:06d}.mp4')
             cam_frames.append(_decode_video(vp, length))
 
@@ -218,8 +278,8 @@ def parse_episode(chunk_id):
             step = {}
             for ci in range(_MAX_CAMERAS):
                 step[f'observation/image/cam_{ci}'] = _encode_frame(cam_frames[ci][t_local])
-            step['observation/state'] = _pose20_to_14(states[t_local])
-            step['action'] = _pose20_to_14(actions[t_local])
+            step['observation/state'] = _adapt_state_action(states[t_local])
+            step['action'] = _adapt_state_action(actions[t_local])
             step['is_first'] = (t == 0)
             step['is_terminal'] = (t == total - 1)
             step['frame_index'] = np.int64(t)
