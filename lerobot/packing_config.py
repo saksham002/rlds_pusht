@@ -23,6 +23,15 @@ Profiles
     [left_joint(6), left_gripper, right_joint(6), right_gripper] -> written
     through unchanged (no EEF/rotation conversion). Cameras top/left_wrist/
     right_wrist, images native 224x224.
+- 'sim_xarm_packing': simulated dual-xArm packing. Identical 20-dim EEF-pose
+  (6D-rot cols) source and camera layout as 'xarm_packing'; only the paths and
+  a few sim-specific extras differ. Source folders adv/* (adversarial) and
+  base/* (baseline); frames kept at native 224x224 (combined chunks run up to
+  ~21.7k frames, so 480x480 would push the largest episodes past TFDS's 2GB
+  per-Example protobuf limit). chunks.json lives at a path SEPARATE from
+  data_root. Adds a
+  per-episode `is_adversarial` metadata flag (True for repo_ids under adv/) and
+  excludes chunk 269 (its subtask boundaries are misaligned to the episode).
 
 Both: data already (obs_t, action_t) aligned by their converters, so state,
 images and action are read straight through at their original indices.
@@ -30,9 +39,9 @@ Per-frame subtask fields are single-valued for the ACTIVE subtask.
 
 Usage (single worker, local debug):
     cd slurm_rlds/
-    LEROBOT_PROFILE=xarm_packing python -m framework.runner \
-        --config ../lerobot/realworld_xarm_packing_config.py \
-        --data_dir /tmp/xarm_packing/0 --worker_id 0 --num_workers 8
+    LEROBOT_PROFILE=sim_xarm_packing python -m framework.runner \
+        --config ../lerobot/packing_config.py \
+        --data_dir /tmp/sim_xarm_packing/0 --worker_id 0 --num_workers 8
 """
 import json
 import os
@@ -56,29 +65,66 @@ for _arm in ['left', 'right']:
 PROFILES = {
     'xarm_packing': {
         'dataset_name': 'realworld_xarm_packing',
-        'data_root': '/data/group_data/rl/saksham3/realworld_xarm_packing_lerobot',
+        # Baseline + adversarial superset, laid out adv/* and base/* like sim.
+        # kshitiz2's dir is read-only, so chunks.json lives in saksham3 space.
+        'data_root': '/data/group_data/rl/kshitiz2/pack_dataset/real',
+        'chunks_path': '/data/group_data/rl/saksham3/packing/real/chunks.json',
         'cameras': ['base', 'left_wrist', 'right_wrist'],   # -> cam_0, cam_1, cam_2
         'image_size': (480, 480),
-        'jpeg_quality': 95,
+        # q90, not q95: the longest adversarial chunk (idx 430, 15,241 frames x 3
+        # cams) hits ~2.09 GB at q95, against TFDS's hard 2^31-byte-per-Example
+        # protobuf ceiling. q90 brings it to ~1.44 GB with room to spare.
+        'jpeg_quality': 90,
         'state_action_mode': 'eef_pose_6d_cols',            # 20-dim source -> 14-dim
         'state_feature_names': _EEF_NAMES,
         'robot_type': 'dual_xarm',
         'fps': 60.0,
+        # is_adversarial is derived from the repo_id prefix (see _is_adversarial).
+        # Every folder here is currently xarm_baseline_round* -> all False; any
+        # adversarial rounds added later must live under an adv/ prefix to be
+        # picked up.
+        'has_adversarial_flag': True,
     },
     'yam_3lego': {
-        'dataset_name': '3lego_yam',
+        'dataset_name': 'lego',
         # Scope: ONLY the 5 subtask-segmented HF datasets (1 LeRobot episode =
         # 1 subtask) -- 3lego_round1, round2, round3, round4, round1_baseline.
         # The eval/rejection full-rollout sets are excluded. Download those 5
         # huzheyuan/3lego_* folders under here before building.
-        'data_root': '/data/group_data/rl/saksham3/3lego_lerobot',
+        'data_root': '/data/group_data/rl/saksham3/hf',
         'cameras': ['top', 'left_wrist', 'right_wrist'],    # -> cam_0, cam_1, cam_2
-        'image_size': (480, 480),                           # upscaled from native 224 to match xarm
+        'image_size': (224, 224),                           # native; no resize
         'jpeg_quality': 95,
         'state_action_mode': 'joint_passthrough',           # 14-dim source -> 14-dim (no transform)
         'state_feature_names': _JOINT_NAMES,
         'robot_type': 'yam',
         'fps': 60.0,
+        # Every round is adversarial except the baseline one (see _is_adversarial).
+        'has_adversarial_flag': True,
+        # Turns on every lego-only field at once: the FK-synthesized eef pose
+        # stream, the partial-subtask labels and the 3lego task id.
+        # See _IS_LEGO below.
+        'is_lego': True,
+    },
+    'sim_xarm_packing': {
+        'dataset_name': 'sim_xarm_packing',
+        # Simulated dual-xArm packing. Same 20-dim EEF-pose (6D-rot cols) source
+        # as 'xarm_packing'; only the data/chunk paths and sim-specific extras
+        # differ. Source folders: adv/* (adversarial) and base/* (baseline).
+        'data_root': '/data/group_data/rl/kshitiz2/pack_dataset/sim',
+        'chunks_path': '/data/group_data/rl/saksham3/packing/sim/chunks.json',
+        'cameras': ['base', 'left_wrist', 'right_wrist'],   # -> cam_0, cam_1, cam_2
+        # Native 224: combined chunks are long (up to ~21.7k frames); at 480 the
+        # biggest episodes exceed TFDS's 2GB-per-Example protobuf limit. 224
+        # keeps the largest episode ~1.5GB. Match 480px xarm by resizing on load.
+        'image_size': (224, 224),
+        'jpeg_quality': 95,
+        'state_action_mode': 'eef_pose_6d_cols',            # 20-dim source -> 14-dim
+        'state_feature_names': _EEF_NAMES,
+        'robot_type': 'dual_xarm',
+        'fps': 60.0,
+        'has_adversarial_flag': True,                       # add episode is_adversarial (repo_id under adv/)
+        'exclude_chunks': {269},                            # subtask boundaries misaligned to episode
     },
 }
 
@@ -90,7 +136,7 @@ DATASET_NAME = _P['dataset_name']
 DATASET_VERSION = '1.0.0'
 
 _DATA_ROOT = _P['data_root']
-_CHUNKS_PATH = os.path.join(_DATA_ROOT, 'chunks.json')
+_CHUNKS_PATH = _P.get('chunks_path', os.path.join(_DATA_ROOT, 'chunks.json'))
 
 _CAMERAS = _P['cameras']
 _MAX_CAMERAS = len(_CAMERAS)
@@ -106,11 +152,56 @@ _ROBOT_TYPE = _P['robot_type']
 _STATE_FEATURE_NAMES = list(_P['state_feature_names'])
 _ACTION_FEATURE_NAMES = list(_STATE_FEATURE_NAMES)
 
+# Synthesized cartesian stream (yam only): flange pose per arm, gripper excluded.
+_EEF_POSE_FEATURE_NAMES = []
+for _arm in ['left', 'right']:
+    _EEF_POSE_FEATURE_NAMES += [f'{_arm}_x', f'{_arm}_y', f'{_arm}_z',
+                                f'{_arm}_roll', f'{_arm}_pitch', f'{_arm}_yaw']
+_EEF_POSE_DIM = len(_EEF_POSE_FEATURE_NAMES)
+
+# Per-profile extras (default off).
+_HAS_ADVERSARIAL = bool(_P.get('has_adversarial_flag', False))
+_EXCLUDE_CHUNKS = set(_P.get('exclude_chunks', ()))
+
+# Lego (yam_3lego) carries fields the packing profiles have no source for: the
+# FK-synthesized eef pose stream, per-subtask partial labels and the 3lego task
+# id. All of them are gated on this one flag.
+_IS_LEGO = bool(_P.get('is_lego', False))
+_LEGO_BASELINE_REPO = '3lego_round1_baseline'
+
+if _IS_LEGO:
+    # Loaded by path: the framework imports this config by file, so lerobot/ is
+    # not necessarily on sys.path. yam_fk resolves vendor/yam_vendor_kin.xml
+    # relative to its own __file__, so the pinned model travels with it.
+    import importlib.util
+    _spec = importlib.util.spec_from_file_location(
+        'yam_fk', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'yam_fk.py'))
+    _yam_fk = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(_yam_fk)
+    _FK = _yam_fk.YamFK()
+
+
+def _is_adversarial(repo_id):
+    """True iff the source folder is an adversarial round.
+
+    Two layouts:
+    - packing (sim/real): data_root splits into adv/* vs base/*, so the adv/
+      prefix is the signal. The realworld root is currently flat
+      (xarm_baseline_round*), so every chunk there evaluates False; adversarial
+      rounds added later must live under an adv/ prefix to be labelled right.
+    - lego: the folders are flat and every round is adversarial EXCEPT the
+      baseline one.
+    """
+    if _IS_LEGO:
+        return os.path.basename(repo_id.rstrip('/')) != _LEGO_BASELINE_REPO
+    return repo_id.startswith('adv/')
+
 
 def _load_chunks():
     with open(_CHUNKS_PATH) as f:
         data = json.load(f)
-    return {c['global_chunk_index']: c for c in data['chunks']}
+    return {c['global_chunk_index']: c for c in data['chunks']
+            if c['global_chunk_index'] not in _EXCLUDE_CHUNKS}
 
 _CHUNKS = _load_chunks()
 
@@ -148,9 +239,39 @@ def get_features():
         obs[f'observation/image/cam_{i}'] = tfds.features.Tensor(shape = (), dtype = tf.string)
     obs['observation/state'] = tfds.features.Tensor(shape = (_STATE_DIM,), dtype = np.float32)
 
+    episode_metadata = {
+        'repo_id': tfds.features.Text(),
+        'repo_index': tfds.features.Scalar(dtype = np.int32),
+        'robot_type': tfds.features.Text(),
+        'fps': tfds.features.Scalar(dtype = np.float32),
+        'camera_names': tfds.features.Sequence(tfds.features.Text()),
+        'camera_shapes': tfds.features.Sequence(tfds.features.Tensor(shape = (3,), dtype = np.int32)),
+        'num_cameras': tfds.features.Scalar(dtype = np.int64),
+        'state_feature_names': tfds.features.Sequence(tfds.features.Text()),
+        'action_feature_names': tfds.features.Sequence(tfds.features.Text()),
+        'subtasks': tfds.features.Sequence(tfds.features.Text()),
+        'task_description': tfds.features.Text(),
+        'num_subtasks': tfds.features.Scalar(dtype = np.int32),
+    }
+    if _HAS_ADVERSARIAL:
+        episode_metadata['is_adversarial'] = tfds.features.Scalar(dtype = np.bool_)
+    step_extras = {}
+    if _IS_LEGO:
+        episode_metadata['eef_pose_feature_names'] = tfds.features.Sequence(tfds.features.Text())
+        episode_metadata['subtask_is_partial'] = tfds.features.Sequence(
+            tfds.features.Scalar(dtype = np.bool_))
+        episode_metadata['task_id'] = tfds.features.Scalar(dtype = np.int32)
+        step_extras['eef_sim_pose_state'] = tfds.features.Tensor(
+            shape = (_EEF_POSE_DIM,), dtype = np.float32)
+        step_extras['eef_sim_pose_action'] = tfds.features.Tensor(
+            shape = (_EEF_POSE_DIM,), dtype = np.float32)
+        step_extras['is_partial'] = tfds.features.Scalar(dtype = np.bool_)
+        step_extras['task_id'] = tfds.features.Scalar(dtype = np.int32)
+
     return tfds.features.FeaturesDict({
         'steps': tfds.features.Dataset({
             **obs,
+            **step_extras,
             'action': tfds.features.Tensor(shape = (_ACTION_DIM,), dtype = np.float32),
             'is_first': tfds.features.Scalar(dtype = np.bool_),
             'is_terminal': tfds.features.Scalar(dtype = np.bool_),
@@ -166,20 +287,7 @@ def get_features():
             'subtask_is_last': tfds.features.Scalar(dtype = np.bool_),
             'repo_index': tfds.features.Scalar(dtype = np.int32),
         }),
-        'episode_metadata': tfds.features.FeaturesDict({
-            'repo_id': tfds.features.Text(),
-            'repo_index': tfds.features.Scalar(dtype = np.int32),
-            'robot_type': tfds.features.Text(),
-            'fps': tfds.features.Scalar(dtype = np.float32),
-            'camera_names': tfds.features.Sequence(tfds.features.Text()),
-            'camera_shapes': tfds.features.Sequence(tfds.features.Tensor(shape = (3,), dtype = np.int32)),
-            'num_cameras': tfds.features.Scalar(dtype = np.int64),
-            'state_feature_names': tfds.features.Sequence(tfds.features.Text()),
-            'action_feature_names': tfds.features.Sequence(tfds.features.Text()),
-            'subtasks': tfds.features.Sequence(tfds.features.Text()),
-            'task_description': tfds.features.Text(),
-            'num_subtasks': tfds.features.Scalar(dtype = np.int32),
-        }),
+        'episode_metadata': tfds.features.FeaturesDict(episode_metadata),
     })
 
 
@@ -230,8 +338,26 @@ def _adapt_state_action(vec):
     raise ValueError(f'unknown state_action_mode {_STATE_ACTION_MODE!r}')
 
 
+def _joints_to_eef(vec14):
+    """14-dim joint vector -> 12-dim flange pose [x,y,z,roll,pitch,yaw] x{L,R}.
+
+    Joints are [joint(6), gripper] per arm, so the FK input skips the gripper at
+    index 6 (left) and 13 (right). The pose is the wrist FLANGE (link6) in the
+    arm base frame -- not a TCP: the source corpus mixes gripper types with no
+    per-episode label, so any single tool offset would be wrong for part of it.
+    Euler is scipy 'xyz' (extrinsic) radians, matching the reference build.
+    """
+    out = np.zeros(_EEF_POSE_DIM, dtype = np.float32)
+    for arm, sl in enumerate([slice(0, 6), slice(7, 13)]):
+        pos, quat_xyzw = _FK.fk(np.asarray(vec14[sl], dtype = np.float64))
+        o = arm * 6
+        out[o: o + 3] = pos
+        out[o + 3: o + 6] = Rotation.from_quat(quat_xyzw).as_euler('xyz')
+    return out
+
+
 def _encode_frame(frame_rgb):
-    """uint8 (H,W,3) -> resize 480x480 -> JPEG q95 bytes."""
+    """uint8 (H,W,3) -> resize to _IMAGE_SIZE -> JPEG bytes at the profile quality."""
     img = tf.image.resize(frame_rgb.astype(np.float32) / 255.0, _IMAGE_SIZE).numpy()
     img = np.clip(np.rint(img * 255.0), 0, 255).astype(np.uint8)
     return tf.io.encode_jpeg(img, quality = _JPEG_QUALITY).numpy()
@@ -280,6 +406,11 @@ def parse_episode(chunk_id):
                 step[f'observation/image/cam_{ci}'] = _encode_frame(cam_frames[ci][t_local])
             step['observation/state'] = _adapt_state_action(states[t_local])
             step['action'] = _adapt_state_action(actions[t_local])
+            if _IS_LEGO:
+                step['eef_sim_pose_state'] = _joints_to_eef(states[t_local])
+                step['eef_sim_pose_action'] = _joints_to_eef(actions[t_local])
+                step['is_partial'] = np.bool_(sub['is_partial'])
+                step['task_id'] = np.int32(chunk['task_id'])
             step['is_first'] = (t == 0)
             step['is_terminal'] = (t == total - 1)
             step['frame_index'] = np.int64(t)
@@ -320,4 +451,11 @@ def parse_episode(chunk_id):
             'num_subtasks': np.int32(chunk['num_subtasks']),
         },
     }
+    if _HAS_ADVERSARIAL:
+        sample['episode_metadata']['is_adversarial'] = np.bool_(_is_adversarial(chunk['repo_id']))
+    if _IS_LEGO:
+        sample['episode_metadata']['eef_pose_feature_names'] = list(_EEF_POSE_FEATURE_NAMES)
+        sample['episode_metadata']['subtask_is_partial'] = [
+            np.bool_(s['is_partial']) for s in chunk['subtasks']]
+        sample['episode_metadata']['task_id'] = np.int32(chunk['task_id'])
     return str(chunk['global_chunk_index']), sample
